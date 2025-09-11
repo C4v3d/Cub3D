@@ -6,13 +6,14 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 14:54:56 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 16:54:09 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+# define ERROR_HEADER "Error\n"
 /**
  * @brief Opcode for error type
  * 
@@ -26,7 +27,7 @@ typedef enum e_errtype
 	ERROR, /**< Logical error in the code*/
 	CRITICAL, /**< Critical error that cause the abortion of
 				the program (e.g: no more sys mem) */
-}	t_errtype;
+}	t_errcode;
 
 /**
  * This is a wrapper function that aim to ease error handling. It's going to
@@ -36,12 +37,12 @@ typedef enum e_errtype
  * of the error, the error code
  * and the opcode corresonding to the error type.
  * @param loc
- * A string that indicate the location of the error.
+ * A string that indicate the caller function (e.g: "main").
  * @param errcode
- * The integer that correspon to the error code (e.g: errno).
+ * The integer that correspon to the error code (e.g: CUSTOM_ERROR).
  * @param opcode
  * The type of error (WARNING, ERROR, CRITICAL)
  */
-int	w_error(const char *loc, const int errcode, t_errtype opcode);
+int	print_error(const char *loc, const int errcode, t_errcode opcode);
 
 #endif

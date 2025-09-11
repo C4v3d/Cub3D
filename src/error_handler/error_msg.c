@@ -6,50 +6,46 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 15:10:44 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:00:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	ft_warning(const char *loc, const int errcode)
+static int	ft_warning(const char *caller, const int errcode)
 {
-	char *error_msg;
-	
-	if (errcode)
-	{
-		error_msg = strerror(errcode);
-		printf(RED"%s"RESET"\nFrom caller: " YEL"%s\n"RESET,error_msg, loc);
-	}
-	else
-		printf("Oops, dont know what happend from caller :%s\n", loc);
+	(void)errcode; // To replace with correct errcode
+	printf(YEL"Warning:	"RESET"Warning message\n"
+		"From caller:	"YEL"%s\n"RESET, caller);
 	return (errcode);
 }
 
-static int	ft_error(const char *loc, const int errcode)
+static int	ft_error(const char *caller, const int errcode)
 {
-	char *error_msg;
-
-	error_msg = strerror(errcode);
-	printf("%s\nFrom caller :%s\n",error_msg, loc);
+	(void)errcode; // To replace with correct errcode
+	printf(YEL"Error:	"RESET"Error message\n"
+		"From caller:	"YEL"%s\n"RESET, caller);
 	return (errcode);
 }
 
-static void	ft_fatal(const char *loc)
+static void	ft_fatal(const char *caller)
 {
-	perror("Fatal error, exiting !\n");
-	printf("caller :%s\n", loc);
+	char	*err_msg;
+
+	err_msg = strerror(errno);
+	printf(RED"Fatal error:	"RESET"%s\n"
+		"From caller:	"YEL"%s\n"RESET, err_msg, caller);
 	exit(EXIT_FAILURE);
 }
 
-int	w_error(const char *loc, const int errcode, t_errtype opcode)
+int	print_error(const char *caller, const int errcode, t_errcode opcode)
 {
-	printf(RED"Error\n"RESET);
+	printf(ERROR_HEADER);
 	if (opcode == WARNING)
-		return (ft_warning(loc, errcode));
+		return (ft_warning(caller, errcode));
 	else if (opcode == ERROR)
-		return (ft_error(loc, errcode));
+		return (ft_error(caller, errcode));
 	else if (opcode == CRITICAL)
-		ft_fatal(loc);
+		ft_fatal(caller);
 	return (0);
 }

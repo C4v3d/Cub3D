@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 17:00:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:06:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	ft_fatal(const char *caller)
 	err_msg = strerror(errno);
 	printf(RED"Fatal error:	"RESET"%s\n"
 		"From caller:	"YEL"%s\n"RESET, err_msg, caller);
+	printf("\n"RED"	<--- Exiting ! --->"RESET"\n");
 	exit(EXIT_FAILURE);
 }
 

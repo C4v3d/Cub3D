@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 16:56:07 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:03:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(int argc, char *argv[])
 	ptr = NULL;
 	errno = ENOMEM;
 	if (!ptr)
-		return (print_error("main", ENOMEM, WARNING));
+		return (print_error("main", ENOMEM, CRITICAL));
 	return (0);
 }

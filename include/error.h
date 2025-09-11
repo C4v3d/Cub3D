@@ -6,13 +6,16 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 16:54:09 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 17:02:43 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+/**
+ * Default error header (asked by the subject).
+ */
 # define ERROR_HEADER "Error\n"
 /**
  * @brief Opcode for error type
@@ -23,10 +26,10 @@
 typedef enum e_errtype
 {
 	WARNING, /**< Error that are caused by the user or won't stop
-				the correct execution of the program*/
-	ERROR, /**< Logical error in the code*/
+				the correct execution of the program.*/
+	ERROR, /**< Logical error in the code.*/
 	CRITICAL, /**< Critical error that cause the abortion of
-				the program (e.g: no more sys mem) */
+				the program (e.g: no more sys mem). */
 }	t_errcode;
 
 /**

@@ -5,7 +5,8 @@ CFLAGS = -Wall -Werror -Wextra
 
 BUILD_PATH = build
 CFILES_PATH = src
-CFILES = $(CFILES_PATH)/main.c \
+CFILES =	$(CFILES_PATH)/main.c \
+			$(CFILES_PATH)/error_handler/error_msg.c \
 
 LIBFT_PATH = lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a

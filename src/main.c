@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 11:18:15 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/11 15:04:00 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
+	char *ptr = NULL;
+
 	(void)argc;
 	(void)argv;
-	printf("Hello World!\n");
+	if (!ptr)
+		w_error("main", ENOMEM, WARNING);
 	return (0);
 }

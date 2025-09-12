@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 17:06:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:33:05 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_warning(const char *caller, const int errcode)
 static int	ft_error(const char *caller, const int errcode)
 {
 	(void)errcode; // To replace with correct errcode
-	printf(YEL"Error:	"RESET"Error message\n"
+	printf(YEL"/!\\	"RESET"Error message\n"
 		"From caller:	"YEL"%s\n"RESET, caller);
 	return (errcode);
 }

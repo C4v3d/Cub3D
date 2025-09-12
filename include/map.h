@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:33:34 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/12 15:07:48 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/12 15:21:28 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#ifndef MAP_H
+# define MAP_H
 
-int	main(int argc, char *argv[])
-{
-	(void)argv;
-	if (argc == 1)
-		return (print_error("main", 1, ERROR));
-	return (0);
-}
+# define MAP_PATH "map/"
+
+#endif

@@ -1,21 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:33:34 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/12 14:38:17 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/12 14:38:31 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int argc, char *argv[])
-{
-	(void)argv;
-	if (argc == 1)
-		return (print_error("main", 1, ERROR));
-	return (0);
-}

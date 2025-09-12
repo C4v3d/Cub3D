@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:46 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 13:24:40 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:12:15 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/**
+*	Default buffer size for get_next_line.
+*/
+# define BUFFER_SIZE 4
 /*
 *	Color code.
 *	for ex. printf(RED "This is an error message !" RESET);
@@ -68,6 +72,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
 
 /*
 *	Custom Function

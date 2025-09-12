@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 17:02:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/12 15:31:56 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ typedef enum e_errtype
 	CRITICAL, /**< Critical error that cause the abortion of
 				the program (e.g: no more sys mem). */
 }	t_errcode;
+
+typedef enum e_maperror
+{
+	MAP_NOT_CLOSED,
+	MAP_NOT_LAST,
+	INCORRECT_CHAR,
+}	t_maperror;
 
 /**
  * This is a wrapper function that aim to ease error handling. It's going to

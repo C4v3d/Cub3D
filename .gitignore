@@ -3,6 +3,10 @@
 
 # Executable
 Cub3d
+
+# Makefile
+Makefile.gen
+
 # Object files
 *.o
 *.ko

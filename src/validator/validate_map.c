@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-static int	validate_input_str(char *path)
+static int	validate_input_str(char *map_file)
 {
 	size_t	len;
 	char*	p;
@@ -22,8 +22,8 @@ static int	validate_input_str(char *path)
 	 * - map.cub.cub
 	 * - map....cub
 	 */
-	len = ft_strlen(path);
-	p = path;
+	len = ft_strlen(map_file);
+	p = map_file;
 	if (len == 0 || len == EXTENSION_LEN)
 		return (ft_perror(NULL, MAP_FILE_NULL, WARNING));
 	p += (len - EXTENSION_LEN);
@@ -32,10 +32,24 @@ static int	validate_input_str(char *path)
 	return (0);
 }
 
-bool	is_map_valid(char *map_path)
+static int	open_map(char *map_file)
 {
-	if (!validate_input_str(map_path))
+	int	fd;
+
+	(void)map_file;
+	fd = open(MAP_PATH"map_file", O_RDONLY);
+	if (fd < 0)
+		ft_perror(NULL, NO_MAP_FILE, WARNING);
+	return (fd);
+}
+
+bool	is_map_valid(char *map_file)
+{
+	int	map_fd;
+
+	if (validate_input_str(map_file) != 0)
 		return (false);
-	
+	map_fd = open_map(map_file);
+	printf("fd is %d\n", map_fd);
 	return (true);
 }

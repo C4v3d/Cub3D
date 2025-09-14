@@ -21,6 +21,8 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Map file is null");
 	if (errcode == WRG_MAP_EXT)
 		return ("Wrong map extension (must be .cub).");
+	if (errcode == NO_MAP_FILE)
+		return ("Map file does not exist.");
 	return (NULL);
 }
 

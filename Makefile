@@ -11,7 +11,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 
 LIBFT_PATH = lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a
-MLX_PATH		=	lib/minilibx-linux
+MLX_PATH		=	lib/mlx
 MLX_LIB		=	$(MLX_PATH)/libmlx_Linux.a
 
 OBJ = $(CFILES:$(CFILES_PATH)/%.c=$(BUILD_PATH)/%.o)
@@ -52,7 +52,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(BUILD_PATH)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-# 	@$(MAKE) -C $(MLX_PATH) fclean
 
 re: fclean all
 

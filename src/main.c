@@ -17,8 +17,6 @@ int	main(int argc, char *argv[])
 	if (argc == 1 || argc > 2)
 		return (ft_perror("main", WRG_N_ARGS, ERROR));
 	if (!is_map_valid(argv[1]))
-	{
-		
-	}
+		exit(EXIT_FAILURE);
 	return (0);
 }

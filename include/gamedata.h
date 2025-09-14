@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   gamedata.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/14 19:12:56 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/14 19:14:06 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GAMEDATA_H
+# define GAMEDATA_H
 
-# include <stdio.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/time.h>
-# include <math.h>
-# include <stdbool.h>
-# include <errno.h>
 
-# include "error.h"
-# include "gamedata.h"
-# include "../lib/libft/libft.h"
 
 #endif

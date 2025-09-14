@@ -52,7 +52,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(BUILD_PATH)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@$(MAKE) -C $(MLX_PATH) fclean
+# 	@$(MAKE) -C $(MLX_PATH) fclean
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:12:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/14 17:34:02 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 # include "../lib/libft/libft.h"
 # include "error.h"
 # include "map.h"
+# include "validator.h"
 
 #endif

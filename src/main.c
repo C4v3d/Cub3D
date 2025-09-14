@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:33:34 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/14 17:32:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
-	(void)argv;
-	if (argc == 1)
-		return (print_error("main", 1, ERROR));
+	if (argc == 1 || argc > 2)
+		return (ft_perror("main", WRG_N_ARGS, ERROR));
+	if (!is_map_valid(argv[1]))
+	{
+		
+	}
 	return (0);
 }

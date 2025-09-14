@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/14 17:56:16 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/14 18:49:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	validate_input_str(char *path)
 {
 	size_t	len;
 	char*	p;
+
 	/**
 	 * Not sure :
 	 * - map.cub.cub
@@ -23,10 +24,10 @@ static int	validate_input_str(char *path)
 	 */
 	len = ft_strlen(path);
 	p = path;
-	if (len == 0 || len == EXT_LEN)
+	if (len == 0 || len == EXTENSION_LEN)
 		return (ft_perror(NULL, MAP_FILE_NULL, WARNING));
-	p += (len - EXT_LEN);
-	if (ft_strncmp(p, EXT, EXT_LEN) != 0)
+	p += (len - EXTENSION_LEN);
+	if (ft_strncmp(p, EXTENSION, EXTENSION_LEN) != 0)
 		return (ft_perror(NULL, WRG_MAP_EXT, WARNING));
 	return (0);
 }
@@ -34,8 +35,7 @@ static int	validate_input_str(char *path)
 bool	is_map_valid(char *map_path)
 {
 	if (!validate_input_str(map_path))
-	{
-		printf("rewrew\n");
-	}
+		return (false);
+	
 	return (true);
 }

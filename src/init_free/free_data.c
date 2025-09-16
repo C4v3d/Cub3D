@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 21:53:46 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/16 13:12:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int argc, char *argv[])
+void	free_main_struct(t_main_struct *s)
 {
-	t_main_struct	*ms;
-	char	*ptr;
 
-	(void)argc;
-	(void)argv;
-	ms = malloc(sizeof(t_main_struct));
-	if (!ms)
-		return (print_error("main", ENOMEM, CRITICAL));
-	if (init_data(ms) != 0)
-		return (1);
-	ptr = NULL;
-	errno = ENOMEM;
-	if (!ptr)
-		return (print_error("main", ENOMEM, CRITICAL));
-	free(ms);
-	return (0);
 }

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 21:53:46 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/16 21:52:49 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int argc, char *argv[])
+static int	init_game_data(t_game_data *gd)
 {
-	t_main_struct	*ms;
-	char	*ptr;
 
-	(void)argc;
-	(void)argv;
-	ms = malloc(sizeof(t_main_struct));
-	if (!ms)
-		return (print_error("main", ENOMEM, CRITICAL));
-	if (init_data(ms) != 0)
-		return (1);
-	ptr = NULL;
-	errno = ENOMEM;
-	if (!ptr)
-		return (print_error("main", ENOMEM, CRITICAL));
-	free(ms);
+}
+
+int	init_data(t_main_struct *s)
+{
+	int	ret;
+
+	ret = 0;
+	if (!ret && init_game_data(&s->gd) != 0)
+		ret = 1;
+	if (ret)
+		free_main_struct(s);
 	return (0);
 }

@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initfree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 21:53:46 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/16 12:35:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#ifndef INITFREE_H
+# define INITFREE_H
 
-int	main(int argc, char *argv[])
-{
-	t_main_struct	*ms;
-	char	*ptr;
 
-	(void)argc;
-	(void)argv;
-	ms = malloc(sizeof(t_main_struct));
-	if (!ms)
-		return (print_error("main", ENOMEM, CRITICAL));
-	if (init_data(ms) != 0)
-		return (1);
-	ptr = NULL;
-	errno = ENOMEM;
-	if (!ptr)
-		return (print_error("main", ENOMEM, CRITICAL));
-	free(ms);
-	return (0);
-}
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 21:53:46 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/16 23:23:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int	main(int argc, char *argv[])
 {
-	t_main_struct	*ms;
-	char	*ptr;
+	t_main	*cub;
 
-	(void)argc;
-	(void)argv;
-	ms = malloc(sizeof(t_main_struct));
-	if (!ms)
-		return (print_error("main", ENOMEM, CRITICAL));
-	if (init_data(ms) != 0)
+	if (argc == 1 || argc > 2)
+		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
+	cub = malloc(sizeof(t_main));
+	if (!cub)
+		return (ft_perror(cub, ENOMEM, CRITICAL));
+	if (init_cub(cub) != 0)
 		return (1);
-	ptr = NULL;
-	errno = ENOMEM;
-	if (!ptr)
-		return (print_error("main", ENOMEM, CRITICAL));
-	free(ms);
+	if (!is_map_valid(cub, argv[1]))
+	{
+		printf("uh\n");
+	}
+	free(cub);
 	return (0);
 }

@@ -3,39 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 17:02:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 22:57:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
+# include "cubstructs.h"
 /**
  * Default error header (asked by the subject).
  */
 # define ERROR_HEADER "Error\n"
 /**
  * @brief Opcode for error type
- * 
+ *
  * List of three different error types, this enum works along side
  * the w_error function.
  */
-typedef enum e_errtype
+typedef enum e_errortype
 {
 	WARNING, /**< Error that are caused by the user or won't stop
 				the correct execution of the program.*/
 	ERROR, /**< Logical error in the code.*/
 	CRITICAL, /**< Critical error that cause the abortion of
 				the program (e.g: no more sys mem). */
-}	t_errcode;
+	DEBUG, /** For debug purpose. */
+}	t_errortype;
+
+typedef enum e_errorcode
+{
+	SUCCESS,
+	WRG_N_ARGS,
+	MAP_FILE_NULL,
+	WRG_MAP_EXT,
+	NO_MAP_FILE,
+}	t_errorcode;
 
 /**
  * This is a wrapper function that aim to ease error handling. It's going to
  * print out the error message on stdout (we are not allowed to use fprintf).
- * 
+ *
  * The function take as parameters a string that indicate the location
  * of the error, the error code
  * and the opcode corresonding to the error type.
@@ -46,6 +57,6 @@ typedef enum e_errtype
  * @param opcode
  * The type of error (WARNING, ERROR, CRITICAL)
  */
-int	print_error(const char *loc, const int errcode, t_errcode opcode);
+int	ft_perror(t_main *cub, t_errorcode errcode, t_errortype opcode);
 
 #endif

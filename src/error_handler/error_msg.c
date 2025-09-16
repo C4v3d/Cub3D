@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/14 17:52:11 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 12:15:18 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,31 @@ static int	ft_warning(t_errorcode errcode)
 	return (errcode);
 }
 
-static int	ft_error(const char *caller, t_errorcode errcode)
+static int	ft_error(t_errorcode errcode)
 {
-	printf(YEL"/!\\	"RESET"%s\n"
-		"From caller:	"YEL"%s\n"RESET, ft_strerror(errcode), caller);
+	printf(YEL"Error:	"RESET"%s\n", ft_strerror(errcode));
 	return (errcode);
 }
 
-static void	ft_fatal(const char *caller)
+static void	ft_fatal(t_cub *cub)
 {
 	char	*err_msg;
 
+	(void)cub; // TO FREE;
 	err_msg = strerror(errno);
-	printf(RED"Fatal error:	"RESET"%s\n"
-		"From caller:	"YEL"%s\n"RESET, err_msg, caller);
+	printf(RED"Fatal error:	"RESET"%s\n", err_msg);
 	printf("\n"RED"	<--- Exiting ! --->"RESET"\n");
 	exit(EXIT_FAILURE);
 }
 
-int	ft_perror(const char *caller, t_errorcode errcode, t_errortype opcode)
+int	ft_perror(t_cub *cub, t_errorcode errcode, t_errortype opcode)
 {
 	printf(ERROR_HEADER);
 	if (opcode == WARNING)
 		return (ft_warning(errcode));
 	else if (opcode == ERROR)
-		return (ft_error(caller, errcode));
+		return (ft_error(errcode));
 	else if (opcode == CRITICAL)
-		ft_fatal(caller);
+		ft_fatal(cub);
 	return (0);
 }

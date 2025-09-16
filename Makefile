@@ -8,7 +8,7 @@ BUILD_PATH = build
 CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
-			$(CFILES_PATH)/validator/validate_map.c \
+			$(CFILES_PATH)/file_checker/validate_file.c \
 
 LIBFT_PATH = lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a

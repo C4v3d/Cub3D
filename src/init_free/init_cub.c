@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 23:23:23 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/16 23:09:21 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int argc, char *argv[])
+static int	init_game_data(t_game *gd)
 {
-	t_main	*cub;
+	(void)gd;
+	return (0);
+}
 
-	if (argc == 1 || argc > 2)
-		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
-	cub = malloc(sizeof(t_main));
-	if (!cub)
-		return (ft_perror(cub, ENOMEM, CRITICAL));
-	if (init_cub(cub) != 0)
-		return (1);
-	if (!is_map_valid(cub, argv[1]))
-	{
-		printf("uh\n");
-	}
-	free(cub);
+int	init_cub(t_main *cub)
+{
+	int	ret;
+
+	ret = 0;
+	if (!ret && init_game_data(&cub->gd) != 0)
+		ret = 1;
+	if (ret)
+		free_cub(cub);
 	return (0);
 }

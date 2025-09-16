@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/11 17:03:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 23:23:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int	main(int argc, char *argv[])
 {
-	char	*ptr;
+	t_main	*cub;
 
-	(void)argc;
-	(void)argv;
-	ptr = NULL;
-	errno = ENOMEM;
-	if (!ptr)
-		return (print_error("main", ENOMEM, CRITICAL));
+	if (argc == 1 || argc > 2)
+		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
+	cub = malloc(sizeof(t_main));
+	if (!cub)
+		return (ft_perror(cub, ENOMEM, CRITICAL));
+	if (init_cub(cub) != 0)
+		return (1);
+	if (!is_map_valid(cub, argv[1]))
+	{
+		printf("uh\n");
+	}
+	free(cub);
 	return (0);
 }

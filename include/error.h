@@ -35,9 +35,11 @@ typedef enum e_errortype
 
 typedef enum e_errorcode
 {
+	SUCCESS,
 	WRG_N_ARGS,
 	MAP_FILE_NULL,
 	WRG_MAP_EXT,
+	NO_MAP_FILE,
 }	t_errorcode;
 
 /**

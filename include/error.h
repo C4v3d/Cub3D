@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/14 17:51:07 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 12:15:37 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ typedef enum e_errorcode
  * @param opcode
  * The type of error (WARNING, ERROR, CRITICAL)
  */
-int	ft_perror(const char *loc, const t_errorcode errcode, t_errortype opcode);
+int	ft_perror(t_cub *cub, t_errorcode errcode, t_errortype opcode);
 
 #endif

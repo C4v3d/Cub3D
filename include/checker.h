@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/16 13:12:20 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/16 22:56:29 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	free_main_struct(t_main_struct *s)
-{
+# define EXTENSION ".cub"
+# define EXTENSION_LEN 4
 
-}
+# include "cubstructs.h"
+
+bool	is_map_valid(t_main *cub, char *map_path);
+
+#endif

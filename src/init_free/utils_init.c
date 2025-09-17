@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initfree.h                                         :+:      :+:    :+:   */
+/*   utils_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 15:27:57 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/17 17:32:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITFREE_H
-# define INITFREE_H
+#include "../../include/cub3d.h"
 
-int		init_cub(t_main *cub);
-void	free_cub(t_main *cub);
-int		**init_2d_array(int height, int width);
+int	**init_2d_array(int height, int width)
+{
+	int	**array;
+	int	i;
 
-#endif
+	array = malloc(sizeof(int *) * height);
+	if (!array)
+		return (NULL);
+	i = -1;
+	while (++i < height)
+	{
+		array[i] = ft_calloc(width, sizeof(int));
+		if (!array[i])
+		{
+			while (--i >= 0)
+				free(array[i]);
+			free(array);
+			return (NULL);
+		}
+	}
+	return (array);
+}

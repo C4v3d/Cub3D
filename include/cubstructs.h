@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 22:25:45 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 10:44:49 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 17:36:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ typedef struct s_main_struct	t_main;
 
 typedef struct		s_graphic_data
 {
-	int				txtr_s;			// txtr array size
+	int				txtr_s;			// texture array size
 	void			**txtr;			// void*[txtr_s] for: wall textures
 	int				rgb_s;			// rgb array size
-	int				**rgb;			// int[rgb_arr_s][3] for: FLOOR and CEILING in RGB
+	int				**rgb;			// int[rgb_s][3] for: FLOOR and CEILING in RGB
 	t_main			*cub;			// `ptr` to parent struct
 }					t_graphic;
 
@@ -28,7 +28,7 @@ typedef struct		s_map_data
 {
 	int				height;
 	int				width;
-	int				**grid;			// int[w][h] for:MAP MATRIX
+	int				**grid;			// int[w][h] for: MAP MATRIX
 	int				*p_start_pos;	// int[2] for: PLAYER X&Y START POSITION
 	int				p_start_ori;	// START ORIENTATION (N,S,W or E)
 	t_main			*cub;			// `ptr` to parent struct

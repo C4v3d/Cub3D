@@ -10,7 +10,6 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
 			$(CFILES_PATH)/file_checker/validate_file.c \
 			$(CFILES_PATH)/init_free/init_cub.c \
-			$(CFILES_PATH)/init_free/init_gd.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 
 LIBFT_PATH = lib/libft

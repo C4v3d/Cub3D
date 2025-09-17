@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 23:17:37 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:25:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	get_map_fd(t_main *cub, char *map_path)
 	full_path = ft_strjoin(MAP_PATH, map_path);
 	if (!full_path)
 		return (ft_perror(NULL, errno, ERROR));
-	cub->pd.input_file_fd = open(full_path, O_RDONLY);
-	if (cub->pd.input_file_fd == -1)
+	cub->pr.input_file_fd = open(full_path, O_RDONLY);
+	if (cub->pr.input_file_fd == -1)
 	{
 		w_free((void **)&full_path);
 		return (ft_perror(NULL, errno, CRITICAL));
@@ -54,6 +54,6 @@ bool	is_map_valid(t_main *cub, char *map_path)
 		return (false);
 	if (get_map_fd(cub, map_path) != 0)
 		return (false);
-	printf("fd :%d\n", cub->pd.input_file_fd);
+	printf("fd :%d\n", cub->pr.input_file_fd);
 	return (true);
 }

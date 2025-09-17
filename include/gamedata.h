@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 09:05:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:46:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum	e_rgb_elements
 	CEILING
 }				t_rgbel;
 
-typedef enum	e_rgb_colors
+typedef enum	e_rgb
 {
 	R,
 	G,

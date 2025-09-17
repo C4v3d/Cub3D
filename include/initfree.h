@@ -6,18 +6,14 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 09:16:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 10:21:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INITFREE_H
 # define INITFREE_H
 
-// initialize
 int		init_cub(t_main *cub);
-int		init_game_data(t_game *gd);
-
-// free
 void	free_cub(t_main *cub);
 
 #endif

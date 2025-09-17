@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 23:23:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 11:13:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(int argc, char *argv[])
 	{
 		printf("uh\n");
 	}
-	free(cub);
+	free_cub(cub);
 	return (0);
 }

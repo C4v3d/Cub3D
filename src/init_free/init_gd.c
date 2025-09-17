@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initfree.h                                         :+:      :+:    :+:   */
+/*   init_gd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 09:16:01 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/17 09:14:42 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/17 09:23:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITFREE_H
-# define INITFREE_H
+#include "../../include/cub3d.h"
 
-// initialize
-int		init_cub(t_main *cub);
-int		init_game_data(t_game *gd);
+static int	init_graphic_data(t_graphic *gfx)
+{
+	gfx->txtr = malloc(sizeof(void *) * 4);
+	if (!gfx->txtr)
+		return (ft_perror(gfx->gd->cub, ENOMEM, CRITICAL));
+	return (0);
+}
 
-// free
-void	free_cub(t_main *cub);
-
-#endif
+int	init_game_data(t_game *gd)
+{
+	if (init_graphic_data(&gd->gfx) != 0)
+		return (ft_perror(gd->cub, ENOMEM, CRITICAL));
+	return (0);
+}

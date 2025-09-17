@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 22:31:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 11:07:47 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_fatal(t_main *cub)
 {
 	char	*err_msg;
 
-	(void)cub; // TO FREE;
+	free_cub(cub);
 	err_msg = strerror(errno);
 	printf(RED"Fatal error:	"RESET"%s\n", err_msg);
 	printf("\n"RED"	<--- Exiting ! --->"RESET"\n");

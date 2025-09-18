@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 12:15:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 15:57:17 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_errorcode
 	MAP_FILE_NULL,
 	WRG_MAP_EXT,
 	NO_MAP_FILE,
+	NO_DATA,
 }	t_errorcode;
 
 /**

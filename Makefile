@@ -9,6 +9,12 @@ CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
 			$(CFILES_PATH)/file_checker/validate_file.c \
+			$(CFILES_PATH)/init/init.c \
+			$(CFILES_PATH)/parser/parse_map.c \
+			$(CFILES_PATH)/parser/parser_utils.c \
+			$(CFILES_PATH)/debug/logging.c \
+
+
 
 LIBFT_PATH = lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a

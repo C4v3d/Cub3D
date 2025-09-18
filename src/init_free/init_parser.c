@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   init_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:21:29 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/18 10:54:40 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/18 11:23:20 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "../../include/cub3d.h"
 
-typedef struct s_parser
-{
-	int		input_file_fd;
-	t_scene	*data_scene;
-}	t_parser;
-
-int	parser(t_prog *pr);
-
-/**
- * General functions used in the parser methode
- */
-char	*get_id(char *line);
-#endif
+// void	init_parser(t_parser *parser)
+// {
+// 	parser->data_scene.textures.no = NULL;
+// 	parser->data_scene.textures.so = NULL;
+// 	parser->data_scene.textures.ea = NULL;
+// 	parser->data_scene.textures.we = NULL;
+// }

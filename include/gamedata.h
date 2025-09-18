@@ -1,21 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   gamedata.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 14:08:08 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 14:40:45 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/18 11:05:37 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef GAMEDATA_H
+# define GAMEDATA_H
 
-void	init_cub(t_cub *cub)
+# define ESC 65307
+# define Q 113
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+
+typedef enum	e_axis
 {
-	cub->data_scene.textures.no = NULL;
-	cub->data_scene.textures.so = NULL;
-	cub->data_scene.textures.ea = NULL;
-	cub->data_scene.textures.we = NULL;
-}
+	X,
+	Y
+}				t_axis;
+
+typedef enum	e_rgb_elements
+{
+	FLOOR,
+	CEILING
+}				t_rgbel;
+
+typedef enum	e_rgb
+{
+	R,
+	G,
+	B
+}				t_rgbcol;
+
+typedef enum	e_orientation
+{
+	O_NO,
+	O_SO,
+	O_WE,
+	O_EA
+}				t_ori;
+
+#endif

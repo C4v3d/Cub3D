@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 15:48:27 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 11:34:15 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ static int	validate_input_str(char *map_path)
 	return (0);
 }
 
-static int	get_map_fd(t_cub *cub, char *map_path)
+static int	get_map_fd(t_prog *pr, char *map_path)
 {
 	char	*full_path;
 
 	full_path = ft_strjoin(MAP_PATH, map_path);
 	if (!full_path)
 		return (ft_perror(NULL, errno, ERROR));
-	cub->input_file_fd = open(full_path, O_RDONLY);
+	pr->parser->input_file_fd = open(full_path, O_RDONLY);
 	w_free((void **)&full_path);
-	if (cub->input_file_fd == -1)
-		return (ft_perror(NULL, errno, CRITICAL));
+	if (pr->parser->input_file_fd == -1)
+		return (ft_perror(pr->cub, errno, CRITICAL));
 	return (0);
 }
 
-bool	is_map_valid(t_cub *cub, char *map_path)
+bool	is_map_valid(t_prog *pr, char *map_path)
 {
 	if (validate_input_str(map_path) != 0)
 		return (false);
-	if (get_map_fd(cub, map_path) != 0)
+	if (get_map_fd(pr, map_path) != 0)
 		return (false);
 	return (true);
 }

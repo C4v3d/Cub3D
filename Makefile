@@ -11,8 +11,14 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/file_checker/validate_file.c \
 			$(CFILES_PATH)/parser/parse_map.c \
 			$(CFILES_PATH)/debug/logging.c \
-			$(CFILES_PATH)/init_free/init_cub.c \
+			$(CFILES_PATH)/init_free/init_cub_1.c \
+			$(CFILES_PATH)/init_free/init_cub_2.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
+			$(CFILES_PATH)/init_free/utils_init.c \
+			$(CFILES_PATH)/loop/loop.c \
+			$(CFILES_PATH)/user_input/vision_moves.c \
+			$(CFILES_PATH)/user_input/position_moves.c \
+
 
 LIBFT_PATH = lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a

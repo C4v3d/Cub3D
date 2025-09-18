@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initfree.h                                         :+:      :+:    :+:   */
+/*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 12:25:34 by emonacho         ###   ########.fr       */
+/*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/18 13:09:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITFREE_H
-# define INITFREE_H
+#include "../../include/cub3d.h"
 
-int		init_cub(t_main *cub);
-int		init_display(t_display *dspl, t_main *cub);
-int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub);
-void	free_cub(t_main *cub);
-int		**init_2d_array(int height, int width);
+/*
+* -	Déplacement de la vision avec les flèches
+* -	Comment gérer deux inputs clavier?
+* -	get_aov... -> pour modifier `aov` quand 2 touches sont appuyée en
+*	même temps (que faire quand c'est 3?)
+*/
 
-#endif
+

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:38:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 11:48:06 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	main(int argc, char *argv[])
 {
 	t_main		*cub;
 	
+	/**
+	 * Maybe split the program into 3 main area :
+	 * - Preprocess
+	 * - execution
+	 * - Cleaning
+	 */
 	if (argc == 1 || argc > 2)
 		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
 	cub = malloc(sizeof(t_main));

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:15:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 10:50:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 11:53:35 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 /**
  * @brief Opcode for error type
  *
- * List of three different error types, this enum works along side
- * the w_error function.
+ * List of three different error types,
+ * this enum works along side the
+ * w_error function.
  */
 typedef enum e_errortype
 {
@@ -50,12 +51,16 @@ typedef enum e_errorcode
  * The function take as parameters a string that indicate the location
  * of the error, the error code
  * and the opcode corresonding to the error type.
- * @param loc
- * A string that indicate the caller function (e.g: "main").
+ * @param cub
+ * A pointer reference to the main struct, allowing us to
+ * free everything in case of a critical error.
  * @param errcode
  * The integer that correspon to the error code (e.g: CUSTOM_ERROR).
+ * pass errno if it is a syscall error.
  * @param opcode
- * The type of error (WARNING, ERROR, CRITICAL)
+ * The type of error (WARNING, ERROR, CRITICAL). Critical errors
+ * make the program stop while error and Warning let you decide
+ * weather you want to exit or not by returning their error code.
  */
 int	ft_perror(t_main *cub, t_errorcode errcode, t_errortype opcode);
 

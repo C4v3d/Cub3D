@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 14:06:01 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 14:43:09 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_parser				t_parser;
 typedef struct s_scene				t_scene;
 
 # include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
 # include "parser.h"
 # include "error.h"
 # include "checker.h"
@@ -38,6 +39,7 @@ typedef struct s_scene				t_scene;
 # include "gamedata.h"
 # include "initfree.h"
 # include "user_input.h"
+# include "loop.h"
 
 
 typedef struct		s_user_control_input

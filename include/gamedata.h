@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 11:05:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 13:46:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # define A 97
 # define S 115
 # define D 100
+//# define LA // LEFT ARROW
+//# define RA // RIGHT ARROW
+//# define UA // UP ARROW
+//# define DA // DOWN ARROW
 
 typedef enum	e_axis
 {

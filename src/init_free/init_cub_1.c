@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cub.c                                         :+:      :+:    :+:   */
+/*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 11:38:04 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 13:48:16 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,65 +24,42 @@ static int	init_program_data(t_prog *pr, t_main *cub)
 	return (0);
 }
 
-static int	init_player_data(t_player *pl, t_main *cub)
+
+static int	init_player_data(t_player *plyr, t_main *cub)
 {
-	pl->cub = cub;
-	pl->pos = malloc(sizeof(int) * 2);
-	if (!pl->pos)
-		return (ft_perror(pl->cub, ENOMEM, CRITICAL));
-	pl->pos[X] = 0;
-	pl->pos[Y] = 0;
-	pl->aov = 0;
+	plyr->cub = cub;
+	plyr->pos = malloc(sizeof(int) * 2);
+	if (!plyr->pos)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->pos[X] = 0;
+	plyr->pos[Y] = 0;
+	plyr->aov = 0;
 	return (0);
 }
 
 
 static int	init_map_data(t_map *map, t_main *cub)
 {
-	int i;
-
 	map->cub = cub;
-	map->grid = malloc(sizeof(int *) * map->height);
-	if (!map->grid)
+	map->plyr_start_pos = malloc(sizeof(int) * 2);
+	if (!map->plyr_start_pos)
 		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	i = -1;
-	while (++i < map->height)
-	{
-		map->grid[i] = ft_calloc(map->width, sizeof(int));
-		if (!map->grid[i])
-			return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	}
-	map->p_start_pos = malloc(sizeof(int) * 2);
-	if (!map->p_start_pos)
-		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	map->p_start_pos[X] = 0;
-	map->p_start_pos[Y] = 0;
+	map->plyr_start_pos[X] = 0;
+	map->plyr_start_pos[Y] = 0;
 	return (0);
 }
 
 static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
-	int	i;
-
 	gfx->cub = cub;
 	gfx->txtr_s = 4; // 4 for: N,S,W,E (adapt if necessary)
 	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
 	if (!gfx->txtr)
 		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
 	gfx->rgb_s = 2;	// 2 for: FLOOR and CEILING (adapt if necessary)
-	gfx->rgb = malloc(sizeof(int *) * gfx->rgb_s);
+	gfx->rgb = init_2d_array(gfx->rgb_s, 3);
 	if (!gfx->rgb)
 		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-	i = -1;
-	while (++i < gfx->rgb_s)
-	{
-		gfx->rgb[i] = malloc(sizeof(int) * 3);
-		if (!gfx->rgb[i])
-			return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-		gfx->rgb[i][R] = 0;
-		gfx->rgb[i][G] = 0;
-		gfx->rgb[i][B] = 0;
-	}
 	return (0);
 }
 
@@ -92,9 +69,13 @@ int	init_cub(t_main *cub)
 		return (1);
 	if (init_map_data(&cub->map, cub) != 0)
 		return (1);
-	if (init_player_data(&cub->pl, cub) != 0)
+	if (init_player_data(&cub->plyr, cub) != 0)
 		return (1);
 	if (init_program_data(&cub->pr, cub) != 0)
+		return (1);
+	if (init_display(&cub->dspl, cub) != 0)
+		return (1);
+	if (init_user_inputs(&cub->ctrl, cub) != 0)
 		return (1);
 	return (0);
 }

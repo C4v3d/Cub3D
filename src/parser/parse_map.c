@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:21:18 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 13:51:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static int	parse_texture(t_prog *pr, char *line, char **dest)
 	if (*line == '\0')
 		return (ft_perror(pr->cub, NO_DATA, WARNING));
 	*dest = ft_strdup(line);
+	/**
+	 * Directly parse with mlx function
+	 */
 	if (!dest)
 		return (ft_perror(pr->cub, errno, CRITICAL));
 	return (0);

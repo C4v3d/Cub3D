@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:22:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 13:48:11 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_program_data	t_prog;
 # include "parser.h"
 # include "gamedata.h"
 # include "initfree.h"
+# include "user_input.h"
 
 typedef struct		s_graphic_data
 {
@@ -50,8 +51,8 @@ typedef struct		s_map_data
 	int				height;
 	int				width;
 	int				**grid;			// int[w][h] for:MAP MATRIX
-	int				*p_start_pos;	// int[2] for: PLAYER X&Y START POSITION
-	int				p_start_ori;	// START ORIENTATION (N,S,W or E)
+	int				*plyr_start_pos;	// int[2] for: PLAYER X&Y START POSITION
+	int				plyr_start_ori;	// START ORIENTATION (N,S,W or E)
 	t_main			*cub;			// `ptr` to parent struct
 }					t_map;
 

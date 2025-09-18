@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   preprocess.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:36:39 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/18 16:16:01 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/18 16:17:32 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef PREPROCESS_H
+# define PREPROCESS_H
 
-# define EXTENSION ".cub"
-# define EXTENSION_LEN 4
-
-void	open_file(t_main *cub, char *input_file);
+void	preprocess(t_main *cub, char *input_file);
 
 #endif

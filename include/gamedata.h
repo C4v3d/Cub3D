@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 13:46:54 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 14:30:56 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 //# define RA // RIGHT ARROW
 //# define UA // UP ARROW
 //# define DA // DOWN ARROW
+
+/**
+ * Default texture size
+ */
+# define TEXTURE_W 16
+# define TEXTURE_H 16
 
 typedef enum	e_axis
 {
@@ -45,10 +51,10 @@ typedef enum	e_rgb
 
 typedef enum	e_orientation
 {
-	O_NO,
-	O_SO,
-	O_WE,
-	O_EA
+	NO,
+	SO,
+	WE,
+	EA
 }				t_ori;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:08:53 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:45:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Map file does not exist.");
 	if (errcode == NO_DATA)
 		return ("No data found.");
+	if (errcode == MLX_FAIL)
+			return ("MLX failed.");
 	return (NULL);
 }
 

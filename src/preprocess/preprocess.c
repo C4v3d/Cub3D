@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:42:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:45:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void	preprocess(t_main *cub, char *input_file)
 {	
 	init_cub(cub);
 	open_file(cub, input_file);
-	parser_file(cub);
+	parse_file(cub);
 }

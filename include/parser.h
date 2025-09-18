@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:21:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 11:45:05 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,4 @@ typedef struct s_parser
 }	t_parser;
 
 int	parser(t_prog *pr);
-
-/**
- * General functions used in the parser methode
- */
-char	*get_id(char *line);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cub.c                                         :+:      :+:    :+:   */
+/*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 17:33:26 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/18 12:28:16 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ static int	init_program_data(t_prog *pr, t_main *cub)
 }
 
 
-static int	init_player_data(t_player *pl, t_main *cub)
+static int	init_player_data(t_player *plyr, t_main *cub)
 {
-	pl->cub = cub;
-	pl->pos = malloc(sizeof(int) * 2);
-	if (!pl->pos)
-		return (ft_perror(pl->cub, ENOMEM, CRITICAL));
-	pl->pos[X] = 0;
-	pl->pos[Y] = 0;
-	pl->aov = 0;
+	plyr->cub = cub;
+	plyr->pos = malloc(sizeof(int) * 2);
+	if (!plyr->pos)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->pos[X] = 0;
+	plyr->pos[Y] = 0;
+	plyr->aov = 0;
 	return (0);
 }
 
@@ -35,18 +35,16 @@ static int	init_player_data(t_player *pl, t_main *cub)
 static int	init_map_data(t_map *map, t_main *cub)
 {
 	map->cub = cub;
-	map->p_start_pos = malloc(sizeof(int) * 2);
-	if (!map->p_start_pos)
+	map->plyr_start_pos = malloc(sizeof(int) * 2);
+	if (!map->plyr_start_pos)
 		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	map->p_start_pos[X] = 0;
-	map->p_start_pos[Y] = 0;
+	map->plyr_start_pos[X] = 0;
+	map->plyr_start_pos[Y] = 0;
 	return (0);
 }
 
 static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
-	int	i;
-
 	gfx->cub = cub;
 	gfx->txtr_s = 4; // 4 for: N,S,W,E (adapt if necessary)
 	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
@@ -65,9 +63,13 @@ int	init_cub(t_main *cub)
 		return (1);
 	if (init_map_data(&cub->map, cub) != 0)
 		return (1);
-	if (init_player_data(&cub->pl, cub) != 0)
+	if (init_player_data(&cub->plyr, cub) != 0)
 		return (1);
 	if (init_program_data(&cub->pr, cub) != 0)
+		return (1);
+	if (init_display(&cub->dspl, cub) != 0)
+		return (1);
+	if (init_user_inputs(&cub->ctrl, cub) != 0)
 		return (1);
 	return (0);
 }

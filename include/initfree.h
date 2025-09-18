@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   initfree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 14:08:55 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 14:11:23 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
+/*   Updated: 2025/09/17 10:21:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef INITFREE_H
+# define INITFREE_H
 
-void	init_cub(t_cub *cub);
+int		init_cub(t_main *cub);
+void	free_cub(t_main *cub);
 
 #endif

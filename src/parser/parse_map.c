@@ -6,22 +6,22 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 09:57:15 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 11:21:18 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	parse_texture(t_cub *cub, char *line, char **dest)
+static int	parse_texture(t_prog *pr, char *line, char **dest)
 {
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
-		return (ft_perror(cub, NO_DATA, WARNING));
+		return (ft_perror(pr->cub, NO_DATA, WARNING));
 	*dest = ft_strdup(line);
 	if (!dest)
-		return (ft_perror(cub, errno, CRITICAL));
+		return (ft_perror(pr->cub, errno, CRITICAL));
 	return (0);
 }
 
@@ -35,7 +35,7 @@ static int	parse_texture(t_cub *cub, char *line, char **dest)
 // 	return (0);
 // }
 
-static int	fetch_data(t_cub *cub, char *line)
+static int	fetch_data(t_prog *pr, char *line)
 {
 	int	id_len;
 	
@@ -47,29 +47,29 @@ static int	fetch_data(t_cub *cub, char *line)
 	while (ft_isalnum(line[id_len]))
 		id_len++;
 	if (ft_strncmp(line, NO, id_len) == 0)
-		parse_texture(cub, line, &cub->data_scene.textures.no);
+		parse_texture(pr, line, &pr->parser->data_scene->textures.no);
 	else if (ft_strncmp(line, SO, id_len) == 0)
-		parse_texture(cub, line, &cub->data_scene.textures.so);
+		parse_texture(pr, line, &pr->parser->data_scene->textures.so);
 	else if (ft_strncmp(line, WE, id_len) == 0)
-		parse_texture(cub, line, &cub->data_scene.textures.we);
+		parse_texture(pr, line, &pr->parser->data_scene->textures.we);
 	else if (ft_strncmp(line, EA, id_len) == 0)
-		parse_texture(cub, line, &cub->data_scene.textures.ea);
+		parse_texture(pr, line, &pr->parser->data_scene->textures.ea);
 	return (0);
 }
 
-int	parser(t_cub *cub)
+int	parser(t_prog *pr)
 {
 	char	*line;
 	
 	line = NULL;
 	while (1)
 	{
-		line = get_next_line(cub->input_file_fd);
+		line = get_next_line(pr->parser->input_file_fd);
 		if (!line)
 			break ;
-		fetch_data(cub, line);
+		fetch_data(pr, line);
 		w_free((void **)&line);
 	}
-	log_data_scene(cub);
+	log_data_scene(pr);
 	return (0);
 }

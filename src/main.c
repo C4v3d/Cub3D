@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/18 14:00:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:59:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int argc, char *argv[])
 {
 	t_main		*cub;
-	
+
 	/**
 	 * Maybe split the program into 3 main area :
 	 * - Preprocess
@@ -35,6 +35,7 @@ int	main(int argc, char *argv[])
 		printf("uh\n");
 	}
 	parser(&cub->pr);
+	exec_loop(cub);
 	free_cub(cub);
 	return (0);
 }

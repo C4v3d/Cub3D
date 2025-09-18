@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 14:06:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:21:31 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,12 @@ static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 	return (0);
 }
 
-int	init_cub(t_main *cub)
+void	init_cub(t_main *cub)
 {
-	if (init_graphic_data(&cub->gfx, cub) != 0)
-		return (1);
-	if (init_map_data(&cub->map, cub) != 0)
-		return (1);
-	if (init_player_data(&cub->plyr, cub) != 0)
-		return (1);
-	if (init_program_data(&cub->pr, cub) != 0)
-		return (1);
-	if (init_display(&cub->dspl, cub) != 0)
-		return (1);
-	if (init_user_inputs(&cub->ctrl, cub) != 0)
-		return (1);
-	return (0);
+	init_graphic_data(&cub->gfx, cub);
+	init_map_data(&cub->map, cub);
+	init_player_data(&cub->plyr, cub);
+	init_program_data(&cub->pr, cub);
+	init_display(&cub->dspl, cub);
+	init_user_inputs(&cub->ctrl, cub);
 }

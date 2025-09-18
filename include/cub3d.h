@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 14:06:01 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:29:28 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_parser				t_parser;
 typedef struct s_scene				t_scene;
 
 # include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
+# include "preprocess.h"
 # include "parser.h"
 # include "error.h"
 # include "checker.h"
@@ -59,8 +61,8 @@ typedef struct		s_graphic_data
 {
 	int				txtr_s;			// texture array size
 	void			**txtr;			// void*[txtr_s] for: wall textures
-	int				txtr_h;			// texture height
-	int				txtr_w;			// texture width
+	int				*txtr_h;			// texture height
+	int				*txtr_w;			// texture width
 	int				rgb_s;			// rgb array size
 	int				**rgb;			// int[rgb_s][3] for: FLOOR and CEILING in RGB
 	t_main			*cub;			// `ptr` to parent struct
@@ -92,6 +94,7 @@ typedef struct		s_program_data
 
 typedef struct		s_main_struct
 {
+	void			*mlx;
 	t_player		plyr;
 	t_map			map;
 	t_graphic		gfx;
@@ -103,5 +106,5 @@ typedef struct		s_main_struct
 /**
  * Debugging functions (to remove)
  */
-void	log_data_scene(t_prog *pr);
+void	log_data_scene(t_main *cub);
 #endif

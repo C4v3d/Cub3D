@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/18 14:00:15 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:44:40 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef enum e_errorcode
 	WRG_MAP_EXT,
 	NO_MAP_FILE,
 	NO_DATA,
+	MLX_FAIL,
 }	t_errorcode;
 
 /**

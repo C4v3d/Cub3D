@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:42:31 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/18 16:44:53 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ static int	parse_texture(t_main *cub, char *line, void **dest)
 	if (*line == '\0')
 		return (ft_perror(cub, NO_DATA, WARNING));
 	*dest = mlx_xpm_file_to_image(NULL, line, cub->gfx.txtr_w, cub->gfx.txtr_h);
-	/**
-	 * Directly parse with mlx function
-	 */
+	if (!dest)
+		return (ft_perror(cub, MLX_FAIL, CRITICAL));
 	if (!dest)
 		return (ft_perror(cub, errno, CRITICAL));
 	return (0);

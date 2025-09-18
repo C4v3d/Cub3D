@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 22:53:16 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/17 23:00:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 # include "map.h"
 # include "gamedata.h"
 # include "initfree.h"
+# include "user_input.h"
 
 #endif

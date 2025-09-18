@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 12:38:43 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:33:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub)
 int		init_display(t_display *dspl, t_main *cub)
 {
 	dspl->cub = cub;
-	dspl->init = mlx_init();
+	//dspl->init = mlx_init();
 	dspl->win_w = 500;
 	dspl->win_h = 400;
-	dspl->win = mlx_new_window(dspl->init, dspl->win_w, dspl->win_h);
+	//dspl->win = mlx_new_window(dspl->init, dspl->win_w, dspl->win_h);
 	return (0);
 }

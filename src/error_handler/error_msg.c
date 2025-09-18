@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 12:15:18 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 15:57:58 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Wrong map extension (must be .cub).");
 	if (errcode == NO_MAP_FILE)
 		return ("Map file does not exist.");
+	if (errcode == NO_DATA)
+		return ("No data found.");
 	return (NULL);
 }
 

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 14:13:15 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/16 16:25:51 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#ifndef PARSER_H
+# define PARSER_H
 
-int	main(int argc, char *argv[])
-{
-	if (argc == 1 || argc > 2)
-		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
-	t_cub cub;
+int	parser(t_cub *cub);
 
-	init_cub(&cub);
-	if (!is_map_valid(&cub, argv[1]))
-	{
-		printf("uh\n");
-	}
-	parser(&cub);
-	return (0);
-}
+/**
+ * General functions used in the parser methode
+ */
+char	*get_id(char *line);
+#endif

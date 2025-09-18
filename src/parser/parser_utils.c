@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 09:35:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 14:13:15 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/16 16:24:37 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/16 16:31:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../../include/cub3d.h"
 
-int	main(int argc, char *argv[])
+char	*get_id(char *line)
 {
-	if (argc == 1 || argc > 2)
-		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
-	t_cub cub;
+	char	*id;
+	int		end;
 
-	init_cub(&cub);
-	if (!is_map_valid(&cub, argv[1]))
-	{
-		printf("uh\n");
-	}
-	parser(&cub);
-	return (0);
+	end = 0;
+	while (line[end] && !ft_isspace(line[end]))
+		end++;
+	id = ft_substr(line, 0, end);
+	if (!id)
+		return (NULL);
+	return (id);
 }

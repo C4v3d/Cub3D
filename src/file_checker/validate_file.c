@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/16 12:27:47 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/16 15:48:27 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ static int	get_map_fd(t_cub *cub, char *map_path)
 	if (!full_path)
 		return (ft_perror(NULL, errno, ERROR));
 	cub->input_file_fd = open(full_path, O_RDONLY);
+	w_free((void **)&full_path);
 	if (cub->input_file_fd == -1)
-	{
-		w_free((void **)&full_path);
 		return (ft_perror(NULL, errno, CRITICAL));
-	}
 	return (0);
 }
 
@@ -54,6 +52,5 @@ bool	is_map_valid(t_cub *cub, char *map_path)
 		return (false);
 	if (get_map_fd(cub, map_path) != 0)
 		return (false);
-	printf("fd :%d\n", cub->input_file_fd);
 	return (true);
 }

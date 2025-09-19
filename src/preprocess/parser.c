@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 12:26:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 14:55:35 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,29 @@ int	get_color(char *line, int len)
 	return (color);
 }
 
-static int	parse_color(t_main *cub, char *line)
+static int	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
+	int	n_color;
 
 	(void)cub;
 	line += ID_LEN - 1; /** < Skip ID */
+	n_color = 0;
 	while (ft_isspace(*line))
 		line++;
-	fprintf(stderr, "line color :%s\n", line);
-	while (*line)
+	while (*line && n_color < 3)
 	{
 		c_len = 0;
 		while (ft_isdigit(line[c_len]))
 			c_len++;
-		fprintf(stderr, "%d\n", get_color(line, c_len));
-		
-		return (0);
+		if (n_color == 0)
+			(*dest)->r = get_color(line, c_len);
+		else if (n_color == 1)
+			(*dest)->g = get_color(line, c_len);
+		else
+			(*dest)->b = get_color(line, c_len);
+		line += c_len + 1;
+		n_color++;
 	}
 	return (0);
 }
@@ -89,9 +95,9 @@ static int	fetch_data(t_main *cub, char *line)
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(cub, line, &cub->gfx.txtr[EA]);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
-		parse_color(cub, line);
+		parse_color(cub, line, &cub->gfx.colors[CEILING]);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(cub, line);
+		parse_color(cub, line, &cub->gfx.colors[FLOOR]);
 	return (0);
 }
 

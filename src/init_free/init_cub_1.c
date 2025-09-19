@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 12:36:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 14:35:04 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
 	if (!gfx->txtr)
 		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-	gfx->colors[0] = malloc(sizeof(t_color));
-	if (!gfx->colors)
+	gfx->colors[FLOOR] = malloc(sizeof(t_color *));
+	gfx->colors[CEILING] = malloc(sizeof(t_color *));
+	if (!gfx->colors[FLOOR] || !gfx->colors[CEILING])
 		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
 	return (0);
 }

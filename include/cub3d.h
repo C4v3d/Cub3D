@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 12:43:13 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 14:34:58 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct		s_graphic_data
 	void			**txtr;			// void*[txtr_s] for: wall textures
 	int				*txtr_h;		// texture height
 	int				*txtr_w;		// texture width
-	void			*colors[2];		/** Array of pointer for color data */
+	t_color			*colors[2];		/** Array of pointer for color data */
 	t_main			*cub;			// `ptr` to parent struct
 }					t_graphic;
 

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 14:34:58 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 15:10:28 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ typedef struct		s_main_struct
 /**
  * Debugging functions (to remove)
  */
-void	log_data_scene(t_main *cub);
+void	log_colors(t_main *cub);
 #endif

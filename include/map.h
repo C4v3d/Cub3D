@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:06:35 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 14:20:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 11:12:40 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,5 @@
 # define EA_ID "EA"	/** < Path to est texture */
 # define C_ID "C"		/** < Ceiling color data*/
 # define F_ID "F"		/** < Floor color data*/
-
-typedef enum e_ids
-{
-	ID_NO,
-	ID_SO,
-	ID_WE,
-	ID_EA,
-}	t_id;
-
-typedef struct s_textures
-{
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-}	t_textures;
-
-typedef struct s_color
-{
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
-}	t_color;
-
-typedef struct s_scene
-{
-	t_textures	textures;
-	t_color		ceiling;
-	t_color		floor;
-}	t_scene;
 
 #endif

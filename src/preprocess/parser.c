@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 14:55:35 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 15:10:47 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,5 @@ int	parse_file(t_main *cub)
 		fetch_data(cub, line);
 		w_free((void **)&line);
 	}
-	log_data_scene(cub);
 	return (0);
 }

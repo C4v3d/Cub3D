@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   preprocess.c                                       :+:      :+:    :+:   */
+/*   w_close.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 16:25:18 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/19 16:19:59 by timmi             #+#    #+#             */
+/*   Updated: 2025/09/19 16:23:51 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#include "libft.h"
 
-void	preprocess(t_main *cub, char *input_file)
-{	
-	init_cub(cub);
-	open_file(cub, input_file);
-	parse_file(cub);
-	// log_colors(cub);
+int	w_close(int fd)
+{
+	if (fd != -1)
+		return (close(fd));
+	return (0);	
 }

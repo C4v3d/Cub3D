@@ -6,9 +6,9 @@ CFILES			=	$(CFILES_PATH)/main.c \
 					$(CFILES_PATH)/init_free/init_cub_1.c \
 					$(CFILES_PATH)/init_free/init_cub_2.c \
 					$(CFILES_PATH)/init_free/free_cub.c \
-					$(CFILES_PATH)/init_free/utils_init.c \
-					$(CFILES_PATH)/loop/exec_loop.c \
+					$(CFILES_PATH)/init_free/utils_init_free.c \
 					$(CFILES_PATH)/user_input/vision_moves.c \
+					$(CFILES_PATH)/user_input/utils_usr_in.c \
 					$(CFILES_PATH)/user_input/position_moves.c \
 					$(CFILES_PATH)/parser/parse_map.c \
 					$(CFILES_PATH)/file_checker/validate_file.c \

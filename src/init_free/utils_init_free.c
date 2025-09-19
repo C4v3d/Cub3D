@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_init.c                                       :+:      :+:    :+:   */
+/*   utils_init_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/17 17:32:50 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/19 13:26:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+int	to_close_program(t_main *cub)
+{
+	if (cub->pr.close_program == true)
+	{
+		free_cub(cub);
+		return (true);
+	}
+	return (false);
+}
 
 int	**init_2d_array(int height, int width)
 {

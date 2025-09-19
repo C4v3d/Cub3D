@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:44:53 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 11:18:01 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,41 @@ static int	parse_texture(t_main *cub, char *line, void **dest)
 	*dest = mlx_xpm_file_to_image(NULL, line, cub->gfx.txtr_w, cub->gfx.txtr_h);
 	if (!dest)
 		return (ft_perror(cub, MLX_FAIL, CRITICAL));
-	if (!dest)
-		return (ft_perror(cub, errno, CRITICAL));
 	return (0);
 }
 
-// static int	prase_color(t_cub *cub)
-// {
-// 	return (0);
-// }
+static int	parse_color(t_main *cub, char *line)
+{
+	(void)cub;
+	line += ID_LEN - 1; /** < Skip ID */
+	while (ft_isspace(*line))
+		line++;
+	fprintf(stderr, "line color :%s\n", line);
+	return (0);
+}
 
-// static int	prase_map(t_cub *cub)
-// {
-// 	return (0);
-// }
+/**
+ * Maybe put this functions in utils ?
+ */
+static	int	get_id_len(char *line)
+{
+	int	len;
+
+	len = 0;
+	while (ft_isalnum(line[len]))
+		len++;
+	return (len);
+}
 
 static int	fetch_data(t_main *cub, char *line)
 {
 	int	id_len;
 	
-	id_len = 0;
 	if (line[0] == '\n')
 		return (0);
 	while (ft_isspace(*line))
 		line++;
-	while (ft_isalnum(line[id_len]))
-		id_len++;
+	id_len = get_id_len(line);
 	if (ft_strncmp(line, NO_ID, id_len) == 0)
 		parse_texture(cub, line, &cub->gfx.txtr[NO]);
 	else if (ft_strncmp(line, SO_ID, id_len) == 0)
@@ -56,6 +65,10 @@ static int	fetch_data(t_main *cub, char *line)
 		parse_texture(cub, line, &cub->gfx.txtr[WE]);
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(cub, line, &cub->gfx.txtr[EA]);
+	else if (ft_strncmp(line, C_ID, id_len) == 0)
+		parse_color(cub, line);
+	else if (ft_strncmp(line, F_ID, id_len) == 0)
+		parse_color(cub, line);
 	return (0);
 }
 

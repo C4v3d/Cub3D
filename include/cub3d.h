@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:29:28 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 11:20:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ typedef struct s_scene				t_scene;
 # include "initfree.h"
 # include "user_input.h"
 
+typedef union u_color
+{
+	int		color;
+	struct	s_rgba
+	{
+		char	r;
+		char	g;
+		char	b;
+		char	a;
+	};
+}	t_color;
 
 typedef struct		s_user_control_input
 {
@@ -61,8 +72,8 @@ typedef struct		s_graphic_data
 {
 	int				txtr_s;			// texture array size
 	void			**txtr;			// void*[txtr_s] for: wall textures
-	int				*txtr_h;			// texture height
-	int				*txtr_w;			// texture width
+	int				*txtr_h;		// texture height
+	int				*txtr_w;		// texture width
 	int				rgb_s;			// rgb array size
 	int				**rgb;			// int[rgb_s][3] for: FLOOR and CEILING in RGB
 	t_main			*cub;			// `ptr` to parent struct
@@ -88,7 +99,6 @@ typedef struct		s_player_data
 typedef struct		s_program_data
 {
 	int				input_file_fd;
-	t_parser		*parser;
 	t_main			*cub;			// `ptr` to parent struct
 }					t_prog;
 

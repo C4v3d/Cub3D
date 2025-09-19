@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/19 11:18:01 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 12:26:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,36 @@ static int	parse_texture(t_main *cub, char *line, void **dest)
 	return (0);
 }
 
+int	get_color(char *line, int len)
+{
+	int color;
+	int	i;
+
+	color = 0;
+	i = 0;
+	while (i < len)
+		color = color * 10 + (line[i++] - '0');
+	return (color);
+}
+
 static int	parse_color(t_main *cub, char *line)
 {
+	int	c_len;
+
 	(void)cub;
 	line += ID_LEN - 1; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	fprintf(stderr, "line color :%s\n", line);
+	while (*line)
+	{
+		c_len = 0;
+		while (ft_isdigit(line[c_len]))
+			c_len++;
+		fprintf(stderr, "%d\n", get_color(line, c_len));
+		
+		return (0);
+	}
 	return (0);
 }
 

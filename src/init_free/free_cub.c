@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 11:04:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 12:13:11 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ static void	free_map_data(t_map *map)
 
 static void	free_graphic_data(t_graphic *gfx)
 {
-	int	i;
-
-	i = -1;
-	while (++i < gfx->rgb_s)
-		w_free((void**)&gfx->rgb[i]);
-	w_free((void**)&gfx->rgb);
+	w_free((void **)&gfx->colors);
 	w_free((void**)&gfx->txtr);
 }
 

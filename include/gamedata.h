@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 14:30:56 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 12:06:33 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ typedef enum	e_rgb_elements
 	FLOOR,
 	CEILING
 }				t_rgbel;
-
-typedef enum	e_rgb
-{
-	R,
-	G,
-	B
-}				t_rgbcol;
 
 typedef enum	e_orientation
 {

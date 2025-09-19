@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 14:43:09 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/19 13:58:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_main_struct		t_main;
 typedef	struct s_program_data		t_prog;
 typedef struct s_display_window		t_display;
+typedef	struct s_player_data		t_player;
 typedef struct s_user_control_input	t_usr_ctrl_in;
 typedef struct s_parser				t_parser;
 typedef struct s_scene				t_scene;
@@ -39,12 +40,11 @@ typedef struct s_scene				t_scene;
 # include "gamedata.h"
 # include "initfree.h"
 # include "user_input.h"
-# include "loop.h"
-
+# include "limits.h"
 
 typedef struct		s_user_control_input
 {
-	int				*key_in;		//  int[n] for: users keyboard inputs
+	int				*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
 	t_main			*cub;			// `ptr` to parent struct
 }					t_usr_ctrl_in;
 
@@ -53,7 +53,6 @@ typedef struct		s_display_window
 	int				win_h;			// window height
 	int				win_w;			// window width
 	void			*win;
-	void			*init;
 	t_main			*cub;			// `ptr` to parent struct
 }					t_display;
 
@@ -87,6 +86,7 @@ typedef struct		s_player_data
 
 typedef struct		s_program_data
 {
+	bool			close_program;
 	int				input_file_fd;
 	t_parser		*parser;
 	t_main			*cub;			// `ptr` to parent struct
@@ -94,6 +94,7 @@ typedef struct		s_program_data
 
 typedef struct		s_main_struct
 {
+	void			*mlx;
 	t_player		plyr;
 	t_map			map;
 	t_graphic		gfx;

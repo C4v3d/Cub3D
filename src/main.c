@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/18 16:59:50 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/19 13:15:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ int	main(int argc, char *argv[])
 	if (init_cub(cub) != 0)
 		return (1);
 	if (!is_map_valid(&cub->pr, argv[1]))
-	{
-		printf("uh\n");
-	}
-	parser(&cub->pr);
-	exec_loop(cub);
+		printf("main | map_invalid\n");
+	//parser(&cub->pr);
+	mlx_loop(cub->mlx);
 	free_cub(cub);
 	return (0);
 }

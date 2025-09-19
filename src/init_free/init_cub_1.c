@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 14:06:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 13:53:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	init_program_data(t_prog *pr, t_main *cub)
 {
 	pr->cub = cub;
+	pr->close_program = false;
 	pr->parser = malloc(sizeof(t_parser));
 	if (!pr->parser)
 		return (ft_perror(pr->cub, errno, CRITICAL));
@@ -73,9 +74,11 @@ int	init_cub(t_main *cub)
 		return (1);
 	if (init_program_data(&cub->pr, cub) != 0)
 		return (1);
+	if (init_user_inputs(&cub->ctrl, cub) != 0)
+		return (1);
 	if (init_display(&cub->dspl, cub) != 0)
 		return (1);
-	if (init_user_inputs(&cub->ctrl, cub) != 0)
+	if (init_hooks(cub) != 0)
 		return (1);
 	return (0);
 }

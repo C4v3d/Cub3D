@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:46 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:12:15 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 16:23:55 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ char	*get_next_line(int fd);
 *	If NULL : don't do anything.
 */
 void	w_free(void **data);
+int		w_close(int fd);
+
 
 #endif

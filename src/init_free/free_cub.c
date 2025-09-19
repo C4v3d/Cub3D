@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 12:13:11 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/19 16:23:31 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void	free_user_inputs(t_usr_ctrl_in *ctrl)
 
 static void	free_program_data(t_prog *pr)
 {
-	(void)pr;
+	if (w_close(pr->input_file_fd) == -1)
+		ft_perror(pr->cub, errno, WARNING);
 }
 
 static void	free_player_data(t_player *plyr)
@@ -30,19 +31,21 @@ static void	free_player_data(t_player *plyr)
 
 static void	free_map_data(t_map *map)
 {
-	int	i;
+	// int	i;
 
-	i = -1;
-	while (++i < map->height)
-		w_free((void**)&map->grid[i]);
-	w_free((void**)&map->grid);
-	w_free((void**)&map->plyr_start_pos);
+	// i = -1;
+	// while (++i < map->height)
+	// 	w_free((void**)&map->grid[i]);
+	// w_free((void**)&map->grid);
+	// w_free((void**)&map->plyr_start_pos);
+	w_free((void **)&map->plyr_start_pos);
 }
 
 
 static void	free_graphic_data(t_graphic *gfx)
 {
-	w_free((void **)&gfx->colors);
+	w_free((void **)&gfx->colors[CEILING]);
+	w_free((void **)&gfx->colors[FLOOR]);
 	w_free((void**)&gfx->txtr);
 }
 
@@ -53,5 +56,4 @@ void	free_cub(t_main *cub)
 	free_player_data(&cub->plyr);
 	free_map_data(&cub->map);
 	free_user_inputs(&cub->ctrl);
-	free(cub);
 }

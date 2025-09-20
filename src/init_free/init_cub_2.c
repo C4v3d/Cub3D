@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 13:42:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/20 18:54:54 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		init_display(t_display *dspl, t_main *cub)
 {
 	dspl->cub = cub;
 	cub->mlx = mlx_init();
+	if (!cub->mlx)
+		return (ft_perror(dspl->cub, errno, CRITICAL));
 	dspl->win_w = 500;
 	dspl->win_h = 400;
 	dspl->win = mlx_new_window(cub->mlx, dspl->win_w, dspl->win_h, "Cub3d");

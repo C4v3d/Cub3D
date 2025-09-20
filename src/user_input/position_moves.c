@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 14:07:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/20 20:33:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,41 @@
 * -	Et du coup gérer les déplacements en diagonale?
 */
 
-static int	update_axis(int *axis, int kc)
+static bool	is_valid_pos(int *pos, int *last_pos, t_map *map)
 {
-	if (axis[X] + 1 >= INT_MAX || axis[X] - 1 <= INT_MIN
-			|| axis[Y] + 1 >= INT_MAX || axis[Y] - 1 <= INT_MIN)
+	(void)pos;
+	(void)last_pos;
+	(void)map;
+	//if ()
+	return (true);
+	//pos = last_pos;
+	//return (false);
+}
+
+static int	update_axis(int *pos, int kc)
+{
+	if (pos[X] + 1 >= INT_MAX || pos[X] - 1 <= INT_MIN
+			|| pos[Y] + 1 >= INT_MAX || pos[Y] - 1 <= INT_MIN)
 		return (1);
 	if (kc == W)
-		axis[X]++;
+		pos[X]++;
 	else if (kc == S)
-		axis[X]--;
+		pos[X]--;
 	else if (kc == A)
-		axis[Y]--;
+		pos[Y]--;
 	else if (kc == D)
-		axis[Y]++;
-	fprintf(stderr, "update_axis axis[X]: %s%d%s\nupdate_axis axis[Y]: %s%d%s\n", YEL, axis[X], RESET, YEL, axis[Y], RESET);
+		pos[Y]++;
 	return (0);
 }
 
 // `kc` = keycode
-void	update_plyr_pos(t_player *plyr, int	kc)
+void	update_plyr_position(t_player *plyr, int	kc)
 {
+	int	*last_pos;
+
+	last_pos = plyr->pos;
 	update_axis(plyr->pos, kc);
+	fprintf(stderr, "[update_axis] X%s%d%s/Y%s%d%s\n", YEL, plyr->pos[X], RESET, YEL, plyr->pos[Y], RESET);
+	if (!is_valid_pos(plyr->pos, last_pos, &plyr->cub->map))
+		return ;
 }

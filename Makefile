@@ -38,15 +38,15 @@ $(LIBFT):
 
 $(MLX_LIB):
 	@echo "Building mlx...\n"
-	@$(MAKE) -C $(MLX_PATH)
+	@$(MAKE) -C  $(MLX_PATH)
 
 $(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
 	@echo "Linking $(NAME)...\n"
-	$(CC) $(OBJ) $(LIBFT) $(MLX_LIB) -lm $(MLXFLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(MLX_LIB) -lm $(MLXFLAGS) -o $(NAME)
 
 $(BUILD_PATH)/%.o: $(CFILES_PATH)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I$(LIBFT_PATH) -I$(MLX_PATH) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(LIBFT_PATH) -I$(MLX_PATH) -c $< -o $@
 
 clean:
 	@echo "Cleaning object files...\n"

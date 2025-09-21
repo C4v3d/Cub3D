@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/20 18:15:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 13:16:19 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,19 @@ static void	free_program_data(t_prog *pr)
 
 static void	free_player_data(t_player *plyr)
 {
-	w_free((void**)&plyr->pos);
+	w_free((void**)&plyr->pos_mp);
+	w_free((void**)&plyr->pos_ti);
 }
 
 static void	free_map_data(t_map *map)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
-	while (++i < map->height)
+	while (++i < map->dim[Y])
 		w_free((void**)&map->grid[i]);
 	w_free((void**)&map->grid);
+	w_free((void**)&map->dim);
 	w_free((void**)&map->plyr_start_pos);
 }
 

@@ -6,35 +6,55 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/20 20:09:55 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:50:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 /*
-* -	Déplacement de la vision avec les flèches
-* -	Comment gérer deux inputs clavier?
-* -	get_aov... -> pour modifier `aov` quand 2 touches sont appuyée en
-*	même temps (que faire quand c'est 3?)
+* FOV: Field Of Vision
+* -	Nombre de pixels visibles en meme temps
 */
-
-static int	update_aov(unsigned int *aov, int kc)
+void	calculate_fov(size_t *fov, size_t fov_val, size_t fov_max, size_t aov)
 {
-	if (kc == LA && *(aov) == 0 )
-		*(aov) = 360;
-	else if (kc == LA && *(aov) > 0 && *(aov) <= 360)
-		*(aov) -= 1;
-	if (kc == RA && *(aov) == 360)
-		*(aov) = 0;
-	else if (kc == RA && (*(aov) == 0 || *(aov) > 0) && *(aov) < 360)
-		*(aov) += 1;
-	return (0);
+	(void)aov;
+	(void)fov;
+	(void)fov_val;
+	(void)fov_max;
 }
+
+
+static void	update_fov(t_player *plyr, int kc)
+{
+	if (!(kc == I || kc == O))
+		return ;
+	if (kc == I && (plyr->fov_val - 1 > 0 && plyr->fov_val - 1 > 0))
+		plyr->fov_val--;
+}
+
+static void	update_aov(size_t *aov, size_t max_angle, int kc)
+{
+	if (!(kc == LA || kc == RA))
+		return ;
+	if (kc == LA && *(aov) == 0 )
+		*(aov) = max_angle;
+	else if (kc == LA && *(aov) > 0 && *(aov) <= max_angle)
+		*(aov) -= 1;
+	if (kc == RA && *(aov) == max_angle)
+		*(aov) = 0;
+	else if (kc == RA && (*(aov) == 0 || *(aov) > 0) && *(aov) < max_angle)
+		*(aov) += 1;
+	fprintf(stderr, "[update_aov]....%s%ld%s\n", YEL, *aov, RESET);
+}
+
+
 
 void	update_plyr_vision(t_player *plyr, int	kc)
 {
-	update_aov(&plyr->aov, kc);
-	//update_fov(plyr); -> function to calculate texture tiles in field of vision
-	fprintf(stderr, "[update_aov] aov: %s%d%s\n", YEL, plyr->aov, RESET);
+	if (!(kc == UA || kc == LA || kc == DA || kc == RA || kc == I || kc == O))
+		return ;
+	update_aov(&plyr->aov, plyr->fov_max, kc);
+	update_fov(plyr, kc);
+	calculate_fov(plyr->fov, plyr->fov_val, plyr->fov_max, plyr->aov);
 }

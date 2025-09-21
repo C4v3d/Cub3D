@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/21 13:16:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 17:05:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	destroy_display(t_display *dspl)
 
 static void	free_user_inputs(t_usr_ctrl_in *ctrl)
 {
-	w_free((void**)&ctrl->kc);
+	w_free((void**)&ctrl->kc); // ⚠️ Besoin et possible de gerer plusieurs inputs?
 }
 
 static void	free_program_data(t_prog *pr)
@@ -32,6 +32,7 @@ static void	free_player_data(t_player *plyr)
 {
 	w_free((void**)&plyr->pos_mp);
 	w_free((void**)&plyr->pos_ti);
+	w_free((void**)&plyr->fov);
 }
 
 static void	free_map_data(t_map *map)

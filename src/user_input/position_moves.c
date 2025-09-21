@@ -6,36 +6,63 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/21 14:50:55 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 17:32:19 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	new_pos_is_valid(size_t *pos, t_map *map)
+static bool new_map_pos(t_player *p, t_map *m, int kc)
 {
-	(void)pos;
-	(void)map;
-	//if ()
+
+	if (kc == W && (p->pos_mp[Y] + 1) < m->dim[Y]
+		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] + 1] == 0)
+		p->pos_mp[Y]++;
+	else if (kc == A && (p->pos_mp[X] - 1) > 1
+		&& m->grid[p->pos_mp[X] - 1][p->pos_mp[Y]] == 0)
+		p->pos_mp[X]--;
+	else if (kc == S && (p->pos_mp[Y] - 1) > 1
+		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] - 1] == 0)
+		p->pos_mp[Y]--;
+	else if (kc == D && (p->pos_mp[X] + 1) < m->dim[X]
+		&& m->grid[p->pos_mp[X] + 1][p->pos_mp[Y]] == 0)
+		p->pos_mp[X]++;
+	else
+		return (false);
+	//fprintf(stderr, "🗺️  [%smap_pos%s].......X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, p->pos_mp[X], RESET, m->dim[X], YEL, p->pos_mp[Y], RESET, m->dim[Y]);
 	return (true);
-	//pos = last_pos;
-	//return (false);
 }
 
-static void	get_map_pos(size_t *pos, size_t map_width, size_t map_height, int kc)
+/*
+* mode == '+' ---> increment pos
+* mode == '-' ---> decrement pos
+*/
+static bool	update_tile_pos(size_t *pos, size_t tile_size, char mode)
 {
-	if (kc == W && pos[Y] + 1 < map_width)
-		pos[Y]++;
-	else if (kc == A && pos[X] - 1 > 0)
-		pos[X]--;
-	else if (kc == S && pos[Y] - 1 > 0)
-		pos[Y]--;
-	else if (kc == D && pos[X] + 1 < map_height)
-		pos[X]++;
-	fprintf(stderr, "🗺️  [%smap_pos%s]....X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, pos[X], RESET, map_width, YEL, pos[Y], RESET, map_height);
+	if (mode == '+')
+	{
+		if (*pos + 1 > tile_size)
+		{
+			*pos = 1;
+			return (true);
+		}
+		else if (*pos + 1 <= tile_size)
+			(*pos)++;
+	}
+	else if (mode == '-')
+	{
+		if (*pos - 1 == 0)
+		{
+			*pos = tile_size;
+			return (true);
+		}
+		else if (*pos - 1 > 0)
+			(*pos)--;
+	}
+	return (false);
 }
 
-static bool	get_tile_pos(t_player *p, size_t tile_size, int kc)
+static bool	new_tile_pos(t_player *p, size_t tile_size, int kc)
 {
 	if (kc == W)
 		return (update_tile_pos(&p->pos_ti[Y], tile_size, '+'));
@@ -48,23 +75,26 @@ static bool	get_tile_pos(t_player *p, size_t tile_size, int kc)
 	return (false);
 }
 
-// `kc` = keycode
 void	update_plyr_position(t_player *plyr, int	kc)
 {
-	size_t	*last_pos_mp;
-	size_t	*last_pos_ti;
+	size_t	last_pos_ti[2];
 
 	if (!(kc == W || kc == A || kc == S || kc == D))
 		return ;
-	last_pos_mp = plyr->pos_mp;
-	last_pos_ti = plyr->pos_ti;
-	if (get_tile_pos(plyr, plyr->cub->gfx.txtr_res, kc) == true)
-		get_map_pos(plyr->pos_mp, plyr->cub->map.dim[X], plyr->cub->map.dim[Y], kc);
-	if (!new_pos_is_valid(plyr->pos_mp, &plyr->cub->map))
+	last_pos_ti[X] = plyr->pos_ti[X];
+	last_pos_ti[Y] = plyr->pos_ti[Y];
+	if (new_tile_pos(plyr, plyr->cub->gfx.txtr_res, kc) == true)
 	{
-		plyr->pos_mp = last_pos_mp;
-		plyr->pos_ti = last_pos_ti;
-		return ;
+		if (new_map_pos(plyr, &plyr->cub->map, kc) == false)
+		{
+			plyr->pos_ti[X] = last_pos_ti[X];
+			plyr->pos_ti[Y] = last_pos_ti[Y];
+			//fprintf(stderr, "🟥 %sHIT A WALL! RESET to:%s\n", RED, RESET);
+			//fprintf(stderr, "🟥 🗺️  [map_pos]....X%s%ld%s/%ld Y%s%ld%s/%ld\n", YEL, plyr->pos_mp[X], RESET, plyr->cub->map.dim[X], YEL, plyr->pos_mp[Y], RESET, plyr->cub->map.dim[Y]);
+			//fprintf(stderr, "🟥 🔲 [tile_pos]...X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
+			//fprintf(stderr, "🟥 %s.....................%s\n", RED, RESET);
+			return ;
+		}
 	}
-	fprintf(stderr, "⬜ [tile_pos]...X%s%ld%sY%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
+	//fprintf(stderr, "🔲 [tile_pos]......X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
 }

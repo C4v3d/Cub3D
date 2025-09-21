@@ -6,32 +6,51 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/21 17:32:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:06:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+//v2
 static bool new_map_pos(t_player *p, t_map *m, int kc)
 {
-
-	if (kc == W && (p->pos_mp[Y] + 1) < m->dim[Y]
-		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] + 1] == 0)
+	// ⚠️ addd wall_check
+	if (kc == W && (p->pos_mp[Y] + 1) < m->dim[Y])
 		p->pos_mp[Y]++;
-	else if (kc == A && (p->pos_mp[X] - 1) > 1
-		&& m->grid[p->pos_mp[X] - 1][p->pos_mp[Y]] == 0)
+	else if (kc == A && (p->pos_mp[X] - 1) > 1)
 		p->pos_mp[X]--;
-	else if (kc == S && (p->pos_mp[Y] - 1) > 1
-		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] - 1] == 0)
+	else if (kc == S && (p->pos_mp[Y] - 1) > 1)
 		p->pos_mp[Y]--;
-	else if (kc == D && (p->pos_mp[X] + 1) < m->dim[X]
-		&& m->grid[p->pos_mp[X] + 1][p->pos_mp[Y]] == 0)
+	else if (kc == D && (p->pos_mp[X] + 1) < m->dim[X])
 		p->pos_mp[X]++;
 	else
 		return (false);
-	//fprintf(stderr, "🗺️  [%smap_pos%s].......X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, p->pos_mp[X], RESET, m->dim[X], YEL, p->pos_mp[Y], RESET, m->dim[Y]);
+	fprintf(stderr, "🗺️  [%smap_pos%s].......X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, p->pos_mp[X], RESET, m->dim[X], YEL, p->pos_mp[Y], RESET, m->dim[Y]);
 	return (true);
 }
+
+//v1
+//static bool new_map_pos(t_player *p, t_map *m, int kc)
+//{
+
+//	if (kc == W && (p->pos_mp[Y] + 1) < m->dim[Y]
+//		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] + 1] == 0)
+//		p->pos_mp[Y]++;
+//	else if (kc == A && (p->pos_mp[X] - 1) > 1
+//		&& m->grid[p->pos_mp[X] - 1][p->pos_mp[Y]] == 0)
+//		p->pos_mp[X]--;
+//	else if (kc == S && (p->pos_mp[Y] - 1) > 1
+//		&& m->grid[p->pos_mp[X]][p->pos_mp[Y] - 1] == 0)
+//		p->pos_mp[Y]--;
+//	else if (kc == D && (p->pos_mp[X] + 1) < m->dim[X]
+//		&& m->grid[p->pos_mp[X] + 1][p->pos_mp[Y]] == 0)
+//		p->pos_mp[X]++;
+//	else
+//		return (false);
+//	fprintf(stderr, "🗺️  [%smap_pos%s].......X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, p->pos_mp[X], RESET, m->dim[X], YEL, p->pos_mp[Y], RESET, m->dim[Y]);
+//	return (true);
+//}
 
 /*
 * mode == '+' ---> increment pos
@@ -89,12 +108,12 @@ void	update_plyr_position(t_player *plyr, int	kc)
 		{
 			plyr->pos_ti[X] = last_pos_ti[X];
 			plyr->pos_ti[Y] = last_pos_ti[Y];
-			//fprintf(stderr, "🟥 %sHIT A WALL! RESET to:%s\n", RED, RESET);
-			//fprintf(stderr, "🟥 🗺️  [map_pos]....X%s%ld%s/%ld Y%s%ld%s/%ld\n", YEL, plyr->pos_mp[X], RESET, plyr->cub->map.dim[X], YEL, plyr->pos_mp[Y], RESET, plyr->cub->map.dim[Y]);
-			//fprintf(stderr, "🟥 🔲 [tile_pos]...X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
-			//fprintf(stderr, "🟥 %s.....................%s\n", RED, RESET);
+			fprintf(stderr, "🟥 %sHIT A WALL! RESET to:%s\n", RED, RESET);
+			fprintf(stderr, "🟥 🗺️  [map_pos]....X%s%ld%s/%ld Y%s%ld%s/%ld\n", YEL, plyr->pos_mp[X], RESET, plyr->cub->map.dim[X], YEL, plyr->pos_mp[Y], RESET, plyr->cub->map.dim[Y]);
+			fprintf(stderr, "🟥 🔲 [tile_pos]...X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
+			fprintf(stderr, "🟥 %s.....................%s\n", RED, RESET);
 			return ;
 		}
 	}
-	//fprintf(stderr, "🔲 [tile_pos]......X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
+	fprintf(stderr, "🔲 [tile_pos]......X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
 }

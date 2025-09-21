@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/18 14:00:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/21 11:57:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int argc, char *argv[])
 {
 	t_main		*cub;
-	
+
 	/**
 	 * Maybe split the program into 3 main area :
 	 * - Preprocess
@@ -31,10 +31,10 @@ int	main(int argc, char *argv[])
 	if (init_cub(cub) != 0)
 		return (1);
 	if (!is_map_valid(&cub->pr, argv[1]))
-	{
-		printf("uh\n");
-	}
+		printf("main | map_invalid\n");
 	parser(&cub->pr);
+	init_parsed_data(cub);
+	mlx_loop(cub->mlx);
 	free_cub(cub);
 	return (0);
 }

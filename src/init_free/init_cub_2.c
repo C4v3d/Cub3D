@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/21 13:25:53 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 17:37:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ int		init_parsed_data(t_main *cub)
 {
 	//.............................⚠️TESTS
 	fprintf(stderr, "%s⚠️ init_parsed_data | initialising tests values%s\n", YEL, RESET);
-	cub->gfx.txtr_res = 8;
-	cub->map.dim[X] = 10;
-	cub->map.dim[Y] = 10;
+	cub->gfx.txtr_res = 4;
+	cub->map.dim[X] = 5;
+	cub->map.dim[Y] = 3;
 	cub->map.plyr_start_ori = cub->gfx.txtr_res * 2;
-	cub->map.plyr_start_pos[X] = cub->map.dim[X] / 2;
-	cub->map.plyr_start_pos[Y] = cub->map.dim[Y] / 2;
-	fprintf(stderr, "%scub->gfx.txtr_res..........: %d\ncub->map.dim[X]............: %ld\ncub->map.dim[Y]............: %ld%s\n", YEL, cub->gfx.txtr_res, cub->map.dim[X], cub->map.dim[Y], RESET);
-	fprintf(stderr, "%scub->map.plyr_start_ori....: %ld\ncub->map.plyr_start_pos[X].: %ld\ncub->map.plyr_start_pos[Y].: %ld%s\n", YEL, cub->map.plyr_start_ori, cub->map.plyr_start_pos[X], cub->map.plyr_start_pos[Y], RESET);
-	cub->map.grid = init_2d_array(cub->map.dim[X], cub->map.dim[Y]);
+	cub->map.plyr_start_pos[X] = 2;
+	cub->map.plyr_start_pos[Y] = 2;
+	fprintf(stderr, "%s⚠️ cub->gfx.txtr_res..........: %d\n⚠️ cub->map.dim[X]............: %ld\n⚠️ cub->map.dim[Y]............: %ld%s\n", YEL, cub->gfx.txtr_res, cub->map.dim[X], cub->map.dim[Y], RESET);
+	fprintf(stderr, "%s⚠️ cub->map.plyr_start_ori....: %ld\n⚠️ cub->map.plyr_start_pos[X].: %ld\n⚠️ cub->map.plyr_start_pos[Y].: %ld%s\n", YEL, cub->map.plyr_start_ori, cub->map.plyr_start_pos[X], cub->map.plyr_start_pos[Y], RESET);
+	cub->map.grid = init_2d_array(cub->map.dim[Y], cub->map.dim[X]);
 	//.............................⚠️TESTS
 	cub->plyr.pos_mp[X] = cub->map.plyr_start_pos[X];
 	cub->plyr.pos_mp[Y] = cub->map.plyr_start_pos[Y];
-	cub->plyr.pos_ti[X] = cub->gfx.txtr_res / 2;
-	cub->plyr.pos_ti[Y] = cub->gfx.txtr_res / 2;
+	cub->plyr.pos_ti[X] = 1;
+	cub->plyr.pos_ti[Y] = 1;
 	cub->plyr.fov_max = cub->gfx.txtr_res * 4;
 	cub->plyr.fov_val = cub->gfx.txtr_res / 2;
 	cub->plyr.aov = cub->map.plyr_start_ori;
@@ -49,11 +49,11 @@ int		init_hooks(t_main *cub)
 
 int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub)
 {
-	int	simultaneous_handled_controls;
+	int	simultaneous_handled_controls; // ⚠️ Besoin et possible de gerer plusieurs inputs?
 	int	i;
 
 	ctrl->cub = cub;
-	simultaneous_handled_controls = 4;
+	simultaneous_handled_controls = 4; // ⚠️ Besoin et possible de gerer plusieurs inputs?
 	ctrl->kc = malloc(sizeof(int) * simultaneous_handled_controls);
 	if (!ctrl->kc)
 		return (1);

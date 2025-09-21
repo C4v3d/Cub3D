@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   utils_init_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 13:26:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:47:46 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+/*
+* mode == '+' ---> increment pos
+* mode == '-' ---> decrement pos
+*/
+bool	update_tile_pos(size_t *pos, size_t tile_size, char mode)
+{
+	if (mode == '+')
+	{
+		if (*pos + 1 > tile_size)
+		{
+			*pos = 1;
+			return (true);
+		}
+		else if (*pos + 1 <= tile_size)
+			(*pos)++;
+	}
+	else if (mode == '-')
+	{
+		if (*pos - 1 == 0)
+		{
+			*pos = tile_size;
+			return (true);
+		}
+		else if (*pos - 1 > 0)
+			(*pos)--;
+	}
+	return (false);
+}
 
 int	to_close_program(t_main *cub)
 {

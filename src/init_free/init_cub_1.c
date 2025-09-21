@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/20 18:53:54 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 13:16:43 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,6 @@ static int	init_program_data(t_prog *pr, t_main *cub)
 	return (0);
 }
 
-
-static int	init_player_data(t_player *plyr, t_main *cub)
-{
-	plyr->cub = cub;
-	plyr->pos = malloc(sizeof(int) * 2);
-	if (!plyr->pos)
-		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
-	plyr->pos[X] = 0;
-	plyr->pos[Y] = 0;
-	plyr->aov = 0;
-	return (0);
-}
-
-
-static int	init_map_data(t_map *map, t_main *cub)
-{
-	map->cub = cub;
-	map->plyr_start_pos = malloc(sizeof(int) * 2);
-	if (!map->plyr_start_pos)
-		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	map->plyr_start_pos[X] = 0;
-	map->plyr_start_pos[Y] = 0;
-	return (0);
-}
-
 static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
 	gfx->cub = cub;
@@ -64,15 +39,43 @@ static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 	return (0);
 }
 
+static int	init_map_data(t_map *map, t_main *cub)
+{
+	map->cub = cub;
+	map->plyr_start_pos = malloc(sizeof(size_t) * 2);
+	if (!map->plyr_start_pos)
+		return (ft_perror(map->cub, ENOMEM, CRITICAL));
+	map->dim = malloc(sizeof(size_t) * 2);
+	if (!map->dim)
+		return (ft_perror(map->cub, ENOMEM, CRITICAL));
+	return (0);
+}
+
+static int	init_player_data(t_player *plyr, t_main *cub)
+{
+	plyr->cub = cub;
+	plyr->pos_mp = malloc(sizeof(size_t) * 2);
+	if (!plyr->pos_mp)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->pos_ti = malloc(sizeof(size_t) * 2);
+	if (!plyr->pos_ti)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->fov = malloc(sizeof(size_t) * 2);
+	if (!plyr->fov)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->aov = 0;
+	return (0);
+}
+
 int	init_cub(t_main *cub)
 {
+	if (init_program_data(&cub->pr, cub) != 0)
+		return (1);
 	if (init_graphic_data(&cub->gfx, cub) != 0)
 		return (1);
 	if (init_map_data(&cub->map, cub) != 0)
 		return (1);
 	if (init_player_data(&cub->plyr, cub) != 0)
-		return (1);
-	if (init_program_data(&cub->pr, cub) != 0)
 		return (1);
 	if (init_user_inputs(&cub->ctrl, cub) != 0)
 		return (1);

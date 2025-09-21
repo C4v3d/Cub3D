@@ -6,22 +6,15 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/20 20:33:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:50:55 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-/*
-* -	Déplacement du jouer avec WASD
-* -	Comment gérer deux inputs clavier?
-* -	Et du coup gérer les déplacements en diagonale?
-*/
-
-static bool	is_valid_pos(int *pos, int *last_pos, t_map *map)
+static bool	new_pos_is_valid(size_t *pos, t_map *map)
 {
 	(void)pos;
-	(void)last_pos;
 	(void)map;
 	//if ()
 	return (true);
@@ -29,30 +22,49 @@ static bool	is_valid_pos(int *pos, int *last_pos, t_map *map)
 	//return (false);
 }
 
-static int	update_axis(int *pos, int kc)
+static void	get_map_pos(size_t *pos, size_t map_width, size_t map_height, int kc)
 {
-	if (pos[X] + 1 >= INT_MAX || pos[X] - 1 <= INT_MIN
-			|| pos[Y] + 1 >= INT_MAX || pos[Y] - 1 <= INT_MIN)
-		return (1);
-	if (kc == W)
-		pos[X]++;
-	else if (kc == S)
-		pos[X]--;
-	else if (kc == A)
-		pos[Y]--;
-	else if (kc == D)
+	if (kc == W && pos[Y] + 1 < map_width)
 		pos[Y]++;
-	return (0);
+	else if (kc == A && pos[X] - 1 > 0)
+		pos[X]--;
+	else if (kc == S && pos[Y] - 1 > 0)
+		pos[Y]--;
+	else if (kc == D && pos[X] + 1 < map_height)
+		pos[X]++;
+	fprintf(stderr, "🗺️  [%smap_pos%s]....X%s%ld%s/%ld Y%s%ld%s/%ld\n", BLU, RESET, YEL, pos[X], RESET, map_width, YEL, pos[Y], RESET, map_height);
+}
+
+static bool	get_tile_pos(t_player *p, size_t tile_size, int kc)
+{
+	if (kc == W)
+		return (update_tile_pos(&p->pos_ti[Y], tile_size, '+'));
+	else if (kc == A)
+		return (update_tile_pos(&p->pos_ti[X], tile_size, '-'));
+	else if (kc == S)
+		return (update_tile_pos(&p->pos_ti[Y], tile_size, '-'));
+	else if (kc == D)
+		return (update_tile_pos(&p->pos_ti[X], tile_size, '+'));
+	return (false);
 }
 
 // `kc` = keycode
 void	update_plyr_position(t_player *plyr, int	kc)
 {
-	int	*last_pos;
+	size_t	*last_pos_mp;
+	size_t	*last_pos_ti;
 
-	last_pos = plyr->pos;
-	update_axis(plyr->pos, kc);
-	fprintf(stderr, "[update_axis] X%s%d%s/Y%s%d%s\n", YEL, plyr->pos[X], RESET, YEL, plyr->pos[Y], RESET);
-	if (!is_valid_pos(plyr->pos, last_pos, &plyr->cub->map))
+	if (!(kc == W || kc == A || kc == S || kc == D))
 		return ;
+	last_pos_mp = plyr->pos_mp;
+	last_pos_ti = plyr->pos_ti;
+	if (get_tile_pos(plyr, plyr->cub->gfx.txtr_res, kc) == true)
+		get_map_pos(plyr->pos_mp, plyr->cub->map.dim[X], plyr->cub->map.dim[Y], kc);
+	if (!new_pos_is_valid(plyr->pos_mp, &plyr->cub->map))
+	{
+		plyr->pos_mp = last_pos_mp;
+		plyr->pos_ti = last_pos_ti;
+		return ;
+	}
+	fprintf(stderr, "⬜ [tile_pos]...X%s%ld%sY%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
 }

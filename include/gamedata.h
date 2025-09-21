@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/20 19:21:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 11:24:01 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@
 # define LA 65361 // LEFT ARROW
 # define DA 65364 // DOWN ARROW
 # define RA 65363 // RIGHT ARROW
+# define I 105
+# define O 111
 
 typedef enum	e_axis
 {
 	X,
 	Y
 }				t_axis;
+
+typedef enum	e_sides
+{
+	LFT,
+	RGT
+}				t_side;
 
 typedef enum	e_rgb_elements
 {

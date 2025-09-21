@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:06:35 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 14:43:10 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 11:29:51 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ typedef struct s_textures
 
 typedef struct s_color
 {
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
+	size_t	r;
+	size_t	g;
+	size_t	b;
 }	t_color;
 
 typedef struct s_scene

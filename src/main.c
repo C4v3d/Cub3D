@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/20 18:53:50 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 11:57:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char *argv[])
 	 * - execution
 	 * - Cleaning
 	 */
-	printf("START\n");
 	if (argc == 1 || argc > 2)
 		return (ft_perror(NULL, WRG_N_ARGS, ERROR));
 	cub = malloc(sizeof(t_main));
@@ -31,10 +30,10 @@ int	main(int argc, char *argv[])
 		return (ft_perror(cub, ENOMEM, CRITICAL));
 	if (init_cub(cub) != 0)
 		return (1);
-	printf("init_done!\n");
 	if (!is_map_valid(&cub->pr, argv[1]))
 		printf("main | map_invalid\n");
 	parser(&cub->pr);
+	init_parsed_data(cub);
 	mlx_loop(cub->mlx);
 	free_cub(cub);
 	return (0);

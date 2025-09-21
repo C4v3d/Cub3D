@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/20 20:16:12 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 13:15:21 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ typedef struct s_user_control_input	t_usr_ctrl_in;
 typedef struct s_parser				t_parser;
 typedef struct s_scene				t_scene;
 
+# define WINDOW_WIDTH 500
+# define WINDOW_HEIGHT 400
+
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
 # include "parser.h"
@@ -52,8 +55,6 @@ typedef struct		s_user_control_input
 
 typedef struct		s_display_window
 {
-	int				win_h;			// window height
-	int				win_w;			// window width
 	void			*win;
 	t_main			*cub;			// `ptr` to parent struct
 }					t_display;
@@ -62,8 +63,7 @@ typedef struct		s_graphic_data
 {
 	int				txtr_s;			// texture array size
 	void			**txtr;			// void*[txtr_s] for: wall textures
-	int				txtr_h;			// texture height
-	int				txtr_w;			// texture width
+	int				txtr_res;		// texture resolution
 	int				rgb_s;			// rgb array size
 	int				**rgb;			// int[rgb_s][3] for: FLOOR and CEILING in RGB
 	t_main			*cub;			// `ptr` to parent struct
@@ -71,18 +71,21 @@ typedef struct		s_graphic_data
 
 typedef struct		s_map_data
 {
-	int				height;
-	int				width;
 	int				**grid;			// int[w][h] for: MAP MATRIX
-	int				*plyr_start_pos;// int[2] for: PLAYER X&Y START POSITION
-	int				plyr_start_ori;	// START ORIENTATION (N,S,W or E)
+	size_t			*dim;			// int[2] for: map dimensions
+	size_t			*plyr_start_pos;// int[2] for: PLAYER X&Y START POSITION
+	size_t			plyr_start_ori;	// START ORIENTATION (N,S,W or E)
 	t_main			*cub;			// `ptr` to parent struct
 }					t_map;
 
 typedef struct		s_player_data
 {
-	int				*pos;			// int[2] for: PLAYER X&Y POSITION
-	unsigned int	aov;			// angle of view in degree
+	size_t			aov;			// angle of view based on (txtr_res * 4)
+	size_t			fov_max;		// field of view
+	size_t			fov_val;		// field of view
+	size_t			*fov;			// field of view
+	size_t			*pos_mp;		// int[2] for: PLAYER X&Y POSITION ON MAP GRID
+	size_t			*pos_ti;		// int[2] for: PLAYER X&Y POSITION ON TILE
 	t_main			*cub;			// `ptr` to parent struct
 }					t_player;
 

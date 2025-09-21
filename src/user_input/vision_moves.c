@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/21 17:32:16 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:00:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	update_aov(size_t *aov, size_t max_angle, int kc)
 		*(aov) = 0;
 	else if (kc == RA && (*(aov) == 0 || *(aov) > 0) && *(aov) < max_angle)
 		*(aov) += 1;
-	//fprintf(stderr, "👁️‍🗨️ [update_aov]....%s%ld%s\n", YEL, *aov, RESET);
+	fprintf(stderr, "👁️‍🗨️ [update_aov]....%s%ld%s\n", YEL, *aov, RESET);
 }
 
 

@@ -6,35 +6,11 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 16:15:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/25 09:28:44 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static int	init_player_data(t_player *plyr, t_main *cub)
-{
-	plyr->cub = cub;
-	plyr->pos = malloc(sizeof(int) * 2);
-	if (!plyr->pos)
-		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
-	plyr->pos[X] = 0;
-	plyr->pos[Y] = 0;
-	plyr->aov = 0;
-	return (0);
-}
-
-
-static int	init_map_data(t_map *map, t_main *cub)
-{
-	map->cub = cub;
-	map->plyr_start_pos = malloc(sizeof(int) * 2);
-	if (!map->plyr_start_pos)
-		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	map->plyr_start_pos[X] = 0;
-	map->plyr_start_pos[Y] = 0;
-	return (0);
-}
 
 static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
@@ -43,18 +19,54 @@ static int	init_graphic_data(t_graphic *gfx, t_main *cub)
 	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
 	if (!gfx->txtr)
 		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-	gfx->colors[FLOOR] = malloc(sizeof(t_color *));
-	gfx->colors[CEILING] = malloc(sizeof(t_color *));
-	if (!gfx->colors[FLOOR] || !gfx->colors[CEILING])
-		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
+	// gfx->rgb_s = 2;	// 2 for: FLOOR and CEILING (adapt if necessary)
+	// gfx->rgb = init_2d_array(gfx->rgb_s, 3);
+	// if (!gfx->rgb)
+	// 	return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
 	return (0);
 }
 
-void	init_cub(t_main *cub)
+static int	init_map_data(t_map *map, t_main *cub)
 {
-	init_graphic_data(&cub->gfx, cub);
-	init_map_data(&cub->map, cub);
-	init_player_data(&cub->plyr, cub);
-	init_display(&cub->dspl, cub);
-	init_user_inputs(&cub->ctrl, cub);
+	map->cub = cub;
+	map->plyr_start_pos = malloc(sizeof(size_t) * 2);
+	if (!map->plyr_start_pos)
+		return (ft_perror(map->cub, ENOMEM, CRITICAL));
+	map->dim = malloc(sizeof(size_t) * 2);
+	if (!map->dim)
+		return (ft_perror(map->cub, ENOMEM, CRITICAL));
+	return (0);
+}
+
+static int	init_player_data(t_player *plyr, t_main *cub)
+{
+	plyr->cub = cub;
+	plyr->pos_mp = malloc(sizeof(size_t) * 2);
+	if (!plyr->pos_mp)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->pos_ti = malloc(sizeof(size_t) * 2);
+	if (!plyr->pos_ti)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->fov = malloc(sizeof(size_t) * 2);
+	if (!plyr->fov)
+		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+	plyr->aov = 0;
+	return (0);
+}
+
+int	init_cub(t_main *cub)
+{
+	if (init_graphic_data(&cub->gfx, cub) != 0)
+		return (1);
+	if (init_map_data(&cub->map, cub) != 0)
+		return (1);
+	if (init_player_data(&cub->plyr, cub) != 0)
+		return (1);
+	if (init_user_inputs(&cub->ctrl, cub) != 0)
+		return (1);
+	if (init_display(&cub->dspl, cub) != 0)
+		return (1);
+	if (init_hooks(cub) != 0)
+		return (1);
+	return (0);
 }

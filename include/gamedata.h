@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/19 12:06:33 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/25 09:07:09 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,24 @@
 # define A 97
 # define S 115
 # define D 100
-//# define LA // LEFT ARROW
-//# define RA // RIGHT ARROW
-//# define UA // UP ARROW
-//# define DA // DOWN ARROW
-
-/**
- * Default texture size
- */
-# define TEXTURE_W 16
-# define TEXTURE_H 16
+# define UA 65362 // UP ARROW
+# define LA 65361 // LEFT ARROW
+# define DA 65364 // DOWN ARROW
+# define RA 65363 // RIGHT ARROW
+# define I 105
+# define O 111
 
 typedef enum	e_axis
 {
 	X,
 	Y
 }				t_axis;
+
+typedef enum	e_sides
+{
+	LFT,
+	RGT
+}				t_side;
 
 typedef enum	e_rgb_elements
 {

@@ -6,67 +6,63 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/25 09:28:44 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/25 09:58:14 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	init_graphic_data(t_graphic *gfx, t_main *cub)
+static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
 	gfx->cub = cub;
 	gfx->txtr_s = 4; // 4 for: N,S,W,E (adapt if necessary)
 	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
 	if (!gfx->txtr)
-		return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-	// gfx->rgb_s = 2;	// 2 for: FLOOR and CEILING (adapt if necessary)
-	// gfx->rgb = init_2d_array(gfx->rgb_s, 3);
-	// if (!gfx->rgb)
-	// 	return (ft_perror(gfx->cub, ENOMEM, CRITICAL));
-	return (0);
+		ft_perror(gfx->cub, ENOMEM, CRITICAL);
+	gfx->colors[FLOOR] = malloc(sizeof(t_color *));
+	gfx->colors[CEILING] = malloc(sizeof(t_color *));
+	if (!gfx->colors[FLOOR] || !gfx->colors[CEILING])
+		ft_perror(gfx->cub, ENOMEM, CRITICAL);
 }
 
-static int	init_map_data(t_map *map, t_main *cub)
+static void	init_map_data(t_map *map, t_main *cub)
 {
 	map->cub = cub;
 	map->plyr_start_pos = malloc(sizeof(size_t) * 2);
 	if (!map->plyr_start_pos)
-		return (ft_perror(map->cub, ENOMEM, CRITICAL));
+		ft_perror(map->cub, ENOMEM, CRITICAL);
 	map->dim = malloc(sizeof(size_t) * 2);
 	if (!map->dim)
-		return (ft_perror(map->cub, ENOMEM, CRITICAL));
-	return (0);
+		ft_perror(map->cub, ENOMEM, CRITICAL);
 }
 
-static int	init_player_data(t_player *plyr, t_main *cub)
+static void	init_player_data(t_player *plyr, t_main *cub)
 {
 	plyr->cub = cub;
 	plyr->pos_mp = malloc(sizeof(size_t) * 2);
 	if (!plyr->pos_mp)
-		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+		ft_perror(plyr->cub, ENOMEM, CRITICAL);
 	plyr->pos_ti = malloc(sizeof(size_t) * 2);
 	if (!plyr->pos_ti)
-		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+		ft_perror(plyr->cub, ENOMEM, CRITICAL);
 	plyr->fov = malloc(sizeof(size_t) * 2);
 	if (!plyr->fov)
-		return (ft_perror(plyr->cub, ENOMEM, CRITICAL));
+		ft_perror(plyr->cub, ENOMEM, CRITICAL);
 	plyr->aov = 0;
-	return (0);
 }
 
-int	init_cub(t_main *cub)
+void	init_cub(t_main *cub)
 {
-	if (init_graphic_data(&cub->gfx, cub) != 0)
-		return (1);
-	if (init_map_data(&cub->map, cub) != 0)
-		return (1);
-	if (init_player_data(&cub->plyr, cub) != 0)
-		return (1);
-	if (init_user_inputs(&cub->ctrl, cub) != 0)
-		return (1);
-	if (init_display(&cub->dspl, cub) != 0)
-		return (1);
-	if (init_hooks(cub) != 0)
-		return (1);
-	return (0);
+	init_graphic_data(&cub->gfx, cub);
+	fprintf(stderr, "gfx data Initialized !\n");
+	init_map_data(&cub->map, cub);
+	fprintf(stderr, "map data Initialized !\n");
+	init_player_data(&cub->plyr, cub);
+	fprintf(stderr, "player data Initialized !\n");
+	init_user_inputs(&cub->ctrl, cub);
+	fprintf(stderr, "unser input Initialized !\n");
+	init_display(&cub->dspl, cub);
+	fprintf(stderr, "display Initialized !\n");
+	init_hooks(cub);
+	fprintf(stderr, "hooks Initialized !\n");
 }

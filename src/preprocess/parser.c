@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/25 09:19:38 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/25 09:54:40 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static int	fetch_data(t_main *cub, char *line)
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);
+	fprintf(stderr, "line :%s\n", line);
 	if (ft_strncmp(line, NO_ID, id_len) == 0)
 		parse_texture(cub, line, &cub->gfx.txtr[NO]);
 	else if (ft_strncmp(line, SO_ID, id_len) == 0)

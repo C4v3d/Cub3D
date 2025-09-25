@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/25 09:54:40 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/25 15:40:18 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	parse_texture(t_main *cub, char *line, void **dest)
 {
+	if (dest != NULL)
+		return (ft_perror(cub, DUP, CRITICAL));
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;

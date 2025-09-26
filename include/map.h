@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:06:35 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/25 09:07:39 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/26 11:29:51 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
  * Ids list to parse file.
  */
 # define ID_LEN 2	/** < Id len*/
-# define NO_ID "NO"	/** < Path to north texture */
-# define SO_ID "SO"	/** < Path to south texture */
-# define WE_ID "WE" 	/** < Path to west texture */
-# define EA_ID "EA"	/** < Path to est texture */
-# define C_ID "C"		/** < Ceiling color data*/
-# define F_ID "F"		/** < Floor color data*/
+# define NO_ID "NO"
+# define SO_ID "SO"
+# define WE_ID "WE"
+# define EA_ID "EA"
+# define C_ID "C"
+# define F_ID "F"
 
 #endif

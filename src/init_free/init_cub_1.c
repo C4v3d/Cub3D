@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/25 16:02:58 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/26 14:44:34 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
+	t_color floor;
+	t_color ceiling;
+	
 	gfx->cub = cub;
-	gfx->txtr_s = 4; // 4 for: N,S,W,E (adapt if necessary)
-	gfx->txtr = malloc(sizeof(void *) * gfx->txtr_s);
-	if (!gfx->txtr)
-		ft_perror(gfx->cub, ENOMEM, CRITICAL);
-	gfx->colors[FLOOR] = malloc(sizeof(t_color *));
-	gfx->colors[CEILING] = malloc(sizeof(t_color *));
-	if (!gfx->colors[FLOOR] || !gfx->colors[CEILING])
-		ft_perror(gfx->cub, ENOMEM, CRITICAL);
+	gfx->colors[FLOOR] = &floor;
+	gfx->colors[CEILING] = &ceiling;
 }
 
 static void	init_map_data(t_map *map, t_main *cub)
@@ -53,6 +50,7 @@ static void	init_player_data(t_player *plyr, t_main *cub)
 
 void	init_cub(t_main *cub)
 {
+	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	init_graphic_data(&cub->gfx, cub);
 	fprintf(stderr, "gfx data Initialized !\n");
 	init_map_data(&cub->map, cub);

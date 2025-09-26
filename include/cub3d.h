@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/25 09:20:56 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/26 16:45:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct s_scene				t_scene;
 
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 400
+/**
+ * Define the number of
+ * textures and colors
+ * used by cub3d.
+ */
+# define N_TEXTURE 4
+# define N_COLOR 2
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -71,12 +78,11 @@ typedef struct		s_display_window
 
 typedef struct		s_graphic_data
 {
-	int				txtr_s;			// texture array size
-	void			**txtr;			// void*[txtr_s] for: wall textures
-	int				*txtr_h;		// texture height
+	void			*txtr[N_TEXTURE];
+
+	int				txtr_res;	int				*txtr_h;		// texture height
 	int				*txtr_w;		// texture width
-	int				txtr_res;
-	t_color			*colors[2];		/** Array of pointer for color data */
+	t_color			*colors[N_COLOR];
 	t_main			*cub;			// `ptr` to parent struct
 }					t_graphic;
 

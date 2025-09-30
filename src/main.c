@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/30 11:49:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/30 13:19:15 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int argc, char *argv[])
 		// cleaning();
 		// parser(&cub->pr);
 		// free_cub(cub);
-		mlx_loop(cub.mlx);
-		free_cub(&cub);
+		// mlx_loop(cub.mlx);
+		// free_cub(&cub);
 		return (0);	
 	}
 	else

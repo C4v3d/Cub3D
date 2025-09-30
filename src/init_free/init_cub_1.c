@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/30 11:48:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/30 13:28:34 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 	t_color ceiling;
 	
 	gfx->cub = cub;
-	gfx->el_counter = 0;
+	ft_memset(&gfx->txtr, '\0', sizeof(gfx->txtr));
 	gfx->colors[FLOOR] = &floor;
 	gfx->colors[CEILING] = &ceiling;
+	gfx->el_counter = 0;
 }
 
 static void	init_map_data(t_map *map, t_main *cub)
 {
 	map->cub = cub;
-	map->plyr_start_pos = malloc(sizeof(size_t) * 2);
-	if (!map->plyr_start_pos)
+	map->grid = ft_calloc(1, sizeof(map->grid));
+	if (!map->grid)
 		ft_perror(map->cub, ENOMEM, CRITICAL);
-	map->dim = malloc(sizeof(size_t) * 2);
-	if (!map->dim)
-		ft_perror(map->cub, ENOMEM, CRITICAL);
+	ft_memset(map->dim, '\0', sizeof(map->dim));
+	ft_memset(map->plyr_start_pos, '\0', sizeof(map->plyr_start_pos));
+	map->plyr_start_ori = 0;
 }
 
 static void	init_player_data(t_player *plyr, t_main *cub)

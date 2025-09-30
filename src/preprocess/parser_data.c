@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/30 11:48:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/30 14:02:07 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 /**
  * Need to find a way to check doubled texture !
  */
-static int	parse_texture(t_graphic *gfx, char *line, void **dest)
+static void	parse_texture(t_graphic *gfx, char *line, void **dest)
 {
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
-		return (ft_perror(gfx->cub, NO_DATA, WARNING));
+		ft_perror(gfx->cub, NO_DATA, WARNING);
 	*dest = mlx_xpm_file_to_image(NULL, line, gfx->txtr_w, gfx->txtr_h);
 	if (!dest)
-		return (ft_perror(gfx->cub, MLX_FAIL, CRITICAL));
+		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	(*gfx).el_counter += 1;
-	return (0);
 }
 
-static int	parse_color(t_graphic *gfx, char *line, t_color **dest)
+static void	parse_color(t_graphic *gfx, char *line, t_color **dest)
 {
 	int	c_len;
 	int	n_color;
@@ -53,18 +52,17 @@ static int	parse_color(t_graphic *gfx, char *line, t_color **dest)
 		n_color++;
 	}
 	(*gfx).el_counter += 1;
-	return (0);
 }
 
 /**
  * Find a better way to write this nightmare
  */
-static int	fetch_data(t_graphic *gfx, char *line)
+static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;
 	
 	if (line[0] == '\n')
-		return (0);
+		return;
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);
@@ -80,7 +78,6 @@ static int	fetch_data(t_graphic *gfx, char *line)
 		parse_color(gfx, line, &gfx->colors[CEILING]);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
 		parse_color(gfx, line, &gfx->colors[FLOOR]);
-	return (0);
 }
 
 void	parse_data(t_graphic *gfx)

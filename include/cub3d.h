@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/30 11:52:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/30 13:53:43 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ typedef struct s_map_data			t_map;
  */
 # define N_TEXTURE 4
 # define N_COLOR 2
+
+/**
+ * Map Data
+ */
+# define DIMENSION 2
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -96,14 +101,14 @@ typedef struct	s_graphic_data
 	t_main	*cub;
 }	t_graphic;
 
-typedef struct		s_map_data
+typedef struct	s_map_data
 {
-	int				**grid;			// int[w][h] for: MAP MATRIX
-	size_t			*dim;			// int[2] for: map dimensions
-	size_t			*plyr_start_pos;// int[2] for: PLAYER X&Y START POSITION
-	size_t			plyr_start_ori;	// START ORIENTATION (N,S,W or E)
-	t_main			*cub;			// `ptr` to parent struct
-}					t_map;
+	int		**grid;			// int[w][h] for: MAP MATRIX
+	size_t	dim[DIMENSION];			// int[2] for: map dimensions
+	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
+	size_t	plyr_start_ori;	// START ORIENTATION (N,S,W or E)
+	t_main	*cub;			// `ptr` to parent struct
+}	t_map;
 
 typedef struct		s_player_data
 {

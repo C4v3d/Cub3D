@@ -9,6 +9,9 @@ CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
 			$(CFILES_PATH)/preprocess/parser.c \
+			$(CFILES_PATH)/preprocess/parser_utils.c \
+			$(CFILES_PATH)/preprocess/parser_data.c \
+			$(CFILES_PATH)/preprocess/parser_map.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
 			$(CFILES_PATH)/debug/logging.c \

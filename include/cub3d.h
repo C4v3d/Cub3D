@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/26 16:45:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/09/30 11:52:43 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_display_window		t_display;
 typedef	struct s_player_data		t_player;
 typedef struct s_user_control_input	t_usr_ctrl_in;
 typedef struct s_scene				t_scene;
+typedef struct s_graphic_data		t_graphic;
+typedef union u_color				t_color;
+typedef struct s_map_data			t_map;
+
 
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 400
@@ -43,14 +47,19 @@ typedef struct s_scene				t_scene;
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "parser.h"
 # include "preprocess.h"
 # include "error.h"
 # include "checker.h"
 # include "map.h"
-# include "parser.h"
 # include "gamedata.h"
 # include "initfree.h"
 # include "user_input.h"
+
+/**
+ * Debugging functions (to remove)
+ */
+void	log_colors(t_main *cub);
 
 typedef union u_color
 {
@@ -76,15 +85,16 @@ typedef struct		s_display_window
 	t_main			*cub;			// `ptr` to parent struct
 }					t_display;
 
-typedef struct		s_graphic_data
+typedef struct	s_graphic_data
 {
-	void			*txtr[N_TEXTURE];
-
-	int				txtr_res;	int				*txtr_h;		// texture height
-	int				*txtr_w;		// texture width
-	t_color			*colors[N_COLOR];
-	t_main			*cub;			// `ptr` to parent struct
-}					t_graphic;
+	void	*txtr[N_TEXTURE];	/* Working with fixed data on the Stack*/
+	int		*txtr_w;
+	int		*txtr_h;
+	int		txtr_res;
+	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
+	int		el_counter;
+	t_main	*cub;
+}	t_graphic;
 
 typedef struct		s_map_data
 {
@@ -124,8 +134,4 @@ typedef struct		s_main_struct
 	t_usr_ctrl_in	ctrl;
 }					t_main;
 
-/**
- * Debugging functions (to remove)
- */
-void	log_colors(t_main *cub);
 #endif

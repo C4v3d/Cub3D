@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/30 13:53:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/02 13:46:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_map_data			t_map;
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "input_validation.h"
+# include "map_validation.h"
 # include "parser.h"
 # include "preprocess.h"
 # include "error.h"
@@ -103,7 +105,7 @@ typedef struct	s_graphic_data
 
 typedef struct	s_map_data
 {
-	int		**grid;			// int[w][h] for: MAP MATRIX
+	char	**grid;			// int[w][h] for: MAP MATRIX
 	size_t	dim[DIMENSION];			// int[2] for: map dimensions
 	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
 	size_t	plyr_start_ori;	// START ORIENTATION (N,S,W or E)

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/30 13:28:34 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/02 13:08:10 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,9 @@ void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	init_graphic_data(&cub->gfx, cub);
-	fprintf(stderr, "gfx data Initialized !\n");
 	init_map_data(&cub->map, cub);
-	fprintf(stderr, "map data Initialized !\n");
 	init_player_data(&cub->plyr, cub);
-	fprintf(stderr, "player data Initialized !\n");
 	init_user_inputs(&cub->ctrl, cub);
-	fprintf(stderr, "unser input Initialized !\n");
 	init_display(&cub->dspl, cub);
-	fprintf(stderr, "display Initialized !\n");
 	init_hooks(cub);
-	fprintf(stderr, "hooks Initialized !\n");
 }

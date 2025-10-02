@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   preprocess.h                                       :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 16:16:01 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/02 13:43:17 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
+/*   Updated: 2025/10/02 13:46:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PREPROCESS_H
-# define PREPROCESS_H
+#include "../../include/cub3d.h"
 
-void	preprocess(t_main *cub, char *input_file);
-
-#endif
+void	validate_map(t_map *map)
+{
+	
+}

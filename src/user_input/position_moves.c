@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/30 11:48:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 17:30:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static bool new_map_pos(t_player *p, t_map *m, int kc)
 {
 	// ⚠️ addd wall_check
-	if (kc == W && (p->pos_mp[Y] + 1) < m->dim[Y])
-		p->pos_mp[Y]++;
-	else if (kc == A && (p->pos_mp[X] - 1) > 1)
-		p->pos_mp[X]--;
-	else if (kc == S && (p->pos_mp[Y] - 1) > 1)
+	if (kc == W && (p->pos_mp[Y] - 1) > 1)
 		p->pos_mp[Y]--;
-	else if (kc == D && (p->pos_mp[X] + 1) < m->dim[X])
+	else if (kc == LA && (p->pos_mp[X] - 1) > 1)
+		p->pos_mp[X]--;
+	else if (kc == S && (p->pos_mp[Y] + 1) < m->dim[Y])
+		p->pos_mp[Y]++;
+	else if (kc == RA && (p->pos_mp[X] + 1) < m->dim[X])
 		p->pos_mp[X]++;
 	else
 		return (false);
@@ -84,12 +84,12 @@ static bool	update_tile_pos(size_t *pos, size_t tile_size, char mode)
 static bool	new_tile_pos(t_player *p, size_t tile_size, int kc)
 {
 	if (kc == W)
-		return (update_tile_pos(&p->pos_ti[Y], tile_size, '+'));
-	else if (kc == A)
+		return (update_tile_pos(&p->pos_ti[Y], tile_size, '-'));
+	else if (kc == LA)
 		return (update_tile_pos(&p->pos_ti[X], tile_size, '-'));
 	else if (kc == S)
-		return (update_tile_pos(&p->pos_ti[Y], tile_size, '-'));
-	else if (kc == D)
+		return (update_tile_pos(&p->pos_ti[Y], tile_size, '+'));
+	else if (kc == RA)
 		return (update_tile_pos(&p->pos_ti[X], tile_size, '+'));
 	return (false);
 }

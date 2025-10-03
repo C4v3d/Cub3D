@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 12:07:23 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 12:18:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:51:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	calculate_fov(size_t *fov, size_t fov_val, size_t fov_max, size_t aov)
 	(void)fov_max;
 }
 
-//static void	update_fov(t_player *plyr, int kc)
+//static void	update_fov(t_player *plyr, int kac)
 //{
 //	if (!(kc == I || kc == O))
 //		return ;

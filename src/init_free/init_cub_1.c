@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 10:19:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 17:49:51 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 {
 	t_color floor;
 	t_color ceiling;
-	
+
 	gfx->cub = cub;
 	ft_bzero(&gfx->txtr, sizeof(gfx->txtr));
 	gfx->colors[FLOOR] = &floor;
@@ -39,12 +39,6 @@ static void	init_map_data(t_map *map, t_main *cub)
 static void	init_player_data(t_player *plyr, t_main *cub)
 {
 	plyr->cub = cub;
-	plyr->pos_mp = malloc(sizeof(size_t) * 2);
-	if (!plyr->pos_mp)
-		ft_perror(plyr->cub, ENOMEM, CRITICAL);
-	plyr->pos_ti = malloc(sizeof(size_t) * 2);
-	if (!plyr->pos_ti)
-		ft_perror(plyr->cub, ENOMEM, CRITICAL);
 	plyr->fov = malloc(sizeof(size_t) * 2);
 	if (!plyr->fov)
 		ft_perror(plyr->cub, ENOMEM, CRITICAL);

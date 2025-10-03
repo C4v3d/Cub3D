@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 17:29:55 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 20:32:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct s_map_data			t_map;
  * Map Data
  */
 # define DIMENSION 2
+
+// Define decr/incrementation value from keyboard inputs
+# define MOVE_UNIT 5.0
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
@@ -116,13 +119,13 @@ typedef struct	s_map_data
 
 typedef struct		s_player_data
 {
-	size_t			aov;			// angle of view based on (txtr_res * 4)
+	float			aov;			// angle of view
 	size_t			fov_max;		// field of view
 	size_t			fov_val;		// field of view
 	size_t			*fov;			// field of view
+	float			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
+	float			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
 	float			pos[DIMENSION];
-	size_t			*pos_mp;		// int[2] for: PLAYER X&Y POSITION ON MAP GRID
-	size_t			*pos_ti;		// int[2] for: PLAYER X&Y POSITION ON TILE
 	t_main			*cub;			// `ptr` to parent struct
 }					t_player;
 

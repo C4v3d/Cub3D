@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 12:18:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 16:21:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	update_plyr_vision(t_player *plyr, int	kc)
 	if (!(kc == UA || kc == LA || kc == DA || kc == RA || kc == I || kc == O))
 		return ;
 	update_aov(&plyr->aov, 360, kc);
-	//update_fov(plyr, kc);
-	calculate_fov(plyr->fov, plyr->fov_val, plyr->fov_max, plyr->aov);
+
 }

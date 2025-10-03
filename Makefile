@@ -22,7 +22,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/init_free/utils_init_free.c \
 			$(CFILES_PATH)/user_input/position_moves.c \
-			$(CFILES_PATH)/user_input/utils_usr_in.c \
+			$(CFILES_PATH)/user_input/keyboard_inputs.c \
 			$(CFILES_PATH)/user_input/vision_moves.c \
 
 

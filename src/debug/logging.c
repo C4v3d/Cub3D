@@ -22,3 +22,17 @@ void	log_map(t_main *cub)
 	while (cub->map.grid[i])
 		fprintf(stderr, "%s\n", cub->map.grid[i++]);
 }
+
+void	log_map_data(t_main *cub)
+{
+	fprintf(stderr, "────────────────・["GRN"Grid"RESET"]\n");
+	log_map(cub);
+	fprintf(stderr, "────────────────・["GRN"Dimention"RESET"]\n");
+	fprintf(stderr, "X :%ld\n", cub->map.dim[X]);
+	fprintf(stderr, "Y :%ld\n", cub->map.dim[Y]);
+	fprintf(stderr, "────────────────・["GRN"Player Start Position"RESET"]\n");
+	fprintf(stderr, "Player start X :%ld\n", cub->map.plyr_start_pos[X]);
+	fprintf(stderr, "Player start Y :%ld\n", cub->map.plyr_start_pos[Y]);
+	fprintf(stderr, "────────────────・["GRN"Player Start Orientation"RESET"]\n");
+	fprintf(stderr, "Player start X :%ld\n", cub->map.plyr_start_ori);
+}

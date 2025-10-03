@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 11:34:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 13:51:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_map_data			t_map;
  */
 void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
+void	log_map_data(t_main *cub);
 
 typedef union u_color
 {

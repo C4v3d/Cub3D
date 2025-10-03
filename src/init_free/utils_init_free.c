@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_init_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/30 11:48:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 11:56:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ int	to_close_program(t_main *cub)
 	return (false);
 }
 
-int	**init_2d_array(int height, int width)
+char	**init_2d_array(int height, int width)
 {
-	int	**array;
-	int	i;
+	char	**array;
+	int		i;
 
-	array = malloc(sizeof(int *) * height);
+	array = malloc(sizeof(char *) * height);
 	if (!array)
 		return (NULL);
 	i = -1;
 	while (++i < height)
 	{
-		array[i] = ft_calloc(width, sizeof(int));
+		array[i] = ft_calloc(width, sizeof(char));
 		if (!array[i])
 		{
 			while (--i >= 0)

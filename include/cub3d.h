@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 10:55:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 11:34:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct	s_map_data
 {
 	char	**grid;			// int[w][h] for: MAP MATRIX
 	size_t	dim[DIMENSION];			// int[2] for: map dimensions
-	size_t	*plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
+	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
 	size_t	plyr_start_ori;	// START ORIENTATION (N,S,W or E)
 	t_main	*cub;			// `ptr` to parent struct
 }	t_map;

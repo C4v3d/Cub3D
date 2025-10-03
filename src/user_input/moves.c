@@ -1,33 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/03 11:54:31 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/03 12:03:31 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/03 12:18:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "../include/cub3d.h"
-
-int	main(int argc, char *argv[])
-{
-	t_main	cub;
-
-	if (argc == 2)
-	{
-		preprocess(&cub, argv[1]);
-		// execution();
-		// cleaning();
-		// free_cub(cub);
-		mlx_loop(cub.mlx);
-		free_cub(&cub);
-		return (0);
-	}
-	else
-		return (ft_perror(&cub, WRG_N_ARGS, ERROR));
-	free_cub(&cub);
-}

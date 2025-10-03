@@ -1,7 +1,7 @@
-SO ./path_to_the_south_texture
-NO ./path_to_the_north_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+SO ./tile208.xpm
+NO ./tile208.xpm
+WE ./tile208.xpm
+EA ./tile208.xpm
 
 F 220,100,0
 C 225,30,0

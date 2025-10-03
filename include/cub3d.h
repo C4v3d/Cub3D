@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 13:51:13 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 14:24:44 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef union u_color				t_color;
 typedef struct s_map_data			t_map;
 
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 400
+# define WINDOW_WIDTH 1080 * 2
+# define WINDOW_HEIGHT 720 * 2
 /**
  * Define the number of
  * textures and colors
@@ -61,6 +61,7 @@ typedef struct s_map_data			t_map;
 # include "map.h"
 # include "gamedata.h"
 # include "initfree.h"
+# include "minimap.h"
 # include "user_input.h"
 
 /**
@@ -69,6 +70,15 @@ typedef struct s_map_data			t_map;
 void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
 void	log_map_data(t_main *cub);
+
+typedef struct	s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 typedef union u_color
 {

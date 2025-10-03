@@ -9,6 +9,7 @@ CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
 			$(CFILES_PATH)/map_rendering/calculate_fov.c \
+			$(CFILES_PATH)/minimap/minimap.c \
 			$(CFILES_PATH)/preprocess/parser.c \
 			$(CFILES_PATH)/preprocess/input_validation.c \
 			$(CFILES_PATH)/preprocess/parser_utils.c \

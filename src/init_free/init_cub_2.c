@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 11:58:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:51:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		init_parsed_data(t_main *cub)
 	cub->map.plyr_start_pos[Y] = 2;
 	fprintf(stderr, "%s⚠️ cub->gfx.txtr_res..........: %d\n⚠️ cub->map.dim[X]............: %ld\n⚠️ cub->map.dim[Y]............: %ld%s\n", YEL, cub->gfx.txtr_res, cub->map.dim[X], cub->map.dim[Y], RESET);
 	fprintf(stderr, "%s⚠️ cub->map.plyr_start_ori....: %ld\n⚠️ cub->map.plyr_start_pos[X].: %ld\n⚠️ cub->map.plyr_start_pos[Y].: %ld%s\n", YEL, cub->map.plyr_start_ori, cub->map.plyr_start_pos[X], cub->map.plyr_start_pos[Y], RESET);
-	cub->map.grid = init_2d_array(cub->map.dim[Y], cub->map.dim[X]);
+	//cub->map.grid = init_2d_array(cub->map.dim[Y], cub->map.dim[X]);
 	//.............................⚠️TESTS
 	cub->plyr.pos_mp[X] = cub->map.plyr_start_pos[X];
 	cub->plyr.pos_mp[Y] = cub->map.plyr_start_pos[Y];
@@ -33,8 +33,6 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.fov_max = 16;
 	cub->plyr.fov_val = 2;
 	cub->plyr.aov = cub->map.plyr_start_ori;
-	calculate_fov(cub->plyr.fov, cub->plyr.fov_val,
-			cub->plyr.fov_max, cub->plyr.aov);
 	return (0);
 }
 

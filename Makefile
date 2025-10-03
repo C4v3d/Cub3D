@@ -13,6 +13,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/preprocess/parser_utils.c \
 			$(CFILES_PATH)/preprocess/parser_data.c \
 			$(CFILES_PATH)/preprocess/parser_map.c \
+			$(CFILES_PATH)/preprocess/map_validation.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
 			$(CFILES_PATH)/debug/logging.c \

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/25 09:07:09 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 09:49:23 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define I 105
 # define O 111
 
+/**
+ * General definition to access
+ * axis in an array
+ */
 typedef enum	e_axis
 {
 	X,

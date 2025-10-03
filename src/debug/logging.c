@@ -14,3 +14,11 @@ void	log_colors(t_main *cub)
 	fprintf(stderr, BLU"B"RESET":	%d\n", cub->gfx.colors[FLOOR]->b);
 	fprintf(stderr, "HEX:	%#06x", cub->gfx.colors[FLOOR]->color);
 }
+
+void	log_map(t_main *cub)
+{
+	int	i = 0;
+
+	while (cub->map.grid[i])
+		fprintf(stderr, "%s\n", cub->map.grid[i++]);
+}

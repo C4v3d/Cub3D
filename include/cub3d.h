@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 16:19:59 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 17:29:55 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct		s_player_data
 	size_t			fov_max;		// field of view
 	size_t			fov_val;		// field of view
 	size_t			*fov;			// field of view
+	float			pos[DIMENSION];
 	size_t			*pos_mp;		// int[2] for: PLAYER X&Y POSITION ON MAP GRID
 	size_t			*pos_ti;		// int[2] for: PLAYER X&Y POSITION ON TILE
 	t_main			*cub;			// `ptr` to parent struct

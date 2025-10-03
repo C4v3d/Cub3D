@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 11:58:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 14:18:30 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.aov = cub->map.plyr_start_ori;
 	calculate_fov(cub->plyr.fov, cub->plyr.fov_val,
 			cub->plyr.fov_max, cub->plyr.aov);
+	draw_minimap(cub);
 	return (0);
 }
 

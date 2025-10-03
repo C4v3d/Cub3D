@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 11:22:21 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 12:16:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,50 @@ static void update_x_dimension(char *line, size_t *x)
 		*x = len;
 }
 
-// static void	process_line(t_map *map, char *line)
-// {
-// 	/**
-// 	 * fetch player position in the line (if it exist)
-// 	 * and calc if the line is the biggest encountered yet
-// 	 */
+static size_t	get_orientation(char *line)
+{
+	size_t i;
 	
-// }
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'N')
+			return (i);
+		if (line[i] == 'E')
+			return (i);
+		if (line[i] == 'S')
+			return (i);
+		if (line[i] == 'W')
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+static void	process_line(t_map *map, char *line)
+{
+	/**
+	 * fetch player position in the line (if it exist)
+	 * and calc if the line is the biggest encountered yet
+	 */
+	size_t	orientation;
+
+	orientation = get_orientation(line);
+	update_x_dimension(line, &map->dim[X]);
+	if (orientation)
+	{
+		if (line[orientation] == 'N')
+			map->plyr_start_ori = NO;
+		else if (line[orientation] == 'E')
+			map->plyr_start_ori = EA;
+		else if (line[orientation] == 'S')
+			map->plyr_start_ori = SO;
+		else if (line[orientation] == 'W')
+			map->plyr_start_ori = WE;
+		map->plyr_start_pos[X] = orientation;
+		map->plyr_start_pos[Y] = map->dim[Y];
+	}
+}
 
 static char	*get_inline_map(t_map *map, int fd)
 {
@@ -44,9 +80,9 @@ static char	*get_inline_map(t_map *map, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		update_x_dimension(line, &map->dim[X]);
 		if (line[0] != '\n')
 			map->dim[Y]++;
+		process_line(map, line);
 		fp = inline_map;
 		inline_map = ft_strjoin(inline_map, line);
 		w_free((void **)&fp);

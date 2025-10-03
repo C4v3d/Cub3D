@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 09:49:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 12:13:36 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ typedef enum	e_rgb_elements
 
 typedef enum	e_orientation
 {
-	NO,
-	SO,
-	WE,
-	EA
+	NO = 0,
+	SO = 180,
+	WE = 270,
+	EA = 90
 }				t_ori;
 
 #endif

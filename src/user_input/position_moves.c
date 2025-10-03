@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 14:30:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:13:43 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	update_plyr_position(t_player *plyr, int	kc)
 			return ;
 		}
 	}
-	draw_minimap(plyr->cub);
+	// draw_minimap(plyr->cub);
 	fprintf(stderr, "🔲 [tile_pos]......X%s%ld%s/%d Y%s%ld%s/%d\n", YEL, plyr->pos_ti[X], RESET, plyr->cub->gfx.txtr_res, YEL, plyr->pos_ti[Y], RESET, plyr->cub->gfx.txtr_res);
 }

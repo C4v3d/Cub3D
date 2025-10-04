@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 20:33:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/04 18:32:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ int		init_parsed_data(t_main *cub)
 	//cub->plyr.pos_mp[Y] = cub->map.plyr_start_pos[Y];
 	//cub->plyr.pos_ti[X] = (float)cub->gfx.txtr_res / 2;
 	//cub->plyr.pos_ti[Y] = (float)cub->gfx.txtr_res / 2;
-	cub->plyr.pos[X] = cub->map.plyr_start_pos[X];
-	cub->plyr.pos[Y] = cub->map.plyr_start_pos[Y];
+	cub->plyr.pos[X] = (double)cub->map.plyr_start_pos[X];
+	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
 	cub->plyr.fov_max = 16;
 	cub->plyr.fov_val = 2;
-	cub->plyr.aov = (int)cub->map.plyr_start_ori;
+	cub->plyr.aov = (double)cub->map.plyr_start_ori;
 	return (0);
 }
 
 int		init_hooks(t_main *cub)
 {
-	mlx_key_hook(cub->dspl.win, keyboard_inputs, cub);
+	mlx_key_hook(cub->dspl.win, inputs_loop, cub);
 	//mlx_key_hook(cub->dspl.win, mouse_inputs, cub);
 	mlx_loop_hook(cub->mlx, to_close_program, cub);
 	mlx_hook(cub->dspl.win, 17, 0L, free_cub, cub);

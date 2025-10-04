@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_inputs.c                                  :+:      :+:    :+:   */
+/*   inputs_loop.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-int	keyboard_inputs(int keycode, void *param)
+int	inputs_loop(int keycode, void *param)
 {
 	t_main *cub;
 

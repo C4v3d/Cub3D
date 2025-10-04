@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/04 17:55:20 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/04 18:38:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ typedef struct s_map_data			t_map;
 # include "map.h"
 # include "gamedata.h"
 # include "initfree.h"
-# include "user_input.h"
+# include "inputs_loop.h"
+# include "moves.h"
 
 /**
  * Debugging functions (to remove)
@@ -131,9 +132,9 @@ typedef struct		s_player_data
 	size_t			fov_max;		// field of view
 	size_t			fov_val;		// field of view
 	size_t			*fov;			// field of view
-	float			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
-	float			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
-	float			pos[DIMENSION];
+	double			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
+	double			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
+	double			pos[DIMENSION];
 	t_trgo			trgo;
 	t_main			*cub;			// `ptr` to parent struct
 }					t_player;

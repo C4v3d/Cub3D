@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 17:55:30 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/04 18:39:44 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	update_aov(double *aov, float max_angle, int kc)
 	if (!(kc == A || kc == D))
 		return ;
 	if (kc == A && *(aov) >= max_angle)
-		*(aov) = MOVE_UNIT;
+		*(aov) = 0;
 	else if (kc == A)
 		*(aov) += MOVE_UNIT;
 	else if (kc == D && *(aov) < 0.01)
@@ -31,9 +31,10 @@ static void	update_aov(double *aov, float max_angle, int kc)
 
 
 
-void	update_plyr_vision(t_player *plyr, int	kc)
+int	update_plyr_vision(t_player *plyr, int	kc)
 {
 	if (!(kc == A || kc == D || kc == I || kc == O))
-		return ;
+		return (0);
 	update_aov(&plyr->aov, 360, kc);
+	return (0);
 }

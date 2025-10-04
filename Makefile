@@ -16,6 +16,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/preprocess/map_validation.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
+			$(CFILES_PATH)/maths_utils/maths_utils_1.c \
 			$(CFILES_PATH)/debug/logging.c \
 			$(CFILES_PATH)/init_free/init_cub_1.c \
 			$(CFILES_PATH)/init_free/init_cub_2.c \

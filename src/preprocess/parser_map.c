@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 16:20:33 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/04 16:41:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ static void	process_line(t_map *map, char *line)
 	if (orientation)
 	{
 		if (line[orientation] == 'N')
-			map->plyr_start_ori = 0;
-		else if (line[orientation] == 'E')
 			map->plyr_start_ori = 90;
-		else if (line[orientation] == 'S')
+		else if (line[orientation] == 'E')
 			map->plyr_start_ori = 180;
-		else if (line[orientation] == 'W')
+		else if (line[orientation] == 'S')
 			map->plyr_start_ori = 270;
+		else if (line[orientation] == 'W')
+			map->plyr_start_ori = 0;
 		map->plyr_start_pos[X] = orientation;
 		map->plyr_start_pos[Y] = map->dim[Y];
 	}

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 20:32:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/04 17:55:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_map_data			t_map;
 # include "../lib/mlx/mlx.h"
 # include "input_validation.h"
 # include "map_validation.h"
+# include "maths_utils.h"
 # include "parser.h"
 # include "preprocess.h"
 # include "error.h"
@@ -84,6 +85,13 @@ typedef union u_color
 		char	a;
 	};
 }	t_color;
+
+typedef struct		s_trigonometric_values
+{
+	double			a_rad;		// angle in radian
+	double			cos_a;		// cosinus
+	double			sin_a;		// sinus
+}					t_trgo;
 
 typedef struct		s_user_control_input
 {
@@ -119,13 +127,14 @@ typedef struct	s_map_data
 
 typedef struct		s_player_data
 {
-	float			aov;			// angle of view
+	double			aov;			// angle of view
 	size_t			fov_max;		// field of view
 	size_t			fov_val;		// field of view
 	size_t			*fov;			// field of view
 	float			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
 	float			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
 	float			pos[DIMENSION];
+	t_trgo			trgo;
 	t_main			*cub;			// `ptr` to parent struct
 }					t_player;
 

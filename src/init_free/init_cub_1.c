@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 17:55:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/05 14:58:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	init_player_data(t_player *p, t_main *cub)
 void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
+	cub->pr.close_program = false;
 	init_graphic_data(&cub->gfx, cub);
 	init_map_data(&cub->map, cub);
 	init_player_data(&cub->plyr, cub);

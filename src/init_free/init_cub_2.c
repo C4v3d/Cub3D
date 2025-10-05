@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/05 14:03:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/05 15:16:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int		init_parsed_data(t_main *cub)
 	//cub->plyr.pos_ti[Y] = (float)cub->gfx.txtr_res / 2;
 	cub->plyr.pos[X] = (double)cub->map.plyr_start_pos[X];
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
-	cub->plyr.fov_max = 16;
-	cub->plyr.fov_val = 2;
 	cub->plyr.aov = (double)cub->map.plyr_start_ori;
 	return (0);
 }
@@ -54,9 +52,6 @@ int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub)
 
 	ctrl->cub = cub;
 	simultaneous_handled_controls = 4; // ⚠️ Besoin et possible de gerer plusieurs inputs?
-	ctrl->kc = malloc(sizeof(int) * simultaneous_handled_controls);
-	if (!ctrl->kc)
-		return (1);
 	i = -1;
 	while (++i < simultaneous_handled_controls)
 		ctrl->kc[i] = -1;

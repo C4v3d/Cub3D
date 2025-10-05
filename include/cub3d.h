@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/04 18:38:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/05 15:16:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct		s_trigonometric_values
 
 typedef struct		s_user_control_input
 {
-	int				*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
+	int				kc[2];			//  int[n] for: users keyboard inputs | `kc` = keycode
 	t_main			*cub;			// `ptr` to parent struct
 }					t_usr_ctrl_in;
 
@@ -129,9 +129,6 @@ typedef struct	s_map_data
 typedef struct		s_player_data
 {
 	double			aov;			// angle of view
-	size_t			fov_max;		// field of view
-	size_t			fov_val;		// field of view
-	size_t			*fov;			// field of view
 	double			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
 	double			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
 	double			pos[DIMENSION];

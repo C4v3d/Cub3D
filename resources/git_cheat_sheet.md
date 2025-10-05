@@ -186,3 +186,9 @@ Si tout se passe bien, tu auras juste un message de confirmation. Mais si des **
 | ------------------ | --------------------------------------------------------------- |
 | `git blame [file]` | Show what revision and author last modified each line of a file |
 | `git bisect`       | Use binary search to find the commit that introduced a bug      |
+
+###### Others
+
+|                    |                                                                 |
+| ------------------ | --------------------------------------------------------------- |
+| `git clean -d -f` | Remove all work done that hasn't been pushed |

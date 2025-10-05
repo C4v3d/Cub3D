@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/02 14:02:41 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/05 14:02:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	parse_color(t_graphic *gfx, char *line, t_color **dest)
 static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;
-	
+
 	if (line[0] == '\n')
 		return;
 	while (ft_isspace(*line))
@@ -84,9 +84,13 @@ void	parse_data(t_graphic *gfx)
 {
 	char	*line;
 	int		total_el;
-	
+	int		col;
+	int		txt;
+
 	line = NULL;
-	total_el = N_COLOR + N_TEXTURE;
+	col = N_COLOR;
+	txt = N_TEXTURE;
+	total_el = col + txt;
 	while (gfx->el_counter < total_el)
 	{
 		line = get_next_line(gfx->cub->pr.input_file_fd);

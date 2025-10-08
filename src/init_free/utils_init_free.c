@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   utils_init_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 11:56:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/08 09:34:39 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	safe_destroy_image(t_main *cub, void *ptr)
+{
+	#ifdef __APPLE__
+	(void)cub;
+	(void)ptr;
+	// rien à faire
+	#else
+	if (img)
+		mlx_destroy_image(s->init, ptr);
+	#endif
+}
 
 int	to_close_program(t_main *cub)
 {

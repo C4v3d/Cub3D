@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/02 13:21:01 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/08 09:52:41 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	get_file_fd(t_main *cub, char *input_file)
 	int		fd;
 
 	full_path = ft_strjoin(MAP_PATH, input_file);
+	fprintf(stderr, "full_path: %s\n", full_path);
 	if (!full_path)
 		ft_perror(NULL, errno, ERROR);
 	fd = open(full_path, O_RDONLY);

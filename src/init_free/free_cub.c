@@ -6,17 +6,27 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/05 15:15:06 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:08:29 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
 
-static void	destroy_display(t_display *dspl)
+static void	destroy_display(t_main *cub)
 {
-	mlx_destroy_window(dspl->cub->mlx, dspl->win);
-	mlx_destroy_display(dspl->cub->mlx);
+	#ifdef __APPLE__
+	if (cub->dspl.win)
+		mlx_destroy_window(cub->mlx, cub->dspl.win);
+	// Sur macOS, mlx_destroy_display n'existe pas
+	#else
+	if (cub->dspl.win)
+		mlx_destroy_window(cub->mlx, cub->dspl.win);
+	if (cub->mlx)
+		mlx_destroy_display(cub->mlx);
+	#endif
+	//mlx_destroy_window(dspl->cub->mlx, dspl->win);
+	//mlx_destroy_display(dspl->cub->mlx);
 }
 
 static void	free_program_data(t_prog *pr)
@@ -37,7 +47,7 @@ static void	free_map_data(t_map *map)
 
 int	free_cub(t_main *cub)
 {
-	destroy_display(&cub->dspl);
+	destroy_display(cub);
 	free_program_data(&cub->pr);
 	free_map_data(&cub->map);
 	return (0);

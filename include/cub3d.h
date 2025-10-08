@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/05 15:16:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/08 09:44:01 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@
 # include <math.h>
 # include <stdbool.h>
 # include <errno.h>
+#ifdef __APPLE__
+# include "../lib/mlx_macos/mlx.h"
+#else
+# include "../lib/mlx_linux/mlx.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
+#endif
 
 typedef struct s_main_struct		t_main;
 typedef	struct s_program_data		t_prog;
@@ -54,7 +59,6 @@ typedef struct s_map_data			t_map;
 # define MOVE_UNIT 5.0
 
 # include "../lib/libft/libft.h"
-# include "../lib/mlx/mlx.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"
@@ -66,6 +70,7 @@ typedef struct s_map_data			t_map;
 # include "gamedata.h"
 # include "initfree.h"
 # include "inputs_loop.h"
+# include "keycodes.h"
 # include "moves.h"
 
 /**

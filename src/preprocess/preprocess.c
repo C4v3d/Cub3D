@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preprocess.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 11:54:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:08:12 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	preprocess(t_main *cub, char *input_file)
 	open_file(cub, input_file);
 	/*Check if map is before data*/
 	parse_file(cub);
+	fprintf(stderr, "preprocess\n");
 	validate_map(&cub->map);
 	init_parsed_data(cub);
 	// log_colors(cub);

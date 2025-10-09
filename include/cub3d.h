@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/04 18:38:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:12:47 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_map_data			t_map;
 # define DIMENSION 2
 
 // Define decr/incrementation value from keyboard inputs
-# define MOVE_UNIT 5.0
+# define MOVE_UNIT 0.1
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"

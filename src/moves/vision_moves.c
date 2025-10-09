@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 18:39:44 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:46:18 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	update_aov(double *aov, float max_angle, int kc)
 	if (kc == A && *(aov) >= max_angle)
 		*(aov) = 0;
 	else if (kc == A)
-		*(aov) += MOVE_UNIT;
+		*(aov) += 1;
 	else if (kc == D && *(aov) < 0.01)
-		*(aov) = max_angle - MOVE_UNIT;
+		*(aov) = max_angle - 1;
 	else if (kc == D)
-		*(aov) -= MOVE_UNIT;
+		*(aov) -= 1;
 	if (*(aov) == max_angle)
 		*(aov) = 0;
 	fprintf(stderr, "👁️‍🗨️ [update_aov]....%s%f%s\n", YEL, *aov, RESET);

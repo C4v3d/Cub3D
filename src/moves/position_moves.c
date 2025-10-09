@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 19:27:39 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:43:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 static bool	new_pos(t_player *p, int kc)
 {
-	fprintf(stderr, "new_pos_is_valid | x: %lf | y: %lf | cos: %lf | sin: %lf\n", p->pos[X], p->pos[Y], p->trgo.cos_a, p->trgo.sin_a);
+	double	last_pos_x;
+	double	last_pos_y;
 
-	//if (kc == W)
-	//	if (p->pos[X] + p->trgo.cos_a > p->cub->map.dim[X] && p->pos[Y] + p->trgo.sin_a > p->cub->map.dim[Y])
-	//		return (fprintf(stderr, "%sPlayer try to walk ot of map limits%s\n", RED, RESET), false);
-	//if (kc == S)
-	//	if (p->pos[X] + p->trgo.cos_a < p->cub->map.dim[X] && p->pos[Y] + p->trgo.sin_a < p->cub->map.dim[Y])
-	//		return (fprintf(stderr, "%sPlayer try to walk ot of map limits%s\n", RED, RESET), false);
-	//if (p->cub->map.grid[(int)(p->pos[Y] + p->trgo.sin_a)][(int)(p->pos[X] + p->trgo.cos_a)] == '1')
-	//		return (fprintf(stderr, "%sPlayer try to walk through wall%s\n", RED, RESET), false);
+	last_pos_x = p->pos[X];
+	last_pos_y = p->pos[Y];
 	if (kc == W)
 	{
-		p->pos[X] -= p->trgo.cos_a;
-		p->pos[Y] -= p->trgo.sin_a;
+		p->pos[X] -= p->trgo.cos_a * MOVE_UNIT;
+		p->pos[Y] -= p->trgo.sin_a * MOVE_UNIT;
 	}
 	if (kc == S)
 	{
-		p->pos[X] += p->trgo.cos_a;
-		p->pos[Y] += p->trgo.sin_a;
+		p->pos[X] += p->trgo.cos_a * MOVE_UNIT;
+		p->pos[Y] += p->trgo.sin_a * MOVE_UNIT;
+	}
+	if ((p->pos[X] <= 0 || p->pos[X] >= p->cub->map.dim[X])
+		|| (p->pos[Y] <= 0 || p->pos[Y] >= p->cub->map.dim[Y])
+			|| p->cub->map.grid[(int)p->pos[Y]][(int)p->pos[X]] == '1')
+	{
+		p->pos[X] = last_pos_x;
+		p->pos[Y] = last_pos_y;
+		return (false);
 	}
 	return (true);
 }
@@ -41,12 +44,10 @@ int	update_plyr_position(t_player *p, int kc)
 {
 	if (!(kc == W || kc == LA || kc == S || kc == RA))
 		return (0);
-	p->trgo.a_rad = degrees_to_radians(p);
-	p->trgo.cos_a = cos(p->trgo.a_rad);
-	p->trgo.sin_a = sin(p->trgo.a_rad);
+	p->trgo.a_rad = degrees_to_radians(p->aov);
+	get_cos_sin(p);
 	if (!new_pos(p, kc))
-		return (0);
-	//fprintf(stderr, "| %supdate_plyr_position%s\n| a_rad: %lf\n| cos_a: %lf\n| sin_a: %lf\n", BLU, RESET, p->trgo.a_rad, p->trgo.cos_a, p->trgo.sin_a);
+		return (fprintf(stderr, "%supdate_plr_position | CAN'T GO THERE%s\n", RED, RESET), 0);
 	fprintf(stderr, "| %supdate_plyr_position%s\n| aov: %f\n| pos[X]: %f\n| pos[Y]: %f\n", BLU, RESET, p->aov, p->pos[X], p->pos[Y]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 18:32:26 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:43:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		init_parsed_data(t_main *cub)
 int		init_hooks(t_main *cub)
 {
 	mlx_key_hook(cub->dspl.win, inputs_loop, cub);
-	//mlx_key_hook(cub->dspl.win, mouse_inputs, cub);
+	//mlx_hook(cub->dspl.win, 02, 0L, inputs_loop, cub);
 	mlx_loop_hook(cub->mlx, to_close_program, cub);
 	mlx_hook(cub->dspl.win, 17, 0L, free_cub, cub);
 	return (0);

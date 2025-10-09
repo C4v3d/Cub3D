@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   maths_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/08 11:52:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:52:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,32 @@
 
 void	get_cos_sin(t_player *p)
 {
-	if (p->aov == 0 || p->aov == 360)
-	{
-		p->trgo.cos_a = (int)1;
-		p->trgo.sin_a = (int)0;
-	}
-	else if (p->aov == 90)
-	{
-		p->trgo.cos_a = (int)0;
-		p->trgo.sin_a = (int)1;
-	}
-	else if (p->aov == 180)
-	{
-		p->trgo.cos_a = (int)-1;
-		p->trgo.sin_a = (int)0;
-	}
-	else if (p->aov == 270)
-	{
-		p->trgo.cos_a = (int)0;
-		p->trgo.sin_a = (int)-1;
-	}
-	else
-	{
+	//if (p->aov == 0 || p->aov == 360)
+	//{
+	//	p->trgo.cos_a = (int)1;
+	//	p->trgo.sin_a = (int)0;
+	//}
+	//else if (p->aov == 90)
+	//{
+	//	p->trgo.cos_a = (int)0;
+	//	p->trgo.sin_a = (int)1;
+	//}
+	//else if (p->aov == 180)
+	//{
+	//	p->trgo.cos_a = (int)-1;
+	//	p->trgo.sin_a = (int)0;
+	//}
+	//else if (p->aov == 270)
+	//{
+	//	p->trgo.cos_a = (int)0;
+	//	p->trgo.sin_a = (int)-1;
+	//}
+	//else
+	//{
 		p->trgo.cos_a = cos(p->trgo.a_rad);
 		p->trgo.sin_a = sin(p->trgo.a_rad);
-	}
+		fprintf(stderr, "get_cos_sin | cos: %lf | sin: %lf | rad: %lf\n", p->trgo.cos_a, p->trgo.sin_a, p->trgo.a_rad);
+	//}
 }
 
 

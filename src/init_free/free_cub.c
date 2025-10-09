@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/30 11:48:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/09 09:34:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ static void	free_program_data(t_prog *pr)
 		ft_perror(pr->cub, errno, WARNING);
 }
 
-static void	free_player_data(t_player *plyr)
-{
-	w_free((void**)&plyr->pos_mp);
-	w_free((void**)&plyr->pos_ti);
-	w_free((void**)&plyr->fov);
-}
+// static void	free_player_data(t_player *plyr)
+// {
+// }
 
 static void	free_map_data(t_map *map)
 {
@@ -46,7 +43,6 @@ static void	free_map_data(t_map *map)
 		w_free((void**)&map->grid[i]);
 	w_free((void**)&map->grid);
 	w_free((void**)&map->dim);
-	w_free((void**)&map->plyr_start_pos);
 }
 
 
@@ -62,7 +58,7 @@ int	free_cub(t_main *cub)
 	destroy_display(&cub->dspl);
 	free_graphic_data(&cub->gfx);
 	free_program_data(&cub->pr);
-	free_player_data(&cub->plyr);
+	// free_player_data(&cub->plyr);
 	free_map_data(&cub->map);
 	free_user_inputs(&cub->ctrl);
 	return (0);

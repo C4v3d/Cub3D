@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 17:55:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:05:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	init_player_data(t_player *p, t_main *cub)
 	p->trgo.cos_a = 0;
 	p->trgo.sin_a = 0;
 	p->aov = 0;
+	p->aov_max = (float)M_PI * 2;
 }
 
 void	init_cub(t_main *cub)

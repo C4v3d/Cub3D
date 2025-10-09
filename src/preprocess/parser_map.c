@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/04 16:41:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:09:51 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ static void	process_line(t_map *map, char *line)
 	update_x_dimension(line, &map->dim[X]);
 	if (orientation)
 	{
-		if (line[orientation] == 'N')
-			map->plyr_start_ori = 90;
-		else if (line[orientation] == 'E')
-			map->plyr_start_ori = 180;
-		else if (line[orientation] == 'S')
-			map->plyr_start_ori = 270;
-		else if (line[orientation] == 'W')
+		if (line[orientation] == 'E')
 			map->plyr_start_ori = 0;
+		else if (line[orientation] == 'N')
+			map->plyr_start_ori = M_PI / 2;
+		else if (line[orientation] == 'W')
+			map->plyr_start_ori = M_PI;
+		else if (line[orientation] == 'S')
+			map->plyr_start_ori = M_PI * 2;
 		map->plyr_start_pos[X] = orientation;
 		map->plyr_start_pos[Y] = map->dim[Y];
 	}

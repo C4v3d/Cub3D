@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/09 17:16:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:10:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ static bool	new_pos(t_player *p, int kc)
 
 int	update_plyr_position(t_player *p, int kc)
 {
-	//fprintf(stderr, "| %supdate_plyr_position%s\n| aov: %f\n| pos[X]: %f\n| pos[Y]: %f\n", BLU, RESET, p->aov, p->pos[X], p->pos[Y]);
 	if (!(kc == W || kc == LA || kc == S || kc == RA))
 		return (0);
-	p->trgo.a_rad = degrees_to_radians(p->aov);
 	get_cos_sin(p);
 	if (!new_pos(p, kc))
 		return (fprintf(stderr, "%supdate_plr_position | CAN'T GO THERE%s\n", RED, RESET), 0);

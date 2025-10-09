@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 15:42:04 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 16:58:01 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 
 # define MINI_RES 16
-int	draw_minimap(t_main *cub);
+void	draw_minimap(t_main *cub);
 
 #endif

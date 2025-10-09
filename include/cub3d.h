@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/03 14:24:44 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/09 10:03:07 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef union u_color				t_color;
 typedef struct s_map_data			t_map;
 
 
-# define WINDOW_WIDTH 1080 * 2
-# define WINDOW_HEIGHT 720 * 2
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 480
 /**
  * Define the number of
  * textures and colors
@@ -71,14 +71,20 @@ void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
 void	log_map_data(t_main *cub);
 
+typedef struct	s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
 typedef struct	s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}	t_data;
 
 typedef union u_color
 {
@@ -92,17 +98,17 @@ typedef union u_color
 	};
 }	t_color;
 
-typedef struct		s_user_control_input
+typedef struct	s_user_control_input
 {
-	int				*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
-	t_main			*cub;			// `ptr` to parent struct
-}					t_usr_ctrl_in;
+	int		*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
+	t_main	*cub;			// `ptr` to parent struct
+}	t_usr_ctrl_in;
 
 typedef struct		s_display_window
 {
-	void			*win;
-	t_main			*cub;			// `ptr` to parent struct
-}					t_display;
+	void	*win;
+	t_main	*cub;			// `ptr` to parent struct
+}	t_display;
 
 typedef struct	s_graphic_data
 {
@@ -117,32 +123,28 @@ typedef struct	s_graphic_data
 
 typedef struct	s_map_data
 {
-	char	**grid;			// int[w][h] for: MAP MATRIX
-	size_t	dim[DIMENSION];			// int[2] for: map dimensions
-	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
-	size_t	plyr_start_ori;	// START ORIENTATION (N,S,W or E)
-	t_main	*cub;			// `ptr` to parent struct
+	char		**grid;				// int[w][h] for: MAP MATRIX
+	size_t		dim[DIMENSION];			// int[2] for: map dimensions
+	t_vector	plyr_pos;
+	size_t		plyr_start_ori;			// START ORIENTATION (N,S,W or E)
+	t_main		*cub;				// `ptr` to parent struct
 }	t_map;
 
-typedef struct		s_player_data
+typedef struct	s_player_data
 {
-	size_t			aov;			// angle of view based on (txtr_res * 4)
-	size_t			fov_max;		// field of view
-	size_t			fov_val;		// field of view
-	size_t			*fov;			// field of view
-	size_t			*pos_mp;		// int[2] for: PLAYER X&Y POSITION ON MAP GRID
-	size_t			*pos_ti;		// int[2] for: PLAYER X&Y POSITION ON TILE
-	t_main			*cub;			// `ptr` to parent struct
-}					t_player;
+	t_vector	*pos;
+	t_vector	*dir;
+	t_main		*cub;			// `ptr` to parent struct
+}	t_player;
 
-typedef struct		s_program_data
+typedef struct	s_program_data
 {
-	bool			close_program;
-	int				input_file_fd;
-	t_main			*cub;			// `ptr` to parent struct
-}					t_prog;
+	bool	close_program;
+	int		input_file_fd;
+	t_main	*cub;				// `ptr` to parent struct
+}	t_prog;
 
-typedef struct		s_main_struct
+typedef struct	s_main_struct
 {
 	void			*mlx;
 	t_player		plyr;
@@ -151,6 +153,6 @@ typedef struct		s_main_struct
 	t_display		dspl;
 	t_prog			pr;
 	t_usr_ctrl_in	ctrl;
-}					t_main;
+}	t_main;
 
 #endif

@@ -31,8 +31,8 @@ void	log_map_data(t_main *cub)
 	fprintf(stderr, "X :%ld\n", cub->map.dim[X]);
 	fprintf(stderr, "Y :%ld\n", cub->map.dim[Y]);
 	fprintf(stderr, "────────────────・["GRN"Player Start Position"RESET"]\n");
-	fprintf(stderr, "Player start X :%ld\n", cub->map.plyr_start_pos[X]);
-	fprintf(stderr, "Player start Y :%ld\n", cub->map.plyr_start_pos[Y]);
+	fprintf(stderr, "Player start X :%f\n", cub->plyr.pos->x);
+	fprintf(stderr, "Player start Y :%f\n", cub->plyr.pos->y);
 	fprintf(stderr, "────────────────・["GRN"Player Start Orientation"RESET"]\n");
-	fprintf(stderr, "Player start X :%ld\n", cub->map.plyr_start_ori);
+	fprintf(stderr, "Player orientation :%ld\n", cub->map.plyr_start_ori);
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 15:42:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/03 16:57:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	draw_tile(t_data *img, size_t x_pos, size_t y_pos)
 	}
 }
 
-int	draw_minimap(t_main *cub)
+void	draw_minimap(t_main *cub)
 {
 	t_data	mini;
 	size_t	x_i;
@@ -45,7 +45,6 @@ int	draw_minimap(t_main *cub)
 	mini.img = mlx_new_image(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mini.addr = mlx_get_data_addr(mini.img, &mini.bits_per_pixel, &mini.line_length,
 								&mini.endian);
-
 	while (y_i < cub->map.dim[Y])
 	{
 		x_i = 0;
@@ -58,5 +57,4 @@ int	draw_minimap(t_main *cub)
 		y_i++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, mini.img, 0, 0);
-	return (0);
 }

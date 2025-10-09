@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 10:19:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/09 09:58:02 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,24 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 }
 
 static void	init_map_data(t_map *map, t_main *cub)
-{
+{	
 	map->cub = cub;
 	map->grid = ft_calloc(1, sizeof(map->grid));
 	if (!map->grid)
 		ft_perror(map->cub, ENOMEM, CRITICAL);
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
-	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+	ft_bzero(&map->plyr_pos, sizeof(t_vector));
 	map->plyr_start_ori = 0;
 }
 
 static void	init_player_data(t_player *plyr, t_main *cub)
 {
+	t_vector	plyr_dir;
+	
 	plyr->cub = cub;
-	plyr->pos_mp = malloc(sizeof(size_t) * 2);
-	if (!plyr->pos_mp)
-		ft_perror(plyr->cub, ENOMEM, CRITICAL);
-	plyr->pos_ti = malloc(sizeof(size_t) * 2);
-	if (!plyr->pos_ti)
-		ft_perror(plyr->cub, ENOMEM, CRITICAL);
-	plyr->fov = malloc(sizeof(size_t) * 2);
-	if (!plyr->fov)
-		ft_perror(plyr->cub, ENOMEM, CRITICAL);
-	plyr->aov = 0;
+	plyr->pos = &cub->map.plyr_pos;
+	plyr->dir = &plyr_dir;
 }
 
 void	init_cub(t_main *cub)

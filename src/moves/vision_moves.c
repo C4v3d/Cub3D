@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/09 18:22:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:15:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	update_plyr_vision(t_player *p, int	kc)
 {
 	if (!(kc == A || kc == D || kc == I || kc == O))
 		return (0);
-	update_aov(&p->aov, p->aov_max, kc);
+	update_aov(&p->aov, AOV_MAX, kc);
 	return (0);
 }
 

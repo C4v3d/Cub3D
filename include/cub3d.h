@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/09 18:10:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:17:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map_data			t_map;
  * Map Data
  */
 # define DIMENSION 2
+# define AOV_MAX M_PI * 2
 
 // Define decr/incrementation value from keyboard inputs
 # define MOVE_UNIT 0.1
@@ -87,13 +88,6 @@ typedef union u_color
 	};
 }	t_color;
 
-typedef struct		s_trigonometric_values
-{
-	double			a_rad;		// angle in radian
-	double			cos_a;		// cosinus
-	double			sin_a;		// sinus
-}					t_trgo;
-
 typedef struct		s_user_control_input
 {
 	int				*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
@@ -119,25 +113,19 @@ typedef struct	s_graphic_data
 
 typedef struct	s_map_data
 {
-	char	**grid;			// int[w][h] for: MAP MATRIX
-	size_t	dim[DIMENSION];			// int[2] for: map dimensions
-	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
-	double	plyr_start_ori;	// START ORIENTATION (N,S,W or E)
-	t_main	*cub;			// `ptr` to parent struct
+	char	**grid;						// int[w][h] for: MAP MATRIX
+	size_t	dim[DIMENSION];				// int[2] for: map dimensions
+	size_t	plyr_start_pos[DIMENSION];	// int[2] for: PLAYER X&Y START POSITION
+	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
+	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
 
 typedef struct		s_player_data
 {
-	double			aov;			// angle of view
-	double			aov_max;
-	size_t			fov_max;		// field of view
-	size_t			fov_val;		// field of view
-	size_t			*fov;			// field of view
-	double			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
-	double			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
 	double			pos[DIMENSION];
-	t_trgo			trgo;
-	t_main			*cub;			// `ptr` to parent struct
+	double			dir[DIMENSION];
+	double			aov;
+	t_main			*cub;
 }					t_player;
 
 typedef struct		s_program_data

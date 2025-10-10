@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/09 18:05:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:17:46 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,7 @@ static void	init_map_data(t_map *map, t_main *cub)
 static void	init_player_data(t_player *p, t_main *cub)
 {
 	p->cub = cub;
-	p->fov = malloc(sizeof(size_t) * 2);
-	if (!p->fov)
-		ft_perror(p->cub, ENOMEM, CRITICAL);
-	p->trgo.a_rad = 0;
-	p->trgo.cos_a = 0;
-	p->trgo.sin_a = 0;
 	p->aov = 0;
-	p->aov_max = (float)M_PI * 2;
 }
 
 void	init_cub(t_main *cub)

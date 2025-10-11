@@ -1,15 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   inputs_loop.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 12:36:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 12:38:46 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/04 18:37:23 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/04 18:38:34 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef INPUTS_LOOP_H
+# define INPUTS_LOOP_H
 
+int		inputs_loop(int keycode, void *param);
 
+#endif

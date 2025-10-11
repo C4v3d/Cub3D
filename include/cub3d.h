@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/11 12:52:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 13:23:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,16 @@ typedef struct s_map_data			t_map;
  * Map Data
  */
 # define DIMENSION 2
+# define AOV_MAX M_PI * 2
+
+// Define decr/incrementation value from keyboard inputs
+# define MOVE_UNIT 0.1
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
 # include "input_validation.h"
 # include "map_validation.h"
+# include "maths_utils.h"
 # include "parser.h"
 # include "preprocess.h"
 # include "error.h"
@@ -62,7 +67,8 @@ typedef struct s_map_data			t_map;
 # include "gamedata.h"
 # include "initfree.h"
 # include "minimap.h"
-# include "user_input.h"
+# include "inputs_loop.h"
+# include "moves.h"
 
 /**
  * Debugging functions (to remove)
@@ -123,19 +129,20 @@ typedef struct	s_graphic_data
 
 typedef struct	s_map_data
 {
-	char		**grid;				// int[w][h] for: MAP MATRIX
-	size_t		dim[DIMENSION];			// int[2] for: map dimensions
-	t_vector	plyr_pos;
-	size_t		plyr_start_ori;			// START ORIENTATION (N,S,W or E)
-	t_main		*cub;				// `ptr` to parent struct
+	char	**grid;						// int[w][h] for: MAP MATRIX
+	size_t	dim[DIMENSION];				// int[2] for: map dimensions
+	size_t	plyr_start_pos[DIMENSION];	// int[2] for: PLAYER X&Y START POSITION
+	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
+	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
 
 typedef struct	s_player_data
 {
-	t_vector	*pos;
-	t_vector	*dir;
-	t_main		*cub;			// `ptr` to parent struct
-}	t_player;
+	double			pos[DIMENSION];
+	double			dir[DIMENSION];
+	double			aov;
+	t_main			*cub;
+}					t_player;
 
 typedef struct	s_program_data
 {

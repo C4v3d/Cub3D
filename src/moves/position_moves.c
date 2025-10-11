@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/10 11:20:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/11 14:22:42 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	update_plyr_position(t_player *p, int kc)
 	get_cos_sin(p);
 	if (!new_pos(p, kc))
 		return (fprintf(stderr, "%supdate_plyr_position | CAN'T GO THERE%s\n", RED, RESET), 0);
-	fprintf(stderr, "| %supdate_plyr_position%s\n| aov: %lf\n| pos[X]: %f\n| pos[Y]: %f\n", BLU, RESET, p->aov, p->pos[X], p->pos[Y]);
+	// fprintf(stderr, "| %supdate_plyr_position%s\n| aov: %lf\n| pos[X]: %f\n| pos[Y]: %f\n", BLU, RESET, p->aov, p->pos[X], p->pos[Y]);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/11 12:33:11 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:32:14 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		preprocess(&cub, argv[1]);
+		log_data(&cub);
 		mlx_loop(cub.mlx);
 		free_cub(&cub);
 		return (0);

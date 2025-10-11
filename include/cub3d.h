@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/11 13:23:19 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:31:26 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ typedef struct s_map_data			t_map;
  */
 void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
-void	log_map_data(t_main *cub);
+void	log_data(t_main *cub);
+void	log_player_data(t_player *p);
 
 typedef struct	s_vector
 {

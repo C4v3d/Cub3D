@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:36:39 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/11 12:41:04 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-# define EXTENSION ".cub"
-# define EXTENSION_LEN 4
 
-void	open_file(t_main *cub, char *input_file);
+# define MINI_RES 16
+void	draw_minimap(t_main *cub);
 
 #endif

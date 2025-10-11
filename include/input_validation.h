@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   input_validation.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:36:39 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/02 13:42:49 by timmi             #+#    #+#             */
+/*   Updated: 2025/10/02 13:46:20 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef INPUT_VALIDATION_H
+# define INPUT_VALIDATION_H
 
-# define EXTENSION ".cub"
-# define EXTENSION_LEN 4
-
-void	open_file(t_main *cub, char *input_file);
+bool	is_input_valid(char *input_file);
 
 #endif

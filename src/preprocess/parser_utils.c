@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:36:39 by timmi            ###   ########.fr       */
+/*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
+/*   Updated: 2025/10/03 11:00:15 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../../include/cub3d.h"
 
-# define EXTENSION ".cub"
-# define EXTENSION_LEN 4
+int	get_color(char *line, int len)
+{
+	int color;
+	int	i;
 
-void	open_file(t_main *cub, char *input_file);
+	color = 0;
+	i = 0;
+	while (i < len)
+		color = color * 10 + (line[i++] - '0');
+	return (color);
+}
 
-#endif
+/**
+ * Maybe put this functions in utils ?
+ */
+int	get_id_len(char *line)
+{
+	int	len;
+
+	len = 0;
+	while (ft_isalnum(line[len])) 
+		len++;
+	return (len);
+}

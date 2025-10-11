@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 11:08:53 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/02 13:35:16 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Map file does not exist.");
 	if (errcode == NO_DATA)
 		return ("No data found.");
+	if (errcode == MLX_FAIL)
+		return ("MLX failed.");
+	if (errcode == DUP)
+		return ("Duplicated texture/color");
 	return (NULL);
 }
 
@@ -40,12 +44,15 @@ static int	ft_error(t_errorcode errcode)
 	return (errcode);
 }
 
-static void	ft_fatal(t_main *cub)
+static void	ft_fatal(t_main *cub, t_errorcode errcode)
 {
 	char	*err_msg;
 
+	if (!errcode)
+		err_msg = strerror(errno);
+	else
+		err_msg = ft_strerror(errcode);
 	free_cub(cub);
-	err_msg = strerror(errno);
 	printf(RED"Fatal error:	"RESET"%s\n", err_msg);
 	printf("\n"RED"	<--- Exiting ! --->"RESET"\n");
 	exit(EXIT_FAILURE);
@@ -59,6 +66,6 @@ int	ft_perror(t_main *cub, t_errorcode errcode, t_errortype opcode)
 	else if (opcode == ERROR)
 		return (ft_error(errcode));
 	else if (opcode == CRITICAL)
-		ft_fatal(cub);
+		ft_fatal(cub, errcode);
 	return (0);
 }

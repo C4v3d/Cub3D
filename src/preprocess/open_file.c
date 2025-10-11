@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_file.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
+/*   Updated: 2025/10/02 13:21:01 by timmi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../include/cub3d.h"
+
+static int	get_file_fd(t_main *cub, char *input_file)
+{
+	char	*full_path;
+	int		fd;
+
+	full_path = ft_strjoin(MAP_PATH, input_file);
+	if (!full_path)
+		ft_perror(NULL, errno, ERROR);
+	fd = open(full_path, O_RDONLY);
+	w_free((void **)&full_path);
+	if (fd == -1)
+		ft_perror(cub, errno, CRITICAL);
+	return (fd);
+}
+
+
+/**
+ * Check if directory
+ */
+void	open_file(t_main *cub, char *input_file)
+{
+	cub->pr.input_file_fd = get_file_fd(cub, input_file);
+	if (cub->pr.input_file_fd == -1)
+		ft_perror(cub, MAP_FILE_NULL, CRITICAL);
+}

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 13:24:22 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:30:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		init_parsed_data(t_main *cub)
 	//cub->map.plyr_start_ori = 0;
 	//cub->map.plyr_start_pos[X] = 2;
 	//cub->map.plyr_start_pos[Y] = 2;
-	fprintf(stderr, "%s⚠️ cub->gfx.txtr_res..........: %d\n⚠️ cub->map.dim[X]............: %ld\n⚠️ cub->map.dim[Y]............: %ld%s\n", YEL, cub->gfx.txtr_res, cub->map.dim[X], cub->map.dim[Y], RESET);
-	fprintf(stderr, "%s⚠️ cub->map.plyr_start_ori....: %lf\n⚠️ cub->map.plyr_start_pos[X].: %ld\n⚠️ cub->map.plyr_start_pos[Y].: %ld%s\n", YEL, cub->map.plyr_start_ori, cub->map.plyr_start_pos[X], cub->map.plyr_start_pos[Y], RESET);
+	// fprintf(stderr, "%s⚠️ cub->gfx.txtr_res..........: %d\n⚠️ cub->map.dim[X]............: %ld\n⚠️ cub->map.dim[Y]............: %ld%s\n", YEL, cub->gfx.txtr_res, cub->map.dim[X], cub->map.dim[Y], RESET);
+	// fprintf(stderr, "%s⚠️ cub->map.plyr_start_ori....: %lf\n⚠️ cub->map.plyr_start_pos[X].: %ld\n⚠️ cub->map.plyr_start_pos[Y].: %ld%s\n", YEL, cub->map.plyr_start_ori, cub->map.plyr_start_pos[X], cub->map.plyr_start_pos[Y], RESET);
 	//cub->map.grid = init_2d_array(cub->map.dim[Y], cub->map.dim[X]);
 	//.............................⚠️TESTS
 

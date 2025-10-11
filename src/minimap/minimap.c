@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 16:57:50 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:16:26 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_tile(t_data *img, size_t x_pos, size_t y_pos)
+void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
 {
 	size_t	x_i;
 	size_t	y_i;
@@ -31,7 +31,7 @@ void	draw_tile(t_data *img, size_t x_pos, size_t y_pos)
 	{
 		x_i = 0;
 		while (x_i++ < MINI_RES)
-			my_mlx_pixel_put(img, (x_pos + x_i), (y_pos + y_i), 0x00DFE2);
+			my_mlx_pixel_put(img, (x_pos + x_i), (y_pos + y_i), color);
 	}
 }
 
@@ -51,9 +51,10 @@ void	draw_minimap(t_main *cub)
 		while (cub->map.grid[y_i][x_i])
 		{
 			if (cub->map.grid[y_i][x_i] == '1')
-				draw_tile(&mini, x_i * MINI_RES, y_i * MINI_RES);
+				draw_tile(&mini, x_i * MINI_RES, y_i * MINI_RES, 200);
 			x_i++;
 		}
+		draw_tile(&mini, cub->plyr.pos[X], cub->plyr.pos[Y], 50);
 		y_i++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, mini.img, 0, 0);

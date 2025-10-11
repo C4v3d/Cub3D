@@ -5,20 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 12:33:51 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 12:56:24 by timmi            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/10/11 13:28:39 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
 
-// static void	free_user_inputs(t_usr_ctrl_in *ctrl)
-// {
-	
-// 	free(ctrl->key_in);
-// 	w_free((void**)&ctrl->key_in);
-// }
+static void	destroy_display(t_display *dspl)
+{
+	mlx_destroy_window(dspl->cub->mlx, dspl->win);
+	mlx_destroy_display(dspl->cub->mlx);
+}
+
+static void	free_user_inputs(t_usr_ctrl_in *ctrl)
+{
+	w_free((void**)&ctrl->kc); // ⚠️ Besoin et possible de gerer plusieurs inputs?
+}
 
 static void	free_program_data(t_prog *pr)
 {
@@ -26,20 +30,17 @@ static void	free_program_data(t_prog *pr)
 		ft_perror(pr->cub, errno, WARNING);
 }
 
-// static void	free_player_data(t_player *plyr)
-// {
-// }
+static void	free_map_data(t_map *map)
+{
+	size_t	i;
 
-// static void	free_map_data(t_map *map)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (++i < map->height)
-// 		w_free((void**)&map->grid[i]);
-// 	w_free((void**)&map->grid);
-// 	w_free((void**)&map->dim);
-// }
+	i = -1;
+	while (++i < map->dim[Y])
+		w_free((void**)&map->grid[i]);
+	w_free((void**)&map->grid);
+	w_free((void**)&map->dim);
+	w_free((void**)&map->plyr_start_pos);
+}
 
 
 static void	free_graphic_data(t_graphic *gfx)
@@ -51,10 +52,10 @@ static void	free_graphic_data(t_graphic *gfx)
 
 int	free_cub(t_main *cub)
 {
+	destroy_display(&cub->dspl);
 	free_graphic_data(&cub->gfx);
 	free_program_data(&cub->pr);
-	// free_player_data(&cub->plyr);
-	// free_map_data(&cub->map);
-	// free_user_inputs(&cub->ctrl);
+	free_map_data(&cub->map);
+	free_user_inputs(&cub->ctrl);
 	return (0);
 }

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 13:46:54 by timmi            ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/10/11 12:32:15 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef GAMEDATA_H
 # define GAMEDATA_H
@@ -19,11 +20,17 @@
 # define A 97
 # define S 115
 # define D 100
-//# define LA // LEFT ARROW
-//# define RA // RIGHT ARROW
-//# define UA // UP ARROW
-//# define DA // DOWN ARROW
+# define UA 65362 // UP ARROW
+# define LA 65361 // LEFT ARROW
+# define DA 65364 // DOWN ARROW
+# define RA 65363 // RIGHT ARROW
+# define I 105
+# define O 111
 
+/**
+ * General definition to access
+ * axis in an array
+ */
 typedef enum	e_axis
 {
 	X,
@@ -36,19 +43,12 @@ typedef enum	e_rgb_elements
 	CEILING
 }				t_rgbel;
 
-typedef enum	e_rgb
-{
-	R,
-	G,
-	B
-}				t_rgbcol;
-
 typedef enum	e_orientation
 {
-	O_NO,
-	O_SO,
-	O_WE,
-	O_EA
+	NO,
+	SO,
+	WE,
+	EA
 }				t_ori;
 
 #endif

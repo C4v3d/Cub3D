@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/14 17:23:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/09/18 16:36:39 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
+/*   Updated: 2025/10/03 10:05:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "../../include/cub3d.h"
 
-# define EXTENSION ".cub"
-# define EXTENSION_LEN 4
-
-void	open_file(t_main *cub, char *input_file);
-
-#endif
+void	validate_map(t_map *map)
+{
+	(void)map;
+}

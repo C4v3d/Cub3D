@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 14:16:26 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/12 15:52:10 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
+static void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
 {
 	size_t	x_i;
 	size_t	y_i;
@@ -33,6 +33,21 @@ void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
 		while (x_i++ < MINI_RES)
 			my_mlx_pixel_put(img, (x_pos + x_i), (y_pos + y_i), color);
 	}
+}
+
+static void	draw_plyr(t_data *img, double pos_x, double pos_y, double dir[2], int color)
+{
+	size_t	x_i;
+	size_t	y_i;
+
+	y_i = 0;
+	while (y_i++ < MINI_RES)
+	{
+		x_i = 0;
+		while (x_i++ < MINI_RES)
+			my_mlx_pixel_put(img, ((pos_x - 8) + x_i), ((pos_y - 8) + y_i), color);
+	}
+	fprintf(stderr, RED "dir x:%f y:%f\n" RESET, dir[X], dir[Y]);
 }
 
 void	draw_minimap(t_main *cub)
@@ -54,7 +69,7 @@ void	draw_minimap(t_main *cub)
 				draw_tile(&mini, x_i * MINI_RES, y_i * MINI_RES, 200);
 			x_i++;
 		}
-		draw_tile(&mini, cub->plyr.pos[X], cub->plyr.pos[Y], 50);
+		draw_plyr(&mini, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->plyr.dir, 0xFF0000);
 		y_i++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, mini.img, 0, 0);

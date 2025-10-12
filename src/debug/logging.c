@@ -40,7 +40,7 @@ void	log_player_data(t_player *p)
 void	log_data(t_main *cub)
 {
 	// fprintf(stderr, "────────────────・["GRN"Grid"RESET"]\n");
-	// log_map(cub);
+	log_map(cub);
 	log_player_data(&cub->plyr);
 
 }

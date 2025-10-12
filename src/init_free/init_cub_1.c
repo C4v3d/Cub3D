@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/05 15:15:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:31:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ static void	init_map_data(t_map *map, t_main *cub)
 static void	init_player_data(t_player *p, t_main *cub)
 {
 	p->cub = cub;
-	p->trgo.a_rad = 0;
-	p->trgo.cos_a = 0;
-	p->trgo.sin_a = 0;
 	p->aov = 0;
 }
 

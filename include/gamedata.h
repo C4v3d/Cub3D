@@ -6,9 +6,10 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/08 09:34:50 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:30:34 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef GAMEDATA_H
 # define GAMEDATA_H
@@ -22,12 +23,6 @@ typedef enum	e_axis
 	X,
 	Y
 }				t_axis;
-
-typedef enum	e_sides
-{
-	LFT,
-	RGT
-}				t_side;
 
 typedef enum	e_rgb_elements
 {

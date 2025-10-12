@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:17:37 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:28:29 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_main_ray_len(t_player *p, t_map *m)
 {
-	(void)p;
 	(void)m;
+	fprintf(stderr, "get_main_ray_len | pos[X]: %lf | pos[Y]:%lf | dir[X]: %lf | dir[Y]:%lf\n", p->pos[X], p->pos[Y], p->dir[X], p->dir[Y]);
 	return (0);
 }

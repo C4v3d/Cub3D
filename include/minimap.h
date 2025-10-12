@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 12:41:04 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/12 17:34:19 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 
 # define MINI_RES 16
-void	draw_minimap(t_main *cub);
+void	draw_minimap(int kc, t_main *cub);
 
 #endif

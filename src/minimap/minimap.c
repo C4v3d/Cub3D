@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:08:12 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:37:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	draw_plyr(t_data *img, double pos_x, double pos_y, double dir[2], in
 	}
 }
 
-void	draw_minimap(t_main *cub)
+void	draw_minimap(int kc, t_main *cub)
 {
 	t_data	mini;
 	size_t	x_i;
@@ -70,6 +70,10 @@ void	draw_minimap(t_main *cub)
 			x_i++;
 		}
 		draw_plyr(&mini, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->plyr.dir, 0xFF0000);
+		if (kc == W)
+			my_mlx_pixel_put(&mini, (cub->plyr.pos[X] + cub->plyr.dir[X]) * MINI_RES, (cub->plyr.pos[Y] - cub->plyr.dir[Y]) * MINI_RES, 0x00FF00);
+		if (kc == S)
+			my_mlx_pixel_put(&mini, (cub->plyr.pos[X] - cub->plyr.dir[X]) * MINI_RES, (cub->plyr.pos[Y] + cub->plyr.dir[Y]) * MINI_RES, 0x00FF00);
 		y_i++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, mini.img, 0, 0);

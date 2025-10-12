@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 14:30:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/12 17:10:43 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		init_parsed_data(t_main *cub)
 
 int		init_hooks(t_main *cub)
 {
-	mlx_hook(cub->dspl.win, 02, 1L<<0, inputs_loop, cub);
+	mlx_hook(cub->dspl.win, 02, 1L<<0, loop, cub);
 	mlx_loop_hook(cub->mlx, to_close_program, cub);
 	mlx_hook(cub->dspl.win, 17, 0L, free_cub, cub);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/10 11:11:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:07:27 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	get_cos_sin(t_player *p)
 	{
 		p->dir[X] = cos(p->aov);
 		p->dir[Y] = sin(p->aov);
-		fprintf(stderr, "get_cos_sin | cos(dir[X]): %lf | sin(dir[Y]): %lf | rad: %lf\n", p->dir[X], p->dir[Y], p->aov);
 	}
 }
 

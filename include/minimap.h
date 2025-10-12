@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inputs_loop.h                                      :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 18:37:23 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 18:38:34 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/12 17:34:19 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INPUTS_LOOP_H
-# define INPUTS_LOOP_H
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-int		inputs_loop(int keycode, void *param);
+
+# define MINI_RES 16
+void	draw_minimap(int kc, t_main *cub);
 
 #endif

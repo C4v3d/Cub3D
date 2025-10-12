@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/11 14:30:50 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/12 17:15:38 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/12 17:16:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef DDA_H
+# define DDA_H
 
-void	parse_file(t_main *cub)
-{
-	parse_data(&cub->gfx);
-	parse_map(&cub->map);
-}
+int	get_main_ray_len(t_player *p, t_map *m);
+
+#endif

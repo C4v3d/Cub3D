@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/08 10:07:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 22:30:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int	main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		preprocess(&cub, argv[1]);
-		// execution();
-		// cleaning();
-		// free_cub(cub);
+		log_data(&cub);
 		mlx_loop(cub.mlx);
 		free_cub(&cub);
 		return (0);

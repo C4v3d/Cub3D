@@ -1,31 +1,29 @@
-# **************************************************************************** #
-#                                   CONFIG                                     #
-# **************************************************************************** #
+BUILD_PATH = build
+CFILES_PATH = src
+CFILES =	$(CFILES_PATH)/main.c \
+			$(CFILES_PATH)/error_handler/error_msg.c \
+			$(CFILES_PATH)/preprocess/parser.c \
+			$(CFILES_PATH)/preprocess/input_validation.c \
+			$(CFILES_PATH)/preprocess/parser_utils.c \
+			$(CFILES_PATH)/preprocess/parser_data.c \
+			$(CFILES_PATH)/preprocess/parser_map.c \
+			$(CFILES_PATH)/preprocess/map_validation.c \
+			$(CFILES_PATH)/preprocess/preprocess.c \
+			$(CFILES_PATH)/preprocess/open_file.c \
+			$(CFILES_PATH)/maths_utils/maths_utils_1.c \
+			$(CFILES_PATH)/debug/logging.c \
+			$(CFILES_PATH)/init_free/init_cub_1.c \
+			$(CFILES_PATH)/init_free/init_cub_2.c \
+			$(CFILES_PATH)/init_free/free_cub.c \
+			$(CFILES_PATH)/init_free/utils_init_free.c \
+			$(CFILES_PATH)/loop/loop.c \
+			$(CFILES_PATH)/moves/position_moves.c \
+			$(CFILES_PATH)/moves/vision_moves.c \
+			$(CFILES_PATH)/map_rendering/calculate_fov.c \
+			$(CFILES_PATH)/map_rendering/main_ray.c \
+			$(CFILES_PATH)/minimap/minimap.c \
 
-NAME        = cub3d
-CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror
 
-HEADER      = cub3d.h
-SRCS        = src/main.c \
-			src/error_handler/error_msg.c \
-			src/preprocess/parser.c \
-			src/preprocess/input_validation.c \
-			src/preprocess/parser_utils.c \
-			src/preprocess/parser_data.c \
-			src/preprocess/parser_map.c \
-			src/preprocess/map_validation.c \
-			src/preprocess/preprocess.c \
-			src/preprocess/open_file.c \
-			src/maths_utils/maths_utils_1.c \
-			src/debug/logging.c \
-			src/init_free/init_cub_1.c \
-			src/init_free/init_cub_2.c \
-			src/init_free/free_cub.c \
-			src/init_free/utils_init_free.c \
-			src/inputs_loop/inputs_loop.c \
-			src/moves/position_moves.c \
-			src/moves/vision_moves.c \
 
 OBJS_DIR    = objs
 OBJS        = $(SRCS:%.c=$(OBJS_DIR)/%.o)

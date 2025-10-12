@@ -1,15 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   maths_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 12:36:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/09/18 12:38:46 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/04 16:46:24 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/12 13:49:07 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub3d.h"
+#ifndef MATHS_UTILS_H
+# define MATHS_UTILS_H
 
+#define M_PI 3.14159265358979323846
+double	degrees_to_radians(double degrees);
+void	get_cos_sin(t_player *p);
 
+#endif

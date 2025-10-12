@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/11 12:50:32 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:29:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,10 @@ void	preprocess(t_main *cub, char *input_file)
 {
 	if (is_input_valid(input_file) == false)
 		exit(1);
-	fprintf(stderr, "Passed input validation\n");
 	init_cub(cub);
-	fprintf(stderr, "Passed input Initialization\n");
 	open_file(cub, input_file);
-	fprintf(stderr, "Passed open file\n");
 	/*Check if map is before data*/
 	parse_file(cub);
-	fprintf(stderr, "Passed parser\n");
 	// validate_map(&cub->map);
 	init_parsed_data(cub);
 }

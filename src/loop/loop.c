@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-int	inputs_loop(int keycode, void *param)
+int	loop(int keycode, void *param)
 {
 	t_main *cub;
 
@@ -26,10 +26,8 @@ int	inputs_loop(int keycode, void *param)
 		cub->pr.close_program = true;
 		return (0);
 	}
-	fprintf(stderr, "player pos before :%f, %f\n", cub->plyr.pos[X], cub->plyr.pos[Y]);
 	update_plyr_position(&cub->plyr, keycode);
 	update_plyr_vision(&cub->plyr, keycode);
-	fprintf(stderr, "player pos after :%f, %f\n", cub->plyr.pos[X], cub->plyr.pos[Y]);
 	draw_minimap(cub);
 	//update_scene(plyr); -> function to calculate texture tiles in field of vision
 	return (0);

@@ -16,13 +16,13 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/init_free/init_cub_2.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/init_free/utils_init_free.c \
-			$(CFILES_PATH)/input_loop/input_loop.c \
+			$(CFILES_PATH)/loop/loop.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
 			$(CFILES_PATH)/map_rendering/calculate_fov.c \
 			$(CFILES_PATH)/minimap/minimap.c \
 
-			
+
 
 
 
@@ -79,6 +79,6 @@ run: all
 	./$(NAME) map2.cub
 
 leaks: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map2.cub
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map1.cub
 
 .PHONY: all clean fclean re

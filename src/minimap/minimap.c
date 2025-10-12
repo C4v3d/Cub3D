@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 15:52:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/12 17:08:12 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
 	size_t	y_i;
 
 	y_i = 0;
-	
+
 	while (y_i++ < MINI_RES)
 	{
 		x_i = 0;
@@ -39,6 +39,7 @@ static void	draw_plyr(t_data *img, double pos_x, double pos_y, double dir[2], in
 {
 	size_t	x_i;
 	size_t	y_i;
+	(void)dir;
 
 	y_i = 0;
 	while (y_i++ < MINI_RES)
@@ -47,7 +48,6 @@ static void	draw_plyr(t_data *img, double pos_x, double pos_y, double dir[2], in
 		while (x_i++ < MINI_RES)
 			my_mlx_pixel_put(img, ((pos_x - 8) + x_i), ((pos_y - 8) + y_i), color);
 	}
-	fprintf(stderr, RED "dir x:%f y:%f\n" RESET, dir[X], dir[Y]);
 }
 
 void	draw_minimap(t_main *cub)

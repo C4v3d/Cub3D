@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 19:31:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:35:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ double	get_angle(double x, double y)
 {
 	(void)x;
 	(void)y;
+	return (0);
 }
 
 double	extract_double(double n_float)

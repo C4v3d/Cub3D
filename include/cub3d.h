@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/12 17:10:18 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:16:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_map_data			t_map;
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "dda.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"

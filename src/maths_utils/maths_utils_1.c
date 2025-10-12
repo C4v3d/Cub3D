@@ -6,11 +6,35 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:07:27 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:31:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+double	get_angle(double x, double y)
+{
+	(void)x;
+	(void)y;
+}
+
+double	extract_double(double n_float)
+{
+	int n_int;
+
+	n_int = (int)n_float;
+	return (n_float - n_int);
+
+}
+
+double	get_hypotenus(double x, double y)
+{
+	double	hypotenus;
+
+	hypotenus = (x * x) + (y * y);
+	return(sqrt(hypotenus));
+
+}
 
 void	get_cos_sin(t_player *p)
 {

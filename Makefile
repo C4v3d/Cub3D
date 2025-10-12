@@ -1,9 +1,3 @@
-MAKEFLAGS += --no-print-directory
-
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
-MLXFLAGS = -L $(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11
-
 BUILD_PATH = build
 CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
@@ -16,15 +10,19 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/preprocess/map_validation.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
+			$(CFILES_PATH)/maths_utils/maths_utils_1.c \
 			$(CFILES_PATH)/debug/logging.c \
 			$(CFILES_PATH)/init_free/init_cub_1.c \
 			$(CFILES_PATH)/init_free/init_cub_2.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/init_free/utils_init_free.c \
-			$(CFILES_PATH)/user_input/position_moves.c \
-			$(CFILES_PATH)/user_input/utils_usr_in.c \
-			$(CFILES_PATH)/user_input/vision_moves.c \
+			$(CFILES_PATH)/input_loop/input_loop.c \
+			$(CFILES_PATH)/moves/position_moves.c \
+			$(CFILES_PATH)/moves/vision_moves.c \
+			$(CFILES_PATH)/map_rendering/calculate_fov.c \
 			$(CFILES_PATH)/minimap/minimap.c \
+
+			
 
 
 
@@ -78,9 +76,9 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) map1.cub
+	./$(NAME) map2.cub
 
 leaks: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map1.cub
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map2.cub
 
 .PHONY: all clean fclean re

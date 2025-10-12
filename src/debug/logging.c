@@ -23,16 +23,24 @@ void	log_map(t_main *cub)
 		fprintf(stderr, "%s\n", cub->map.grid[i++]);
 }
 
-void	log_map_data(t_main *cub)
+void	log_player_data(t_player *p)
 {
-	fprintf(stderr, "────────────────・["GRN"Grid"RESET"]\n");
+	fprintf(stderr, "────────────────・["GRN"Player data"RESET"]\n");
+	fprintf(stderr, "\n");
+	fprintf(stderr, "────────────────・["GRN"Position"RESET"]\n");
+	fprintf(stderr, "x_coordinate :%f\n", p->pos[X]);
+	fprintf(stderr, "y_coordinate :%f\n", p->pos[Y]);
+	fprintf(stderr, "────────────────・["GRN"Direction"RESET"]\n");
+	fprintf(stderr, "x_direction :%f\n", p->dir[X]);
+	fprintf(stderr, "y_direction :%f\n", p->dir[Y]);
+	fprintf(stderr, "────────────────・["GRN"AOV"RESET"]\n");
+	fprintf(stderr, "aov :%f\n", p->aov);
+}
+
+void	log_data(t_main *cub)
+{
+	// fprintf(stderr, "────────────────・["GRN"Grid"RESET"]\n");
 	log_map(cub);
-	fprintf(stderr, "────────────────・["GRN"Dimention"RESET"]\n");
-	fprintf(stderr, "X :%ld\n", cub->map.dim[X]);
-	fprintf(stderr, "Y :%ld\n", cub->map.dim[Y]);
-	fprintf(stderr, "────────────────・["GRN"Player Start Position"RESET"]\n");
-	fprintf(stderr, "Player start X :%f\n", cub->plyr.pos->x);
-	fprintf(stderr, "Player start Y :%f\n", cub->plyr.pos->y);
-	fprintf(stderr, "────────────────・["GRN"Player Start Orientation"RESET"]\n");
-	fprintf(stderr, "Player orientation :%ld\n", cub->map.plyr_start_ori);
+	log_player_data(&cub->plyr);
+
 }

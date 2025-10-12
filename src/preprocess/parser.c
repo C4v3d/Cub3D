@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/09 09:59:54 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/11 14:30:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	parse_file(t_main *cub)
 {
 	parse_data(&cub->gfx);
 	parse_map(&cub->map);
-	log_map_data(cub);
 }

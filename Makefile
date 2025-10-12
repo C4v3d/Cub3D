@@ -20,6 +20,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
 			$(CFILES_PATH)/map_rendering/calculate_fov.c \
+			$(CFILES_PATH)/map_rendering/main_ray.c \
 			$(CFILES_PATH)/minimap/minimap.c \
 
 

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   gamedata.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 19:13:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 18:18:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/11 13:23:24 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef GAMEDATA_H
 # define GAMEDATA_H
@@ -35,12 +36,6 @@ typedef enum	e_axis
 	X,
 	Y
 }				t_axis;
-
-typedef enum	e_sides
-{
-	LFT,
-	RGT
-}				t_side;
 
 typedef enum	e_rgb_elements
 {

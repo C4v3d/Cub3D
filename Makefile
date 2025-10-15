@@ -1,9 +1,3 @@
-MAKEFLAGS += --no-print-directory
-
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
-MLXFLAGS = -L $(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11
-
 BUILD_PATH = build
 CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
@@ -22,9 +16,14 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/init_free/init_cub_2.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/init_free/utils_init_free.c \
-			$(CFILES_PATH)/inputs_loop/inputs_loop.c \
+			$(CFILES_PATH)/loop/loop.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
+			$(CFILES_PATH)/map_rendering/calculate_fov.c \
+			$(CFILES_PATH)/map_rendering/main_ray.c \
+			$(CFILES_PATH)/minimap/minimap.c \
+
+
 
 
 
@@ -78,7 +77,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) map1.cub
+	./$(NAME) map2.cub
 
 leaks: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map1.cub

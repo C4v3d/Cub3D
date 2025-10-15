@@ -6,18 +6,48 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 17:55:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/12 17:07:27 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-double	degrees_to_radians(t_player *p)
+void	get_cos_sin(t_player *p)
 {
-	double	a_rad;	//angle in radians
+	if (p->aov == 0)
+	{
+		p->dir[X] = (int)1;
+		p->dir[Y] = (int)0;
+	}
+	else if (p->aov == M_PI / 2)
+	{
+		p->dir[X] = (int)0;
+		p->dir[Y] = (int)1;
+	}
+	else if (p->aov == M_PI)
+	{
+		p->dir[X] = (int)-1;
+		p->dir[Y] = (int)0;
+	}
+	else if (p->aov == M_PI * 2)
+	{
+		p->dir[X] = (int)0;
+		p->dir[Y] = (int)-1;
+	}
+	else
+	{
+		p->dir[X] = cos(p->aov);
+		p->dir[Y] = sin(p->aov);
+	}
+}
+
+
+double	degrees_to_radians(double degrees)
+{
+	double	radians;	// Angle in radians
 	double	pi;
 
 	pi = 3.14159;
-	a_rad = p->aov * pi / 180.0;
-	return (a_rad);
+	radians = degrees * pi / 180.0;
+	return (radians);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_init_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 14:06:48 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/03 11:56:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/11 12:57:37 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,25 @@ int	to_close_program(t_main *cub)
 	return (false);
 }
 
-char	**init_2d_array(int height, int width)
-{
-	char	**array;
-	int		i;
+// char	**init_2d_array(int height, int width);
+// {
+// 	int	**array;
+// 	int	i;
 
-	array = malloc(sizeof(char *) * height);
-	if (!array)
-		return (NULL);
-	i = -1;
-	while (++i < height)
-	{
-		array[i] = ft_calloc(width, sizeof(char));
-		if (!array[i])
-		{
-			while (--i >= 0)
-				free(array[i]);
-			free(array);
-			return (NULL);
-		}
-	}
-	return (array);
-}
+// 	array = malloc(sizeof(int *) * height);
+// 	if (!array)
+// 		return (NULL);
+// 	i = -1;
+// 	while (++i < height)
+// 	{
+// 		array[i] = ft_calloc(width, sizeof(int));
+// 		if (!array[i])
+// 		{
+// 			while (--i >= 0)
+// 				free(array[i]);
+// 			free(array);
+// 			return (NULL);
+// 		}
+// 	}
+// 	return (array);
+// }

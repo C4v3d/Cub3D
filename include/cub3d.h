@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/05 15:16:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:38:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef union u_color				t_color;
 typedef struct s_map_data			t_map;
 
 
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 400
+# define WINDOW_WIDTH 640
+# define WINDOW_HEIGHT 480
 /**
  * Define the number of
  * textures and colors
@@ -49,12 +49,14 @@ typedef struct s_map_data			t_map;
  * Map Data
  */
 # define DIMENSION 2
+# define AOV_MAX M_PI * 2
 
 // Define decr/incrementation value from keyboard inputs
-# define MOVE_UNIT 5.0
+# define MOVE_UNIT 0.1
 
 # include "../lib/libft/libft.h"
 # include "../lib/mlx/mlx.h"
+# include "dda.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"
@@ -65,7 +67,8 @@ typedef struct s_map_data			t_map;
 # include "map.h"
 # include "gamedata.h"
 # include "initfree.h"
-# include "inputs_loop.h"
+# include "minimap.h"
+# include "loop.h"
 # include "moves.h"
 
 /**
@@ -73,7 +76,23 @@ typedef struct s_map_data			t_map;
  */
 void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
-void	log_map_data(t_main *cub);
+void	log_data(t_main *cub);
+void	log_player_data(t_player *p);
+
+typedef struct	s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef struct	s_data
+{
+	void	*img;
+	char	*addr;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+}	t_data;
 
 typedef union u_color
 {
@@ -87,14 +106,7 @@ typedef union u_color
 	};
 }	t_color;
 
-typedef struct		s_trigonometric_values
-{
-	double			a_rad;		// angle in radian
-	double			cos_a;		// cosinus
-	double			sin_a;		// sinus
-}					t_trgo;
-
-typedef struct		s_user_control_input
+typedef struct	s_user_control_input
 {
 	int				kc[2];			//  int[n] for: users keyboard inputs | `kc` = keycode
 	t_main			*cub;			// `ptr` to parent struct
@@ -102,9 +114,9 @@ typedef struct		s_user_control_input
 
 typedef struct		s_display_window
 {
-	void			*win;
-	t_main			*cub;			// `ptr` to parent struct
-}					t_display;
+	void	*win;
+	t_main	*cub;			// `ptr` to parent struct
+}	t_display;
 
 typedef struct	s_graphic_data
 {
@@ -119,31 +131,29 @@ typedef struct	s_graphic_data
 
 typedef struct	s_map_data
 {
-	char	**grid;			// int[w][h] for: MAP MATRIX
-	size_t	dim[DIMENSION];			// int[2] for: map dimensions
-	size_t	plyr_start_pos[DIMENSION];// int[2] for: PLAYER X&Y START POSITION
-	size_t	plyr_start_ori;	// START ORIENTATION (N,S,W or E)
-	t_main	*cub;			// `ptr` to parent struct
+	char	**grid;						// int[w][h] for: MAP MATRIX
+	size_t	dim[DIMENSION];				// int[2] for: map dimensions
+	size_t	plyr_start_pos[DIMENSION];	// int[2] for: PLAYER X&Y START POSITION
+	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
+	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
 
-typedef struct		s_player_data
+typedef struct	s_player_data
 {
-	double			aov;			// angle of view
-	double			pos_mp[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON MAP GRID
-	double			pos_ti[DIMENSION];	// int[2] for: PLAYER X&Y POSITION ON TILE
 	double			pos[DIMENSION];
-	t_trgo			trgo;
-	t_main			*cub;			// `ptr` to parent struct
+	double			dir[DIMENSION];
+	double			aov;
+	t_main			*cub;
 }					t_player;
 
-typedef struct		s_program_data
+typedef struct	s_program_data
 {
-	bool			close_program;
-	int				input_file_fd;
-	t_main			*cub;			// `ptr` to parent struct
-}					t_prog;
+	bool	close_program;
+	int		input_file_fd;
+	t_main	*cub;				// `ptr` to parent struct
+}	t_prog;
 
-typedef struct		s_main_struct
+typedef struct	s_main_struct
 {
 	void			*mlx;
 	t_player		plyr;
@@ -152,6 +162,6 @@ typedef struct		s_main_struct
 	t_display		dspl;
 	t_prog			pr;
 	t_usr_ctrl_in	ctrl;
-}					t_main;
+}	t_main;
 
 #endif

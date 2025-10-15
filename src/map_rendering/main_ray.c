@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inputs_loop.h                                      :+:      :+:    :+:   */
+/*   main_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 18:37:23 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/04 18:38:34 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/12 17:17:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INPUTS_LOOP_H
-# define INPUTS_LOOP_H
+#include "../../include/cub3d.h"
 
-int		inputs_loop(int keycode, void *param);
-
-#endif
+int	get_main_ray_len(t_player *p, t_map *m)
+{
+	(void)p;
+	(void)m;
+	return (0);
+}

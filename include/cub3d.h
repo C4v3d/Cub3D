@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/16 15:05:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:45:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,9 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	double	del_x;	// delta distance
-	double	del_y;	// delta distance
-	double	nxt_x;	// next intersection
-	double	nxt_y;	// next intersection
-	int		x_stp;	// steps
-	int		y_stp;	// steps
+	double	del[DIMENSION];	// delta distance
+	double	nxt[DIMENSION];	// next intersection
+	int		stp[DIMENSION];	// steps
 }	t_rays;
 
 typedef struct	s_data

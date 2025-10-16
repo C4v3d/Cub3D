@@ -38,24 +38,26 @@ static void	free_map_data(t_map *map)
 	while (++i < map->dim[Y])
 		w_free((void**)&map->grid[i]);
 	w_free((void**)&map->grid);
-	w_free((void**)&map->dim);
-	w_free((void**)&map->plyr_start_pos);
 }
 
 
 static void	free_graphic_data(t_graphic *gfx)
 {
-	w_free((void **)&gfx->colors[CEILING]);
-	w_free((void **)&gfx->colors[FLOOR]);
-	w_free((void**)&gfx->txtr);
+	(void)gfx;
 }
 
 int	free_cub(t_main *cub)
 {
+	fprintf(stderr, "Entered free cub\n");
 	destroy_display(&cub->dspl);
+	fprintf(stderr, "Freed diplsay\n");
 	free_graphic_data(&cub->gfx);
+	fprintf(stderr, "freed gfx\n");
 	free_program_data(&cub->pr);
+	fprintf(stderr, "freed program\n");
 	free_map_data(&cub->map);
+	fprintf(stderr, "freed map\n");
 	free_user_inputs(&cub->ctrl);
+	fprintf(stderr, "freed user input\n");
 	return (0);
 }

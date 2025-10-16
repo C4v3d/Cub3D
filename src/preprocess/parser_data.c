@@ -36,7 +36,7 @@ static void	parse_color(t_graphic *gfx, char *line, t_color **dest)
 	line += ID_LEN - 1; /** < Skip ID */
 	n_color = 0;
 	while (ft_isspace(*line))
-		line++;
+	line++;
 	while (*line && n_color < 3)
 	{
 		c_len = 0;

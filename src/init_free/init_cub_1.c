@@ -18,7 +18,7 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 	t_color ceiling;
 
 	gfx->cub = cub;
-	ft_bzero(&gfx->txtr, sizeof(gfx->txtr));
+//	ft_bzero(&gfx->txtr, sizeof(gfx->txtr));
 	gfx->colors[FLOOR] = &floor;
 	gfx->colors[CEILING] = &ceiling;
 	gfx->el_counter = 0;
@@ -30,16 +30,17 @@ static void	init_map_data(t_map *map, t_main *cub)
 	map->grid = ft_calloc(1, sizeof(map->grid));
 	if (!map->grid)
 		ft_perror(map->cub, ENOMEM, CRITICAL);
-	map->dim[X] = 0;
-	map->dim[Y] = 0;
-	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
-	map->plyr_start_ori = 0;
+	printf("test :%ld\n", map->dim[X]);
+//	map->dim[X] = 0;
+//	map->dim[Y] = 0;
+//	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+//	map->plyr_start_ori = 0;
 }
 
 static void	init_player_data(t_player *p, t_main *cub)
 {
 	p->cub = cub;
-	p->aov = 0;
+//	p->aov = 0;
 }
 
 void	init_cub(t_main *cub)

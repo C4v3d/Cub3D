@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:15:38 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:16:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:38:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DDA_H
 # define DDA_H
 
-int	get_main_ray_len(t_player *p, t_map *m);
+int	rays_calculation(t_player *p, t_map *m);
 
 #endif

@@ -28,7 +28,7 @@ int	loop(int keycode, void *param)
 	}
 	update_plyr_position(&cub->plyr, keycode);
 	update_plyr_vision(&cub->plyr, keycode);
-	get_main_ray_len(&cub->plyr, &cub->map);
+	rays_calculation(&cub->plyr, &cub->map);
 	draw_minimap(keycode, cub);
 	//update_scene(plyr); -> function to calculate texture tiles in field of vision
 	return (0);

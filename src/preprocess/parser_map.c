@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/11 13:25:06 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/16 10:50:47 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	process_line(t_map *map, char *line)
 		else if (line[orientation] == 'W')
 			map->plyr_start_ori = M_PI;
 		else if (line[orientation] == 'S')
-			map->plyr_start_ori = M_PI * 2;
+			map->plyr_start_ori = M_PI + (M_PI / 2);
 		map->plyr_start_pos[X] = orientation;
 		map->plyr_start_pos[Y] = map->dim[Y];
 	}

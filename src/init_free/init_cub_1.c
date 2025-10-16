@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 13:28:12 by timmi            ###   ########.fr       */
+/*   Updated: 2025/10/16 15:05:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static void	init_player_data(t_player *p, t_main *cub)
 {
 	p->cub = cub;
 	p->aov = 0;
+	p->r.del_x = 0.0;
+	p->r.del_y = 0.0;
+	p->r.nxt_x = 0.0;
+	p->r.nxt_y = 0.0;
+	p->r.x_stp = 0.0;
+	p->r.y_stp = 0.0;
 }
 
 void	init_cub(t_main *cub)

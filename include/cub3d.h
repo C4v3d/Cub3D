@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/12 17:16:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 15:05:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ typedef struct s_map_data			t_map;
  */
 # define DIMENSION 2
 # define AOV_MAX M_PI * 2
+# define Q1_1 (M_PI / 2) / 2 // quadrant 1
+# define Q1_2 M_PI / 2 // quadrant 1
+# define Q2_1 (M_PI / 2) + ((M_PI / 2) / 2)
+# define Q2_2 M_PI
+# define Q3_1 M_PI + ((M_PI / 2) / 2)
+# define Q3_2 M_PI + (M_PI / 2)
+# define Q4_1 (M_PI * 2) - ((M_PI / 2) / 2)
+# define Q4_2 (M_PI * 2) - 0.000001
 
 // Define decr/incrementation value from keyboard inputs
 # define MOVE_UNIT 0.1
@@ -84,6 +92,16 @@ typedef struct	s_vector
 	double	x;
 	double	y;
 }	t_vector;
+
+typedef struct	s_rays_calculation
+{
+	double	del_x;	// delta distance
+	double	del_y;	// delta distance
+	double	nxt_x;	// next intersection
+	double	nxt_y;	// next intersection
+	int		x_stp;	// steps
+	int		y_stp;	// steps
+}	t_rays;
 
 typedef struct	s_data
 {
@@ -143,6 +161,7 @@ typedef struct	s_player_data
 	double			pos[DIMENSION];
 	double			dir[DIMENSION];
 	double			aov;
+	t_rays			r;
 	t_main			*cub;
 }					t_player;
 

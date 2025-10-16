@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:37:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:43:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,33 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+static void	draw_line(t_data *img, t_player *p, int kc)
+{
+	//int	x;
+	//int	y;
+
+	//if (kc == A)
+	//{
+	//	x = p->pos[X] + p->dir[X];
+	//	y = p->pos[Y] - p->dir[Y];
+	//}
+	//if (kc == D)
+	//{
+	//	x = p->pos[X] + p->dir[X];
+	//	y = p->pos[Y] - p->dir[Y];
+	//}
+	//else
+	//{
+	//	x = p->pos[X] + p->dir[X];
+	//	y = p->pos[Y] - p->dir[Y];
+	//}
+	//x = p->pos[X] + p->dir[X];
+	//y = p->pos[Y] - p->dir[Y];
+	//my_mlx_pixel_put(img, x * MINI_RES, y * MINI_RES, 0x00FF00);
+	(void)kc;
+	my_mlx_pixel_put(img, (p->pos[X] + p->dir[X]) * MINI_RES, (p->pos[Y] - p->dir[Y]) * MINI_RES, 0x00FF00);
 }
 
 static void	draw_tile(t_data *img, size_t x_pos, size_t y_pos, int color)
@@ -70,10 +97,7 @@ void	draw_minimap(int kc, t_main *cub)
 			x_i++;
 		}
 		draw_plyr(&mini, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->plyr.dir, 0xFF0000);
-		if (kc == W)
-			my_mlx_pixel_put(&mini, (cub->plyr.pos[X] + cub->plyr.dir[X]) * MINI_RES, (cub->plyr.pos[Y] - cub->plyr.dir[Y]) * MINI_RES, 0x00FF00);
-		if (kc == S)
-			my_mlx_pixel_put(&mini, (cub->plyr.pos[X] - cub->plyr.dir[X]) * MINI_RES, (cub->plyr.pos[Y] + cub->plyr.dir[Y]) * MINI_RES, 0x00FF00);
+		draw_line(&mini, &cub->plyr, kc);
 		y_i++;
 	}
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, mini.img, 0, 0);

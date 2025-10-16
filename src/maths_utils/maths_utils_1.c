@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/16 15:06:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:44:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ double	get_delta(double val)
 *	2 = x-- && y--
 *	3 = x-- && y++
 *	4 = x++ && y++ */
+//🚨 USELESS ❓
 float	get_quadrant(double aov)
 {
 	if (aov >= 0 && aov < Q1_1)
@@ -44,6 +45,7 @@ float	get_quadrant(double aov)
 	return (0.0);
 }
 
+//🚨 USELESS ❓
 double	extract_double(double n_float)
 {
 	int n_int;
@@ -91,7 +93,7 @@ void	get_cos_sin(t_player *p)
 	}
 }
 
-
+//🚨 USELESS ❓
 double	degrees_to_radians(double degrees)
 {
 	double	radians;	// Angle in radians

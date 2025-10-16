@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/16 15:09:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 18:06:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.pos[X] = (double)cub->map.plyr_start_pos[X];
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
 	cub->plyr.aov = cub->map.plyr_start_ori;
-	get_cos_sin(&cub->plyr);
 	return (0);
 }
 

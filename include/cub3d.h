@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/16 15:45:53 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:54:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	double	del[DIMENSION];	// delta distance
-	double	nxt[DIMENSION];	// next intersection
-	int		stp[DIMENSION];	// steps
+	double	delta[DIMENSION];
+	double	dist_next_tile[DIMENSION];
+	int		steps[DIMENSION];
 }	t_rays;
 
 typedef struct	s_data
@@ -157,6 +157,7 @@ typedef struct	s_player_data
 {
 	double			pos[DIMENSION];
 	double			dir[DIMENSION];
+	double			ray_len;
 	double			aov;
 	t_rays			r;
 	t_main			*cub;

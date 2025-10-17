@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 22:31:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:28:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ static void	init_player_data(t_player *p, t_main *cub)
 {
 	p->cub = cub;
 	p->aov = 0;
+	p->r.delta[X] = 0.0;
+	p->r.delta[Y] = 0.0;
+	p->r.dist_next_tile[X] = 0.0;
+	p->r.dist_next_tile[Y] = 0.0;
+	p->r.steps[X] = 0.0;
+	p->r.steps[Y] = 0.0;
 }
 
 void	init_cub(t_main *cub)

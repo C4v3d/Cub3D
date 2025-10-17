@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 22:32:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:28:31 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ int	update_plyr_position(t_player *p, int kc)
 {
 	if (!(kc == W || kc == LA || kc == S || kc == RA))
 		return (0);
-	get_cos_sin(p);
 	if (!new_pos(p, kc))
-		return (fprintf(stderr, "%supdate_plyr_position | CAN'T GO THERE%s\n", RED, RESET), 0);
-	// fprintf(stderr, "| %supdate_plyr_position%s\n| aov: %lf\n| pos[X]: %f\n| pos[Y]: %f\n", BLU, RESET, p->aov, p->pos[X], p->pos[Y]);
+		return (0);
 	return (0);
 }

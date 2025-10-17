@@ -1,3 +1,9 @@
+MAKEFLAGS += --no-print-directory
+
+NAME = cub3d
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
 BUILD_PATH = build
 CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
@@ -23,81 +29,85 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/map_rendering/main_ray.c \
 			$(CFILES_PATH)/minimap/minimap.c \
 
+LIBFT_PATH = ./lib/libft
+LIBFT = $(LIBFT_PATH)/libft.a
+MLX_LINUX = lib/mlx_linux/libmlx.a
+MLX_MACOS = lib/mlx_macos/libmlx.a
+OBJ = $(CFILES:$(CFILES_PATH)/%.c=$(BUILD_PATH)/%.o)
 
-
-OBJS_DIR    = objs
-OBJS        = $(SRCS:%.c=$(OBJS_DIR)/%.o)
-
-LIBFT_DIR   = ./lib/libft
-LIBFT       = $(LIBFT_DIR)/libft.a
-
-MLX_LINUX   = lib/mlx_linux/libmlx.a
-MLX_MACOS   = lib/mlx_macos/libmlx.a
-
-# Detect OS + Arch
-UNAME_S     = $(shell uname -s)
-UNAME_M     = $(shell uname -m)
+UNAME_S = $(shell uname -s)
+UNAME_M = $(shell uname -m)
 
 ifeq ($(UNAME_S), Linux)
-    INCLUDES = -Iincludes -Imlx_linux -Iincludes/linux_include -I$(LIBFT_DIR)
-    MLX      = $(MLX_LINUX)
-    LDFLAGS  = -Llib/mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
+	INCLUDES = -Iincludes -Imlx_linux -Iincludes/linux_include -I$(LIBFT_PATH)
+	MLX = $(MLX_LINUX)
+	LDFLAGS = -Llib/mlx_linux -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 else ifeq ($(UNAME_S), Darwin)
-    INCLUDES = -Iincludes -Imlx_macos -Iincludes/macos_include -I$(LIBFT_DIR)
-    MLX      = $(MLX_MACOS)
-    LDFLAGS  = -Llib/mlx_macos -lmlx -framework OpenGL -framework AppKit
-    # Cas spécial ARM (Mac M1/M2/M3)
-    ifeq ($(UNAME_M), arm64)
-        CFLAGS  += -arch arm64
-        LDFLAGS += -arch arm64
-    endif
+	INCLUDES = -Iincludes -Imlx_macos -Iincludes/macos_include -I$(LIBFT_PATH)
+	MLX = $(MLX_MACOS)
+	LDFLAGS = -Llib/mlx_macos -lmlx -framework OpenGL -framework AppKit
+	ifeq ($(UNAME_M), arm64)
+		CFLAGS += -arch arm64
+		LDFLAGS += -arch arm64
+	endif
 else
-    $(error Unsupported operating system: $(UNAME_S))
+	$(error Unsupported operating system: $(UNAME_S))
 endif
-
-# **************************************************************************** #
-#                                   RULES                                      #
-# **************************************************************************** #
 
 all: $(LIBFT) $(MLX) $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
 	@echo "\n[Linking] $@"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $@
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LDFLAGS) -o $@
 	@echo "[Done] Compilation complete!"
 
-$(OBJS_DIR)/%.o: %.c
+$(BUILD_PATH)/%.o: $(CFILES_PATH)/%.c
 	@mkdir -p $(dir $@)
 	@echo "[Compiling] $<"
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
-	@make -s -C $(LIBFT_DIR)
+	@make -s -C $(LIBFT_PATH)
 
-$(MLX_LINUX):
+ifeq ($(UNAME_S), Linux)
+
+$(MLX):
 	@echo "[Building] MinilibX (Linux)"
 	@make -s -C lib/mlx_linux
 
-$(MLX_MACOS):
+else ifeq ($(UNAME_S), Darwin)
+
+$(MLX):
 	@echo "[Building] MinilibX (macOS)"
 	@make -s -C lib/mlx_macos
 
-run: all
-	./$(NAME) map1.cub
+endif
 
 clean:
-	@$(RM) $(OBJS)
-	@make clean -C $(LIBFT_DIR) >/dev/null
-	@if [ -d mlx_linux ]; then make clean -C ./lib/mlx_linux >/dev/null; fi
-	@if [ -d mlx_macos ]; then make clean -C ./lib/mlx_macos >/dev/null; fi
+	@$(RM) $(OBJ)
+	@make clean -C $(LIBFT_PATH) >/dev/null
+
+ifeq ($(UNAME_S), Linux)
+
+	@if [ -d lib/mlx_linux ]; then make clean -C lib/mlx_linux >/dev/null; fi
+
+else ifeq ($(UNAME_S), Darwin)
+
+	@if [ -d lib/mlx_macos ]; then make clean -C lib/mlx_macos >/dev/null; fi
+
+endif
+
 	@echo "[Clean] Object files removed"
 
 fclean: clean
 	@$(RM) $(NAME) *.out
-	@make fclean -C $(LIBFT_DIR) >/dev/null
+	@make fclean -C $(LIBFT_PATH) >/dev/null
 	@echo "[Clean] Executable removed"
 
 re: fclean all
+
+run: all
+	./$(NAME) map1.cub
 
 leaks: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)

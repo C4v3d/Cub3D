@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/12 22:29:33 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:18:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_map_data			t_map;
 # define MOVE_UNIT 0.1
 
 # include "../lib/libft/libft.h"
-# include "../lib/mlx/mlx.h"
+//# include "../lib/mlx/mlx.h"
 # include "dda.h"
 # include "input_validation.h"
 # include "map_validation.h"

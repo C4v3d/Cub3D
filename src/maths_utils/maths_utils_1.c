@@ -6,19 +6,46 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 22:31:54 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:28:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-double	get_angle(double x, double y)
+double	get_delta(double val)
 {
-	(void)x;
-	(void)y;
-	return (0);
+	if (val == 0)
+		return (fabs(1 / 1e30));
+	return (fabs(1 / val));
 }
 
+/*	1 = x++ && y--
+*	2 = x-- && y--
+*	3 = x-- && y++
+*	4 = x++ && y++ */
+//🚨 USELESS ❓
+float	get_quadrant(double aov)
+{
+	if (aov >= 0 && aov < Q1_1)
+		return (1.1);
+	else if (aov >= Q1_1 && aov < Q1_2)
+		return (1.2);
+	else if (aov >= Q1_2 && aov < Q2_1)
+		return (2.1);
+	else if (aov >= Q2_1 && aov < Q2_2)
+		return (2.2);
+	else if (aov >= Q2_2 && aov < Q3_1)
+		return (3.1);
+	else if (aov >= Q3_1 && aov < Q3_2)
+		return (3.2);
+	else if (aov >= Q3_2 && aov < Q4_1)
+		return (4.1);
+	else if (aov >= Q4_1 && aov <= Q4_2)
+		return (4.2);
+	return (0.0);
+}
+
+//🚨 USELESS ❓
 double	extract_double(double n_float)
 {
 	int n_int;
@@ -66,7 +93,7 @@ void	get_cos_sin(t_player *p)
 	}
 }
 
-
+//🚨 USELESS ❓
 double	degrees_to_radians(double degrees)
 {
 	double	radians;	// Angle in radians

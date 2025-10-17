@@ -26,7 +26,8 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
 			$(CFILES_PATH)/map_rendering/calculate_fov.c \
-			$(CFILES_PATH)/map_rendering/main_ray.c \
+			$(CFILES_PATH)/map_rendering/rays_cal_utils.c \
+			$(CFILES_PATH)/map_rendering/rays_calculation.c \
 			$(CFILES_PATH)/minimap/minimap.c \
 
 LIBFT_PATH = ./lib/libft
@@ -107,7 +108,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) map1.cub
+	./$(NAME) map2.cub
 
 leaks: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/17 16:18:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:50:06 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_map_data			t_map;
 
 # include "../lib/libft/libft.h"
 //# include "../lib/mlx/mlx.h"
-# include "dda.h"
+# include "rays.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"
@@ -90,6 +90,13 @@ typedef struct	s_vector
 	double	x;
 	double	y;
 }	t_vector;
+
+typedef struct	s_rays_calculation
+{
+	double	delta[DIMENSION];
+	double	dist_next_tile[DIMENSION];
+	int		steps[DIMENSION];
+}	t_rays;
 
 typedef struct	s_data
 {
@@ -148,7 +155,9 @@ typedef struct	s_player_data
 {
 	double			pos[DIMENSION];
 	double			dir[DIMENSION];
+	double			ray_len;
 	double			aov;
+	t_rays			r;
 	t_main			*cub;
 }					t_player;
 

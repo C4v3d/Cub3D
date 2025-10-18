@@ -6,23 +6,42 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/17 18:05:37 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/18 12:18:55 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+bool	wall_is_on_axis(t_player *p, char **grid, int *x, int *y)
+{
+	if (p->aov != 0 || p->aov != EA_RAD || p->aov != NO_RAD
+			|| p->aov != WE_RAD || p->aov != SO_RAD)
+		return (false);
+	if (p->aov == 0)
+		while (grid[(*x)][(*y)] != '1')
+			(*x) += p->r.steps[X];
+	if (p->aov == NO_RAD)
+		while (grid[(*x)][(*y)] != '1')
+			(*y) -= p->r.steps[Y];
+	if (p->aov == WE_RAD)
+		while (grid[(*x)][(*y)] != '1')
+			(*x) -= p->r.steps[X];
+	if (p->aov == SO_RAD)
+		while (grid[(*x)][(*y)] != '1')
+			(*y) += p->r.steps[Y];
+	return (true);
+}
+
 int	calculate_ray_len(t_player *p, int x, int y)
 {
-	if (p->aov >= 0 && p->aov < Q1_2)
-		return (get_hypotenus(p->pos[X] - x, y - p->pos[Y]));
 	if (p->aov >= Q1_2 && p->aov < Q2_2)
 		return (get_hypotenus(p->pos[X] - x, p->pos[Y]) - y);
-	if (p->aov >= Q2_2 && p->aov < Q3_2)
-		return (get_hypotenus(x - p->pos[X], p->pos[Y]) - y);
-	//if (p->aov >= Q3_2 && p->aov < Q4_2)
-	else
+	else if (p->aov >= Q2_2 && p->aov < Q3_2)
 		return (get_hypotenus(x - p->pos[X], y - p->pos[Y]));
+	else if (p->aov >= Q3_2 && p->aov <= Q4_2)
+		return (get_hypotenus(p->pos[X] - x, y - p->pos[Y]));
+	else
+		return (get_hypotenus(x - p->pos[X], y - p->pos[Y])); //if (p->aov >= 0 && p->aov < Q1_2)
 }
 
 void	dda(t_player *p, char **grid, int *x, int *y)

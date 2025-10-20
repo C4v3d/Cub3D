@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:15:38 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/20 10:23:04 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/20 12:47:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		rays_calculation(t_player *p, t_map *m);
 void	init_steps_dist_next_tile(t_player *p, int map_x, int map_y);
 void	dda(t_player *p, char **grid, int *x, int *y);
-int		calculate_ray_len(t_player *p, int x, int y);
+double	calculate_ray_len(t_player *p, double x, double y);
 bool	wall_is_on_axis(t_player *p, char **grid);
 
 #endif

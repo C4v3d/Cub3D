@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:45:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/17 16:28:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/20 12:42:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,12 @@ float	get_quadrant(double aov)
 	return (0.0);
 }
 
-//🚨 USELESS ❓
 double	extract_double(double n_float)
 {
 	int n_int;
 
 	n_int = (int)n_float;
 	return (n_float - n_int);
-
 }
 
 double	get_hypotenus(double x, double y)

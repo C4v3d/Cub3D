@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/20 10:27:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/20 12:58:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,39 @@
 
 bool	wall_is_on_axis(t_player *p, char **grid)
 {
-	int	dist;
 	int	x_tmp;
 	int	y_tmp;
 
-	x_tmp = p->pos[X];
-	y_tmp = p->pos[Y];
+	x_tmp = (int)p->pos[X];
+	y_tmp = (int)p->pos[Y];
 	if (p->aov != 0 && p->aov != EA_RAD && p->aov != NO_RAD
 			&& p->aov != WE_RAD && p->aov != SO_RAD)
 		return (false);
-	dist = 0;
 	if (p->aov == 0)
 		while (grid[y_tmp][++x_tmp] != '1')
-			dist++;
+			p->ray_len++;
 	if (p->aov == NO_RAD)
 		while (grid[--y_tmp][x_tmp] != '1')
-			dist++;
+			p->ray_len++;
 	if (p->aov == WE_RAD)
 		while (grid[y_tmp][--x_tmp] != '1')
-			dist++;
+			p->ray_len++;
 	if (p->aov == SO_RAD)
 		while (grid[++y_tmp][x_tmp] != '1')
-			dist++;
-	p->ray_len = dist;
+			p->ray_len++;
+	if (p->aov == 0 || p->aov == WE_RAD)
+		p->ray_len += p->tile_pos[X];
+	if (p->aov == NO_RAD || p->aov == SO_RAD)
+		p->ray_len += p->tile_pos[Y];
 	fprintf(stderr, "wall_is_on_axis | see wall at grid[Y]%d[X]%d | dist to wall: %lf\n", y_tmp, x_tmp, p->ray_len);
 	return (true);
 }
 
-int	calculate_ray_len(t_player *p, int x, int y)
+double	calculate_ray_len(t_player *p, double x, double y)
 {
+	x += p->tile_pos[X];
+	y += p->tile_pos[Y];
+	fprintf(stderr, "calculate_ray_len | x: %lf | y: %lf\n", x, y);
 	if (p->aov >= Q1_2 && p->aov < Q2_2)
 		return (get_hypotenus(p->pos[X] - x, p->pos[Y]) - y);
 	else if (p->aov >= Q2_2 && p->aov < Q3_2)

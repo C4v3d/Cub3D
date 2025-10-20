@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/17 16:28:31 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/20 12:41:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int	update_plyr_position(t_player *p, int kc)
 		return (0);
 	if (!new_pos(p, kc))
 		return (0);
+	p->tile_pos[X] = extract_double(p->pos[X]);
+	p->tile_pos[Y] = extract_double(p->pos[Y]);
 	return (0);
 }

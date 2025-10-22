@@ -26,9 +26,10 @@ int	loop(int keycode, void *param)
 		cub->pr.close_program = true;
 		return (0);
 	}
-	get_cos_sin(&cub->plyr);
 	update_plyr_position(&cub->plyr, keycode);
 	update_plyr_vision(&cub->plyr, keycode);
+	//fprintf(stderr, "loop | aov: %s%lf%s / %lf\n", YEL, cub->plyr.aov, RESET, AOV_MAX);
+	get_cos_sin(&cub->plyr);
 	rays_calculation(&cub->plyr, &cub->map);
 	draw_minimap(keycode, cub);
 	return (0);

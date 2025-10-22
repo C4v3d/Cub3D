@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/20 12:39:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/22 15:53:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ typedef struct	s_rays_calculation
 	int		steps[DIMENSION];
 }	t_rays;
 
-typedef struct	s_data
+typedef struct	s_img_data
 {
 	void	*img;
 	char	*addr;
 	int	bits_per_pixel;
 	int	line_length;
 	int	endian;
-}	t_data;
+}	t_image;
 
 typedef union u_color
 {
@@ -139,6 +139,8 @@ typedef struct	s_graphic_data
 	int		txtr_res;
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;
+	t_image	map;
+	t_image	scene;
 	t_main	*cub;
 }	t_graphic;
 

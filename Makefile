@@ -26,8 +26,8 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
 			$(CFILES_PATH)/map_rendering/calculate_fov.c \
-			$(CFILES_PATH)/map_rendering/rays_cal_utils.c \
-			$(CFILES_PATH)/map_rendering/rays_calculation.c \
+			$(CFILES_PATH)/rays/rays_cal_utils.c \
+			$(CFILES_PATH)/rays/rays_calculation.c \
 			$(CFILES_PATH)/minimap/minimap.c \
 
 LIBFT_PATH = ./lib/libft

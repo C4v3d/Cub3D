@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/22 15:15:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:40:34 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool	wall_is_on_axis(t_player *p, char **grid)
 	if (p->aov == SO_RAD)
 		while (grid[++y_tmp][x_tmp] != '1')
 			p->ray_len++;
+	p->ray_len++;
 	if (p->aov == 0 || p->aov == WE_RAD)
 		p->ray_len += p->tile_pos[X];
 	if (p->aov == NO_RAD || p->aov == SO_RAD)
@@ -84,7 +85,7 @@ void	init_main_ray_calculation(t_player *p, int *x_wall, int *y_wall)
 	p->r.delta[Y] = get_delta(p->dir[Y]);
 	*x_wall = p->pos[X];
 	*y_wall = p->pos[Y];
-	//fprintf(stderr, "init_main_ray... | dir_x: %lf | dir_y: %lf | delta_x: %lf | delta_y: %lf | x_wall: %d | y_wall: %d\n", p->dir[X], p->dir[Y], p->r.delta[X], p->r.delta[Y], *x_wall, *y_wall);
+	fprintf(stderr, "init_main_ray... | dir_x: %lf | dir_y: %lf | delta_x: %lf | delta_y: %lf\n", p->dir[X], p->dir[Y], p->r.delta[X], p->r.delta[Y]);
 	if (p->dir[X] < 0)
 	{
 		p->r.steps[X] = -1;

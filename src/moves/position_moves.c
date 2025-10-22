@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/22 15:14:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:27:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ static bool	new_pos(t_player *p, int kc)
 
 int	update_plyr_position(t_player *p, int kc)
 {
+	int	ret;
+
+	ret = 0;
 	if (!(kc == W || kc == LA || kc == S || kc == RA))
-		return (0);
-	if (!new_pos(p, kc))
+		ret = 1;
+	if (!ret && !new_pos(p, kc))
 		return (0);
 	p->tile_pos[X] = extract_double(p->pos[X]);
 	p->tile_pos[Y] = extract_double(p->pos[Y]);

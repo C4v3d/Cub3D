@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/25 10:38:53 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:32:46 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	update_aov(double *aov, float max_angle, int kc)
 	else if (kc == D)
 		*(aov) -= VIS_MOVE_UNIT;
 }
-
-
 
 int	update_plyr_vision(t_player *p, int	kc)
 {

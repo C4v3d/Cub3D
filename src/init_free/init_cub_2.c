@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 16:57:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:52:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		init_display(t_display *dspl, t_main *cub)
 	if (!cub->mlx)
 		return (ft_perror(dspl->cub, errno, CRITICAL));
 	//dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
+	dspl->win_dim[X] = WINDOW_WIDTH;
+	dspl->win_dim[Y] = WINDOW_HEIGHT;
 	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	return (0);
 }

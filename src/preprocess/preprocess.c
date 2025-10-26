@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/26 18:05:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:30:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	preprocess(t_main *cub, char *input_file)
 	init_parsed_data(cub);
 	get_cos_sin(&cub->plyr);
 	rays_calculation(&cub->plyr, &cub->map);
-	draw_minimap(cub);
+	//game_rendering(cub);
 }

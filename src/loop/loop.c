@@ -26,17 +26,8 @@ int	loop(int keycode, void *param)
 		cub->pr.close_program = true;
 		return (0);
 	}
-	update_plyr_position(&cub->plyr, keycode);
-	update_plyr_vision(&cub->plyr, keycode);
-	//fprintf(stderr, "loop | aov: %s%lf%s / %lf\n", YEL, cub->plyr.aov, RESET, AOV_MAX);
-	get_cos_sin(&cub->plyr);
+	process_moves(cub, keycode);
 	rays_calculation(&cub->plyr, &cub->map);
-	game_rendering(cub);
+	render_game(cub);
 	return (0);
 }
-
-//int	mouse_inputs(t_main *cub)
-//{
-//	mlx_hook(cub->dspl.win, 17, 0L, free_cub, cub);
-//	return (0);
-//}

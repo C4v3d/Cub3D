@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 14:55:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:49:01 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	wall_is_on_axis(t_player *p, char **grid)
 	return (true);
 }
 
-double	calculate_ray_len(t_player *p, double x, double y)
+double	calculate_ray_len(t_player *p, double x, double y)	// USELESS???
 {
 	if (p->aov >= Q1_2 && p->aov < Q2_2)
 		return (get_hypotenus(p->pos[X] - x, p->pos[Y]) - y);
@@ -75,9 +75,6 @@ void	dda(t_player *p, char **grid)
 	}
 }
 
-
-
-//v1
 void	init_main_ray_calculation(t_player *p)
 {
 	p->r.delta[X] = get_delta(p->dir[X]);

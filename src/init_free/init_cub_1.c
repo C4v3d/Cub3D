@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 14:01:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:38:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	init_player_data(t_player *p, t_main *cub)
 	p->r.w_seen[X] = 0;
 	p->r.w_seen[Y] = 0;
 	p->r.w_side = 0;
+	p->r.p_w_dist = 0;
 	p->ray_len = 0;
 }
 

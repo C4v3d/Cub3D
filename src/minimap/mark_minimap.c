@@ -38,14 +38,14 @@ void	mark_minimap(t_image *map, t_player *p)
 	init_front_wall(p, &x_i, &y_i);
 	x_tmp = x_i;
 	i = -1;
-	while (++i < MINI_RES)
+	while (++i <= MINI_RES)
 	{
 		my_mlx_pixel_put(map, x_i, y_i, 0xFFFFFF);
 		my_mlx_pixel_put(map, x_i++, y_i + MINI_RES, 0xFFFFFF);
 	}
 	x_i = x_tmp;
 	i = -1;
-	while (++i < MINI_RES)
+	while (++i <= MINI_RES)
 	{
 		my_mlx_pixel_put(map, x_i, y_i, 0xFFFFFF);
 		my_mlx_pixel_put(map, x_i + MINI_RES, y_i++, 0xFFFFFF);

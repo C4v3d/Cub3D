@@ -6,19 +6,26 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/25 10:17:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:01:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+static bool	check_new_pos(double *p, char **grid, size_t *m_dim)
+{
+	if ((p[X] <= 0 || p[X] >= m_dim[X]) || (p[Y] <= 0 || p[Y] >= m_dim[Y])
+			|| grid[(int)p[Y]][(int)p[X]] == '1')
+		return (false);
+	return (true);
+}
+
 static bool	new_pos(t_player *p, int kc)
 {
-	double	last_pos_x;
-	double	last_pos_y;
+	double	last_pos[DIMENSION];
 
-	last_pos_x = p->pos[X];
-	last_pos_y = p->pos[Y];
+	last_pos[X] = p->pos[X];
+	last_pos[Y] = p->pos[Y];
 	if (kc == W)
 	{
 		p->pos[X] += p->dir[X] * POS_MOVE_UNIT;
@@ -29,12 +36,10 @@ static bool	new_pos(t_player *p, int kc)
 		p->pos[X] -= p->dir[X] * POS_MOVE_UNIT;
 		p->pos[Y] += p->dir[Y] * POS_MOVE_UNIT;
 	}
-	if ((p->pos[X] <= 0 || p->pos[X] >= p->cub->map.dim[X])
-		|| (p->pos[Y] <= 0 || p->pos[Y] >= p->cub->map.dim[Y])
-			|| p->cub->map.grid[(int)p->pos[Y]][(int)p->pos[X]] == '1')
+	if (!check_new_pos(p->pos, p->cub->map.grid, p->cub->map.dim))
 	{
-		p->pos[X] = last_pos_x;
-		p->pos[Y] = last_pos_y;
+		p->pos[X] = last_pos[X];
+		p->pos[Y] = last_pos[Y];
 		return (false);
 	}
 	return (true);

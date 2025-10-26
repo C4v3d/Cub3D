@@ -25,11 +25,13 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/loop/loop.c \
 			$(CFILES_PATH)/moves/position_moves.c \
 			$(CFILES_PATH)/moves/vision_moves.c \
-			$(CFILES_PATH)/scene/calculate_fov.c \
+			$(CFILES_PATH)/game_rendering/scene.c \
+			$(CFILES_PATH)/game_rendering/game_rendering.c \
+			$(CFILES_PATH)/game_rendering/rendering_utils_1.c \
 			$(CFILES_PATH)/rays/rays_cal_utils.c \
 			$(CFILES_PATH)/rays/rays_calculation.c \
 			$(CFILES_PATH)/minimap/minimap.c \
-			$(CFILES_PATH)/minimap/draw_front_wall.c \
+			$(CFILES_PATH)/minimap/mark_minimap.c \
 
 
 LIBFT_PATH = ./lib/libft

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   game_rendering.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 17:58:25 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/26 18:09:54 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#ifndef GAME_RENDERING_H
+# define GAME_RENDERING_H
 
-# define MINI_RES 12
+int		draw_scene(t_main *cub);
+int 	game_rendering(t_main *cub);
+int		create_image(t_main *cub, t_image *img);
+void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 
-typedef struct	s_image_data t_image;
 
-void	draw_minimap(t_main *cub);
-void	mark_minimap(t_image *map, t_player *p);
 
 #endif

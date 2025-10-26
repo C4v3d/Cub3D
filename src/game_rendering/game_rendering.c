@@ -1,14 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_fov.c                                    :+:      :+:    :+:   */
+/*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 12:07:23 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/11 13:24:44 by timmi            ###   ########.fr       */
+/*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/26 18:09:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+int game_rendering(t_main *cub)
+{
+	fprintf(stderr, "game_rendering\n");
+	draw_scene(cub);
+	draw_minimap(cub);
+	return (0);
+}

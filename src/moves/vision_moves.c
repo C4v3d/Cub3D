@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/22 15:08:47 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/25 10:38:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 static void	update_aov(double *aov, float max_angle, int kc)
 {
-	float	move_unit;
-
-	move_unit = 0.05;
 	if (!(kc == A || kc == D))
 		return ;
-	if (kc == A && *(aov) + move_unit >= max_angle - move_unit)
+	if (kc == A && *(aov) + VIS_MOVE_UNIT >= max_angle - VIS_MOVE_UNIT)
 		*(aov) = 0;
 	else if (kc == A)
-		*(aov) += move_unit;
-	else if (kc == D && *(aov) - move_unit <= 0)
-		*(aov) = max_angle - move_unit;
+		*(aov) += VIS_MOVE_UNIT;
+	else if (kc == D && *(aov) - VIS_MOVE_UNIT <= 0)
+		*(aov) = max_angle - VIS_MOVE_UNIT;
 	else if (kc == D)
-		*(aov) -= move_unit;
+		*(aov) -= VIS_MOVE_UNIT;
 }
 
 

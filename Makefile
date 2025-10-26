@@ -29,6 +29,8 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/rays/rays_cal_utils.c \
 			$(CFILES_PATH)/rays/rays_calculation.c \
 			$(CFILES_PATH)/minimap/minimap.c \
+			$(CFILES_PATH)/minimap/draw_front_wall.c \
+
 
 LIBFT_PATH = ./lib/libft
 LIBFT = $(LIBFT_PATH)/libft.a

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/22 15:53:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:02:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_map_data			t_map;
 # define AOV_MAX M_PI * 2
 
 // Define decr/incrementation value from keyboard inputs
-# define MOVE_UNIT 0.1
+# define POS_MOVE_UNIT 0.1
+# define VIS_MOVE_UNIT 0.05
 
 # include "../lib/libft/libft.h"
 //# include "../lib/mlx/mlx.h"
@@ -93,18 +94,20 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
+	int		w_seen[DIMENSION];	// wall seen
+	int		w_side;				// wall side
 	double	delta[DIMENSION];
 	double	dist_next_tile[DIMENSION];
 	int		steps[DIMENSION];
 }	t_rays;
 
-typedef struct	s_img_data
+typedef struct	s_image_data
 {
 	void	*img;
 	char	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_image;
 
 typedef union u_color

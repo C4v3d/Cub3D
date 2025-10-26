@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/18 11:42:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:06:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	preprocess(t_main *cub, char *input_file)
 	parse_file(cub);
 	// validate_map(&cub->map);
 	init_parsed_data(cub);
-	draw_minimap(W, cub);
+	get_cos_sin(&cub->plyr);
+	rays_calculation(&cub->plyr, &cub->map);
+	draw_minimap(0, cub);
 }

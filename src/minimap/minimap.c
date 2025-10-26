@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/22 19:10:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:49:36 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,6 @@ void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-static void	draw_main_ray(t_image *map, t_player *p, int kc)
-{
-	(void)kc;
-	int		i;
-	int	x;
-	int	y;
-
-	i = -1;
-	if (p->aov >= Q1_2 && p->aov < Q2_2)
-	{
-		x = (p->pos[X] + p->dir[X]) * MINI_RES;
-		y = (p->pos[Y] - p->dir[Y]) * MINI_RES;
-	}
-	else if (p->aov >= Q2_2 && p->aov < Q3_2)
-	{
-		x = (p->pos[X] - p->dir[X]) * MINI_RES;
-		y = (p->pos[Y] - p->dir[Y]) * MINI_RES;
-	}
-	else if (p->aov >= Q3_2 && p->aov <= Q4_2)
-	{
-		x = (p->pos[X] + p->dir[X]) * MINI_RES;
-		y = (p->pos[Y] + p->dir[Y]) * MINI_RES;
-	}
-	else
-	{
-		x = (p->pos[X] - p->dir[X]) * MINI_RES;
-		y = (p->pos[Y] + p->dir[Y]) * MINI_RES;
-	}
-	while (++i < (int)p->ray_len)
-		my_mlx_pixel_put(map, x++, y++, 0x00FF00);
-}
 
 static void	draw_line(t_image *map, t_player *p, int kc)
 {
@@ -110,8 +79,8 @@ void	draw_minimap(int kc, t_main *cub)
 		}
 		draw_plyr(&cub->gfx.map, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->plyr.dir, 0xFF0000);
 		draw_line(&cub->gfx.map, &cub->plyr, kc);
-		draw_main_ray(&cub->gfx.map, &cub->plyr, kc);
 		y_i++;
 	}
+	draw_front_wall(&cub->gfx.map, &cub->plyr);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
 }

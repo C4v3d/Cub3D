@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/22 17:27:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/25 10:17:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static bool	new_pos(t_player *p, int kc)
 	last_pos_y = p->pos[Y];
 	if (kc == W)
 	{
-		p->pos[X] += p->dir[X] * MOVE_UNIT;
-		p->pos[Y] -= p->dir[Y] * MOVE_UNIT;
+		p->pos[X] += p->dir[X] * POS_MOVE_UNIT;
+		p->pos[Y] -= p->dir[Y] * POS_MOVE_UNIT;
 	}
 	if (kc == S)
 	{
-		p->pos[X] -= p->dir[X] * MOVE_UNIT;
-		p->pos[Y] += p->dir[Y] * MOVE_UNIT;
+		p->pos[X] -= p->dir[X] * POS_MOVE_UNIT;
+		p->pos[Y] += p->dir[Y] * POS_MOVE_UNIT;
 	}
 	if ((p->pos[X] <= 0 || p->pos[X] >= p->cub->map.dim[X])
 		|| (p->pos[Y] <= 0 || p->pos[Y] >= p->cub->map.dim[Y])

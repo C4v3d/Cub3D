@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 14:47:38 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 14:52:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 15:00:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	init_front_wall(t_player *p, int *x_i, int *y_i, int *x_tmp)
+static void	init_front_wall(t_player *p, int *x_i, int *y_i)
 {
 	if (p->r.w_seen[X] == 0 && p->r.w_side == WE)
 		(*x_i) = 0;
@@ -20,7 +20,6 @@ static void	init_front_wall(t_player *p, int *x_i, int *y_i, int *x_tmp)
 		(*x_i) = MINI_RES;
 	else
 		(*x_i) = p->r.w_seen[X] * MINI_RES;
-	(*x_tmp) = (*x_i);
 	if (p->r.w_seen[Y] == 0 && p->r.w_side == NO)
 		(*y_i) = 0;
 	else if (p->r.w_seen[Y] == 0)
@@ -36,7 +35,8 @@ void	draw_front_wall(t_image *map, t_player *p)
 	int	y_i;
 	int i;
 
-	init_front_wall(p, &x_i, &y_i, &x_tmp);
+	init_front_wall(p, &x_i, &y_i);
+	x_tmp = x_i;
 	i = -1;
 	while (++i < MINI_RES)
 	{

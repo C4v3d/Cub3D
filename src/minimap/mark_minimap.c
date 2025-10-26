@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_front_wall.c                                  :+:      :+:    :+:   */
+/*   mark_minimap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,7 +28,7 @@ static void	init_front_wall(t_player *p, int *x_i, int *y_i)
 		(*y_i) = p->r.w_seen[Y] * MINI_RES;
 }
 
-void	draw_front_wall(t_image *map, t_player *p)
+void	mark_minimap(t_image *map, t_player *p)
 {
 	int	x_i;
 	int x_tmp;

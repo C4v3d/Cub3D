@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/26 16:39:05 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 17:38:29 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef union u_color				t_color;
 typedef struct s_map_data			t_map;
 
 
-# define WINDOW_WIDTH 640
-# define WINDOW_HEIGHT 480
+# define WINDOW_WIDTH 1280
+# define WINDOW_HEIGHT 720
 /**
  * Define the number of
  * textures and colors
@@ -75,6 +75,7 @@ typedef struct s_map_data			t_map;
 # include "initfree.h"
 # include "minimap.h"
 # include "loop.h"
+# include "game_rendering.h"
 # include "keycodes.h"
 # include "moves.h"
 

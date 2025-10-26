@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/20 12:40:43 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:57:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		init_hooks(t_main *cub)
 	return (0);
 }
 
-int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub)
+int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub) // USELESS ???
 {
 	int	simultaneous_handled_controls; // ⚠️ Besoin et possible de gerer plusieurs inputs?
 	int	i;
@@ -61,6 +61,6 @@ int		init_display(t_display *dspl, t_main *cub)
 	if (!cub->mlx)
 		return (ft_perror(dspl->cub, errno, CRITICAL));
 	//dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
-	dspl->win = mlx_new_window(cub->mlx, 500, 400, "Cub3d");
+	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	return (0);
 }

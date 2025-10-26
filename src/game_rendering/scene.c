@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap.h                                          :+:      :+:    :+:   */
+/*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 14:13:28 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 17:58:25 by emonacho         ###   ########.fr       */
+/*   Created: 2025/10/26 17:28:35 by emonacho          #+#    #+#             */
+/*   Updated: 2025/10/26 18:11:30 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIMAP_H
-# define MINIMAP_H
+#include "../../include/cub3d.h"
 
-# define MINI_RES 12
-
-typedef struct	s_image_data t_image;
-
-void	draw_minimap(t_main *cub);
-void	mark_minimap(t_image *map, t_player *p);
-
-#endif
+int	draw_scene(t_main *cub)
+{
+	(void)cub;
+	//if (cub->gfx.scene.img)
+	//	mlx_destroy_image(cub->mlx, cub->gfx.scene.img);
+	//create_image(cub, &cub->gfx.scene);
+	////draw_background();
+	//mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.scene.img, 0, 0);
+	return (0);
+}

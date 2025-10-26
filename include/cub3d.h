@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/26 17:38:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/26 19:39:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct	s_user_control_input
 typedef struct		s_display_window
 {
 	void	*win;
+	size_t	win_dim[DIMENSION];
 	t_main	*cub;			// `ptr` to parent struct
 }	t_display;
 
@@ -145,7 +146,7 @@ typedef struct	s_graphic_data
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;
 	t_image	map;
-	t_image	scene;
+	t_image	scene;	// USELESS???
 	t_main	*cub;
 }	t_graphic;
 

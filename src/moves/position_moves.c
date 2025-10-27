@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 18:01:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:57:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool	check_new_pos(double *p, char **grid, size_t *m_dim)
 
 static bool	new_pos(t_player *p, int kc)
 {
-	double	last_pos[DIMENSION];
+	double	last_pos[AXIS];
 
 	last_pos[X] = p->pos[X];
 	last_pos[Y] = p->pos[Y];

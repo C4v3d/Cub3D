@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/26 19:39:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:57:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_map_data			t_map;
 /**
  * Map Data
  */
-# define DIMENSION 2
+# define AXIS 2
 # define AOV_MAX M_PI * 2
 
 // Define decr/incrementation value from keyboard inputs
@@ -95,12 +95,12 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	int		w_seen[DIMENSION];	// wall seen
+	int		w_seen[AXIS];	// wall seen
 	int		w_side;				// wall side
-	double	delta[DIMENSION];
-	double	dist_next_tile[DIMENSION];
+	double	delta[AXIS];
+	double	dist_next_tile[AXIS];
 	double	p_w_dist;			// perpendicular wall distance instead of euclidean dist
-	int		steps[DIMENSION];
+	int		steps[AXIS];
 }	t_rays;
 
 typedef struct	s_image_data
@@ -133,7 +133,7 @@ typedef struct	s_user_control_input
 typedef struct		s_display_window
 {
 	void	*win;
-	size_t	win_dim[DIMENSION];
+	size_t	win_dim[AXIS];
 	t_main	*cub;			// `ptr` to parent struct
 }	t_display;
 
@@ -153,17 +153,17 @@ typedef struct	s_graphic_data
 typedef struct	s_map_data
 {
 	char	**grid;						// int[w][h] for: MAP MATRIX
-	size_t	dim[DIMENSION];				// int[2] for: map dimensions
-	size_t	plyr_start_pos[DIMENSION];	// int[2] for: PLAYER X&Y START POSITION
+	size_t	dim[AXIS];				// int[2] for: map dimensions
+	size_t	plyr_start_pos[AXIS];	// int[2] for: PLAYER X&Y START POSITION
 	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
 	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
 
 typedef struct	s_player_data
 {
-	double			pos[DIMENSION];
-	double			tile_pos[DIMENSION];	// float of pos
-	double			dir[DIMENSION];
+	double			pos[AXIS];
+	double			tile_pos[AXIS];	// float of pos
+	double			dir[AXIS];
 	double			ray_len;
 	double			aov;
 	t_rays			r;

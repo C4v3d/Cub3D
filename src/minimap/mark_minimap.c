@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-static void	init_front_wall(t_player *p, int *x_i, int *y_i)
+static void	init_mark_mini(t_player *p, int *x_i, int *y_i)
 {
 	if (p->r.w_seen[X] == 0 && p->r.w_side == WE)
 		(*x_i) = 0;
@@ -35,7 +35,7 @@ void	mark_minimap(t_image *map, t_player *p)
 	int	y_i;
 	int i;
 
-	init_front_wall(p, &x_i, &y_i);
+	init_mark_mini(p, &x_i, &y_i);
 	x_tmp = x_i;
 	i = -1;
 	while (++i <= MINI_RES)

@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 19:45:06 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:57:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	paint(t_image *img, size_t *dim, size_t *pos, int color)
+int	paint(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 {
 	size_t	x_i;
 	size_t	y_i;

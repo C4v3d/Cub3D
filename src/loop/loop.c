@@ -29,5 +29,6 @@ int	loop(int keycode, void *param)
 	process_moves(cub, keycode);
 	rays_calculation(&cub->plyr, &cub->map);
 	render_game(cub);
+	fprintf(stderr, "loop\n");
 	return (0);
 }

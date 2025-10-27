@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 19:58:06 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/27 11:17:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	main_ray(t_player *p, t_map *m)
 		p->r.p_w_dist = (p->r.dist_next_tile[X] - p->r.delta[X]);
 	else
 		p->r.p_w_dist = (p->r.dist_next_tile[Y] - p->r.delta[Y]);
+	p->r.line_h = (int)(WINDOW_HEIGHT / p->r.p_w_dist);
 	return (0);
 }
 

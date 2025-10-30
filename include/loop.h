@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 12:38:08 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/30 17:37:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 18:04:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LOOP_H
 # define LOOP_H
 
-int	handle_input(int keycode, void *param);
+int	input_loop(int keycode, void *param);
 
 #endif

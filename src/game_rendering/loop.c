@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-int	handle_input(int keycode, void *param)
+int	input_loop(int keycode, void *param)
 {
 	t_main *cub;
 
@@ -39,7 +39,8 @@ int	loop(t_main *cub)
 		mlx_destroy_image(cub->mlx, cub->gfx.map.img);
 	create_image(cub, &cub->gfx.map);
 	draw_background(cub, &cub->gfx.map);
-	render_game(cub);
+	draw_scene(cub);
+	draw_minimap(cub);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
 	return (false);
 }

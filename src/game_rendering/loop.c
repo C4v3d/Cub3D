@@ -12,7 +12,7 @@
 
 #include "../../include/cub3d.h"
 
-int	loop(int keycode, void *param)
+int	handle_input(int keycode, void *param)
 {
 	t_main *cub;
 
@@ -26,9 +26,20 @@ int	loop(int keycode, void *param)
 		cub->pr.close_program = true;
 		return (0);
 	}
-	process_moves(cub, keycode);
-	rays_calculation(&cub->plyr, &cub->map);
-	render_game(cub);
-	fprintf(stderr, "loop\n");
+	update_plyr_position(&cub->plyr, keycode);
+	update_plyr_vision(&cub->plyr, keycode);
 	return (0);
+}
+
+int	loop(t_main *cub)
+{
+	if (cub->pr.close_program == true)
+		free_cub(cub);
+	if (cub->gfx.map.img)
+		mlx_destroy_image(cub->mlx, cub->gfx.map.img);
+	create_image(cub, &cub->gfx.map);
+	draw_background(cub, &cub->gfx.map);
+	render_game(cub);
+	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
+	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:28:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/27 12:07:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:12:49 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 //	return (0);
 //}
 
-static int	draw_background(t_main *cub, t_image *img)
+int	draw_background(t_main *cub, t_image *img)
 {
 	//v1
 	//size_t	pos[AXIS];
@@ -65,7 +65,8 @@ static int	draw_background(t_main *cub, t_image *img)
 
 int	draw_scene(t_main *cub)
 {
-	draw_background(cub, &cub->gfx.map);
+	(void)cub;
+	//draw_background(cub, &cub->gfx.map);
 	//draw_walls(cub, &cub->plyr, &cub->gfx.map, &cub->plyr.r.line_h);
 	return (0);
 }

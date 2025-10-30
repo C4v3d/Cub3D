@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   loop.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 12:38:08 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/12 17:10:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:37:08 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LOOP_H
 # define LOOP_H
 
-int	loop(int keycode, void *param);
+int	handle_input(int keycode, void *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 18:52:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:43:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		init_parsed_data(t_main *cub)
 
 int		init_hooks(t_main *cub)
 {
-	mlx_hook(cub->dspl.win, 02, 1L<<0, loop, cub);
-	mlx_loop_hook(cub->mlx, to_close_program, cub);
+	mlx_hook(cub->dspl.win, 02, 1L<<0, handle_input, cub);
+	mlx_loop_hook(cub->mlx, loop, cub);
 	return (0);
 }
 

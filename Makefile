@@ -7,7 +7,22 @@ CFLAGS = -Wall -Wextra -Werror
 BUILD_PATH = build
 CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
+			$(CFILES_PATH)/debug/logging.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
+			$(CFILES_PATH)/game_rendering/game_rendering.c \
+			$(CFILES_PATH)/game_rendering/loop.c \
+			$(CFILES_PATH)/game_rendering/rendering_utils_1.c \
+			$(CFILES_PATH)/game_rendering/rays_calculation.c \
+			$(CFILES_PATH)/game_rendering/rays_cal_utils.c \
+			$(CFILES_PATH)/game_rendering/scene.c \
+			$(CFILES_PATH)/init_free/init_cub_1.c \
+			$(CFILES_PATH)/init_free/init_cub_2.c \
+			$(CFILES_PATH)/init_free/free_cub.c \
+			$(CFILES_PATH)/maths_utils/maths_utils_1.c \
+			$(CFILES_PATH)/minimap/mark_minimap.c \
+			$(CFILES_PATH)/minimap/minimap.c \
+			$(CFILES_PATH)/moves/position_moves.c \
+			$(CFILES_PATH)/moves/vision_moves.c \
 			$(CFILES_PATH)/preprocess/parser.c \
 			$(CFILES_PATH)/preprocess/input_validation.c \
 			$(CFILES_PATH)/preprocess/parser_utils.c \
@@ -16,22 +31,6 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/preprocess/map_validation.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
-			$(CFILES_PATH)/maths_utils/maths_utils_1.c \
-			$(CFILES_PATH)/debug/logging.c \
-			$(CFILES_PATH)/init_free/init_cub_1.c \
-			$(CFILES_PATH)/init_free/init_cub_2.c \
-			$(CFILES_PATH)/init_free/free_cub.c \
-			$(CFILES_PATH)/init_free/utils_init_free.c \
-			$(CFILES_PATH)/loop/loop.c \
-			$(CFILES_PATH)/moves/position_moves.c \
-			$(CFILES_PATH)/moves/vision_moves.c \
-			$(CFILES_PATH)/game_rendering/scene.c \
-			$(CFILES_PATH)/game_rendering/game_rendering.c \
-			$(CFILES_PATH)/game_rendering/rendering_utils_1.c \
-			$(CFILES_PATH)/rays/rays_cal_utils.c \
-			$(CFILES_PATH)/rays/rays_calculation.c \
-			$(CFILES_PATH)/minimap/minimap.c \
-			$(CFILES_PATH)/minimap/mark_minimap.c \
 
 
 LIBFT_PATH = ./lib/libft

@@ -6,12 +6,24 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/12 22:30:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:54:49 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
+
+void	safe_destroy_image(t_main *cub, void *ptr)
+{
+	#ifdef __APPLE__
+	(void)cub;
+	(void)ptr;
+	// rien à faire
+	#else
+	if (img)
+		mlx_destroy_image(s->init, ptr);
+	#endif
+}
 
 static void	destroy_display(t_main *cub)
 {
@@ -50,5 +62,6 @@ int	free_cub(t_main *cub)
 	destroy_display(cub);
 	free_program_data(&cub->pr);
 	free_map_data(&cub->map);
+	exit(0);
 	return (0);
 }

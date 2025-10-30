@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/27 11:15:12 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:05:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_map_data			t_map;
 
 # include "../lib/libft/libft.h"
 //# include "../lib/mlx/mlx.h"
-# include "rays.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"
@@ -95,11 +94,13 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
+	double	cam;
+	double	dir[AXIS];
+	int		w_side;			// wall side
 	int		w_seen[AXIS];	// wall seen
-	int		w_side;				// wall side
 	double	delta[AXIS];
 	double	dist_next_tile[AXIS];
-	double	p_w_dist;			// perpendicular wall distance instead of euclidean dist
+	double	p_w_dist;		// perpendicular wall distance instead of euclidean dist
 	int		line_h;			// line height
 	int		steps[AXIS];
 }	t_rays;

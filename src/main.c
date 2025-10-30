@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/26 19:51:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/10/30 17:48:41 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int argc, char *argv[])
 		preprocess(&cub, argv[1]);
 		log_data(&cub);
 		mlx_loop(cub.mlx);
-		free_cub(&cub);
-		return (0);
+		//free_cub(&cub);	// USELESS?
+		//return (0);		// USELESS?
 	}
 	else
 		return (ft_perror(&cub, WRG_N_ARGS, ERROR));

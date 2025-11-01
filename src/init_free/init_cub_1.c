@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 19:26:47 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:39:39 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,16 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	p->cub = cub;
 	p->aov = 0;
 	p->ray_len = 0;
-	r->cam[X] = 0.0;
-	r->cam[Y] = 0.0;
+	r->cam_x = 0.0;
 	r->delta[X] = 0.0;
 	r->delta[Y] = 0.0;
 	r->dir[X] = 0.0;
 	r->dir[Y] = 0.0;
 	r->dist[X] = 0.0;
 	r->dist[Y] = 0.0;
-	r->map[X] = 0.0;
-	r->map[Y] = 0.0;
 	r->plane[X] = 0;
 	r->plane[Y] = 0.66; // ??? Pourquoi cette valeur ??? (voir lodev)
+	r->wall_x = 0.0;
 	r->w_seen[X] = 0;
 	r->w_seen[Y] = 0;
 	r->w_side = 0;

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 19:27:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:40:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 {
 	get_cos_sin(p);
-	init_main_ray_calculation(r, p);
+	init_ray_calculation(r, p);
 	if (!wall_is_on_axis(r, p, m->grid))
 	{
 		dda(r, m->grid); // DDA gives localisation of the encountered wall
@@ -33,7 +33,7 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 bool	get_current_ray(t_rays *r, t_player *p, t_map *m)
 {
 	get_cos_sin(p);
-	init_main_ray_calculation(r, p);
+	init_ray_calculation(r, p);
 	if (!wall_is_on_axis(r, p, m->grid))
 	{
 		dda(r, m->grid); // DDA gives localisation of the encountered wall

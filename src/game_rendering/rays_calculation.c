@@ -6,31 +6,15 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/27 11:17:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:12:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static int	check_w_side(int side, double *p_pos, int *w_pos, double aov)
+int	get_main_ray(t_player *p, t_map *m)
 {
-	if ((side == 1 && (int)p_pos[Y] > w_pos[Y])
-		|| (side == -1 && aov == NO_RAD))
-		return (NO);
-	else if ((side == 1 && (int)p_pos[Y] < w_pos[Y])
-		|| (side == -1 && aov == SO_RAD))
-		return (SO);
-	if ((side == 0 && (int)p_pos[X] > w_pos[X])
-		|| (side == -1 && aov == WE_RAD))
-		return (WE);
-	else if ((side == 0 && (int)p_pos[X] < w_pos[X])
-		|| (side == -1 && aov == EA_RAD))
-		return (EA);
-	return (-1);
-}
-
-static int	main_ray(t_player *p, t_map *m)
-{
+	get_cos_sin(p);
 	init_main_ray_calculation(p);
 	if (!wall_is_on_axis(p, m->grid))
 	{
@@ -46,9 +30,11 @@ static int	main_ray(t_player *p, t_map *m)
 	return (0);
 }
 
-int	rays_calculation(t_player *p, t_map *m)
+bool	get_current_ray(t_player *p, t_map *m)
 {
-	get_cos_sin(p);
-	main_ray(p, m);
-	return (0);
+
+	(void)p;
+	(void)m;
+	//main_ray(p, m);
+	return (true);
 }

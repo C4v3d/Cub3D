@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/30 17:48:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:43:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char *argv[])
 	{
 		preprocess(&cub, argv[1]);
 		log_data(&cub);
+		fprintf(stderr, "go loop\n");
 		mlx_loop(cub.mlx);
 		//free_cub(&cub);	// USELESS?
 		//return (0);		// USELESS?

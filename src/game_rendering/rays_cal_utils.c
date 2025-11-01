@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:03:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:35:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@ int	check_w_side(int side, double *p_pos, int *w_pos, double aov)
 	return (-1);
 }
 
-bool	wall_is_on_axis(t_player *p, char **grid)
+bool	wall_is_on_axis(t_rays *r, t_player *p, char **grid)
 {
 	if (!(p->aov == 0 || p->aov == EA_RAD || p->aov == NO_RAD
 			|| p->aov == WE_RAD || p->aov == SO_RAD))
 		return (false);
-	p->r.w_seen[X] = p->pos[X];
-	p->r.w_seen[Y] = p->pos[Y];
+	r->w_seen[X] = p->pos[X];
+	r->w_seen[Y] = p->pos[Y];
 	if (p->aov == 0)
-		while (grid[p->r.w_seen[Y]][++p->r.w_seen[X]] != '1')
+		while (grid[r->w_seen[Y]][++r->w_seen[X]] != '1')
 			p->ray_len++;
 	if (p->aov == NO_RAD)
-		while (grid[--p->r.w_seen[Y]][p->r.w_seen[X]] != '1')
+		while (grid[--r->w_seen[Y]][r->w_seen[X]] != '1')
 			p->ray_len++;
 	if (p->aov == WE_RAD)
-		while (grid[p->r.w_seen[Y]][--p->r.w_seen[X]] != '1')
+		while (grid[r->w_seen[Y]][--r->w_seen[X]] != '1')
 			p->ray_len++;
 	if (p->aov == SO_RAD)
-		while (grid[++p->r.w_seen[Y]][p->r.w_seen[X]] != '1')
+		while (grid[++r->w_seen[Y]][r->w_seen[X]] != '1')
 			p->ray_len++;
 	p->ray_len++;
 	if (p->aov == 0 || p->aov == WE_RAD)
@@ -56,56 +56,56 @@ bool	wall_is_on_axis(t_player *p, char **grid)
 	return (true);
 }
 
-void	dda(t_player *p, char **grid)
+void	dda(t_rays *r, char **grid)
 {
 	bool	hit;
 
 	hit = false;
 	while (!hit)
 	{
-		if (p->r.dist_next_tile[X] < p->r.dist_next_tile[Y])
+		if (r->dist_next_tile[X] < r->dist_next_tile[Y])
 		{
-			p->r.dist_next_tile[X] += p->r.delta[X];
-			p->r.w_seen[X] += p->r.steps[X];
-			p->r.w_side = 0;
+			r->dist_next_tile[X] += r->delta[X];
+			r->w_seen[X] += r->steps[X];
+			r->w_side = 0;
 		}
 		else
 		{
-			p->r.dist_next_tile[Y] += p->r.delta[Y];
-			p->r.w_seen[Y] += p->r.steps[Y];
-			p->r.w_side = 1;
+			r->dist_next_tile[Y] += r->delta[Y];
+			r->w_seen[Y] += r->steps[Y];
+			r->w_side = 1;
 		}
-		if (grid[p->r.w_seen[Y]][p->r.w_seen[X]] == '1')
+		if (grid[r->w_seen[Y]][r->w_seen[X]] == '1')
 			hit = true;
 	}
 }
 
-void	init_main_ray_calculation(t_player *p)
+void	init_main_ray_calculation(t_rays *r, t_player *p)
 {
-	p->r.delta[X] = get_delta(p->dir[X]);
-	p->r.delta[Y] = get_delta(p->dir[Y]);
-	p->r.w_seen[X] = p->pos[X];
-	p->r.w_seen[Y] = p->pos[Y];
-	p->r.w_side = -1;
+	r->delta[X] = get_delta(p->dir[X]);
+	r->delta[Y] = get_delta(p->dir[Y]);
+	r->w_seen[X] = p->pos[X];
+	r->w_seen[Y] = p->pos[Y];
+	r->w_side = -1;
 	if (p->dir[X] < 0)
 	{
-		p->r.steps[X] = -1;
-		p->r.dist_next_tile[X] = (p->pos[X] - p->r.w_seen[X]) * p->r.delta[X];
+		r->steps[X] = -1;
+		r->dist_next_tile[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
 	}
 	else
 	{
-		p->r.steps[X] = 1;
-		p->r.dist_next_tile[X] = (p->r.w_seen[X] + 1 - p->pos[X]) * p->r.delta[X];
+		r->steps[X] = 1;
+		r->dist_next_tile[X] = (r->w_seen[X] + 1 - p->pos[X]) * r->delta[X];
 	}
 	if (p->dir[Y] < 0)
 	{
-		p->r.steps[Y] = 1;
-		p->r.dist_next_tile[Y] = (p->r.w_seen[Y] + 1 - p->pos[Y]) * p->r.delta[Y];
+		r->steps[Y] = 1;
+		r->dist_next_tile[Y] = (r->w_seen[Y] + 1 - p->pos[Y]) * r->delta[Y];
 	}
 	else
 	{
-		p->r.steps[Y] = -1;
-		p->r.dist_next_tile[Y] = (p->pos[Y] - p->r.w_seen[Y]) * p->r.delta[Y];
+		r->steps[Y] = -1;
+		r->dist_next_tile[Y] = (p->pos[Y] - r->w_seen[Y]) * r->delta[Y];
 	}
 }
 

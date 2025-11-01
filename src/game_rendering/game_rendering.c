@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:22:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:16:16 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		draw_scene(t_main *cub, t_image *img)
 {
-	(void)cub;
 	(void)img;
+	get_current_ray(&cub->r, &cub->plyr, &cub->map);
 	//while (get_current_ray(&cub->plyr, &cub->map))
 	//{
 

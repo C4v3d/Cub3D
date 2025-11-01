@@ -6,11 +6,20 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:04:55 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 00:15:43 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	paint_line(t_image *img, int x, int start, int end, int col)
+{
+	int	y_i;
+
+	y_i = start;
+	while (++y_i < end)
+		my_mlx_pixel_put(img, x, y_i, col);
+}
 
 void	paint(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 {

@@ -14,7 +14,6 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/game_rendering/loop.c \
 			$(CFILES_PATH)/game_rendering/rendering_utils_1.c \
 			$(CFILES_PATH)/game_rendering/rays_calculation.c \
-			$(CFILES_PATH)/game_rendering/rays_cal_utils.c \
 			$(CFILES_PATH)/init_free/init_cub_1.c \
 			$(CFILES_PATH)/init_free/init_cub_2.c \
 			$(CFILES_PATH)/init_free/free_cub.c \

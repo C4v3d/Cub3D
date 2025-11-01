@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/01 20:40:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:17:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <limits.h>
 # include <math.h>
 # include <stdbool.h>
 # include <errno.h>
@@ -176,9 +177,12 @@ typedef struct	s_player_data
 
 typedef struct	s_program_data
 {
-	bool	close_program;
-	int		input_file_fd;
-	t_main	*cub;				// `ptr` to parent struct
+	double			last_time;
+	double			move_speed;
+	double			rot_speed;
+	bool			close_program;
+	int				input_file_fd;
+	t_main			*cub;				// `ptr` to parent struct
 }	t_prog;
 
 typedef struct	s_main_struct

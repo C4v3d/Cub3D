@@ -9,6 +9,7 @@ CFILES_PATH = src
 CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/debug/logging.c \
 			$(CFILES_PATH)/error_handler/error_msg.c \
+			$(CFILES_PATH)/game_rendering/fps.c \
 			$(CFILES_PATH)/game_rendering/game_rendering.c \
 			$(CFILES_PATH)/game_rendering/loop.c \
 			$(CFILES_PATH)/game_rendering/rendering_utils_1.c \

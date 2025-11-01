@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 20:39:39 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 22:26:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 	gfx->colors[FLOOR] = &floor;
 	gfx->colors[CEILING] = &ceiling;
 	gfx->el_counter = 0;
+	gfx->map.img = NULL;
 }
 
 static void	init_map_data(t_map *map, t_main *cub)
@@ -62,6 +63,9 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 
 void	init_cub(t_main *cub)
 {
+	//cub->pr.last_time = get_time();
+	//if (cub->pr.last_time < 0)
+	//	free_cub(cub);
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
 	init_graphic_data(&cub->gfx, cub);

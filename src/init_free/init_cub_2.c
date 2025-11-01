@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:50:18 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:54:07 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,6 @@ int		init_hooks(t_main *cub)
 {
 	mlx_hook(cub->dspl.win, 02, 1L<<0, input_loop, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
-	return (0);
-}
-
-int		init_user_inputs(t_usr_ctrl_in *ctrl, t_main *cub) // USELESS ???
-{
-	int	simultaneous_handled_controls; // ⚠️ Besoin et possible de gerer plusieurs inputs?
-	int	i;
-
-	ctrl->cub = cub;
-	simultaneous_handled_controls = 4; // ⚠️ Besoin et possible de gerer plusieurs inputs?
-	i = -1;
-	while (++i < simultaneous_handled_controls)
-		ctrl->kc[i] = -1;
 	return (0);
 }
 

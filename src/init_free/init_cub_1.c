@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:51:13 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:54:15 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,8 @@ void	init_cub(t_main *cub)
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
 	init_graphic_data(&cub->gfx, cub);
-	fprintf(stderr, "init_gfx OK\n");
 	init_map_data(&cub->map, cub);
-	fprintf(stderr, "init_map OK\n");
 	init_p_r_data(&cub->plyr, &cub->r, cub);
-	fprintf(stderr, "init_p_r OK\n");
-	//init_user_inputs(&cub->ctrl, cub);
-	fprintf(stderr, "init_usr_in OK\n");
 	init_display(&cub->dspl, cub);
-	fprintf(stderr, "init_dspl OK\n");
 	init_hooks(cub);
-	fprintf(stderr, "init_hooks OK\n");
 }

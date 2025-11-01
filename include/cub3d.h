@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/01 18:51:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:00:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@
 # include <X11/X.h>
 #endif
 
-typedef struct s_main_struct		t_main;
-typedef	struct s_program_data		t_prog;
-typedef struct s_display_window		t_display;
-typedef	struct s_player_data		t_player;
-typedef struct s_user_control_input	t_usr_ctrl_in;
-typedef struct s_scene				t_scene;
-typedef struct s_graphic_data		t_graphic;
+typedef struct	s_main_struct		t_main;
+typedef	struct	s_program_data		t_prog;
+typedef struct	s_display_window	t_display;
+typedef	struct	s_player_data		t_player;
+typedef struct	s_scene				t_scene;
+typedef struct	s_graphic_data		t_graphic;
 typedef struct	s_rays_calculation	t_rays;
-typedef struct s_map_data			t_map;
-typedef union u_color				t_color;
+typedef struct	s_map_data			t_map;
+typedef struct	s_user_control_input	t_usr_ctrl_in;
+typedef union	u_color				t_color;
 
 
 # define WINDOW_WIDTH 1280
@@ -128,7 +128,7 @@ typedef union u_color
 	};
 }	t_color;
 
-typedef struct	s_user_control_input
+typedef struct	s_user_control_input // USELESS?
 {
 	int		*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
 	t_main	*cub;			// `ptr` to parent struct

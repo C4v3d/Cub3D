@@ -6,15 +6,16 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/30 18:14:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:12:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int		draw_scene(t_main *cub)
+int		draw_scene(t_main *cub, t_image *img)
 {
-	rays_calculation(&cub->plyr, &cub->map);
+	(void)cub;
+	(void)img;
 	return (0);
 }
 

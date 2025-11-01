@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:35:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:28:03 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ void	dda(t_rays *r, char **grid)
 	hit = false;
 	while (!hit)
 	{
-		if (r->dist_next_tile[X] < r->dist_next_tile[Y])
+		if (r->dist[X] < r->dist[Y])
 		{
-			r->dist_next_tile[X] += r->delta[X];
+			r->dist[X] += r->delta[X];
 			r->w_seen[X] += r->steps[X];
 			r->w_side = 0;
 		}
 		else
 		{
-			r->dist_next_tile[Y] += r->delta[Y];
+			r->dist[Y] += r->delta[Y];
 			r->w_seen[Y] += r->steps[Y];
 			r->w_side = 1;
 		}
@@ -90,22 +90,22 @@ void	init_main_ray_calculation(t_rays *r, t_player *p)
 	if (p->dir[X] < 0)
 	{
 		r->steps[X] = -1;
-		r->dist_next_tile[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
+		r->dist[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
 	}
 	else
 	{
 		r->steps[X] = 1;
-		r->dist_next_tile[X] = (r->w_seen[X] + 1 - p->pos[X]) * r->delta[X];
+		r->dist[X] = (r->w_seen[X] + 1 - p->pos[X]) * r->delta[X];
 	}
 	if (p->dir[Y] < 0)
 	{
 		r->steps[Y] = 1;
-		r->dist_next_tile[Y] = (r->w_seen[Y] + 1 - p->pos[Y]) * r->delta[Y];
+		r->dist[Y] = (r->w_seen[Y] + 1 - p->pos[Y]) * r->delta[Y];
 	}
 	else
 	{
 		r->steps[Y] = -1;
-		r->dist_next_tile[Y] = (p->pos[Y] - r->w_seen[Y]) * r->delta[Y];
+		r->dist[Y] = (p->pos[Y] - r->w_seen[Y]) * r->delta[Y];
 	}
 }
 

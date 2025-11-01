@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 19:16:16 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:27:36 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 	}
 	r->w_side = check_w_side(r->w_side, p->pos, r->w_seen, p->aov);
 	if (r->w_side == 0 || r->w_side == 1)
-		r->p_w_dist = (r->dist_next_tile[X] - r->delta[X]);
+		r->p_w_dist = (r->dist[X] - r->delta[X]);
 	else
-		r->p_w_dist = (r->dist_next_tile[Y] - r->delta[Y]);
+		r->p_w_dist = (r->dist[Y] - r->delta[Y]);
 	r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
 	return (0);
 }
@@ -41,9 +41,9 @@ bool	get_current_ray(t_rays *r, t_player *p, t_map *m)
 	}
 	r->w_side = check_w_side(r->w_side, p->pos, r->w_seen, p->aov);
 	if (r->w_side == 0 || r->w_side == 1)
-		r->p_w_dist = (r->dist_next_tile[X] - r->delta[X]);
+		r->p_w_dist = (r->dist[X] - r->delta[X]);
 	else
-		r->p_w_dist = (r->dist_next_tile[Y] - r->delta[Y]);
+		r->p_w_dist = (r->dist[Y] - r->delta[Y]);
 	r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 20:41:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:53:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 	r->w_seen[X] = (int)p->pos[X];
 	r->w_seen[Y] = (int)p->pos[Y];
 	r->w_side = -1;
-	if (r->dir[X] < 0)
+	if (p->dir[X] < 0)
 	{
 		r->steps[X] = -1;
 		r->dist[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
@@ -97,7 +97,7 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 		r->steps[X] = 1;
 		r->dist[X] = (r->w_seen[X] + 1.0 - p->pos[X]) * r->delta[X];
 	}
-	if (r->dir[Y] < 0)
+	if (p->dir[Y] < 0)
 	{
 		r->steps[Y] = 1;
 		r->dist[Y] = (r->w_seen[Y] + 1.0 - p->pos[Y]) * r->delta[Y];

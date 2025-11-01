@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/26 16:38:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:51:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ static void	init_map_data(t_map *map, t_main *cub)
 	map->plyr_start_ori = 0;
 }
 
-static void	init_player_data(t_player *p, t_main *cub)
+static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 {
 	p->cub = cub;
 	p->aov = 0;
-	p->r.delta[X] = 0.0;
-	p->r.delta[Y] = 0.0;
-	p->r.dist_next_tile[X] = 0.0;
-	p->r.dist_next_tile[Y] = 0.0;
-	p->r.steps[X] = 0.0;
-	p->r.steps[Y] = 0.0;
-	p->r.w_seen[X] = 0;
-	p->r.w_seen[Y] = 0;
-	p->r.w_side = 0;
-	p->r.p_w_dist = 0;
 	p->ray_len = 0;
+	r->delta[X] = 0.0;
+	r->delta[Y] = 0.0;
+	r->dist_next_tile[X] = 0.0;
+	r->dist_next_tile[Y] = 0.0;
+	r->steps[X] = 0.0;
+	r->steps[Y] = 0.0;
+	r->w_seen[X] = 0;
+	r->w_seen[Y] = 0;
+	r->w_side = 0;
+	r->p_w_dist = 0;
 }
 
 void	init_cub(t_main *cub)
@@ -58,9 +58,15 @@ void	init_cub(t_main *cub)
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
 	init_graphic_data(&cub->gfx, cub);
+	fprintf(stderr, "init_gfx OK\n");
 	init_map_data(&cub->map, cub);
-	init_player_data(&cub->plyr, cub);
-	init_user_inputs(&cub->ctrl, cub);
+	fprintf(stderr, "init_map OK\n");
+	init_p_r_data(&cub->plyr, &cub->r, cub);
+	fprintf(stderr, "init_p_r OK\n");
+	//init_user_inputs(&cub->ctrl, cub);
+	fprintf(stderr, "init_usr_in OK\n");
 	init_display(&cub->dspl, cub);
+	fprintf(stderr, "init_dspl OK\n");
 	init_hooks(cub);
+	fprintf(stderr, "init_hooks OK\n");
 }

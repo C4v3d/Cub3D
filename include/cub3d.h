@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/01 17:54:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:51:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ typedef	struct s_player_data		t_player;
 typedef struct s_user_control_input	t_usr_ctrl_in;
 typedef struct s_scene				t_scene;
 typedef struct s_graphic_data		t_graphic;
-typedef union u_color				t_color;
+typedef struct	s_rays_calculation	t_rays;
 typedef struct s_map_data			t_map;
+typedef union u_color				t_color;
 
 
 # define WINDOW_WIDTH 1280
@@ -94,12 +95,13 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	double	cam;
+	double	plane[AXIS];
+	double	cam[AXIS];
 	double	dir[AXIS];
-	int		w_side;			// wall side
-	int		w_seen[AXIS];	// wall seen
 	double	delta[AXIS];
 	double	dist_next_tile[AXIS];
+	int		w_side;			// wall side
+	int		w_seen[AXIS];	// wall seen
 	double	p_w_dist;		// perpendicular wall distance instead of euclidean dist
 	int		line_h;			// line height
 	int		steps[AXIS];
@@ -168,7 +170,6 @@ typedef struct	s_player_data
 	double			dir[AXIS];
 	double			ray_len;
 	double			aov;
-	t_rays			r;
 	t_main			*cub;
 }					t_player;
 
@@ -188,6 +189,7 @@ typedef struct	s_main_struct
 	t_display		dspl;
 	t_prog			pr;
 	t_usr_ctrl_in	ctrl;
+	t_rays			r;
 }	t_main;
 
 #endif

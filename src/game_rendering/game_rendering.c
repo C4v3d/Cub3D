@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 20:40:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:57:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 	int	col1 = 0xFDE8F8;
 	int	col2 = 0xFAC5ED;
 	int	col3 = 0xF693DD;
-	int	col4 = 0xF269D0;
+	int	col0 = 0xF269D0;
 	(void)cub;
 
 	int	start;
@@ -45,8 +45,8 @@ void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 		paint_line(img, x, start, end, col2);
 	if (r->w_side == 3)
 		paint_line(img, x, start, end, col3);
-	if (r->w_side == 4)
-		paint_line(img, x, start, end, col4);
+	if (r->w_side == 0)
+		paint_line(img, x, start, end, col0);
 }
 
 static void	init_draw_scene(t_rays *r, t_player *p, size_t x)
@@ -68,8 +68,8 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 	while (++x < WINDOW_WIDTH)
 	{
 		init_draw_scene(r, p, x);
-		if (!wall_is_on_axis(r, p, cub->map.grid))
-			dda(r, cub->map.grid); // DDA gives localisation of the encountered wall
+		//if (!wall_is_on_axis(r, p, cub->map.grid))
+		dda(r, cub->map.grid); // DDA gives localisation of the encountered wall
 		r->w_side = check_w_side(r->w_side, p->pos, r->w_seen, p->aov);
 		if (r->w_side == 0 || r->w_side == 1)
 			r->p_w_dist = (r->dist[X] - r->delta[X]);

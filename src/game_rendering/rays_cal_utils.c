@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:48:05 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 19:28:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 20:41:45 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ void	dda(t_rays *r, char **grid)
 	}
 }
 
-void	init_main_ray_calculation(t_rays *r, t_player *p)
+void	init_ray_calculation(t_rays *r, t_player *p)
 {
 	r->delta[X] = get_delta(p->dir[X]);
 	r->delta[Y] = get_delta(p->dir[Y]);
-	r->w_seen[X] = p->pos[X];
-	r->w_seen[Y] = p->pos[Y];
+	r->w_seen[X] = (int)p->pos[X];
+	r->w_seen[Y] = (int)p->pos[Y];
 	r->w_side = -1;
-	if (p->dir[X] < 0)
+	if (r->dir[X] < 0)
 	{
 		r->steps[X] = -1;
 		r->dist[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
@@ -95,12 +95,12 @@ void	init_main_ray_calculation(t_rays *r, t_player *p)
 	else
 	{
 		r->steps[X] = 1;
-		r->dist[X] = (r->w_seen[X] + 1 - p->pos[X]) * r->delta[X];
+		r->dist[X] = (r->w_seen[X] + 1.0 - p->pos[X]) * r->delta[X];
 	}
-	if (p->dir[Y] < 0)
+	if (r->dir[Y] < 0)
 	{
 		r->steps[Y] = 1;
-		r->dist[Y] = (r->w_seen[Y] + 1 - p->pos[Y]) * r->delta[Y];
+		r->dist[Y] = (r->w_seen[Y] + 1.0 - p->pos[Y]) * r->delta[Y];
 	}
 	else
 	{

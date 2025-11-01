@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 18:54:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 00:29:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.tile_pos[X] = cub->plyr.pos[X];
 	cub->plyr.tile_pos[Y] = cub->plyr.pos[Y];
 	cub->plyr.aov = cub->map.plyr_start_ori;
+	cub->plyr.dir[X] = -1; // TEST
+	cub->plyr.dir[Y] = 0; // TEST
 	return (0);
 }
 

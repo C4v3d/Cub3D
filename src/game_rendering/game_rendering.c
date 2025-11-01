@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 00:13:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 00:16:31 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,7 @@ void	draw_background(t_main *cub, t_image *img)
 	paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[0]->color);
 }
 
-void	paint_line(t_image *img, int x, int start, int end, int col)
-{
-	int	y_i;
 
-	y_i = start;
-	while (++y_i < end)
-		my_mlx_pixel_put(img, x, y_i, col);
-}
 
 
 void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
@@ -59,6 +52,35 @@ void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 		paint_line(img, x, start, end, col3);
 	if (r->w_side == 0)
 		paint_line(img, x, start, end, col0);
+}
+
+void	init_ray_calculation(t_rays *r, t_player *p)
+{
+	r->delta[X] = get_delta(p->dir[X]);
+	r->delta[Y] = get_delta(p->dir[Y]);
+	r->w_seen[X] = (int)p->pos[X];
+	r->w_seen[Y] = (int)p->pos[Y];
+	r->w_side = -1;
+	if (p->dir[X] < 0)
+	{
+		r->steps[X] = -1;
+		r->dist[X] = (p->pos[X] - r->w_seen[X]) * r->delta[X];
+	}
+	else
+	{
+		r->steps[X] = 1;
+		r->dist[X] = (r->w_seen[X] + 1.0 - p->pos[X]) * r->delta[X];
+	}
+	if (p->dir[Y] < 0)
+	{
+		r->steps[Y] = 1;
+		r->dist[Y] = (r->w_seen[Y] + 1.0 - p->pos[Y]) * r->delta[Y];
+	}
+	else
+	{
+		r->steps[Y] = -1;
+		r->dist[Y] = (p->pos[Y] - r->w_seen[Y]) * r->delta[Y];
+	}
 }
 
 static void	init_draw_scene(t_rays *r, t_player *p, size_t x)

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/01 19:00:26 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 19:26:49 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,14 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	double	plane[AXIS];
 	double	cam[AXIS];
-	double	dir[AXIS];
 	double	delta[AXIS];
-	double	dist_next_tile[AXIS];
-	int		w_side;			// wall side
+	double	dir[AXIS];
+	double	dist[AXIS];		// distance to next tile
+	double	map[AXIS];		// pos on map
+	double	plane[AXIS];
 	int		w_seen[AXIS];	// wall seen
+	int		w_side;			// wall side
 	double	p_w_dist;		// perpendicular wall distance instead of euclidean dist
 	int		line_h;			// line height
 	int		steps[AXIS];

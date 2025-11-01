@@ -6,13 +6,14 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:32:03 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/30 17:43:12 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/01 17:56:41 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INITFREE_H
 # define INITFREE_H
 
+void	safe_destroy_image(t_main *cub, void *ptr);
 void	init_cub(t_main *cub);
 int		init_parsed_data(t_main *cub);
 int		init_display(t_display *dspl, t_main *cub);

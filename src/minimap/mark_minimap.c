@@ -28,7 +28,7 @@ static void	init_mark_mini(t_player *p, int *x_i, int *y_i)
 		(*y_i) = p->r.w_seen[Y] * MINI_RES;
 }
 
-void	mark_minimap(t_image *map, t_player *p)
+void	mark_minimap(t_image *img, t_player *p)
 {
 	int	x_i;
 	int x_tmp;
@@ -40,14 +40,14 @@ void	mark_minimap(t_image *map, t_player *p)
 	i = -1;
 	while (++i <= MINI_RES)
 	{
-		my_mlx_pixel_put(map, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(map, x_i++, y_i + MINI_RES, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, 0xFFFFFF);
 	}
 	x_i = x_tmp;
 	i = -1;
 	while (++i <= MINI_RES)
 	{
-		my_mlx_pixel_put(map, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(map, x_i + MINI_RES, y_i++, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, 0xFFFFFF);
 	}
 }

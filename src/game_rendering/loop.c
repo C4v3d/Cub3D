@@ -40,7 +40,7 @@ int	loop(t_main *cub)
 	create_image(cub, &cub->gfx.map);
 	draw_background(cub, &cub->gfx.map);
 	draw_scene(cub);
-	draw_minimap(cub);
+	draw_minimap(cub, &cub->gfx.map);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
 	return (false);
 }

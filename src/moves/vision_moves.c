@@ -6,11 +6,28 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/30 17:53:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 00:08:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static void rotate(double dir[2], double plane[2], double rot_speed)
+{
+	double dx;
+	double dy;
+	double px;
+	double py;
+
+	dx = dir[0];
+	dy = dir[1];
+	dir[0] = dx * cos(rot_speed) - dy * sin(rot_speed);
+	dir[1] = dx * sin(rot_speed) + dy * cos(rot_speed);
+	px = plane[0];
+	py = plane[1];
+	plane[0] = px * cos(rot_speed) - py * sin(rot_speed);
+	plane[1] = px * sin(rot_speed) + py * cos(rot_speed);
+}
 
 static void	update_aov(double *aov, float max_angle, int kc)
 {
@@ -31,5 +48,9 @@ int	update_plyr_vision(t_player *p, int	kc)
 	if (!(kc == A || kc == D || kc == I || kc == O))
 		return (0);
 	update_aov(&p->aov, AOV_MAX, kc);
+	if (kc == A)
+		rotate(p->dir, p->cub->r.plane, -p->cub->pr.rot_speed);
+	else
+		rotate(p->dir, p->cub->r.plane, p->cub->pr.rot_speed);
 	return (0);
 }

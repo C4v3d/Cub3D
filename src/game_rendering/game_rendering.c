@@ -6,11 +6,23 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/01 20:57:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 00:13:15 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+void	draw_background(t_main *cub, t_image *img)
+{
+	size_t	pos[AXIS];
+
+	pos[X] = 0;
+	pos[Y] = 0;
+	paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[1]->color);
+	pos[X] = WINDOW_WIDTH / 2;
+	pos[Y] = WINDOW_HEIGHT / 2;
+	paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[0]->color);
+}
 
 void	paint_line(t_image *img, int x, int start, int end, int col)
 {
@@ -18,7 +30,7 @@ void	paint_line(t_image *img, int x, int start, int end, int col)
 
 	y_i = start;
 	while (++y_i < end)
-			my_mlx_pixel_put(img, x, y_i, col);
+		my_mlx_pixel_put(img, x, y_i, col);
 }
 
 
@@ -51,7 +63,7 @@ void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 
 static void	init_draw_scene(t_rays *r, t_player *p, size_t x)
 {
-	get_cos_sin(p);
+	//get_cos_sin(p);
 	init_ray_calculation(r, p);
 	r->cam_x = 2 * x / (double)WINDOW_WIDTH - 1;
 	r->dir[X] = p->dir[X] + r->plane[X] * r->cam_x;
@@ -79,26 +91,5 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 		draw_line(cub, r, img, x);
 	}
 	//get_current_ray(&cub->r, &cub->plyr, &cub->map);
-	return (0);
-}
-
-int	draw_background(t_main *cub, t_image *img)
-{
-	//v1
-	//size_t	pos[AXIS];
-
-	//pos[X] = 0;
-	//pos[Y] = 0;
-	//paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[1]->color);
-	//pos[X] = WINDOW_WIDTH / 2;
-	//pos[Y] = WINDOW_HEIGHT / 2;
-	//paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[0]->color);
-
-	//v2
-	paint(img, cub->dspl.win_dim,
-		(size_t[]){0, 0}, cub->gfx.colors[1]->color);
-	paint(img, cub->dspl.win_dim,
-		(size_t[]){WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2},
-			cub->gfx.colors[0]->color);
 	return (0);
 }

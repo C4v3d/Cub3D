@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 13:51:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:20:18 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	draw_background(t_main *cub, t_image *img)
 void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 {
 	int	col1 = 0xFDE8F8;
-	int	col2 = 0xFAC5ED;
-	int	col3 = 0xF693DD;
-	int	col0 = 0xF269D0;
+	int	col2 = 0xF693DD;
+	int	col3 = 0xEE3FC2;
+	int	col0 = 0xC01194;
 	(void)cub;
 
 	int	start;
@@ -122,20 +122,13 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 	while (++x < WINDOW_WIDTH)
 	{
 		init_dda(r, p, x);
-		//if (!wall_is_on_axis(r, p, cub->map.grid))
-		dda(r, cub->map.grid); // DDA gives localisation of the encountered wall
-		//r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
-		//if (r->w_side == 0 || r->w_side == 1)
-		//	r->p_w_dist = (r->dist[X] - r->delta[X]);
-		//else
-		//	r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-
-		/// tEST
-		if (r->w_side == 0)
-			r->p_w_dist = (r->dist[X] - r->delta[X]);
-		else
+		//if (!wall_is_on_axis(r, p, cub->map.grid)) // USELESS?
+		dda(r, cub->map.grid);
+		r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
+		if (r->w_side == 0 || r->w_side == 1)
 			r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-		////
+		else
+			r->p_w_dist = (r->dist[X] - r->delta[X]);
 		r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
 		draw_line(cub, r, img, x);
 		fprintf(stderr, "draw_scene | x: %lu | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);

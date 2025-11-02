@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 15:20:18 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 16:58:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ void	init_dda(t_rays *r, t_player *p, size_t x)
 	r->dir[Y] = p->dir[Y] + r->plane[Y] * r->cam_x;
 	r->map[X] = (int)p->pos[X];
 	r->map[Y] = (int)p->pos[Y];
-	r->delta[X] = get_delta(p->dir[X]);
-	r->delta[Y] = get_delta(p->dir[Y]);
+	r->delta[X] = get_delta(r->dir[X]);
+	r->delta[Y] = get_delta(r->dir[Y]);
 	r->w_side = -1;
 	init_ray_calculation(r, p);
 }
@@ -124,12 +124,12 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 		init_dda(r, p, x);
 		//if (!wall_is_on_axis(r, p, cub->map.grid)) // USELESS?
 		dda(r, cub->map.grid);
-		r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
-		if (r->w_side == 0 || r->w_side == 1)
-			r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-		else
+		if (r->w_side == 0)
 			r->p_w_dist = (r->dist[X] - r->delta[X]);
+		else
+			r->p_w_dist = (r->dist[Y] - r->delta[Y]);
 		r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
+		r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
 		draw_line(cub, r, img, x);
 		fprintf(stderr, "draw_scene | x: %lu | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);
 	}

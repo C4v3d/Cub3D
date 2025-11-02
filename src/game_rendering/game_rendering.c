@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 16:58:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 00:50:01 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)
 //v1 WORKING
 void	init_ray_calculation(t_rays *r, t_player *p)
 {
-	if (p->dir[X] < 0)
+	if (r->dir[X] < 0)
 	{
 		r->steps[X] = -1;
 		r->dist[X] = (p->pos[X] - r->map[X]) * r->delta[X];
@@ -64,7 +64,7 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 		r->steps[X] = 1;
 		r->dist[X] = (r->map[X] + 1.0 - p->pos[X]) * r->delta[X];
 	}
-	if (p->dir[Y] < 0)
+	if (r->dir[Y] < 0)
 	{
 		r->steps[Y] = 1;
 		r->dist[Y] = (r->map[Y] + 1.0 - p->pos[Y]) * r->delta[Y];

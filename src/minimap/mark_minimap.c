@@ -41,6 +41,8 @@ void	mark_minimap(t_image *img, t_player *p)
 	i = -1;
 	while (++i <= MINI_RES)
 	{
+		if (x_i >= WINDOW_WIDTH)
+			break ;
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
 		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, p->cub->gfx.colors[0]->color / 2);
 	}
@@ -48,6 +50,8 @@ void	mark_minimap(t_image *img, t_player *p)
 	i = -1;
 	while (++i <= MINI_RES)
 	{
+		if (y_i >= WINDOW_HEIGHT)
+			break ;
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
 		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, p->cub->gfx.colors[0]->color / 2);
 	}

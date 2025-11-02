@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 11:54:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:51:36 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 {
 	get_cos_sin(p);
-	init_ray_calculation(r, p);
+	init_dda(r, p, WINDOW_WIDTH / 2);
 	if (!wall_is_on_axis(r, p, m->grid))
 	{
 		dda(r, m->grid); // DDA gives localisation of the encountered wall
@@ -56,17 +56,16 @@ bool	wall_is_on_axis(t_rays *r, t_player *p, char **grid)
 	r->map[Y] = p->pos[Y];
 	if (p->aov == 0)
 		while (grid[r->map[Y]][++r->map[X]] != '1')
-			p->ray_len++;
+			r->dist[X]++;
 	if (p->aov == NO_RAD)
 		while (grid[--r->map[Y]][r->map[X]] != '1')
-			p->ray_len++;
+			r->dist[Y]++;
 	if (p->aov == WE_RAD)
 		while (grid[r->map[Y]][--r->map[X]] != '1')
-			p->ray_len++;
+			r->dist[X]++;
 	if (p->aov == SO_RAD)
 		while (grid[++r->map[Y]][r->map[X]] != '1')
-			p->ray_len++;
-	p->ray_len++;
+			r->dist[Y]++;
 	if (p->aov == 0 || p->aov == WE_RAD)
 		p->ray_len += p->tile_pos[X];
 	if (p->aov == NO_RAD || p->aov == SO_RAD)

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 13:20:28 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:51:03 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 //	}
 //}
 
-static void	init_draw_scene(t_rays *r, t_player *p, size_t x)
+void	init_dda(t_rays *r, t_player *p, size_t x)
 {
 	r->cam_x = 2 * x / (double)WINDOW_WIDTH - 1;
 	r->dir[X] = p->dir[X] + r->plane[X] * r->cam_x;
@@ -121,7 +121,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
-		init_draw_scene(r, p, x);
+		init_dda(r, p, x);
 		//if (!wall_is_on_axis(r, p, cub->map.grid))
 		dda(r, cub->map.grid); // DDA gives localisation of the encountered wall
 		//r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);

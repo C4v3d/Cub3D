@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/02 11:54:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:29:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,7 @@ typedef struct	s_map_data
 	size_t	dim[AXIS];				// int[2] for: map dimensions
 	size_t	plyr_start_pos[AXIS];	// int[2] for: PLAYER X&Y START POSITION
 	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
+	t_rays	r_mini;
 	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
 

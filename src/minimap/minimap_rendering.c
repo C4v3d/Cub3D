@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 13:20:49 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:35:27 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ void	draw_minimap(t_main *cub, t_image *img)
 		draw_line(img, &cub->plyr);
 		y_i++;
 	}
-	//mark_minimap(img, &cub->plyr);
+	mark_minimap(img, &cub->plyr);
 }

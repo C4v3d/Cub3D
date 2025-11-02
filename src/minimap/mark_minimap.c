@@ -35,8 +35,8 @@ void	mark_minimap(t_image *img, t_player *p)
 	int	y_i;
 	int i;
 
-	get_main_ray(&p->cub->r, p, &p->cub->map);
-	init_mark_mini(&p->cub->r, &x_i, &y_i);
+	get_main_ray(&p->cub->map.r_mini, p, &p->cub->map);
+	init_mark_mini(&p->cub->map.r_mini, &x_i, &y_i);
 	x_tmp = x_i;
 	i = -1;
 	while (++i <= MINI_RES)

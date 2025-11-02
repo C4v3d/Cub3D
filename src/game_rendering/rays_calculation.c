@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 00:29:30 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 00:47:34 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void	dda(t_rays *r, char **grid)
 			r->w_side = 1;
 		}
 		if (grid[r->map[Y]][r->map[X]] == '1')
+		{
 			hit = true;
+			fprintf(stderr, "dda | HIT WALL! map[Y]: %d [X]:%d\n", r->map[Y], r->map[X]);
+		}
 	}
 }

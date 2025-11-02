@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 12:46:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:12:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 //}
 
 //v2
-static void rotate(double dir[2], double plane[2], double rot_speed)
+void rotate(double dir[2], double plane[2], double rot_speed)
 {
 	double old_dir_x;
 	double old_plane_x;

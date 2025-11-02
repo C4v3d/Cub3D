@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 15:11:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 00:29:30 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 {
 	init_dda(r, p, WINDOW_WIDTH / 2);
 	if (!wall_is_on_axis(r, p, m->grid))
-	{
 		dda(r, m->grid); // DDA gives localisation of the encountered wall
-		p->ray_len = calculate_ray_len(p, r->map[X], r->map[Y]);
-	}
 	r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
 	if (r->w_side == 0 || r->w_side == 1)
 		r->p_w_dist = (r->dist[X] - r->delta[X]);
@@ -90,16 +87,4 @@ void	dda(t_rays *r, char **grid)
 		if (grid[r->map[Y]][r->map[X]] == '1')
 			hit = true;
 	}
-}
-
-double	calculate_ray_len(t_player *p, double x, double y)	// USELESS???
-{
-	if (p->aov >= Q1_2 && p->aov < Q2_2)
-		return (get_hypotenus(p->pos[X] - x, p->pos[Y]) - y);
-	else if (p->aov >= Q2_2 && p->aov < Q3_2)
-		return (get_hypotenus(x - p->pos[X], y - p->pos[Y]));
-	else if (p->aov >= Q3_2 && p->aov <= Q4_2)
-		return (get_hypotenus(p->pos[X] - x, y - p->pos[Y]));
-	else
-		return (get_hypotenus(x - p->pos[X], y - p->pos[Y])); //if (p->aov >= 0 && p->aov < Q1_2)
 }

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 12:45:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/02 13:17:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
 	cub->plyr.tile_pos[X] = cub->plyr.pos[X];
 	cub->plyr.tile_pos[Y] = cub->plyr.pos[Y];
+	update_plyr_vision(&cub->plyr, A); // TRICKS POUR LANCER LA MACHINE
 	return (0);
 }
 

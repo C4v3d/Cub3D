@@ -42,13 +42,13 @@ void	mark_minimap(t_image *img, t_player *p)
 	while (++i <= MINI_RES)
 	{
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, p->cub->gfx.colors[0]->color / 2);
 	}
 	x_i = x_tmp;
 	i = -1;
 	while (++i <= MINI_RES)
 	{
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, 0xFFFFFF);
+		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, p->cub->gfx.colors[0]->color / 2);
 	}
 }

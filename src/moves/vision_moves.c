@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 13:12:02 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:40:51 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ void rotate(double dir[2], double plane[2], double rot_speed)
 	plane[Y] = old_plane_x * sin(rot_speed) + plane[Y] * cos(rot_speed);
 }
 
+static void	update_fov(double *fov, double fov_min, double fov_max, int kc)
+{
+	double	unit;
+
+	if (!(kc == I || kc == O))
+		return ;
+	unit = 0.1;
+	if (kc == I && *(fov) - unit >= fov_min)
+		*(fov) -= unit;
+	else if (kc == O && *(fov) + unit <= fov_max)
+		*(fov) += unit;
+}
+
 static void	update_aov(double *aov, float max_angle, int kc)
 {
 	if (!(kc == A || kc == D))
@@ -59,6 +72,7 @@ int	update_plyr_vision(t_player *p, int	kc)
 	if (!(kc == A || kc == D || kc == I || kc == O))
 		return (0);
 	update_aov(&p->aov, AOV_MAX, kc);
+	update_fov(&p->fov, 0.1, 2.0, kc);
 	//get_cos_sin(p);
 	//if (kc == A)
 	//	rotate(p->dir, p->cub->r.plane, -p->cub->pr.rot_speed);
@@ -68,6 +82,5 @@ int	update_plyr_vision(t_player *p, int	kc)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
 	else
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
-	fprintf(stderr, "updt_p_vis | aov: %lf | dir[X]: %lf | dir[Y]: %lf\n", p->aov, p->dir[X], p->dir[Y]);
 	return (0);
 }

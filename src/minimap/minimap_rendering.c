@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 00:37:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:54:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	draw_minimap(t_main *cub, t_image *img)
 	size_t	x_i;
 	size_t	y_i;
 
+	if (cub->pr.show_minimap == false)
+		return ;
 	y_i = -1;
 	while (++y_i < cub->map.dim[Y])
 	{

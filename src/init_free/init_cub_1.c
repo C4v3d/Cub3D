@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 11:54:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:44:07 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 {
 	p->cub = cub;
 	p->aov = 0;
+	p->fov = 0.57735;
 	p->ray_len = 0;
 	r->cam_x = 0.0;
 	r->delta[X] = 0.0;
@@ -49,8 +50,6 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	r->dir[Y] = 0.0;
 	r->dist[X] = 0.0;
 	r->dist[Y] = 0.0;
-	r->plane[X] = 0;
-	r->plane[Y] = 0.66; // ??? Pourquoi cette valeur ??? (voir lodev)
 	r->wall_x = 0.0;
 	r->map[X] = 0;
 	r->map[Y] = 0;
@@ -66,6 +65,7 @@ void	init_cub(t_main *cub)
 	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
+	cub->pr.show_minimap = true;
 	init_graphic_data(&cub->gfx, cub);
 	init_map_data(&cub->map, cub);
 	init_p_r_data(&cub->plyr, &cub->r, cub);

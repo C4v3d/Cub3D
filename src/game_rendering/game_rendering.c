@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 00:50:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:35:15 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,14 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 //	}
 //}
 
-void	init_dda(t_rays *r, t_player *p, size_t x)
+void	init_dda(t_rays *r, t_player *p, int x)
 {
-	r->cam_x = 2 * x / (double)WINDOW_WIDTH - 1;
+	r->cam_x = 2 * (double)x / (double)WINDOW_WIDTH - 1;
+	r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
+	r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
 	r->dir[X] = p->dir[X] + r->plane[X] * r->cam_x;
 	r->dir[Y] = p->dir[Y] + r->plane[Y] * r->cam_x;
+	//fprintf(stderr, "init_dda | pos[X]: %lf [Y]: %lf | map[X]: %d [Y]: %d | dir[X]: %lf [Y]: %lf\n", p->pos[X], p->pos[Y], r->map[X], r->map[Y], r->dir[X], r->dir[Y]);
 	r->map[X] = (int)p->pos[X];
 	r->map[Y] = (int)p->pos[Y];
 	r->delta[X] = get_delta(r->dir[X]);
@@ -116,7 +119,7 @@ void	init_dda(t_rays *r, t_player *p, size_t x)
 
 int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 {
-	size_t	x;
+	int	x;
 
 	x = -1;
 	while (++x < WINDOW_WIDTH)
@@ -131,7 +134,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 		r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
 		r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
 		draw_line(cub, r, img, x);
-		fprintf(stderr, "draw_scene | x: %lu | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);
+		//fprintf(stderr, "draw_scene | x: %d | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);
 	}
 	return (0);
 }

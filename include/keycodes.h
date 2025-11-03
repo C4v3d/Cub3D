@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/10/08 09:37:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:49:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 # define LA		65361 // LEFT ARROW
 # define DA		65364 // DOWN ARROW
 # define RA		65363 // RIGHT ARROW
-# define I		105
-# define O		111
+# define I		34
+# define O		31
+# define M		46
+# define N		45
 
 #else
 # define ESC	65307

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/02 13:29:05 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:43:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,11 +173,13 @@ typedef struct	s_player_data
 	double			dir[AXIS];
 	double			ray_len;
 	double			aov;
+	double			fov;
 	t_main			*cub;
 }					t_player;
 
 typedef struct	s_program_data
 {
+	bool			show_minimap;
 	double			last_time;
 	double			move_speed;
 	double			rot_speed;

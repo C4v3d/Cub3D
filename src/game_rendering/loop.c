@@ -26,6 +26,10 @@ int	input_loop(int keycode, void *param)
 		cub->pr.close_program = true;
 		return (0);
 	}
+	if (keycode == M)
+		cub->pr.show_minimap = true;
+	if (keycode == N)
+		cub->pr.show_minimap = false;
 	update_plyr_position(&cub->plyr, keycode);
 	update_plyr_vision(&cub->plyr, keycode);
 	return (0);

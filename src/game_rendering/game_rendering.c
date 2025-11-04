@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:35:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:08:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 void	init_dda(t_rays *r, t_player *p, int x)
 {
 	r->cam_x = 2 * (double)x / (double)WINDOW_WIDTH - 1;
-	r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
-	r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
+	//r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
+	//r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
 	r->dir[X] = p->dir[X] + r->plane[X] * r->cam_x;
 	r->dir[Y] = p->dir[Y] + r->plane[Y] * r->cam_x;
 	//fprintf(stderr, "init_dda | pos[X]: %lf [Y]: %lf | map[X]: %d [Y]: %d | dir[X]: %lf [Y]: %lf\n", p->pos[X], p->pos[Y], r->map[X], r->map[Y], r->dir[X], r->dir[Y]);

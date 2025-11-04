@@ -111,7 +111,7 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME) map2.cub
+	./$(NAME) map_test.cub
 
 leaks: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)

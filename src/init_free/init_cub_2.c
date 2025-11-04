@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:14:04 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:47:04 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
 	cub->plyr.tile_pos[X] = cub->plyr.pos[X];
 	cub->plyr.tile_pos[Y] = cub->plyr.pos[Y];
+	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
+	cub->r.plane[X] =  cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
 	update_plyr_vision(&cub->plyr, A); // TRICKS POUR LANCER LA MACHINE
 	return (0);
 }
@@ -47,7 +49,6 @@ int		init_display(t_display *dspl, t_main *cub)
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
 		return (ft_perror(dspl->cub, errno, CRITICAL));
-	//dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	dspl->win_dim[X] = WINDOW_WIDTH;
 	dspl->win_dim[Y] = WINDOW_HEIGHT;
 	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");

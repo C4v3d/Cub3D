@@ -12,26 +12,26 @@
 
 #include "../../include/cub3d.h"
 
-int	input_loop(int keycode, void *param)
+int	input_loop(int kc, void *param)
 {
 	t_main *cub;
 
 	cub = (t_main *)param;
-	//if (keycode != W && keycode != A && keycode != S && keycode != D
-	//		 && keycode != I && keycode != O && keycode != UA && keycode != LA
-	//		 	&& keycode != DA && keycode != RA)									// DEBUG
-	//	fprintf(stderr, "[key_in] keycode: %d\n", keycode);							// DEBUG
-	if (keycode == Q || keycode == ESC)
+	//if (kc != W && kc != A && kc != S && kc != D
+	//		 && kc != I && kc != O && kc != UA && kc != LA
+	//		 	&& kc != DA && kc != RA)									// DEBUG
+	//	fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
+	if (kc == Q || kc == ESC)
 	{
 		cub->pr.close_program = true;
 		return (0);
 	}
-	if (keycode == M)
-		cub->pr.show_minimap = true;
-	if (keycode == N)
-		cub->pr.show_minimap = false;
-	update_plyr_position(&cub->plyr, keycode);
-	update_plyr_vision(&cub->plyr, keycode);
+	else if (kc == M)
+		switch_bool(&cub->pr.show_minimap);
+	else if (kc == W || kc == LA || kc == S || kc == RA)
+		update_plyr_position(&cub->plyr, kc);
+	else if (kc == A || kc == D || kc == I || kc == O)
+		update_plyr_vision(&cub->plyr, kc);
 	return (0);
 }
 

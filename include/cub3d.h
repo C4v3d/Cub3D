@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/03 11:43:13 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:43:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef union	u_color				t_color;
 # include "input_validation.h"
 # include "map_validation.h"
 # include "maths_utils.h"
+# include "utils.h"
 # include "parser.h"
 # include "preprocess.h"
 # include "error.h"
@@ -77,7 +78,7 @@ typedef union	u_color				t_color;
 # include "minimap.h"
 # include "loop.h"
 # include "game_rendering.h"
-# include "keycodes.h"
+# include "keys.h"
 # include "moves.h"
 
 /**

@@ -6,9 +6,16 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 20:01:13 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:45:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
+void	switch_bool(bool *val)
+{
+	if (*(val) == true)
+		*(val) = false;
+	else
+		*(val) = true;
+}

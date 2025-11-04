@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:44:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:36:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 {
 	p->cub = cub;
 	p->aov = 0;
-	p->fov = 0.57735;
+	p->fov = 1.4;
 	p->ray_len = 0;
 	r->cam_x = 0.0;
 	r->delta[X] = 0.0;
@@ -60,12 +60,18 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	r->steps[Y] = 0.0;
 }
 
+static void	init_struct(t_main *cub)
+{
+	(void)cub;
+}
+
 void	init_cub(t_main *cub)
 {
 	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = true;
+	init_struct(cub);
 	init_graphic_data(&cub->gfx, cub);
 	init_map_data(&cub->map, cub);
 	init_p_r_data(&cub->plyr, &cub->r, cub);

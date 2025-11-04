@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keycodes.h                                         :+:      :+:    :+:   */
+/*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:49:59 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:35:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYCODES_H
-# define KEYCODES_H
+#ifndef KEYS_H
+# define KEYS_H
 
 #ifdef __APPLE__
 # define ESC	53

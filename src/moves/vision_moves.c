@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/04 12:51:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 18:28:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,26 @@ static void	update_fov(t_player *p, t_rays *r, int kc)
 
 static void	update_aov(double *aov, float max_angle, int kc)
 {
-	if (kc == A && *(aov) + VIS_MOVE_UNIT >= max_angle - VIS_MOVE_UNIT)
+	if (kc == LA && *(aov) + VIS_MOVE_UNIT >= max_angle - VIS_MOVE_UNIT)
 		*(aov) = 0;
-	else if (kc == A)
+	else if (kc == LA)
 		*(aov) += VIS_MOVE_UNIT;
-	else if (kc == D && *(aov) - VIS_MOVE_UNIT <= 0)
+	else if (kc == RA && *(aov) - VIS_MOVE_UNIT <= 0)
 		*(aov) = max_angle - VIS_MOVE_UNIT;
-	else if (kc == D)
+	else if (kc == RA)
 		*(aov) -= VIS_MOVE_UNIT;
 }
 
 int	update_plyr_vision(t_player *p, int	kc)
 {
-	if (kc == A || kc == D)
+	//❌ sur map_test: bug d'affichage lorsque le joueur avance tout droit sans bouger l'angle de vision
+	if (kc == LA || kc == RA)
 		update_aov(&p->aov, AOV_MAX, kc);
 	else if (kc == I || kc == O)
 		update_fov(p, &p->cub->r, kc);
-	if (kc == A)
+	if (kc == LA)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
-	else if (kc == D)
+	else if (kc == RA)
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
 	return (0);
 }

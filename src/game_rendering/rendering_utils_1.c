@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 16:11:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:42:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	paint_line(t_image *img, int x, int start, int end, int col)
 	int	y_i;
 
 	y_i = start;
-	while (y_i < end)
+	while (y_i <= end)
 		my_mlx_pixel_put(img, x, y_i++, col);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/10/30 17:54:49 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 15:03:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	safe_destroy_image(t_main *cub, void *ptr)
 	(void)ptr;
 	// rien à faire
 	#else
-	if (img)
-		mlx_destroy_image(s->init, ptr);
+	if (ptr)
+		mlx_destroy_image(cub->mlx, ptr);
 	#endif
 }
 

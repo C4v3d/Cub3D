@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/04 12:35:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 14:56:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # define RA		65363 // RIGHT ARROW
 # define I		105
 # define O		111
+# define M		46
+# define N		45
 #endif
 
 #endif

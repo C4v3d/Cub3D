@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_calculation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:28:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:25:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,6 @@ void	dda(t_rays *r, char **grid)
 			r->w_side = 1;
 		}
 		if (grid[r->map[Y]][r->map[X]] == '1')
-		{
 			hit = true;
-			//fprintf(stderr, "dda | HIT WALL! map[Y]: %d [X]:%d\n", r->map[Y], r->map[X]);
-		}
 	}
 }

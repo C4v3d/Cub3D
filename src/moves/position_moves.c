@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 18:41:04 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 19:30:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 {
-	if (kc == W)
+	if (kc == W || kc == UA)
 	{
 		p->pos[X] += p->dir[X] * move_speed;
 		p->pos[Y] -= p->dir[Y] * move_speed;
 	}
-	else if (kc == S)
+	else if (kc == S || kc == DA)
 	{
 		p->pos[X] -= p->dir[X] * move_speed;
 		p->pos[Y] += p->dir[Y] * move_speed;

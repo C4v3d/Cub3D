@@ -25,7 +25,8 @@ int	input_loop(int kc, void *param)
 	}
 	else if (kc == M)
 		switch_bool(&cub->pr.show_minimap);
-	else if (kc == W || kc == A || kc == S || kc == D)
+	else if (kc == W || kc == A || kc == S || kc == D
+			|| kc == UA || kc == DA)
 		update_plyr_position(&cub->plyr, kc);
 	else if (kc == LA || kc == RA || kc == I || kc == O)
 		update_plyr_vision(&cub->plyr, kc);
@@ -44,6 +45,5 @@ int	loop(t_main *cub)
 	draw_minimap(cub, &cub->gfx.map);
 	draw_fps(cub, &cub->gfx.map);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
-
-	return (false);
+	return (0);
 }

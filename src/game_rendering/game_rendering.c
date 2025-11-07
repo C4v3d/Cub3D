@@ -3,25 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/04 12:08:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:13:03 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_background(t_main *cub, t_image *img)
+void	draw_background(t_image *img)
 {
 	size_t	pos[AXIS];
+	size_t	dim[AXIS];
 
 	pos[X] = 0;
 	pos[Y] = 0;
-	paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[1]->color);
-	pos[X] = WINDOW_WIDTH / 2;
+	dim[X] = 1280;
+	dim[Y] = WINDOW_HEIGHT / 2;
+	//paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
+	paint(img, dim, pos, 0xA8FFFA);
 	pos[Y] = WINDOW_HEIGHT / 2;
-	paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[0]->color);
+	dim[Y] = WINDOW_HEIGHT;
+	//paint(img, cub->dspl.win_dim, pos, cub->gfx.colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
+	paint(img, dim, pos, 0xC2FFA8);
 }
 
 void	draw_line(t_main *cub, t_rays *r, t_image *img, int x)

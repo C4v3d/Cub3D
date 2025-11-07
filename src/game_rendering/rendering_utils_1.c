@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/02 00:44:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 16:11:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ void	paint(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 	size_t	x_i;
 	size_t	y_i;
 
-	y_i = -1;
-	while (++y_i < dim[Y])
+	y_i = dim[Y];
+	while (y_i > pos[Y])
 	{
-		x_i = -1;
-		while (++x_i < dim[X])
-			my_mlx_pixel_put(img, pos[X] + x_i, pos[Y] + y_i, color);
+		x_i = dim[X];
+		while (x_i > pos[X])
+		{
+			my_mlx_pixel_put(img, x_i, y_i, color);
+			x_i--;
+		}
+		y_i--;
 	}
 }
 

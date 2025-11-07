@@ -17,10 +17,10 @@ int	input_loop(int kc, void *param)
 	t_main *cub;
 
 	cub = (t_main *)param;
-	if (kc != W && kc != A && kc != S && kc != D
-			 && kc != I && kc != O && kc != UA && kc != LA
-			 	&& kc != DA && kc != RA)									// DEBUG
-		fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
+	//if (kc != W && kc != A && kc != S && kc != D
+	//		 && kc != I && kc != O && kc != UA && kc != LA
+	//		 	&& kc != DA && kc != RA)									// DEBUG
+	//	fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
 	if (kc == Q || kc == ESC)
 	{
 		cub->pr.close_program = true;
@@ -42,10 +42,11 @@ int	loop(t_main *cub)
 	if (cub->gfx.map.img != NULL)
 		mlx_destroy_image(cub->mlx, cub->gfx.map.img);
 	create_image(cub, &cub->gfx.map);
-	draw_background(cub, &cub->gfx.map);
+	draw_background(&cub->gfx.map);
 	draw_scene(cub, &cub->r, &cub->plyr, &cub->gfx.map);
 	draw_minimap(cub, &cub->gfx.map);
 	draw_fps(cub, &cub->gfx.map);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
+
 	return (false);
 }

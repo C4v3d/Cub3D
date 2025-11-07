@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 16:13:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 18:13:02 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,8 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 void	init_dda(t_rays *r, t_player *p, int x)
 {
 	r->cam_x = 2 * (double)x / (double)WINDOW_WIDTH - 1;
-	//r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
-	//r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
 	r->dir[X] = p->dir[X] + r->plane[X] * r->cam_x;
 	r->dir[Y] = p->dir[Y] + r->plane[Y] * r->cam_x;
-	//fprintf(stderr, "init_dda | pos[X]: %lf [Y]: %lf | map[X]: %d [Y]: %d | dir[X]: %lf [Y]: %lf\n", p->pos[X], p->pos[Y], r->map[X], r->map[Y], r->dir[X], r->dir[Y]);
 	r->map[X] = (int)p->pos[X];
 	r->map[Y] = (int)p->pos[Y];
 	r->delta[X] = get_delta(r->dir[X]);
@@ -127,18 +124,23 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 	int	x;
 
 	x = -1;
-	while (++x < WINDOW_WIDTH)
+	while (++x <= WINDOW_WIDTH)
 	{
-		init_dda(r, p, x);
-		//if (!wall_is_on_axis(r, p, cub->map.grid)) // USELESS?
-		dda(r, cub->map.grid);
-		if (r->w_side == 0)
-			r->p_w_dist = (r->dist[X] - r->delta[X]);
+		if (x == WINDOW_WIDTH / 2)
+			draw_line(cub, r, img, x);	//❌ fix temporaire: repenser le calcul des distances pour les visions en ligne droite
 		else
-			r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-		r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
-		r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
-		draw_line(cub, r, img, x);
+		{
+			init_dda(r, p, x);
+			//if (!wall_is_on_axis(r, p, cub->map.grid))	// //❌ fix temporaire: repenser le calcul des distances pour les visions en ligne droite
+			dda(r, cub->map.grid);
+			if (r->w_side == 0)
+				r->p_w_dist = (r->dist[X] - r->delta[X]);
+			else
+				r->p_w_dist = (r->dist[Y] - r->delta[Y]);
+			r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
+			r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
+			draw_line(cub, r, img, x);
+		}
 		//fprintf(stderr, "draw_scene | x: %d | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);
 	}
 	return (0);

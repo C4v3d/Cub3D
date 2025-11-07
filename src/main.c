@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/01 22:23:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/07 18:53:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	{
 		preprocess(&cub, argv[1]);
 		log_data(&cub);
-		fprintf(stderr, "main | GO MLX\n");
+		welcome_cub3d();
 		mlx_loop(cub.mlx);
 		//free_cub(&cub);	// USELESS?
 		//return (0);		// USELESS?

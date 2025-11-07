@@ -17,10 +17,10 @@ int	input_loop(int kc, void *param)
 	t_main *cub;
 
 	cub = (t_main *)param;
-	//if (kc != W && kc != A && kc != S && kc != D
-	//		 && kc != I && kc != O && kc != UA && kc != LA
-	//		 	&& kc != DA && kc != RA)									// DEBUG
-	//	fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
+	if (kc != W && kc != A && kc != S && kc != D
+			 && kc != I && kc != O && kc != UA && kc != LA
+			 	&& kc != DA && kc != RA)									// DEBUG
+		fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
 	if (kc == Q || kc == ESC)
 	{
 		cub->pr.close_program = true;

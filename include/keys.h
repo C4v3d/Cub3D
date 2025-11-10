@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 19:30:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/10 14:55:21 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # define A		0
 # define S		1
 # define D		2
-# define UA		65362 // UP ARROW
-# define LA		65361 // LEFT ARROW
-# define DA		65364 // DOWN ARROW
-# define RA		65363 // RIGHT ARROW
+# define LA		123 // LEFT ARROW
+# define RA		124 // RIGHT ARROW
+# define DA		125 // DOWN ARROW
+# define UA		126 // UP ARROW
 # define I		34
 # define O		31
 # define M		46

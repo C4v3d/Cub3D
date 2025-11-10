@@ -192,3 +192,4 @@ Si tout se passe bien, tu auras juste un message de confirmation. Mais si des **
 |                    |                                                                 |
 | ------------------ | --------------------------------------------------------------- |
 | `git clean -d -f` | Remove all work done that hasn't been pushed |
+| `git branch -m <oldname> <newname>` | Rename branch: -m is short for --move |

@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/03 11:54:59 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:15:19 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	draw_line(t_image *img, t_player *p)
+static void	draw_untextured(t_image *img, t_player *p)
 {
 	my_mlx_pixel_put(img, (p->pos[X] + p->dir[X]) * MINI_RES, (p->pos[Y] - p->dir[Y]) * MINI_RES, 0xFFFFFF);
 }
@@ -76,7 +76,7 @@ void	draw_minimap(t_main *cub, t_image *img)
 				draw_tile(img, x_i * MINI_RES, y_i * MINI_RES, cub->gfx.colors[1]->color / 4);
 		}
 		draw_plyr(img, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->gfx.colors[0]->color / 4);
-		draw_line(img, &cub->plyr);
+		draw_untextured(img, &cub->plyr);
 	}
 	mark_minimap(img, &cub->plyr);
 }

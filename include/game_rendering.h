@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 16:09:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:13:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	draw_background(t_image *img);
 int		check_w_side(int side, double *p_pos, int *w_pos, double aov);
 int		get_main_ray(t_rays *r, t_player *p, t_map *m);
 int		create_image(t_main *cub, t_image *img);
-void	paint_line(t_image *img, int x, int start, int end, int col);
-void	paint(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);
+void	draw_line_untextured(t_image *img, int x, int start, int end, int col);
+void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	init_ray_calculation(t_rays *r, t_player *p);
 void	init_dda(t_rays *r, t_player *p, int x);

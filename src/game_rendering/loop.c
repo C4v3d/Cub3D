@@ -38,7 +38,7 @@ int	loop(t_main *cub)
 	if (cub->pr.close_program == true)
 		free_cub(cub);
 	if (cub->gfx.map.img != NULL)
-		mlx_destroy_image(cub->mlx, cub->gfx.map.img);
+		safe_destroy_image(cub->mlx, cub->gfx.map.img);
 	create_image(cub, &cub->gfx.map);
 	draw_background(&cub->gfx.map);
 	draw_scene(cub, &cub->r, &cub->plyr, &cub->gfx.map);

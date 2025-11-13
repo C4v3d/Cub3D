@@ -26,6 +26,10 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/preprocess/preprocess.c \
 			$(CFILES_PATH)/preprocess/open_file.c \
 
+
+
+
+
 LIBFT_PATH		= lib/libft
 LIBFT			= $(LIBFT_PATH)/libft.a
 MLX_PATH		= lib/mlx_linux

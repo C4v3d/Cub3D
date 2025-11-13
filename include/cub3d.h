@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 15:29:28 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ typedef struct	s_rays_calculation
 	double	plane[AXIS];
 	double	wall_x;
 	int		map[AXIS];	// wall seen
-	int		w_side;			// wall side
-	double	p_w_dist;		// perpendicular wall distance instead of euclidean dist
-	int		line_h;			// line height
+	int		wall_side;			// wall side
+	double	wall_dist;		// perpendicular wall distance instead of euclidean dist
+	int		wall_height;			// line height
 	int		steps[AXIS];
 }	t_rays;
 

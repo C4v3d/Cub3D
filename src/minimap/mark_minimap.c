@@ -14,13 +14,13 @@
 
 static void	init_mark_mini(t_rays *r, int *x_i, int *y_i)
 {
-	if (r->map[X] == 0 && r->w_side == WE)
+	if (r->map[X] == 0 && r->wall_side == WE)
 		(*x_i) = 0;
 	else if (r->map[X] == 0)
 		(*x_i) = MINI_RES;
 	else
 		(*x_i) = r->map[X] * MINI_RES;
-	if (r->map[Y] == 0 && r->w_side == NO)
+	if (r->map[Y] == 0 && r->wall_side == NO)
 		(*y_i) = 0;
 	else if (r->map[Y] == 0)
 		(*y_i) = MINI_RES;

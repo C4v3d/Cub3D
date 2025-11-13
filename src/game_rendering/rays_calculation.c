@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 19:25:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 	init_dda(r, p, WINDOW_WIDTH / 2);
 	if (!wall_is_on_axis(r, p, m->grid))
 		dda(r, m->grid); // DDA gives localisation of the encountered wall
-	r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
-	if (r->w_side == 0 || r->w_side == 1)
-		r->p_w_dist = (r->dist[X] - r->delta[X]);
+	r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+	if (r->wall_side == 0 || r->wall_side == 1)
+		r->wall_dist = (r->dist[X] - r->delta[X]);
 	else
-		r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-	r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
+		r->wall_dist = (r->dist[Y] - r->delta[Y]);
+	r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
 	return (0);
 }
 
-int	check_w_side(int side, double *p_pos, int *w_pos, double aov)
+int	check_wall_side(int side, double *p_pos, int *w_pos, double aov)
 {
 	if ((side == 1 && (int)p_pos[Y] > w_pos[Y])
 		|| (side == -1 && aov == NO_RAD))
@@ -76,13 +76,13 @@ void	dda(t_rays *r, char **grid)
 		{
 			r->dist[X] += r->delta[X];
 			r->map[X] += r->steps[X];
-			r->w_side = 0;
+			r->wall_side = 0;
 		}
 		else
 		{
 			r->dist[Y] += r->delta[Y];
 			r->map[Y] += r->steps[Y];
-			r->w_side = 1;
+			r->wall_side = 1;
 		}
 		if (grid[r->map[Y]][r->map[X]] == '1')
 			hit = true;

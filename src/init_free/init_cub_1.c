@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/13 12:21:10 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	r->wall_x = 0.0;
 	r->map[X] = 0;
 	r->map[Y] = 0;
-	r->w_side = 0;
-	r->p_w_dist = 0;
-	r->line_h = 0;
+	r->wall_side = 0;
+	r->wall_dist = 0;
+	r->wall_height = 0;
 	r->steps[X] = 0.0;
 	r->steps[Y] = 0.0;
 }

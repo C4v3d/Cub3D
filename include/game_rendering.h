@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/13 19:20:43 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 20:03:07 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@
 double	get_time(void);
 int		draw_fps(t_main *cub, t_image *img);
 int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img);
-void	draw_background(t_image *img);
+void	draw_background(t_main *cub, t_image *img);
 int		check_wall_side(int side, double *p_pos, int *w_pos, double aov);
 int		get_main_ray(t_rays *r, t_player *p, t_map *m);
 int		create_image(t_main *cub, t_image *img);
-void	draw_line_untextured(t_image *img, int x, int start, int end, int col);
 void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
-void	init_ray_calculation(t_rays *r, t_player *p);
 void	init_dda(t_rays *r, t_player *p, int x);
 void	dda(t_rays *r, char **grid);
 bool	wall_is_on_axis(t_rays *r, t_player *p, char **grid);

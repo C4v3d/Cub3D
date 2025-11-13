@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:27:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,16 @@ void	init_ray_calculation(t_rays *r, t_player *p)
 	}
 }
 
+void	init_draw(t_rays *r, t_player *p)
+{
+	if (r->wall_side == 0)
+		r->wall_dist = (r->dist[X] - r->delta[X]);
+	else
+		r->wall_dist = (r->dist[Y] - r->delta[Y]);
+	r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
+	r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+}
+
 void	init_dda(t_rays *r, t_player *p, int x)
 {
 	r->cam_x = 2 * (double)x / (double)WINDOW_WIDTH - 1;
@@ -150,12 +160,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 			init_dda(r, p, x);
 			//if (!wall_is_on_axis(r, p, cub->map.grid))	//❌ fix temporaire: repenser le calcul des distances pour les visions en ligne droite
 			dda(r, cub->map.grid);
-			if (r->wall_side == 0)
-				r->wall_dist = (r->dist[X] - r->delta[X]);
-			else
-				r->wall_dist = (r->dist[Y] - r->delta[Y]);
-			r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
-			r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+			init_draw(r, p);
 			//draw_texture(cub, r, img, x);
 			draw_untextured(cub, r, img, x);	//❌ untextured
 		}

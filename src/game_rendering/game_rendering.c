@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/13 09:10:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	draw_background(t_image *img)
 //	int	end;
 
 
-//	start = -r->line_h / 2 + WINDOW_HEIGHT / 2;
+//	start = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
 //	if (start < 0)
 //		start = 0;
-//	end = r->line_h / 2 + WINDOW_HEIGHT / 2;
+//	end = r->wall_height / 2 + WINDOW_HEIGHT / 2;
 //	if (end >= WINDOW_HEIGHT)
 //		end = WINDOW_HEIGHT - 1;
-//	if (r->w_side == NO)
+//	if (r->wall_side == NO)
 //		//draw_untextured_line(img, x, start, end, col0);
-//	else if (r->w_side == SO)
+//	else if (r->wall_side == SO)
 //		//draw_untextured_line(img, x, start, end, col2);
-//	else if (r->w_side == EA)
+//	else if (r->wall_side == EA)
 //		//draw_untextured_line(img, x, start, end, col3);
 //	else
 //		draw_untextured_line(img, x, start, end, col1);
@@ -81,17 +81,17 @@ void	draw_untextured(t_main *cub, t_rays *r, t_image *img, int x)
 	int	start;
 	int	end;
 
-	start = -r->line_h / 2 + WINDOW_HEIGHT / 2;
+	start = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
 	if (start < 0)
 		start = 0;
-	end = r->line_h / 2 + WINDOW_HEIGHT / 2;
+	end = r->wall_height / 2 + WINDOW_HEIGHT / 2;
 	if (end >= WINDOW_HEIGHT)
 		end = WINDOW_HEIGHT - 1;
-	if (r->w_side == 0)
+	if (r->wall_side == 0)
 		draw_untextured_line(img, x, start, end, col0);
-	else if (r->w_side == 2)
+	else if (r->wall_side == 2)
 		draw_untextured_line(img, x, start, end, col2);
-	else if (r->w_side == 3)
+	else if (r->wall_side == 3)
 		draw_untextured_line(img, x, start, end, col3);
 	else
 		draw_untextured_line(img, x, start, end, col1);
@@ -131,7 +131,7 @@ void	init_dda(t_rays *r, t_player *p, int x)
 	r->map[Y] = (int)p->pos[Y];
 	r->delta[X] = get_delta(r->dir[X]);
 	r->delta[Y] = get_delta(r->dir[Y]);
-	r->w_side = -1;
+	r->wall_side = -1;
 	init_ray_calculation(r, p);
 }
 
@@ -150,16 +150,16 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)
 			init_dda(r, p, x);
 			//if (!wall_is_on_axis(r, p, cub->map.grid))	//❌ fix temporaire: repenser le calcul des distances pour les visions en ligne droite
 			dda(r, cub->map.grid);
-			if (r->w_side == 0)
-				r->p_w_dist = (r->dist[X] - r->delta[X]);
+			if (r->wall_side == 0)
+				r->wall_dist = (r->dist[X] - r->delta[X]);
 			else
-				r->p_w_dist = (r->dist[Y] - r->delta[Y]);
-			r->line_h = (int)(WINDOW_HEIGHT / r->p_w_dist);
-			r->w_side = check_w_side(r->w_side, p->pos, r->map, p->aov);
+				r->wall_dist = (r->dist[Y] - r->delta[Y]);
+			r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
+			r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
 			//draw_texture(cub, r, img, x);
 			draw_untextured(cub, r, img, x);	//❌ untextured
 		}
-		//fprintf(stderr, "draw_scene | x: %d | line_height: %d | cam_x: %lf\n", x, r->line_h, r->cam_x);
+		//fprintf(stderr, "draw_scene | x: %d | wall_heighteight: %d | cam_x: %lf\n", x, r->wall_height, r->cam_x);
 	}
 	return (0);
 }

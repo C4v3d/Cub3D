@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 13:33:47 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 15:29:28 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ typedef struct	s_image_data
 	int		bpp;	//bits per pixel
 	int		s_line;
 	int		endian;
+	int		width;
+	int		height;
 }	t_image;
 
 typedef union u_color

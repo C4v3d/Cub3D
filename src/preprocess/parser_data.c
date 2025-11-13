@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 15:24:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 15:33:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 //v2
 static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
-	(void)t;
-	int		h;
-	int		w;
-	void	*ptr;
-
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
 		ft_perror(gfx->cub, NO_DATA, WARNING);
 	line = ft_strtrim(line, "\n\t");
-	ptr = mlx_xpm_file_to_image(gfx->cub->mlx, line, &w, &h);
-	if (!ptr)
+	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
+	if (!t->img)
+		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
+	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	(*gfx).el_counter += 1;
+	fprintf(stderr, "parse_texture | img_ptr: %p | img_addr: %p\n", t->img, t->addr);
+	fprintf(stderr, "parse_texture | bpp: %d | s_line: %d | endian: %d\n", t->bpp, t->s_line, t->endian);
 }
 
 /**

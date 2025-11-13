@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 19:24:37 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 19:41:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,8 +154,8 @@ typedef struct	s_graphic_data
 {
 	t_image	txtr[N_TEXTURE];
 	void	*txtr_ptr[N_TEXTURE];	/* Working with fixed data on the Stack*/
-	int		*txtr_w;
-	int		*txtr_h;
+	int		start;
+	int		end;
 	int		txtr_res;
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;

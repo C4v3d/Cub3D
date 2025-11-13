@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/12 17:22:08 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:21:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 int	create_image(t_main *cub, t_image *img)
 {
 	img->img = mlx_new_image(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-			&img->line_length, &img->endian);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp,
+			&img->s_line, &img->endian);
 	return (0);
 }
 
@@ -42,6 +42,6 @@ void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	dst = img->addr + (y * img->s_line + x * (img->bpp / 8));
 	*(unsigned int*)dst = color;
 }

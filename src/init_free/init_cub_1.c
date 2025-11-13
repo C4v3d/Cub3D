@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/04 12:36:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:21:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 	t_color ceiling;
 
 	gfx->cub = cub;
-	ft_bzero(&gfx->txtr, sizeof(gfx->txtr));
+	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
 	gfx->colors[FLOOR] = &floor;
 	gfx->colors[CEILING] = &ceiling;
 	gfx->el_counter = 0;

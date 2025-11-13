@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/12 22:33:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:20:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		line++;
 	id_len = get_id_len(line);
 	if (ft_strncmp(line, NO_ID, id_len) == 0)
-		parse_texture(gfx, line, &gfx->txtr[NO]);
+		parse_texture(gfx, line, &gfx->txtr_ptr[NO]);
 	else if (ft_strncmp(line, SO_ID, id_len) == 0)
-		parse_texture(gfx, line, &gfx->txtr[SO]);
+		parse_texture(gfx, line, &gfx->txtr_ptr[SO]);
 	else if (ft_strncmp(line, WE_ID, id_len) == 0)
-		parse_texture(gfx, line, &gfx->txtr[WE]);
+		parse_texture(gfx, line, &gfx->txtr_ptr[WE]);
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
-		parse_texture(gfx, line, &gfx->txtr[EA]);
+		parse_texture(gfx, line, &gfx->txtr_ptr[EA]);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
 		parse_color(gfx, line, &gfx->colors[CEILING]);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)

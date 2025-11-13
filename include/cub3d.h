@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 09:10:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 12:19:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,8 @@ typedef struct	s_image_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	int		bpp;	//bits per pixel
+	int		s_line;
 	int		endian;
 }	t_image;
 
@@ -150,7 +150,7 @@ typedef struct		s_display_window
 
 typedef struct	s_graphic_data
 {
-	void	*txtr[N_TEXTURE];	/* Working with fixed data on the Stack*/
+	void	*txtr_ptr[N_TEXTURE];	/* Working with fixed data on the Stack*/
 	int		*txtr_w;
 	int		*txtr_h;
 	int		txtr_res;

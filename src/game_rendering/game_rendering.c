@@ -6,20 +6,20 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/12 17:16:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:10:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_texture_line(t_image *img, int x, int start, int end, int col)
-{
-	int	y_i;
+//void	draw_texture_line(t_image *img, int x, int start, int end, int col)
+//{
+//	int	y_i;
 
-	y_i = start;
-	while (y_i <= end)
-		my_mlx_pixel_put(img, x, y_i++, col);
-}
+//	y_i = start;
+//	while (y_i <= end)
+//		my_mlx_pixel_put(img, x, y_i++, col);
+//}
 
 void	draw_background(t_image *img)
 {
@@ -43,20 +43,21 @@ void	draw_background(t_image *img)
 //	int	start;
 //	int	end;
 
+
 //	start = -r->line_h / 2 + WINDOW_HEIGHT / 2;
 //	if (start < 0)
 //		start = 0;
 //	end = r->line_h / 2 + WINDOW_HEIGHT / 2;
 //	if (end >= WINDOW_HEIGHT)
 //		end = WINDOW_HEIGHT - 1;
-//	//if (r->w_side == NO)
-//	//	//draw_untextured_line(img, x, start, end, col0);
-//	//else if (r->w_side == SO)
-//	//	//draw_untextured_line(img, x, start, end, col2);
-//	//else if (r->w_side == EA)
-//	//	//draw_untextured_line(img, x, start, end, col3);
-//	//else
-//	//	draw_untextured_line(img, x, start, end, col1);
+//	if (r->w_side == NO)
+//		//draw_untextured_line(img, x, start, end, col0);
+//	else if (r->w_side == SO)
+//		//draw_untextured_line(img, x, start, end, col2);
+//	else if (r->w_side == EA)
+//		//draw_untextured_line(img, x, start, end, col3);
+//	else
+//		draw_untextured_line(img, x, start, end, col1);
 //}
 
 //❌ untextured

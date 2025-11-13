@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/04 12:43:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 09:10:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <math.h>
 # include <stdbool.h>
 # include <errno.h>
+
 #ifdef __APPLE__
 # include "../lib/mlx_macos/mlx.h"
 #else
@@ -29,6 +30,9 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 #endif
+
+// struct MLX pour stocker les images
+typedef struct	s_img	t_img;
 
 typedef struct	s_main_struct		t_main;
 typedef	struct	s_program_data		t_prog;

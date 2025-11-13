@@ -6,24 +6,28 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 13:37:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/13 15:24:23 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 //v2
-static void	parse_texture(t_graphic *gfx, t_image *t, char *line, void **dst)
+static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
 	(void)t;
+	int		h;
+	int		w;
+	void	*ptr;
 
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
 		ft_perror(gfx->cub, NO_DATA, WARNING);
-	*dst = mlx_xpm_file_to_image(NULL, line, gfx->txtr_w, gfx->txtr_h);
-	if (!dst)
+	line = ft_strtrim(line, "\n\t");
+	ptr = mlx_xpm_file_to_image(gfx->cub->mlx, line, &w, &h);
+	if (!ptr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	(*gfx).el_counter += 1;
 }
@@ -82,13 +86,13 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		line++;
 	id_len = get_id_len(line);
 	if (ft_strncmp(line, NO_ID, id_len) == 0)
-		parse_texture(gfx, &gfx->txtr[NO], line, &gfx->txtr[NO].img);
+		parse_texture(gfx, &gfx->txtr[NO], line);
 	else if (ft_strncmp(line, SO_ID, id_len) == 0)
-		parse_texture(gfx, &gfx->txtr[SO], line, &gfx->txtr[SO].img);
+		parse_texture(gfx, &gfx->txtr[SO], line);
 	else if (ft_strncmp(line, WE_ID, id_len) == 0)
-		parse_texture(gfx, &gfx->txtr[WE], line, &gfx->txtr[WE].img);
+		parse_texture(gfx, &gfx->txtr[WE], line);
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
-		parse_texture(gfx, &gfx->txtr[EA], line, &gfx->txtr[EA].img);
+		parse_texture(gfx, &gfx->txtr[EA], line);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
 		parse_color(gfx, line, &gfx->colors[CEILING]);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)

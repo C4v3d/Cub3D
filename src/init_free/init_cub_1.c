@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/13 19:21:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/14 14:10:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	init_graphic_data(t_graphic *gfx, t_main *cub)
 	gfx->colors[CEILING] = &ceiling;
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
+	gfx->txtr_res = -1;
 }
 
 static void	init_map_data(t_map *map, t_main *cub)
@@ -40,24 +41,26 @@ static void	init_map_data(t_map *map, t_main *cub)
 static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 {
 	p->cub = cub;
-	p->aov = 0;
-	p->fov = 1.4;
-	p->ray_len = 0;
-	r->cam_x = 0.0;
+	r->cub = cub;
 	r->delta[X] = 0.0;
 	r->delta[Y] = 0.0;
 	r->dir[X] = 0.0;
 	r->dir[Y] = 0.0;
 	r->dist[X] = 0.0;
 	r->dist[Y] = 0.0;
-	r->wall_x = 0.0;
 	r->map[X] = 0;
 	r->map[Y] = 0;
+	r->steps[X] = 0.0;
+	r->steps[Y] = 0.0;
+	r->cam_x = 0.0;
+	r->wall_x = 0.0;
 	r->wall_side = 0;
 	r->wall_dist = 0;
 	r->wall_height = 0;
-	r->steps[X] = 0.0;
-	r->steps[Y] = 0.0;
+	r->pitch = 100;
+	p->aov = 0;
+	p->fov = 1.4;
+	p->ray_len = 0;
 }
 
 static void	init_struct(t_main *cub)

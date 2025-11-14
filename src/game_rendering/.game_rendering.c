@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/14 13:35:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:17:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static void	draw_textured_line(t_main *cub, t_image *img, t_image *t, int x)
 {
 	int	y;
 
-	y = cub->r.tex_st - 1;
-	while (++y <= cub->r.tex_nd)
+	y = cub->gfx.start - 1;
+	while (++y <= cub->gfx.end)
 		my_mlx_pixel_put(img, x, y, t->addr[y * t->width + x]);
-	//fprintf(stderr, "draw_textured | t->addr: %p | &t->add[10]: %s | bpp: %d | s_line: %d\n", t->addr, &t->addr[10], t->bpp, t->s_line);
+	fprintf(stderr, "draw_textured | t->addr: %p | &t->add[10]: %s | bpp: %d | s_line: %d\n", t->addr, &t->addr[10], t->bpp, t->s_line);
 }
 
 static void	draw_texture(t_main *cub, t_rays *r, t_image *img, int x)
@@ -63,28 +63,27 @@ static void	draw_texture(t_main *cub, t_rays *r, t_image *img, int x)
 	//	draw_textured_line(cub, img, &cub->gfx.txtr[WE], x);
 	// ⚠️ CURRENTLY NOT WORKING ⚠️
 	else if (r->wall_side == SO)
-		draw_untextured_line(img, x, r->tex_st, r->tex_nd, 0xFDE8F8);
+		draw_untextured_line(img, x, cub->gfx.start, cub->gfx.end, 0xFDE8F8);
 	else if (r->wall_side == EA)
-		draw_untextured_line(img, x, r->tex_st, r->tex_nd, 0xF693DD);
+		draw_untextured_line(img, x, cub->gfx.start, cub->gfx.end, 0xF693DD);
 	else
-		draw_untextured_line(img, x, r->tex_st, r->tex_nd, 0xEE3FC2);
+		draw_untextured_line(img, x, cub->gfx.start, cub->gfx.end, 0xEE3FC2);
 }
 
 static void	init_draw(t_main *cub, t_rays *r, t_player *p)
 {
-	(void)cub;
 	if (r->wall_side == 0)
 		r->wall_dist = (r->dist[X] - r->delta[X]);
 	else
 		r->wall_dist = (r->dist[Y] - r->delta[Y]);
 	r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
 	r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
-	r->tex_st = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
-	if (r->tex_st < 0)
-		r->tex_st = 0;
-	r->tex_nd = r->wall_height / 2 + WINDOW_HEIGHT / 2;
-	if (r->tex_nd >= WINDOW_HEIGHT)
-		r->tex_nd = WINDOW_HEIGHT - 1;
+	cub->gfx.start = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
+	if (cub->gfx.start < 0)
+		cub->gfx.start = 0;
+	cub->gfx.end = r->wall_height / 2 + WINDOW_HEIGHT / 2;
+	if (cub->gfx.end >= WINDOW_HEIGHT)
+		cub->gfx.end = WINDOW_HEIGHT - 1;
 }
 
 int		draw_scene(t_main *cub, t_rays *r, t_player *p, t_image *img)

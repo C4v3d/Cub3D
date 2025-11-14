@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/14 12:55:12 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:32:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,17 +100,23 @@ typedef struct	s_vector
 
 typedef struct	s_rays_calculation
 {
-	double	cam_x;
 	double	delta[AXIS];
 	double	dir[AXIS];
 	double	dist[AXIS];		// distance to next tile
 	double	plane[AXIS];
-	double	wall_x;
-	int		map[AXIS];	// wall seen
-	int		wall_side;			// wall side
-	double	wall_dist;		// perpendicular wall distance instead of euclidean dist
-	int		wall_height;			// line height
 	int		steps[AXIS];
+	int		map[AXIS];		// wall seen
+	double	cam_x;
+	double	wall_x;			// where the wall as exactly been hit
+	int		wall_side;		// wall side
+	double	wall_dist;		// perpendicular wall distance instead of euclidean dist
+	int		wall_height;
+	int		tex_st;			// start
+	int		tex_nd;			// end
+	int		tex_x;
+	int		tex_y;
+	int		tex_num;
+	int		pitch;
 }	t_rays;
 
 typedef struct	s_image_data
@@ -153,8 +159,6 @@ typedef struct	s_graphic_data
 {
 	t_image	txtr[N_TEXTURE];
 	void	*txtr_ptr[N_TEXTURE];	/* Working with fixed data on the Stack*/
-	int		start;
-	int		end;
 	int		txtr_res;
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 15:33:33 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/14 13:54:17 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+	if (gfx->txtr_res == -1)			// init texture resolution for the game
+		gfx->txtr_res = t->width;
+	else if (t->width != gfx->txtr_res)	// check if all textures are same res
+			ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	(*gfx).el_counter += 1;
-	fprintf(stderr, "parse_texture | img_ptr: %p | img_addr: %p\n", t->img, t->addr);
+	//fprintf(stderr, "parse_texture | img_ptr: %p | img_addr: %p | width: %d | heigth: %d\n", t->img, t->addr, t->width, t->height);
 	fprintf(stderr, "parse_texture | bpp: %d | s_line: %d | endian: %d\n", t->bpp, t->s_line, t->endian);
 }
 

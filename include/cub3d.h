@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/13 19:41:20 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/14 12:55:12 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct	s_rays_calculation	t_rays;
 typedef struct	s_map_data			t_map;
 typedef struct	s_user_control_input	t_usr_ctrl_in;
 typedef union	u_color				t_color;
-
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720

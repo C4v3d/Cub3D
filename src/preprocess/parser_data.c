@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/14 13:54:17 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:44:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	if (gfx->txtr_res == -1)			// init texture resolution for the game
+	if (gfx->txtr_res == -1)			// init texture resolution for the game -> FAUX ou USELESS?
 		gfx->txtr_res = t->width;
-	else if (t->width != gfx->txtr_res)	// check if all textures are same res
+	else if (t->width != gfx->txtr_res)	// check if all textures are same res -> FAUX ou USELESS?
 			ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)

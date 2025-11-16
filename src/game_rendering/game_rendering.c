@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 17:43:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:51:27 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ static void	init_draw(t_main *cub, t_rays *r, t_draw *tex, t_player *p)
 {
 	tex->num = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
 	if (r->wall_side == 0)	// calculate exaclty where the wall was hit
-		tex->wall_x = p->pos[Y] + r->wall_dist * r->dir[Y];
+		tex->wall_x = p->pos[Y] - r->wall_dist * r->dir[Y];
 	else
 		tex->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
 	tex->wall_x -=floor(tex->wall_x);
 	tex->x = (int)(tex->wall_x * (double)cub->gfx.txtr[tex->num].width);
-	if (r->wall_side == 0 && r->dir[X] > 0)	// mirroring textures
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;
-	if (r->wall_side == 1 && r->dir[Y] < 0)
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;
+	if (r->wall_side == 0 && r->dir[X] > 0)						// mirroring textures -> USELESS???
+		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
+	if (r->wall_side == 1 && r->dir[Y] < 0)						// mirroring textures -> USELESS???
+		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
 	tex->step = 1.0 * cub->gfx.txtr[tex->num].height / r->wall_height;
 	tex->pos = (tex->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * tex->step;
 }
@@ -106,7 +106,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p)
 	int		x;
 
 	x = -1;
-	while (++x <= WINDOW_WIDTH)
+	while (++x < WINDOW_WIDTH)
 	{
 		init_dda(r, p, x);
 		dda(r, cub->map.grid);	//❌ calcul des distances pour les visions en ligne droite fixé dans init_dda

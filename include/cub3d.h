@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/16 17:21:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:35:16 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ typedef struct	s_map_data
 typedef struct	s_player_data
 {
 	double			pos[AXIS];
-	double			tile_pos[AXIS];	// float of pos
 	double			dir[AXIS];
 	double			ray_len;
 	double			aov;

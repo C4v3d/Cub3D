@@ -1,7 +1,7 @@
-SO ./tile208.xpm
-NO ./tile208.xpm
-WE ./tile208.xpm
-EA ./tile208.xpm
+SO ./1.xpm
+NO ./2.xpm
+WE ./3.xpm
+EA ./4.xpm
 
 F 220,100,0
 C 225,30,0

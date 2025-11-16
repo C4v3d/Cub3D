@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/14 14:17:46 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 16:23:28 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef union	u_color				t_color;
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
+
 /**
  * Define the number of
  * textures and colors
@@ -111,12 +112,12 @@ typedef struct	s_rays_calculation
 	int		wall_side;		// wall side
 	double	wall_dist;		// perpendicular wall distance instead of euclidean dist
 	int		wall_height;
-	int		tex_st;			// texture line starting point
-	int		tex_nd;			// texture line ending point
+	int		tex_start;			// texture line starting point
+	int		tex_end;			// texture line ending point
 	int		tex_x;
 	int		tex_y;
 	int		tex_num;
-	int		tex_pos;
+	double	tex_pos;
 	double	step;
 	int		pitch;
 	t_main	*cub;

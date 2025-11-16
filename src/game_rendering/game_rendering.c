@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 17:26:20 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:43:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ static int	get_texture_color(t_image *t, int x, int y)
 	if (y >= t->height)
 		y = t->height - 1;
 	pixel = t->addr + (y * t->s_line + x * (t->bpp / 8));
+	//pixel = t->addr + (y * t->s_line + x * (t->bpp / 32));	// EFFET DE GLITCH INTERESSANT
 	return (*(int *)pixel);
 }
 
 static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
 {
-	int			y;
+	int	y;
 	int	color;
 
 	y = tex->start - 1;
@@ -67,7 +68,7 @@ static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
 		//my_mlx_pixel_put(&cub->gfx.map, x, y, color);			// EFFET DE GLITCH INTERESSANT
 
 
-static void	init_draw(t_rays *r, t_draw *tex, t_player *p)
+static void	init_draw(t_main *cub, t_rays *r, t_draw *tex, t_player *p)
 {
 	tex->num = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
 	if (r->wall_side == 0)	// calculate exaclty where the wall was hit
@@ -75,12 +76,13 @@ static void	init_draw(t_rays *r, t_draw *tex, t_player *p)
 	else
 		tex->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
 	tex->wall_x -=floor(tex->wall_x);
-	tex->x = (int)(tex->wall_x * (double)r->cub->gfx.txtr_res);
-	if ((r->wall_side == 0 && r->dir[X] > 0) || (r->wall_side == 1 && r->dir[Y] < 0))	// mirroring textures
-		tex->x = r->cub->gfx.txtr_res - tex->x - 1;
-	tex->step = 1.0 * r->cub->gfx.txtr_res / r->wall_height;
+	tex->x = (int)(tex->wall_x * (double)cub->gfx.txtr[tex->num].width);
+	if (r->wall_side == 0 && r->dir[X] > 0)	// mirroring textures
+		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;
+	if (r->wall_side == 1 && r->dir[Y] < 0)
+		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;
+	tex->step = 1.0 * cub->gfx.txtr[tex->num].height / r->wall_height;
 	tex->pos = (tex->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * tex->step;
-	//r->pos = (r->start - r->pitch - WINDOW_HEIGHT / 2 + r->wall_height / 2) * r->step;
 }
 
 static void	calculate_dist_height(t_rays *r, t_draw *tex)
@@ -101,7 +103,7 @@ static void	calculate_dist_height(t_rays *r, t_draw *tex)
 int		draw_scene(t_main *cub, t_rays *r, t_player *p)
 {
 	t_draw	tex;
-	int	x;
+	int		x;
 
 	x = -1;
 	while (++x <= WINDOW_WIDTH)
@@ -109,7 +111,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p)
 		init_dda(r, p, x);
 		dda(r, cub->map.grid);	//❌ calcul des distances pour les visions en ligne droite fixé dans init_dda
 		calculate_dist_height(r, &tex);
-		init_draw(r, &tex, p);
+		init_draw(cub, r, &tex, p);
 		draw_texture(cub, &tex, &cub->gfx.txtr[tex.num], x);
 	}
 	return (0);

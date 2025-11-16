@@ -6,29 +6,11 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 17:51:27 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:15:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-void	draw_background(t_main *cub, t_image *img)
-{
-	(void)cub;
-	size_t	pos[AXIS];
-	size_t	dim[AXIS];
-
-	pos[X] = 0;
-	pos[Y] = 0;
-	dim[X] = 1280;
-	dim[Y] = WINDOW_HEIGHT / 2;
-	//draw(img, dim, pos, cub->gfx.colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xA8FFFA);
-	pos[Y] = WINDOW_HEIGHT / 2;
-	dim[Y] = WINDOW_HEIGHT;
-	//draw(img, dim, pos, cub->gfx.colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xC2FFA8);
-}
 
 static int	get_texture_color(t_image *t, int x, int y)
 {
@@ -43,7 +25,7 @@ static int	get_texture_color(t_image *t, int x, int y)
 	if (y >= t->height)
 		y = t->height - 1;
 	pixel = t->addr + (y * t->s_line + x * (t->bpp / 8));
-	//pixel = t->addr + (y * t->s_line + x * (t->bpp / 32));	// EFFET DE GLITCH INTERESSANT
+	//pixel = t->addr + (y * t->s_line + x * (t->bpp / 30));	// EFFET DE GLITCH INTERESSANT
 	return (*(int *)pixel);
 }
 

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 22:38:41 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/04 13:11:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 18:02:48 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.tile_pos[Y] = cub->plyr.pos[Y];
 	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
 	cub->r.plane[X] =  cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
-	update_plyr_vision(&cub->plyr, A); // TRICKS POUR LANCER LA MACHINE		-> sans ça manque calcul du plane
+	update_plyr_vision(&cub->plyr, LA); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
 	update_plyr_position(&cub->plyr, W); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
 	return (0);
 }

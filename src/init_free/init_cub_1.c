@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/14 14:10:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:18:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	r->steps[X] = 0.0;
 	r->steps[Y] = 0.0;
 	r->cam_x = 0.0;
-	r->wall_x = 0.0;
 	r->wall_side = 0;
 	r->wall_dist = 0;
 	r->wall_height = 0;
-	r->pitch = 100;
 	p->aov = 0;
 	p->fov = 1.4;
 	p->ray_len = 0;

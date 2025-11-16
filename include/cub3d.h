@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/16 16:23:28 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/16 17:21:15 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,18 @@ typedef struct	s_vector
 	double	y;
 }	t_vector;
 
+typedef struct	s_draw_data
+{
+	int		start;			// texture line starting point
+	int		end;			// texture line ending point
+	int		x;
+	int		y;
+	int		num;
+	double	pos;
+	double	wall_x;			// where the wall as exactly been hit
+	double	step;
+}	t_draw;
+
 typedef struct	s_rays_calculation
 {
 	double	delta[AXIS];
@@ -108,18 +120,9 @@ typedef struct	s_rays_calculation
 	int		steps[AXIS];
 	int		map[AXIS];		// wall seen
 	double	cam_x;
-	double	wall_x;			// where the wall as exactly been hit
 	int		wall_side;		// wall side
 	double	wall_dist;		// perpendicular wall distance instead of euclidean dist
 	int		wall_height;
-	int		tex_start;			// texture line starting point
-	int		tex_end;			// texture line ending point
-	int		tex_x;
-	int		tex_y;
-	int		tex_num;
-	double	tex_pos;
-	double	step;
-	int		pitch;
 	t_main	*cub;
 }	t_rays;
 

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 17:18:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:37:39 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	init_cub(t_main *cub)
 	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
-	cub->pr.show_minimap = true;
+	cub->pr.show_minimap = false;
 	init_struct(cub);
 	init_graphic_data(&cub->gfx, cub);
 	init_map_data(&cub->map, cub);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 19:30:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:43:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/17 17:44:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/17 17:59:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,22 @@ static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 		*(aov) -= rot_speed;
 }
 
+//v2 work but not so smooth
+//int	update_plyr_vision(t_player *p, int	kc)
+//{
+//	//❌ sur map_test: bug d'affichage lorsque le joueur avance tout droit sans bouger l'angle de vision
+//	if (kc == LA || kc == RA)
+//		update_aov(&p->aov, AOV_MAX, p->cub->pr.rot_speed, kc);
+//	else if (kc == I || kc == O)
+//		update_fov(p, &p->cub->r, kc);
+//	if (kc == LA)
+//		rotate(p->dir, p->cub->r.plane, p->cub->pr.rot_speed);
+//	else if (kc == RA)
+//		rotate(p->dir, p->cub->r.plane, -p->cub->pr.rot_speed);
+//	return (0);
+//}
+
+//v1
 int	update_plyr_vision(t_player *p, int	kc)
 {
 	//❌ sur map_test: bug d'affichage lorsque le joueur avance tout droit sans bouger l'angle de vision

@@ -6,35 +6,35 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 18:35:20 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/17 20:31:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	init_g_m_data(t_graphic *g, t_map *m, t_main *cub)
+static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
-	t_color floor;
-	t_color ceiling;
+	//t_color floor;
+	//t_color ceiling;
 
-	g->cub = cub;
-	ft_bzero(&g->txtr_ptr, sizeof(g->txtr_ptr));
-	g->colors[FLOOR] = &floor;
-	g->colors[CEILING] = &ceiling;
-	g->el_counter = 0;
-	g->map.img = NULL;
-	g->txtr_res = -1;
-	m->cub = cub;
-	m->grid = ft_calloc(1, sizeof(m->grid));
-	if (!m->grid)
-		ft_perror(m->cub, ENOMEM, CRITICAL);
-	m->dim[X] = 0;
-	m->dim[Y] = 0;
-	ft_bzero(m->plyr_start_pos, sizeof(m->plyr_start_pos));
-	m->plyr_start_ori = 0;
+	gfx->cub = cub;
+	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
+	//gfx->colors[FLOOR] = &floor;		// SEG FAULT
+	//gfx->colors[CEILING] = &ceiling;	// SEG FAULT
+	gfx->el_counter = 0;
+	gfx->map.img = NULL;
+	gfx->txtr_res = -1;
+	map->cub = cub;
+	map->grid = ft_calloc(1, sizeof(map->grid));
+	if (!map->grid)
+		ft_perror(map->cub, ENOMEM, CRITICAL);
+	map->dim[X] = 0;
+	map->dim[Y] = 0;
+	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+	map->plyr_start_ori = 0;
 }
 
-static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
+static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 {
 	p->cub = cub;
 	r->cub = cub;
@@ -57,7 +57,7 @@ static void	init_p_r_data(t_player *p, t_rays *r, t_main *cub)
 	p->ray_len = 0;
 }
 
-static int	init_display(t_display *dspl, t_main *cub)
+static int		init_display(t_display *dspl, t_main *cub)
 {
 	dspl->cub = cub;
 	cub->mlx = mlx_init();
@@ -76,9 +76,9 @@ void	init_cub(t_main *cub)
 	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
-	cub->pr.show_minimap = true;
-	init_g_m_data(&cub->gfx, &cub->map, cub);
-	init_p_r_data(&cub->plyr, &cub->r, cub);
+	cub->pr.show_minimap = false;
+	init_gfx_map_data(&cub->gfx, &cub->map, cub);
+	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
 	init_display(&cub->dspl, cub);
 }
 

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 19:31:53 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/18 20:25:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	//gfx->colors[CEILING] = &ceiling;	// SEG FAULT
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
-	gfx->txtr_res = -1;
 	map->cub = cub;
 	map->grid = ft_calloc(1, sizeof(map->grid));
 	if (!map->grid)

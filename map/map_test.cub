@@ -1,7 +1,7 @@
-SO ./1.xpm
-NO ./2.xpm
-WE ./3.xpm
-EA ./4.xpm
+SO ./textures/1_128.xpm
+NO ./textures/2_128.xpm
+WE ./textures/3_128.xpm
+EA ./textures/4_128.xpm
 
 F 220,100,0
 C 225,30,0

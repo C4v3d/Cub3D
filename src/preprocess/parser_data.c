@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/16 17:44:48 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:34:36 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,30 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 
 static void	parse_color(t_graphic *gfx, char *line, t_color **dest)
 {
-	int	c_len;
-	int	n_color;
+	(void)line;
+	(void)dest;
+	fprintf(stderr, "parse_color | CEILING AND FLOOR COLORS TO FIx\n");
+	//int	c_len;
+	//int	n_color;
 
-	line += ID_LEN - 1; /** < Skip ID */
-	n_color = 0;
-	while (ft_isspace(*line))
-		line++;
-	while (*line && n_color < 3)
-	{
-		c_len = 0;
-		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
-			c_len++;					/* Maybe by bitshifting ?*/
-		if (n_color == 0)
-			(*dest)->r = get_color(line, c_len);
-		else if (n_color == 1)
-			(*dest)->g = get_color(line, c_len);
-		else
-			(*dest)->b = get_color(line, c_len);
-		line += c_len + 1;
-		n_color++;
-	}
+	//line += ID_LEN - 1; /** < Skip ID */
+	//n_color = 0;
+	//while (ft_isspace(*line))
+	//	line++;
+	//while (*line && n_color < 3)
+	//{
+	//	c_len = 0;
+	//	while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
+	//		c_len++;					/* Maybe by bitshifting ?*/
+	//	if (n_color == 0)
+	//		(*dest)->r = get_color(line, c_len);
+	//	else if (n_color == 1)
+	//		(*dest)->g = get_color(line, c_len);
+	//	else
+	//		(*dest)->b = get_color(line, c_len);
+	//	line += c_len + 1;
+	//	n_color++;
+	//}
 	(*gfx).el_counter += 1;
 }
 

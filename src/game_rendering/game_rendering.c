@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 18:15:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/18 20:14:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
 		my_mlx_pixel_put(&cub->gfx.map, x, y, color);
 	}
 }
-		//............POUR LE FUN.............................................................
-		//r->y = (int)r->pos & tex->height - 1;			// EFFET DE GLITCH INTERESSANT
-		//r->pos += r->step;								// EFFET DE GLITCH INTERESSANT
-		//color = tex->addr[tex->height * r->y + r->x];	// EFFET DE GLITCH INTERESSANT
-		//my_mlx_pixel_put(&cub->gfx.map, x, y, color);			// EFFET DE GLITCH INTERESSANT
+		//............POUR LE FUN..........................................................
+		//tex->y = (int)tex->pos & t->height - 1;			// EFFET DE GLITCH INTERESSANT
+		//tex->pos += tex->step;							// EFFET DE GLITCH INTERESSANT
+		//color = t->addr[t->height * tex->y + tex->x];		// EFFET DE GLITCH INTERESSANT
+		//my_mlx_pixel_put(&cub->gfx.map, x, y, color);		// EFFET DE GLITCH INTERESSANT
 
 
 static void	init_draw(t_main *cub, t_rays *r, t_draw *tex, t_player *p)
@@ -59,10 +59,10 @@ static void	init_draw(t_main *cub, t_rays *r, t_draw *tex, t_player *p)
 		tex->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
 	tex->wall_x -=floor(tex->wall_x);
 	tex->x = (int)(tex->wall_x * (double)cub->gfx.txtr[tex->num].width);
-	if (r->wall_side == 0 && r->dir[X] > 0)						// mirroring textures -> USELESS???
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
-	if (r->wall_side == 1 && r->dir[Y] < 0)						// mirroring textures -> USELESS???
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
+	//if (r->wall_side == 0 && r->dir[X] > 0)					// mirroring textures -> USELESS???
+	//	tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
+	//if (r->wall_side == 1 && r->dir[Y] < 0)					// mirroring textures -> USELESS???
+	//	tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
 	tex->step = 1.0 * cub->gfx.txtr[tex->num].height / r->wall_height;
 	tex->pos = (tex->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * tex->step;
 }

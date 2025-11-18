@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/17 18:00:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/18 19:42:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ static bool	check_new_pos(double *p, char **grid, size_t *m_dim)
 {
 	if (!grid[(int)p[Y]][(int)p[X]] || grid[(int)p[Y]][(int)p[X]] == '1')
 		return (false);
-	if (p[X] <= 0 || p[X] >= m_dim[X] || p[Y] <= 0 || p[Y] >= m_dim[Y])
+	//if (p[X] <= 0 || p[X] >= m_dim[X] || p[Y] <= 0 || p[Y] >= m_dim[Y])
+	if (p[X] <= 1.000001 || p[X] >= (double)m_dim[X] - 1.000001
+		|| p[Y] <= 1.000001 || p[Y] >= (double)m_dim[Y] - 1.000001)
 		return (false);
 	return (true);
 }

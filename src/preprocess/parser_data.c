@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/18 16:34:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/18 20:28:15 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,15 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	if (*line == '\0')
 		ft_perror(gfx->cub, NO_DATA, WARNING);
 	line = ft_strtrim(line, "\n\t");
+	printf("cub3d: loading '%s', please wait...\n", line);
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	if (gfx->txtr_res == -1)			// init texture resolution for the game -> FAUX ou USELESS?
-		gfx->txtr_res = t->width;
-	else if (t->width != gfx->txtr_res)	// check if all textures are same res -> FAUX ou USELESS?
-			ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+	printf("cub3d: %dx%d texture loaded!\n", t->width, t->height);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	(*gfx).el_counter += 1;
-	//fprintf(stderr, "parse_texture | img_ptr: %p | img_addr: %p | width: %d | heigth: %d\n", t->img, t->addr, t->width, t->height);
-	fprintf(stderr, "parse_texture | bpp: %d | s_line: %d | endian: %d\n", t->bpp, t->s_line, t->endian);
 }
 
 /**

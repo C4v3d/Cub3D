@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 16:28:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:23:35 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
-	//t_color floor;
-	//t_color ceiling;
+	t_color floor;
+	t_color ceiling;
 
 	gfx->cub = cub;
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
-	//gfx->colors[FLOOR] = &floor;		// SEG FAULT
-	//gfx->colors[CEILING] = &ceiling;	// SEG FAULT
+	gfx->colors[FLOOR] = &floor;		// SEG FAULT
+	gfx->colors[CEILING] = &ceiling;	// SEG FAULT
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	gfx->txtr_res = -1;

@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   game_render_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 16:29:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:26:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_background(t_image *img)
+void	draw_background(t_image *scene, t_graphic *gfx)
 {
+	(void)gfx;
 	size_t	pos[AXIS];
 	size_t	dim[AXIS];
 
@@ -21,12 +22,12 @@ void	draw_background(t_image *img)
 	pos[Y] = 0;
 	dim[X] = 1280;
 	dim[Y] = WINDOW_HEIGHT / 2;
-	//draw(img, dim, pos, cub->gfx.colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xA8FFFA);
+	//draw(img, dim, pos, gfx->colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
+	draw(scene, dim, pos, 0xA8FFFA);
 	pos[Y] = WINDOW_HEIGHT / 2;
 	dim[Y] = WINDOW_HEIGHT;
-	//draw(img, dim, pos, cub->gfx.colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xC2FFA8);
+	//draw(img, dim, pos, gfx->colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
+	draw(scene, dim, pos, 0xC2FFA8);
 }
 
 void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)

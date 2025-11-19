@@ -6,17 +6,15 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 18:09:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:25:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_RENDERING_H
 # define GAME_RENDERING_H
 
-double	get_time(void);
-int		draw_fps(t_main *cub, t_image *img);
-int		draw_scene(t_main *cub, t_rays *r, t_player *p);
-void	draw_background(t_image *img);
+int		draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p);
+void	draw_background(t_image *img, t_graphic *gfx);
 int		check_wall_side(int side, double *p_pos, int *w_pos, double aov);
 int		get_main_ray(t_rays *r, t_player *p, t_map *m);
 int		create_image(t_main *cub, t_image *img);

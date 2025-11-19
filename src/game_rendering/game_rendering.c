@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 20:14:58 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:26:30 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	get_texture_color(t_image *t, int x, int y)
 	return (*(int *)pixel);
 }
 
-static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
+static void	draw_texture(t_draw *tex, t_image *t, t_image *scene,int x)
 {
 	int	y;
 	int	color;
@@ -40,7 +40,7 @@ static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
 		tex->y = (int)tex->pos & (t->height - 1);
 		tex->pos += tex->step;
 		color = get_texture_color(t, tex->x, tex->y);
-		my_mlx_pixel_put(&cub->gfx.map, x, y, color);
+		my_mlx_pixel_put(scene, x, y, color);
 	}
 }
 		//............POUR LE FUN..........................................................
@@ -82,7 +82,7 @@ static void	calculate_dist_height(t_rays *r, t_draw *tex)
 		tex->end = WINDOW_HEIGHT - 1;
 }
 
-int		draw_scene(t_main *cub, t_rays *r, t_player *p)
+int		draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 {
 	t_draw	tex;
 	int		x;
@@ -94,7 +94,7 @@ int		draw_scene(t_main *cub, t_rays *r, t_player *p)
 		dda(r, cub->map.grid);	//❌ calcul des distances pour les visions en ligne droite fixé dans init_dda
 		calculate_dist_height(r, &tex);
 		init_draw(cub, r, &tex, p);
-		draw_texture(cub, &tex, &cub->gfx.txtr[tex.num], x);
+		draw_texture(&tex, &gfx->txtr[tex.num], &gfx->map, x);
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 20:25:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 18:18:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
-	//t_color floor;
-	//t_color ceiling;
-
 	gfx->cub = cub;
-	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
-	//gfx->colors[FLOOR] = &floor;		// SEG FAULT
-	//gfx->colors[CEILING] = &ceiling;	// SEG FAULT
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	map->cub = cub;
@@ -65,6 +59,8 @@ static int		init_display(t_display *dspl, t_main *cub)
 	dspl->win_dim[X] = WINDOW_WIDTH;
 	dspl->win_dim[Y] = WINDOW_HEIGHT;
 	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
+	if (!dspl->win)
+		return (ft_perror(dspl->cub, errno, CRITICAL));
 	mlx_hook(cub->dspl.win, 02, 1L<<0, input_loop, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 	return (0);

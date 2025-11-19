@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/18 20:28:15 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:53:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,33 +101,6 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
 		parse_color(gfx, line, &gfx->colors[FLOOR]);
 }
-
-/**
- * Find a better way to write this nightmare
- */
-//v1
-//static void	fetch_data(t_graphic *gfx, char *line)
-//{
-//	int	id_len;
-
-//	if (line[0] == '\n')
-//		return;
-//	while (ft_isspace(*line))
-//		line++;
-//	id_len = get_id_len(line);
-//	if (ft_strncmp(line, NO_ID, id_len) == 0)
-//		parse_texture(gfx, line, &gfx->txtr_ptr[NO]);
-//	else if (ft_strncmp(line, SO_ID, id_len) == 0)
-//		parse_texture(gfx, line, &gfx->txtr_ptr[SO]);
-//	else if (ft_strncmp(line, WE_ID, id_len) == 0)
-//		parse_texture(gfx, line, &gfx->txtr_ptr[WE]);
-//	else if (ft_strncmp(line, EA_ID, id_len) == 0)
-//		parse_texture(gfx, line, &gfx->txtr_ptr[EA]);
-//	else if (ft_strncmp(line, C_ID, id_len) == 0)
-//		parse_color(gfx, line, &gfx->colors[CEILING]);
-//	else if (ft_strncmp(line, F_ID, id_len) == 0)
-//		parse_color(gfx, line, &gfx->colors[FLOOR]);
-//}
 
 void	parse_data(t_graphic *gfx)
 {

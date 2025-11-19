@@ -40,10 +40,9 @@ int	loop(t_main *cub)
 	if (cub->gfx.map.img != NULL)
 		safe_destroy_image(cub->mlx, cub->gfx.map.img);
 	create_image(cub, &cub->gfx.map);
-	draw_background(&cub->gfx.map);
-	draw_scene(cub, &cub->r, &cub->plyr);
+	draw_background(&cub->gfx.map, &cub->gfx);
+	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.map);
-	draw_fps(cub, &cub->gfx.map); // USELESS
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
 	return (0);
 }

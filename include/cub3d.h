@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/18 20:26:01 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 17:46:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,10 +164,9 @@ typedef struct		s_display_window
 
 typedef struct	s_graphic_data
 {
-	t_image	txtr[N_TEXTURE];
-	void	*txtr_ptr[N_TEXTURE];	/* Working with fixed data on the Stack*/
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;
+	t_image	txtr[N_TEXTURE];
 	t_image	map;
 	t_image	scene;	// USELESS???
 	t_main	*cub;

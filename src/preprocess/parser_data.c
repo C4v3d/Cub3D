@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/18 16:34:36 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:28:05 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	if (gfx->txtr_res == -1)			// init texture resolution for the game -> FAUX ou USELESS?
 		gfx->txtr_res = t->width;
 	else if (t->width != gfx->txtr_res)	// check if all textures are same res -> FAUX ou USELESS?
-			ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	(*gfx).el_counter += 1;
 	//fprintf(stderr, "parse_texture | img_ptr: %p | img_addr: %p | width: %d | heigth: %d\n", t->img, t->addr, t->width, t->height);
-	fprintf(stderr, "parse_texture | bpp: %d | s_line: %d | endian: %d\n", t->bpp, t->s_line, t->endian);
+	// fprintf(stderr, "parse_texture | bpp: %d | s_line: %d | endian: %d\n", t->bpp, t->s_line, t->endian);
 }
 
 /**
@@ -55,31 +54,28 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 
 static void	parse_color(t_graphic *gfx, char *line, t_color **dest)
 {
-	(void)line;
-	(void)dest;
-	fprintf(stderr, "parse_color | CEILING AND FLOOR COLORS TO FIx\n");
-	//int	c_len;
-	//int	n_color;
+	int	c_len;
+	int	n_color;
 
-	//line += ID_LEN - 1; /** < Skip ID */
-	//n_color = 0;
-	//while (ft_isspace(*line))
-	//	line++;
-	//while (*line && n_color < 3)
-	//{
-	//	c_len = 0;
-	//	while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
-	//		c_len++;					/* Maybe by bitshifting ?*/
-	//	if (n_color == 0)
-	//		(*dest)->r = get_color(line, c_len);
-	//	else if (n_color == 1)
-	//		(*dest)->g = get_color(line, c_len);
-	//	else
-	//		(*dest)->b = get_color(line, c_len);
-	//	line += c_len + 1;
-	//	n_color++;
-	//}
-	(*gfx).el_counter += 1;
+	(void)gfx;
+	line += ID_LEN - 1; /** < Skip ID */
+	n_color = 0;
+	while (ft_isspace(*line))
+		line++;
+	while (*line && n_color < 3)
+	{
+		c_len = 0;
+		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
+			c_len++;					/* Maybe by bitshifting ?*/
+		if (n_color == 0)
+			(*dest)->r = get_color(line, c_len);
+		else if (n_color == 1)
+			(*dest)->g = get_color(line, c_len);
+		else
+			(*dest)->b = get_color(line, c_len);
+		line += c_len + 1;
+		n_color++;
+	}
 }
 
 //v2
@@ -87,6 +83,7 @@ static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;
 
+	// fprintf(stderr, "Entering with line :%s\n", line);
 	if (line[0] == '\n')
 		return;
 	while (ft_isspace(*line))
@@ -104,6 +101,7 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		parse_color(gfx, line, &gfx->colors[CEILING]);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
 		parse_color(gfx, line, &gfx->colors[FLOOR]);
+	(*gfx).el_counter += 1;
 }
 
 /**
@@ -137,14 +135,9 @@ void	parse_data(t_graphic *gfx)
 {
 	char		*line;
 	const int	total_el = N_COLOR + N_TEXTURE;
-	//int		col;
-	//int		txt;
+	printf("%d\n", total_el);
 
 	line = NULL;
-	//col = N_COLOR;
-	//txt = N_TEXTURE;
-	//col = 2;
-	//txt = 4;
 	while (gfx->el_counter < total_el)
 	{
 		line = get_next_line(gfx->cub->pr.input_file_fd);

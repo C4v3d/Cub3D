@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_rendering.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:12:43 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/12 17:15:19 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:36:36 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	draw_minimap(t_main *cub, t_image *img)
 		while (cub->map.grid[y_i][++x_i])
 		{
 			if (cub->map.grid[y_i][x_i] == '1')
-				draw_tile(img, x_i * MINI_RES, y_i * MINI_RES, cub->gfx.colors[1]->color / 4);
+				draw_tile(img, x_i * MINI_RES, y_i * MINI_RES, cub->gfx.ceiling->color / 4);
 		}
-		draw_plyr(img, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->gfx.colors[0]->color / 4);
+		draw_plyr(img, cub->plyr.pos[X] * MINI_RES, cub->plyr.pos[Y] * MINI_RES, cub->gfx.floor->color / 4);
 		draw_untextured(img, &cub->plyr);
 	}
 	mark_minimap(img, &cub->plyr);

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 14:17:33 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:28:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 
 static void	parse_color(char *line, t_color **dest)
 {
+	// (void)line;
+	// (*dest)->color = 2805;
 	int	c_len;
 	int	n_color;
 
@@ -49,16 +51,18 @@ static void	parse_color(char *line, t_color **dest)
 		c_len = 0;
 		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
 			c_len++;					/* Maybe by bitshifting ?*/
-		if (n_color == 0)
+		if (n_color == 0) // red
+		{
 			(*dest)->r = get_color(line, c_len);
-		else if (n_color == 1)
+			printf("red got :%d\n", (int)(*dest)->r);
+		}
+		else if (n_color == 1) // green
 			(*dest)->g = get_color(line, c_len);
-		else
+		else if (n_color == 2) // blue
 			(*dest)->b = get_color(line, c_len);
 		line += c_len + 1;
 		n_color++;
 	}
-	printf("dest :%d\n", (*dest)->color);
 }
 
 //v2
@@ -79,10 +83,10 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		parse_texture(gfx, &gfx->txtr[WE], line);
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
-	// else if (ft_strncmp(line, C_ID, id_len) == 0)
-	// 	parse_color(line, &gfx->colors[CEILING]);
+	else if (ft_strncmp(line, C_ID, id_len) == 0)
+		parse_color(line, &gfx->ceiling);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(line, &gfx->colors[FLOOR]);
+		parse_color(line, &gfx->floor);
 	(*gfx).el_counter += 1;
 }
 
@@ -92,16 +96,15 @@ void	parse_data(t_graphic *gfx)
 	const int	total_el = N_COLOR + N_TEXTURE;
 
 	line = NULL;
-	printf("%d\n", gfx->colors[CEILING]->color);
 	while (gfx->el_counter < total_el)
 	{
 		line = get_next_line(gfx->cub->pr.input_file_fd);
 		if (!line)
 			break ;
 		fetch_data(gfx, line);
-		printf("the check :%d\n", gfx->colors[FLOOR]->color);
 		w_free((void **)&line);
 	}
 	if (gfx->el_counter != total_el)
 		ft_perror(gfx->cub, WRG_N_ARGS, CRITICAL);
+	fprintf(stderr, "Data Parsed\n");
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 14:22:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:19:06 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	draw_background(int floor_c, int ceiling_c, t_image *img)
 	pos[Y] = 0;
 	dim[X] = 1280;
 	dim[Y] = WINDOW_HEIGHT / 2;
-	printf("%d\n", floor_c);
-	draw(img, dim, pos, floor_c);	//❌ BUG avec cub->gfx.colors[]->color
+	draw(img, dim, pos, ceiling_c);	//❌ BUG avec cub->gfx.colors[]->color
 	pos[Y] = WINDOW_HEIGHT / 2;
 	dim[Y] = WINDOW_HEIGHT;
-	draw(img, dim, pos, ceiling_c);	//❌ BUG avec cub->gfx.colors[]->color
+	draw(img, dim, pos, floor_c);	//❌ BUG avec cub->gfx.colors[]->color
 }
 
 

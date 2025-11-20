@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 14:15:08 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:17:56 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
-	t_color floor;
-	t_color ceiling;
-
+	gfx->ceiling = ft_calloc(1, sizeof(t_color));
+	gfx->floor = ft_calloc(1, sizeof(t_color));
+	map->grid = ft_calloc(1, sizeof(map->grid));
+	if (!map->grid
+		|| !gfx->ceiling
+		|| !gfx->floor)
+		ft_perror(map->cub, errno, CRITICAL);
 	gfx->cub = cub;
-	ft_bzero(&floor, sizeof(int));
-	ft_bzero(&ceiling, sizeof(int));
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
-	gfx->colors[FLOOR] = &floor; // SEG FAULT
-	gfx->colors[CEILING] = &ceiling; // SEG FAULT
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	gfx->txtr_res = -1;
 	map->cub = cub;
-	map->grid = ft_calloc(1, sizeof(map->grid));
-	if (!map->grid)
-		ft_perror(map->cub, ENOMEM, CRITICAL);
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
@@ -85,6 +82,7 @@ void	init_cub(t_main *cub)
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
 	init_display(&cub->dspl, cub);
+	fprintf(stderr, "Cub initialized\n");
 }
 
 int		init_parsed_data(t_main *cub)

@@ -24,7 +24,7 @@ void	log_player_data(t_player *p)
 
 void	log_color(t_color *p)
 {
-	fprintf(stderr, "────────────────・["GRN"Roof Color"RESET"]\n");
+	fprintf(stderr, "────────────────・["GRN"Color"RESET"]\n");
 	fprintf(stderr, "\n");
 	fprintf(stderr, "────────────────・["GRN"R"RESET"]\n");
 	fprintf(stderr, "%d\n", p->r);
@@ -39,6 +39,8 @@ void	log_data(t_main *cub)
 	// fprintf(stderr, "────────────────・["GRN"Grid"RESET"]\n");
 	log_map(cub);
 	log_player_data(&cub->plyr);
-	log_color(cub->gfx.colors[FLOOR]);
-	log_color(cub->gfx.colors[CEILING]);
+	printf("Ceiling\n");
+	log_color(cub->gfx.ceiling);
+	printf("Floor\n");
+	log_color(cub->gfx.floor);
 }

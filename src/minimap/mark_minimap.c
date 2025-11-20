@@ -44,7 +44,7 @@ void	mark_minimap(t_image *img, t_player *p)
 		if (x_i >= WINDOW_WIDTH)
 			break ;
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, p->cub->gfx.colors[0]->color / 2);
+		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, p->cub->gfx.floor->color / 2);
 	}
 	x_i = x_tmp;
 	i = -1;
@@ -53,6 +53,6 @@ void	mark_minimap(t_image *img, t_player *p)
 		if (y_i >= WINDOW_HEIGHT)
 			break ;
 		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, p->cub->gfx.colors[0]->color / 2);
+		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, p->cub->gfx.floor->color / 2);
 	}
 }

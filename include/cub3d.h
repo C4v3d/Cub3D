@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 14:11:51 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:24:48 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,8 @@ typedef struct	s_graphic_data
 	t_image	txtr[N_TEXTURE];
 	void	*txtr_ptr[N_TEXTURE];
 	int		txtr_res;
-	t_color	*colors[N_COLOR];
+	t_color	*floor;
+	t_color	*ceiling;
 	int		el_counter;
 	t_image	map;
 	t_image	scene;	// USELESS???

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/19 14:01:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:26:33 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	get_color(char *line, int len)
 	i = 0;
 	while (i < len)
 		color = color * 10 + (line[i++] - '0');
+	printf("color %d\n", color);
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:54:59 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:04:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
-	gfx->cub = cub;
-	gfx->el_counter = 0;
-	gfx->scene.img = NULL;
 	map->cub = cub;
 	map->grid = ft_calloc(1, sizeof(map->grid));
 	if (!map->grid)
@@ -24,6 +21,9 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+	gfx->cub = cub;
+	gfx->el_counter = 0;
+	gfx->scene.img = NULL;
 }
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
@@ -48,18 +48,16 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	p->fov = 1.4;
 }
 
-static int	init_display(t_display *dspl, t_main *cub)
+static void	init_display(t_main *cub)
 {
-	dspl->cub = cub;
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
-		return (ft_perror(dspl->cub, errno, CRITICAL));
-	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
-	if (!dspl->win)
-		return (ft_perror(dspl->cub, MLX_FAIL, CRITICAL));
-	mlx_hook(cub->dspl.win, 02, 1L<<0, input_loop, cub);
+		ft_perror(cub, errno, CRITICAL);
+	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
+	if (!cub->win)
+		ft_perror(cub, MLX_FAIL, CRITICAL);
+	mlx_hook(cub->win, 02, 1L<<0, input_loop, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
-	return (0);
 }
 
 void	init_cub(t_main *cub)
@@ -69,7 +67,7 @@ void	init_cub(t_main *cub)
 	cub->pr.show_minimap = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
-	init_display(&cub->dspl, cub);
+	init_display(cub);
 }
 
 int		init_parsed_data(t_main *cub)

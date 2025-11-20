@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 17:51:05 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:05:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ typedef struct	s_img	t_img;
 
 typedef struct	s_main_struct		t_main;
 typedef	struct	s_program_data		t_prog;
-typedef struct	s_display_window	t_display;
 typedef	struct	s_player_data		t_player;
 typedef struct	s_scene				t_scene;
 typedef struct	s_graphic_data		t_graphic;
 typedef struct	s_rays_calculation	t_rays;
 typedef struct	s_map_data			t_map;
-typedef struct	s_user_control_input	t_usr_ctrl_in;
 typedef union	u_color				t_color;
 
 # define WINDOW_WIDTH 1280
@@ -91,12 +89,6 @@ void	log_colors(t_main *cub);
 void	log_map(t_main *cub);
 void	log_data(t_main *cub);
 void	log_player_data(t_player *p);
-
-typedef struct	s_vector
-{
-	double	x;
-	double	y;
-}	t_vector;
 
 typedef struct	s_draw_data
 {
@@ -148,22 +140,10 @@ typedef union u_color
 	};
 }	t_color;
 
-typedef struct	s_user_control_input // USELESS?
-{
-	int		*kc;			//  int[n] for: users keyboard inputs | `kc` = keycode
-	t_main	*cub;			// `ptr` to parent struct
-}	t_usr_ctrl_in;
-
-typedef struct		s_display_window
-{
-	void	*win;
-	t_main	*cub;			// `ptr` to parent struct
-}	t_display;
-
 typedef struct	s_graphic_data
 {
-	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;
+	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	t_image	txtr[N_TEXTURE];
 	t_image	scene;
 	t_main	*cub;
@@ -198,12 +178,11 @@ typedef struct	s_program_data
 typedef struct	s_main_struct
 {
 	void			*mlx;
+	void			*win;
 	t_player		plyr;
 	t_map			map;
 	t_graphic		gfx;
-	t_display		dspl;
 	t_prog			pr;
-	t_usr_ctrl_in	ctrl;
 	t_rays			r;
 }	t_main;
 

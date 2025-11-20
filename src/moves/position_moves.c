@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:36:34 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:59:43 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static bool	check_new_pos(double *p, char **grid, size_t *m_dim)
 {
 	if (!grid[(int)p[Y]][(int)p[X]] || grid[(int)p[Y]][(int)p[X]] == '1')
 		return (false);
-	//if (p[X] <= 0 || p[X] >= m_dim[X] || p[Y] <= 0 || p[Y] >= m_dim[Y])
 	if (p[X] <= 1.000001 || p[X] >= (double)m_dim[X] - 1.000001
 		|| p[Y] <= 1.000001 || p[Y] >= (double)m_dim[Y] - 1.000001)
 		return (false);

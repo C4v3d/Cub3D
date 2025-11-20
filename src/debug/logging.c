@@ -32,6 +32,8 @@ void	log_color(t_color *p)
 	fprintf(stderr, "%d\n", p->g);
 	fprintf(stderr, "────────────────・["GRN"B"RESET"]\n");
 	fprintf(stderr, "%d\n", p->b);
+	fprintf(stderr, "────────────────・["GRN"COLOR"RESET"]\n");
+	fprintf(stderr, "%x\n", p->color);
 }
 
 void	log_data(t_main *cub)

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 15:49:54 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:51:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,6 @@ typedef struct	s_user_control_input // USELESS?
 typedef struct		s_display_window
 {
 	void	*win;
-	size_t	win_dim[AXIS];
 	t_main	*cub;			// `ptr` to parent struct
 }	t_display;
 
@@ -175,7 +174,6 @@ typedef struct	s_map_data
 	char	**grid;						// int[w][h] for: MAP MATRIX
 	size_t	dim[AXIS];				// int[2] for: map dimensions
 	size_t	plyr_start_pos[AXIS];	// int[2] for: PLAYER X&Y START POSITION
-	double	plyr_start_ori;				// START ORIENTATION (N,S,W or E)
 	t_rays	r_mini;
 	t_main	*cub;						// `ptr` to parent struct
 }	t_map;
@@ -184,7 +182,6 @@ typedef struct	s_player_data
 {
 	double			pos[AXIS];
 	double			dir[AXIS];
-	double			ray_len;
 	double			aov;
 	double			fov;
 	t_main			*cub;

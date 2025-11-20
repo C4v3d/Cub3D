@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 19:42:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:36:34 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,7 @@ static bool	new_pos(t_player *p, double move_speed, int kc)
 	return (true);
 }
 
-int	update_plyr_position(t_player *p, int kc)
+void	update_plyr_position(t_player *p, int kc)
 {
-	//if (!new_pos(p, p->cub->pr.move_speed, kc))	// ❌ move_speed: marche pas
-	//	return (0);
-	if (!new_pos(p, POS_MOVE_UNIT, kc))
-		return (0);
-	return (0);
+	new_pos(p, POS_MOVE_UNIT, kc);
 }

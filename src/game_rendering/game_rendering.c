@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 15:52:14 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:45:10 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	calculate_dist_height(t_rays *r, t_draw *tex)
 		tex->end = WINDOW_HEIGHT - 1;
 }
 
-int		draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
+void	draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 {
 	t_draw	tex;
 	int		x;
@@ -96,5 +96,4 @@ int		draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 		init_draw(cub, r, &tex, p);
 		draw_texture(&tex, &gfx->txtr[tex.num], &gfx->scene, x);
 	}
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 18:09:41 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 13:23:32 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 double	get_time(void);
 int		draw_fps(t_main *cub, t_image *img);
 int		draw_scene(t_main *cub, t_rays *r, t_player *p);
-void	draw_background(t_image *img);
+// void	draw_background(t_image *img);
+void	draw_background(int roof_c, int ceiling_c, t_image *img);
 int		check_wall_side(int side, double *p_pos, int *w_pos, double aov);
 int		get_main_ray(t_rays *r, t_player *p, t_map *m);
 int		create_image(t_main *cub, t_image *img);

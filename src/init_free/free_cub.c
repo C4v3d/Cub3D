@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/20 18:06:24 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:09:07 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	destroy_images(t_main *cub)
 	i = -1;
 	while (++i < N_TEXTURE)
 			mlx_destroy_image(&cub->mlx, &cub->gfx.txtr[i].img);
-	mlx_destroy_image(&cub->mlx, &cub->gfx.map.img);
+	mlx_destroy_image(&cub->mlx, &cub->gfx.scene.img);
 	#endif
 }
 
@@ -68,6 +68,7 @@ int	free_cub(t_main *cub)
 	destroy_images(cub);
 	destroy_display(cub);
 	free_prog_map(&cub->pr, &cub->map);
+	free(cub->mlx);
 	exit(0);
 	return (0);
 }

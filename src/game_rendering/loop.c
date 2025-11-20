@@ -17,7 +17,6 @@ int	input_loop(int kc, void *param)
 	t_main *cub;
 
 	cub = (t_main *)param;
-	//fprintf(stderr, "[key_in] kc: %d\n", kc);							// DEBUG
 	if (kc == Q || kc == ESC)
 	{
 		cub->pr.close_program = true;
@@ -33,32 +32,17 @@ int	input_loop(int kc, void *param)
 	return (0);
 }
 
-//v2
 int	loop(t_main *cub)
 {
 	if (cub->pr.close_program == true)
 		free_cub(cub);
 	if (cub->gfx.scene.img != NULL)
 		safe_destroy_image(cub->mlx, cub->gfx.scene.img);
-	create_image(cub, &cub->gfx.scene);
+	if (create_image(cub, &cub->gfx.scene) != 0)
+		return (ft_perror(cub, MLX_FAIL, CRITICAL));
 	draw_background(&cub->gfx.scene, &cub->gfx);
 	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.scene);
 	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.scene.img, 0, 0);
 	return (0);
 }
-
-//v1
-//int	loop(t_main *cub)
-//{
-//	if (cub->pr.close_program == true)
-//		free_cub(cub);
-//	if (cub->gfx.map.img != NULL)
-//		safe_destroy_image(cub->mlx, cub->gfx.map.img);
-//	create_image(cub, &cub->gfx.map);
-//	draw_background(&cub->gfx.map, &cub->gfx);
-//	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
-//	draw_minimap(cub, &cub->gfx.map);
-//	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.map.img, 0, 0);
-//	return (0);
-//}

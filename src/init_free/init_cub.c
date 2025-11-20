@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 15:47:54 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:54:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
-	map->plyr_start_ori = 0;
 }
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
@@ -47,20 +46,17 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	r->wall_height = 0;
 	p->aov = 0;
 	p->fov = 1.4;
-	p->ray_len = 0;
 }
 
-static int		init_display(t_display *dspl, t_main *cub)
+static int	init_display(t_display *dspl, t_main *cub)
 {
 	dspl->cub = cub;
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
 		return (ft_perror(dspl->cub, errno, CRITICAL));
-	dspl->win_dim[X] = WINDOW_WIDTH;
-	dspl->win_dim[Y] = WINDOW_HEIGHT;
 	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	if (!dspl->win)
-		return (ft_perror(dspl->cub, errno, CRITICAL));
+		return (ft_perror(dspl->cub, MLX_FAIL, CRITICAL));
 	mlx_hook(cub->dspl.win, 02, 1L<<0, input_loop, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 	return (0);
@@ -68,7 +64,7 @@ static int		init_display(t_display *dspl, t_main *cub)
 
 void	init_cub(t_main *cub)
 {
-	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
+	ft_memset(cub, '\0', sizeof(cub));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);

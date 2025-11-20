@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/14 13:26:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:02:00 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 {
 	init_dda(r, p, WINDOW_WIDTH / 2);
-	if (!wall_is_on_axis(r, p, m->grid))
-		dda(r, m->grid); // DDA gives localisation of the encountered wall
+	//if (!wall_is_on_axis(r, p, m->grid))
+	//	dda(r, m->grid);
+	fprintf(stderr, "get_main_ray | REMOVED: wall_is_on_axis\n");
+	dda(r, m->grid);
 	r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
 	if (r->wall_side == 0 || r->wall_side == 1)
 		r->wall_dist = (r->dist[X] - r->delta[X]);

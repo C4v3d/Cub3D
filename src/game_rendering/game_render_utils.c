@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/19 18:26:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:45:13 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 int	create_image(t_main *cub, t_image *img)
 {
 	img->img = mlx_new_image(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!img->img)
+		return (1);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,
 			&img->s_line, &img->endian);
 	return (0);

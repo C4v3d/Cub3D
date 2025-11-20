@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/19 18:18:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 15:47:54 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
 	gfx->cub = cub;
 	gfx->el_counter = 0;
-	gfx->map.img = NULL;
+	gfx->scene.img = NULL;
 	map->cub = cub;
 	map->grid = ft_calloc(1, sizeof(map->grid));
 	if (!map->grid)
@@ -68,7 +68,6 @@ static int		init_display(t_display *dspl, t_main *cub)
 
 void	init_cub(t_main *cub)
 {
-	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;

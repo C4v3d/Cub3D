@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/19 18:18:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:06:24 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	destroy_images(t_main *cub)
 static void	destroy_display(t_main *cub)
 {
 	#ifdef __APPLE__
-	if (cub->dspl.win)
-		mlx_destroy_window(cub->mlx, cub->dspl.win);
+	if (cub->win)
+		mlx_destroy_window(cub->mlx, cub->win);
 	#else
-	if (cub->dspl.win)
-		mlx_destroy_window(cub->mlx, cub->dspl.win);
+	if (cub->win)
+		mlx_destroy_window(cub->mlx, cub->win);
 	if (cub->mlx)
 		mlx_destroy_display(cub->mlx);
 	#endif

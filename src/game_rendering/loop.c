@@ -43,6 +43,6 @@ int	loop(t_main *cub)
 	draw_background(&cub->gfx.scene, &cub->gfx);
 	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.scene);
-	mlx_put_image_to_window(cub->mlx, cub->dspl.win, cub->gfx.scene.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->win, cub->gfx.scene.img, 0, 0);
 	return (0);
 }

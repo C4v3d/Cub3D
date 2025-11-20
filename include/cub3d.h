@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/19 17:46:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 15:49:54 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef union	u_color				t_color;
 //# include "../lib/mlx/mlx.h"
 # include "input_validation.h"
 # include "map_validation.h"
-# include "maths_utils.h"
 # include "utils.h"
 # include "parser.h"
 # include "preprocess.h"
@@ -167,8 +166,7 @@ typedef struct	s_graphic_data
 	t_color	*colors[N_COLOR];	/* Working with fixed data on the Stack*/
 	int		el_counter;
 	t_image	txtr[N_TEXTURE];
-	t_image	map;
-	t_image	scene;	// USELESS???
+	t_image	scene;
 	t_main	*cub;
 }	t_graphic;
 
@@ -195,9 +193,6 @@ typedef struct	s_player_data
 typedef struct	s_program_data
 {
 	bool			show_minimap;
-	double			last_time;
-	double			move_speed;
-	double			rot_speed;
 	bool			close_program;
 	int				input_file_fd;
 	t_main			*cub;				// `ptr` to parent struct

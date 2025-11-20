@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/07 19:37:45 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 15:52:05 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,11 @@ void	switch_bool(bool *val)
 		*(val) = false;
 	else
 		*(val) = true;
+}
+
+double	get_delta(double val)
+{
+	if (val == 0)
+		return (fabs(1 / 1e30));
+	return (fabs(1 / val));
 }

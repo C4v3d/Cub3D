@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/19 18:26:30 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 15:52:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 		dda(r, cub->map.grid);	//❌ calcul des distances pour les visions en ligne droite fixé dans init_dda
 		calculate_dist_height(r, &tex);
 		init_draw(cub, r, &tex, p);
-		draw_texture(&tex, &gfx->txtr[tex.num], &gfx->map, x);
+		draw_texture(&tex, &gfx->txtr[tex.num], &gfx->scene, x);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/19 14:23:35 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/20 14:15:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	t_color ceiling;
 
 	gfx->cub = cub;
+	ft_bzero(&floor, sizeof(int));
+	ft_bzero(&ceiling, sizeof(int));
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
-	gfx->colors[FLOOR] = &floor;		// SEG FAULT
-	gfx->colors[CEILING] = &ceiling;	// SEG FAULT
+	gfx->colors[FLOOR] = &floor; // SEG FAULT
+	gfx->colors[CEILING] = &ceiling; // SEG FAULT
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	gfx->txtr_res = -1;
@@ -36,6 +38,9 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 {
+	/**
+	 * FT_BZERO MON GARS
+	 */
 	p->cub = cub;
 	r->cub = cub;
 	r->delta[X] = 0.0;

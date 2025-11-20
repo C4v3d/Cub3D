@@ -40,7 +40,7 @@ int	loop(t_main *cub)
 	if (cub->gfx.map.img != NULL)
 		safe_destroy_image(cub->mlx, cub->gfx.map.img);
 	create_image(cub, &cub->gfx.map);
-	draw_background(&cub->gfx.map);
+	draw_background(cub->gfx.colors[FLOOR]->color, cub->gfx.colors[CEILING]->color, &cub->gfx.map);
 	draw_scene(cub, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.map);
 	draw_fps(cub, &cub->gfx.map); // USELESS

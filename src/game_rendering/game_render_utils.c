@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   game_render_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 16:29:03 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:22:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	draw_background(t_image *img)
+// V2
+void	draw_background(int floor_c, int ceiling_c, t_image *img)
 {
 	size_t	pos[AXIS];
 	size_t	dim[AXIS];
@@ -21,13 +22,31 @@ void	draw_background(t_image *img)
 	pos[Y] = 0;
 	dim[X] = 1280;
 	dim[Y] = WINDOW_HEIGHT / 2;
-	//draw(img, dim, pos, cub->gfx.colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xA8FFFA);
+	printf("%d\n", floor_c);
+	draw(img, dim, pos, floor_c);	//❌ BUG avec cub->gfx.colors[]->color
 	pos[Y] = WINDOW_HEIGHT / 2;
 	dim[Y] = WINDOW_HEIGHT;
-	//draw(img, dim, pos, cub->gfx.colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
-	draw(img, dim, pos, 0xC2FFA8);
+	draw(img, dim, pos, ceiling_c);	//❌ BUG avec cub->gfx.colors[]->color
 }
+
+
+// V1
+// void	draw_background(t_image *img)
+// {
+// 	size_t	pos[AXIS];
+// 	size_t	dim[AXIS];
+
+// 	pos[X] = 0;
+// 	pos[Y] = 0;
+// 	dim[X] = 1280;
+// 	dim[Y] = WINDOW_HEIGHT / 2;
+// 	//draw(img, dim, pos, cub->gfx.colors[1]->color);	//❌ BUG avec cub->gfx.colors[]->color
+// 	draw(img, dim, pos, 0x0000FA);
+// 	pos[Y] = WINDOW_HEIGHT / 2;
+// 	dim[Y] = WINDOW_HEIGHT;
+// 	//draw(img, dim, pos, cub->gfx.colors[0]->color);	//❌ BUG avec cub->gfx.colors[]->color
+// 	draw(img, dim, pos, 0xC2FFA8);
+// }
 
 void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 {

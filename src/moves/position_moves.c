@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:59:43 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:19:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 	}
 }
 
-static bool	check_new_pos(double *p, char **grid, size_t *m_dim)
+static bool	check_new_pos(t_player *p, double last_pos[AXIS], char **grid, size_t *m_dim)
 {
-	if (!grid[(int)p[Y]][(int)p[X]] || grid[(int)p[Y]][(int)p[X]] == '1')
+	if (!grid[(int)p->pos[Y]][(int)p->pos[X]] || grid[(int)p->pos[Y]][(int)p->pos[X]] == '1')
 		return (false);
-	if (p[X] <= 1.000001 || p[X] >= (double)m_dim[X] - 1.000001
-		|| p[Y] <= 1.000001 || p[Y] >= (double)m_dim[Y] - 1.000001)
+	if (p->pos[X] <= 1.000001 || p->pos[X] >= (double)m_dim[X] - 1.000001
+		|| p->pos[Y] <= 1.000001 || p->pos[Y] >= (double)m_dim[Y] - 1.000001)
 		return (false);
+	// check diagonal wall collision -> WIP
+	(void)last_pos;
+	//if (p->aov >= 0 && p->aov < NO_RAD )
 	return (true);
 }
 
@@ -54,7 +57,7 @@ static bool	new_pos(t_player *p, double move_speed, int kc)
 	last_pos[X] = p->pos[X];
 	last_pos[Y] = p->pos[Y];
 	move(p, &p->cub->r, move_speed, kc);
-	if (!check_new_pos(p->pos, p->cub->map.grid, p->cub->map.dim))
+	if (!check_new_pos(p, last_pos, p->cub->map.grid, p->cub->map.dim))
 	{
 		p->pos[X] = last_pos[X];
 		p->pos[Y] = last_pos[Y];

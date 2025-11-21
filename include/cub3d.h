@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 16:24:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/21 10:29:41 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,10 @@ typedef union u_color
 	int		color;
 	struct
 	{
-		char	r;
-		char	g;
-		char	b;
-		char	a;
+		unsigned char	r;
+		unsigned char	g;
+		unsigned char	b;
+		unsigned char	a;
 	};
 }	t_color;
 

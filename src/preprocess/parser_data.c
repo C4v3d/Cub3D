@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 16:28:19 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/21 10:24:09 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 
 static void	parse_color(char *line, t_color **dest)
 {
-	// (void)line;
-	// (*dest)->color = 2805;
 	int	c_len;
 	int	n_color;
 
@@ -51,14 +49,14 @@ static void	parse_color(char *line, t_color **dest)
 		c_len = 0;
 		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
 			c_len++;					/* Maybe by bitshifting ?*/
-		if (n_color == 0) // red
+		if (n_color == 0)
 		{
 			(*dest)->r = get_color(line, c_len);
 			printf("red got :%d\n", (int)(*dest)->r);
 		}
-		else if (n_color == 1) // green
+		else if (n_color == 1)
 			(*dest)->g = get_color(line, c_len);
-		else if (n_color == 2) // blue
+		else if (n_color == 2)
 			(*dest)->b = get_color(line, c_len);
 		line += c_len + 1;
 		n_color++;

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:43:49 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:04:28 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	init_dda(t_rays *r, t_player *p, int x);
 void	dda(t_rays *r, char **grid);
-bool	wall_is_on_axis(t_rays *r, t_player *p, char **grid);
 void 	rotate(double dir[2], double plane[2], double rot_speed);
 
 #endif

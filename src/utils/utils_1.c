@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 15:52:05 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:09:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	welcome_cub3d(void)
 	printf("- move vision:           left-arrow, right-arrow\n");
 	printf("- increase/decrease FOV: O, I\n");
 	printf("- minimap:               M\n");
-	printf("- quit:                  Q, ESC\n");
+	printf("- quit:                  ESC\n");
 	printf("----------------------------------------------------\n");
 
 }

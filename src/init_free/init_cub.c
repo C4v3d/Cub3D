@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 18:04:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:07:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	init_display(t_main *cub)
 	if (!cub->win)
 		ft_perror(cub, MLX_FAIL, CRITICAL);
 	mlx_hook(cub->win, 02, 1L<<0, input_loop, cub);
+	mlx_hook(cub->win, 17, 0L, free_cub, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 }
 

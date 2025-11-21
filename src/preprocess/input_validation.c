@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:17:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/08 09:50:27 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 11:50:09 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ bool	is_input_valid(char *input_file)
 	size_t	len;
 	char*	p;
 
-	/**
-	 * Not sure :
-	 * - map.cub.cub
-	 * - map....cub
-	*/
 	len = ft_strlen(input_file);
 	p = input_file;
 	if (len == 0 || len <= EXTENSION_LEN)

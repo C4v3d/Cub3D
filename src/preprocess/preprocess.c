@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 14:37:06 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/21 11:49:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@
  * for the execution phase.
  * Easy management and debugging since everything
  * is broken down into separeted function !
- *
- * Break down the main struct into 2 separeted
- * area
- *  - Preprocess data
- *  - Execution data
- * might be good idk ?
  */
 void	preprocess(t_main *cub, char *input_file)
 {
@@ -35,6 +29,5 @@ void	preprocess(t_main *cub, char *input_file)
 	init_cub(cub);
 	open_file(cub, input_file);
 	parse_file(cub);
-	// validate_map(&cub->map); Don't need ?
 	init_parsed_data(cub);
 }

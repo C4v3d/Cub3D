@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_cal_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 18:05:16 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 16:40:29 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:00:01 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_dda(t_rays *r, t_player *p, int x)
 	//	|| p->aov == WE_RAD || p->aov == SO_RAD)
 	if (x == WINDOW_WIDTH / 2)
 	{
-		r->dir[X] += 0.000001; //fix temporaire (ou def?) pour les visions en ligne droite
-		r->dir[Y] += 0.000001; //fix temporaire (ou def?) pour les visions en ligne droite
+		r->dir[X] += 0.000001;
+		r->dir[Y] += 0.000001;
 	}
 	r->map[X] = (int)p->pos[X];
 	r->map[Y] = (int)p->pos[Y];

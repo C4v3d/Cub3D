@@ -17,7 +17,7 @@ int	input_loop(int kc, void *param)
 	t_main *cub;
 
 	cub = (t_main *)param;
-	if (kc == Q || kc == ESC)
+	if (kc == ESC)
 	{
 		cub->pr.close_program = true;
 		return (0);

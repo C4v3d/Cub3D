@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/21 12:53:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 18:34:20 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,30 @@ static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 	}
 }
 
-static bool	moved_through_walls(int op[AXIS], int np[AXIS], char **grid, double aov)
+static bool	moved_through_walls(int op[AXIS], char **grid, double aov, int kc)
 {
-	if ((np[X] == op[X] && np[Y] == op[Y])
-		|| (np[X] != op[X] && np[Y] == op[Y])
-			|| (np[X] == op[X] && np[Y] != op[Y]))
-		return (false);
-	if ((aov >= 0 && aov < NO_RAD) && (grid[op[Y] - 1][op[X]] == '1'
-		&& grid[op[Y]][op[X] + 1] == '1'))
-		return (printf("1\n"), true);
-	else if ((aov >= NO_RAD && aov < WE_RAD) && (grid[op[Y] - 1][op[X]] == '1'
-		&& grid[op[Y]][op[X] - 1] == '1'))
-		return (printf("2\n"), true);
-	else if ((aov >= WE_RAD && aov < SO_RAD) && (grid[op[Y] + 1][op[X]] == '1'
-		&& grid[op[Y]][op[X] - 1] == '1'))
-		return (printf("3\n"), true);
-	else if ((aov >= SO_RAD && aov < EA_RAD) && (grid[op[Y] + 1][op[X]] == '1'
-		&& grid[op[Y]][op[X] + 1] == '1'))
-		return (printf("4\n"), true);
+	int	i;
+
+	if (kc == W || kc == UA)
+		i = 1;
+	else
+		i = -1;
+	if ((aov >= 0 && aov < NO_RAD) && (grid[op[Y] - i][op[X]] == '1'
+		&& grid[op[Y]][op[X] + i] == '1'))
+		return (true);
+	else if ((aov >= NO_RAD && aov < WE_RAD) && (grid[op[Y] - i][op[X]] == '1'
+		&& grid[op[Y]][op[X] - i] == '1'))
+		return (true);
+	else if ((aov >= WE_RAD && aov < SO_RAD) && (grid[op[Y] + i][op[X]] == '1'
+		&& grid[op[Y]][op[X] - i] == '1'))
+		return (true);
+	else if ((aov >= SO_RAD && aov < EA_RAD) && (grid[op[Y] + i][op[X]] == '1'
+		&& grid[op[Y]][op[X] + i] == '1'))
+		return (true);
 	return (false);
 }
 
-static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS])
+static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 {
 	int	op[AXIS];
 	int	np[AXIS];
@@ -72,22 +74,25 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS])
 		return (false);
 	op[X] = (int)old_pos[X];
 	op[Y] = (int)old_pos[Y];
-	if (moved_through_walls(op, np, m->grid, p->aov))
-		return (printf("check_new_pos | ⚠️ | p->aov: %lf | grid[Y][X]: %c\n", p->aov, m->grid[np[Y]][np[X]]), false);
+	if ((np[X] == op[X] && np[Y] == op[Y]) || (np[X] != op[X] && np[Y] == op[Y])
+		|| (np[X] == op[X] && np[Y] != op[Y]))
+		return (true);
+	if (moved_through_walls(op, m->grid, p->aov, kc))
+		return (false);
 	return (true);
 }
 
 bool	update_plyr_position(t_player *p, int kc)
 {
-	double	last_pos[AXIS];
+	double	old_pos[AXIS];
 
-	last_pos[X] = p->pos[X];
-	last_pos[Y] = p->pos[Y];
+	old_pos[X] = p->pos[X];
+	old_pos[Y] = p->pos[Y];
 	move(p, &p->cub->r, POS_MOVE_UNIT, kc);
-	if (!check_new_pos(p, &p->cub->map, last_pos))
+	if (!check_new_pos(p, &p->cub->map, old_pos, kc))
 	{
-		p->pos[X] = last_pos[X];
-		p->pos[Y] = last_pos[Y];
+		p->pos[X] = old_pos[X];
+		p->pos[Y] = old_pos[Y];
 		return (false);
 	}
 	return (true);

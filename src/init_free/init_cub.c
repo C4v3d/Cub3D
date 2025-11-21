@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 16:17:56 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/21 11:14:01 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	init_cub(t_main *cub)
 	cub->pr.last_time = 0;
 	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
 	cub->pr.close_program = false;
-	cub->pr.show_minimap = false;
+	cub->pr.show_minimap = true;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
 	init_display(&cub->dspl, cub);

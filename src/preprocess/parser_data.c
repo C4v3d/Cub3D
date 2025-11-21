@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/21 10:24:09 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/21 11:11:38 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ static void	parse_color(char *line, t_color **dest)
 		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
 			c_len++;					/* Maybe by bitshifting ?*/
 		if (n_color == 0)
-		{
 			(*dest)->r = get_color(line, c_len);
-			printf("red got :%d\n", (int)(*dest)->r);
-		}
 		else if (n_color == 1)
 			(*dest)->g = get_color(line, c_len);
 		else if (n_color == 2)

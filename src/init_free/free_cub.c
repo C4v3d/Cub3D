@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/13 11:28:16 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 11:55:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ static void	destroy_display(t_main *cub)
 	//mlx_destroy_display(dspl->cub->mlx);
 }
 
-static void	free_program_data(t_prog *pr)
+static void	free_program_data(t_main *cub)
 {
-	if (w_close(pr->input_file_fd) == -1)
-		ft_perror(pr->cub, errno, WARNING);
+	if (w_close(cub->pr.input_file_fd) == -1)
+		ft_perror(cub, errno, WARNING);
+	w_free((void**)&cub->gfx.ceiling);
+	w_free((void**)&cub->gfx.floor);
 }
 
 static void	free_map_data(t_map *map)
@@ -60,7 +62,7 @@ static void	free_map_data(t_map *map)
 int	free_cub(t_main *cub)
 {
 	destroy_display(cub);
-	free_program_data(&cub->pr);
+	free_program_data(cub);
 	free_map_data(&cub->map);
 	exit(0);
 	return (0);

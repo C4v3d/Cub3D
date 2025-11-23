@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/20 14:37:47 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 15:06:10 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ void	open_file(t_main *cub, char *input_file)
 	cub->pr.input_file_fd = get_file_fd(cub, input_file);
 	if (cub->pr.input_file_fd == -1)
 		ft_perror(cub, MAP_FILE_NULL, CRITICAL);
-	fprintf(stderr, "File Opened\n");
 }

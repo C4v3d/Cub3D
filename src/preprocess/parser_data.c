@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/21 11:11:38 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 15:05:14 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,4 @@ void	parse_data(t_graphic *gfx)
 	}
 	if (gfx->el_counter != total_el)
 		ft_perror(gfx->cub, WRG_N_ARGS, CRITICAL);
-	fprintf(stderr, "Data Parsed\n");
 }

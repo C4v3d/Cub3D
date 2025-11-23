@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 16:41:54 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 16:58:18 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_background(int floor_c, int ceiling_c, t_image *img)
 	size_t	pos[AXIS];
 	size_t	dim[AXIS];
 
-	printf("floor_c :%x\nceiling_c :%x\n", floor_c, ceiling_c);
 	pos[X] = 0;
 	pos[Y] = 0;
 	dim[X] = 1280;

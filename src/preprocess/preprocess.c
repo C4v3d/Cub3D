@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 14:35:10 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/21 11:49:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 18:31:11 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	preprocess(t_main *cub, char *input_file)
 	open_file(cub, input_file);
 	parse_file(cub);
 	init_parsed_data(cub);
+	map_validation(&cub->map);
 }

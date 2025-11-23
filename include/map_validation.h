@@ -6,13 +6,12 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:45:25 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/02 13:47:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 18:27:41 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_VALIDATION_H
 # define MAP_VALIDATION_H
 
-void	validate_map(t_map *map);
-
+void	map_validation(t_map *map);
 #endif

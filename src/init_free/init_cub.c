@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 16:27:16 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 17:53:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	gfx->txtr_res = -1;
-	map->cub = cub;
-	map->dim[X] = 0;
-	map->dim[Y] = 0;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
 	gfx->cub = cub;
 	gfx->el_counter = 0;
 	gfx->scene.img = NULL;
+	ft_bzero(&map->r_mini, sizeof(map->r_mini));
+	map->cub = cub;
+	map->dim[X] = 0;
+	map->dim[Y] = 0;
 }
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
@@ -40,24 +41,28 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	/**
 	 * FT_BZERO MON GARS
 	 */
+	ft_bzero(p, sizeof(p));
+	p->fov = 1.4;
 	p->cub = cub;
-	r->cub = cub;
+
+	ft_bzero(r, sizeof(r));
 	r->delta[X] = 0.0;
 	r->delta[Y] = 0.0;
 	r->dir[X] = 0.0;
 	r->dir[Y] = 0.0;
 	r->dist[X] = 0.0;
 	r->dist[Y] = 0.0;
-	r->map[X] = 0;
-	r->map[Y] = 0;
+	r->plane[X] = 0.0;
+	r->plane[Y] = 0.0;
 	r->steps[X] = 0.0;
 	r->steps[Y] = 0.0;
+	r->map[X] = 0;
+	r->map[Y] = 0;
 	r->cam_x = 0.0;
 	r->wall_side = 0;
 	r->wall_dist = 0;
 	r->wall_height = 0;
-	p->aov = 0;
-	p->fov = 1.4;
+	r->cub = cub;
 }
 
 static void	init_display(t_main *cub)

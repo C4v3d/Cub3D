@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/21 19:07:59 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/23 17:52:50 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,14 @@ void	draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 	t_draw	d;
 	int		x;
 
-	x = -1;
-	while (++x < WINDOW_WIDTH)
+	x = 0;
+	while (x < WINDOW_WIDTH)
 	{
 		init_dda(r, p, x);
 		dda(r, cub->map.grid);
 		init_dist_height(r, &d);
 		init_draw(cub, r, &d, p);
 		draw_texture(&d, &gfx->txtr[d.num], &gfx->scene, x);
+		x++;
 	}
 }

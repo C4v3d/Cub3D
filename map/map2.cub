@@ -1,7 +1,7 @@
-SO ./1.xpm
-NO ./2.xpm
-WE ./3.xpm
-EA ./4.xpm
+SO ./textures/1_256.xpm
+NO ./textures/2_256.xpm
+WE ./textures/3_256.xpm
+EA ./textures/4_256.xpm
 
 F 20,230,0
 C 225,30,0

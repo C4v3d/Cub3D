@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/18 16:44:21 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:35:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,8 @@ static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 		*(aov) -= rot_speed;
 }
 
-//v2 work but not so smooth
-//int	update_plyr_vision(t_player *p, int	kc)
-//{
-//	//❌ sur map_test: bug d'affichage lorsque le joueur avance tout droit sans bouger l'angle de vision
-//	if (kc == LA || kc == RA)
-//		update_aov(&p->aov, AOV_MAX, p->cub->pr.rot_speed, kc);
-//	else if (kc == I || kc == O)
-//		update_fov(p, &p->cub->r, kc);
-//	if (kc == LA)
-//		rotate(p->dir, p->cub->r.plane, p->cub->pr.rot_speed);
-//	else if (kc == RA)
-//		rotate(p->dir, p->cub->r.plane, -p->cub->pr.rot_speed);
-//	return (0);
-//}
-
-//v1
-int	update_plyr_vision(t_player *p, int	kc)
+void	update_plyr_vision(t_player *p, int	kc)
 {
-	//❌ sur map_test: bug d'affichage lorsque le joueur avance tout droit sans bouger l'angle de vision
 	if (kc == LA || kc == RA)
 		update_aov(&p->aov, AOV_MAX, VIS_MOVE_UNIT, kc);
 	else if (kc == I || kc == O)
@@ -77,5 +60,4 @@ int	update_plyr_vision(t_player *p, int	kc)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
 	else if (kc == RA)
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
-	return (0);
 }

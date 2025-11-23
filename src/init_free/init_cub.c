@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 15:05:59 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 16:27:16 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
-	map->plyr_start_ori = 0;
+	gfx->cub = cub;
+	gfx->el_counter = 0;
+	gfx->scene.img = NULL;
 }
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
@@ -56,39 +58,36 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	r->wall_height = 0;
 	p->aov = 0;
 	p->fov = 1.4;
-	p->ray_len = 0;
 }
 
-static int		init_display(t_display *dspl, t_main *cub)
+static void	init_display(t_main *cub)
 {
-	dspl->cub = cub;
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
-		return (ft_perror(dspl->cub, errno, CRITICAL));
-	dspl->win_dim[X] = WINDOW_WIDTH;
-	dspl->win_dim[Y] = WINDOW_HEIGHT;
-	dspl->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
-	mlx_hook(cub->dspl.win, 02, 1L<<0, input_loop, cub);
+		ft_perror(cub, errno, CRITICAL);
+	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
+	if (!cub->win)
+		ft_perror(cub, MLX_FAIL, CRITICAL);
+	mlx_hook(cub->win, 02, 1L<<0, input_loop, cub);
+	mlx_hook(cub->win, 17, 0L, free_cub, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
-	return (0);
 }
 
 void	init_cub(t_main *cub)
 {
-	cub->pr.last_time = 0;
-	ft_memset(cub, '\0', sizeof(cub)); /** Setting everything to null */
+	ft_memset(cub, '\0', sizeof(cub));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = true;
 	cub->pr.input_file_fd = -1;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
-	init_display(&cub->dspl, cub);
+	init_display(cub);
 }
 
 int		init_parsed_data(t_main *cub)
 {
-	cub->plyr.pos[X] = (double)cub->map.plyr_start_pos[X];
-	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y];
+	cub->plyr.pos[X] = (double)cub->map.plyr_start_pos[X] + 0.5;
+	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y] - 0.5;
 	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
 	cub->r.plane[X] =  cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
 	update_plyr_vision(&cub->plyr, LA); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane

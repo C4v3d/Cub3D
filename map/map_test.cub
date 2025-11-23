@@ -1,10 +1,10 @@
-SO ./1.xpm
-NO ./2.xpm
-WE ./3.xpm
-EA ./4.xpm
+SO ./textures/1_256.xpm
+NO ./textures/2_256.xpm
+WE ./textures/3_256.xpm
+EA ./textures/4_256.xpm
 
-F 130,0,0
-C 0,0,255
+F 150,0,255
+C 130,255,0
 
 11111111
 10000001

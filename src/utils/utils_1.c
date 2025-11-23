@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 11:06:35 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 16:29:38 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	welcome_cub3d(void)
 	printf("- move vision:           left-arrow, right-arrow\n");
 	printf("- increase/decrease FOV: O, I\n");
 	printf("- minimap:               M\n");
-	printf("- quit:                  Q, ESC\n");
+	printf("- quit:                  ESC\n");
 	printf("----------------------------------------------------\n");
 
 }
@@ -33,4 +33,11 @@ void	switch_bool(bool *val)
 		*(val) = false;
 	else
 		*(val) = true;
+}
+
+double	get_delta(double val)
+{
+	if (val == 0)
+		return (fabs(1 / 1e30));
+	return (fabs(1 / val));
 }

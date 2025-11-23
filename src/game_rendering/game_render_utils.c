@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/21 11:25:46 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 16:41:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ void	draw_background(int floor_c, int ceiling_c, t_image *img)
 	size_t	pos[AXIS];
 	size_t	dim[AXIS];
 
+	printf("floor_c :%x\nceiling_c :%x\n", floor_c, ceiling_c);
 	pos[X] = 0;
 	pos[Y] = 0;
 	dim[X] = 1280;
 	dim[Y] = WINDOW_HEIGHT / 2;
-	draw(img, dim, pos, floor_c); // Is it Floor or Ceiling ?
+	draw(img, dim, pos, ceiling_c); // Is it Floor or Ceiling ?
 	pos[Y] = WINDOW_HEIGHT / 2;
 	dim[Y] = WINDOW_HEIGHT;
-	draw(img, dim, pos, ceiling_c); // Is it Floor or Ceiling ?
+	draw(img, dim, pos, floor_c); // Is it Floor or Ceiling ?
 }
 
 
@@ -68,6 +69,8 @@ void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color)
 int	create_image(t_main *cub, t_image *img)
 {
 	img->img = mlx_new_image(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!img->img)
+		return (1);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp,
 			&img->s_line, &img->endian);
 	return (0);

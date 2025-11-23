@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/16 18:15:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:07:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,76 +25,64 @@ static int	get_texture_color(t_image *t, int x, int y)
 	if (y >= t->height)
 		y = t->height - 1;
 	pixel = t->addr + (y * t->s_line + x * (t->bpp / 8));
-	//pixel = t->addr + (y * t->s_line + x * (t->bpp / 30));	// EFFET DE GLITCH INTERESSANT
 	return (*(int *)pixel);
 }
 
-static void	draw_texture(t_main *cub, t_draw *tex, t_image *t, int x)
+static void	draw_texture(t_draw *d, t_image *t, t_image *scene,int x)
 {
 	int	y;
 	int	color;
 
-	y = tex->start - 1;
-	while (++y <= tex->end)
+	y = d->start - 1;
+	while (++y <= d->end)
 	{
-		tex->y = (int)tex->pos & (t->height - 1);
-		tex->pos += tex->step;
-		color = get_texture_color(t, tex->x, tex->y);
-		my_mlx_pixel_put(&cub->gfx.map, x, y, color);
+		d->y = (int)d->pos & (t->height - 1);
+		d->pos += d->step;
+		color = get_texture_color(t, d->x, d->y);
+		my_mlx_pixel_put(scene, x, y, color);
 	}
 }
-		//............POUR LE FUN.............................................................
-		//r->y = (int)r->pos & tex->height - 1;			// EFFET DE GLITCH INTERESSANT
-		//r->pos += r->step;								// EFFET DE GLITCH INTERESSANT
-		//color = tex->addr[tex->height * r->y + r->x];	// EFFET DE GLITCH INTERESSANT
-		//my_mlx_pixel_put(&cub->gfx.map, x, y, color);			// EFFET DE GLITCH INTERESSANT
 
-
-static void	init_draw(t_main *cub, t_rays *r, t_draw *tex, t_player *p)
+static void	init_draw(t_main *cub, t_rays *r, t_draw *d, t_player *p)
 {
-	tex->num = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
-	if (r->wall_side == 0)	// calculate exaclty where the wall was hit
-		tex->wall_x = p->pos[Y] - r->wall_dist * r->dir[Y];
+	d->num = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+	if (r->wall_side == 0)
+		d->wall_x = p->pos[Y] - r->wall_dist * r->dir[Y];
 	else
-		tex->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
-	tex->wall_x -=floor(tex->wall_x);
-	tex->x = (int)(tex->wall_x * (double)cub->gfx.txtr[tex->num].width);
-	if (r->wall_side == 0 && r->dir[X] > 0)						// mirroring textures -> USELESS???
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
-	if (r->wall_side == 1 && r->dir[Y] < 0)						// mirroring textures -> USELESS???
-		tex->x = cub->gfx.txtr[tex->num].width - tex->x - 1;	// mirroring textures -> USELESS???
-	tex->step = 1.0 * cub->gfx.txtr[tex->num].height / r->wall_height;
-	tex->pos = (tex->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * tex->step;
+		d->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
+	d->wall_x -=floor(d->wall_x);
+	d->x = (int)(d->wall_x * (double)cub->gfx.txtr[d->num].width);
+	d->step = 1.0 * cub->gfx.txtr[d->num].height / r->wall_height;
+	d->pos = (d->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * d->step;
 }
 
-static void	calculate_dist_height(t_rays *r, t_draw *tex)
+static void	init_dist_height(t_rays *r, t_draw *d)
 {
 	if (r->wall_side == 0)
 		r->wall_dist = (r->dist[X] - r->delta[X]);
 	else
 		r->wall_dist = (r->dist[Y] - r->delta[Y]);
 	r->wall_height = (int)(WINDOW_HEIGHT / r->wall_dist);
-	tex->start = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
-	if (tex->start < 0)
-		tex->start = 0;
-	tex->end = r->wall_height / 2 + WINDOW_HEIGHT / 2;
-	if (tex->end >= WINDOW_HEIGHT)
-		tex->end = WINDOW_HEIGHT - 1;
+	d->start = -r->wall_height / 2 + WINDOW_HEIGHT / 2;
+	if (d->start < 0)
+		d->start = 0;
+	d->end = r->wall_height / 2 + WINDOW_HEIGHT / 2;
+	if (d->end >= WINDOW_HEIGHT)
+		d->end = WINDOW_HEIGHT - 1;
 }
 
-int		draw_scene(t_main *cub, t_rays *r, t_player *p)
+void	draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p)
 {
-	t_draw	tex;
+	t_draw	d;
 	int		x;
 
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
 		init_dda(r, p, x);
-		dda(r, cub->map.grid);	//❌ calcul des distances pour les visions en ligne droite fixé dans init_dda
-		calculate_dist_height(r, &tex);
-		init_draw(cub, r, &tex, p);
-		draw_texture(cub, &tex, &cub->gfx.txtr[tex.num], x);
+		dda(r, cub->map.grid);
+		init_dist_height(r, &d);
+		init_draw(cub, r, &d, p);
+		draw_texture(&d, &gfx->txtr[d.num], &gfx->scene, x);
 	}
-	return (0);
 }

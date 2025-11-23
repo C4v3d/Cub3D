@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:07:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/19 17:57:31 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:04:28 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 void	parse_file(t_main *cub)
 {
 	parse_data(&cub->gfx);
+	fprintf(stderr, "Data parsed !\n");
 	parse_map(&cub->map);
+	fprintf(stderr, "Map Parsed !\n");
 }

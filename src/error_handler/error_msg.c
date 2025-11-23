@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/10/02 13:35:16 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/19 13:38:31 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void	ft_fatal(t_main *cub, t_errorcode errcode)
 		err_msg = strerror(errno);
 	else
 		err_msg = ft_strerror(errcode);
-	free_cub(cub);
 	printf(RED"Fatal error:	"RESET"%s\n", err_msg);
 	printf("\n"RED"	<--- Exiting ! --->"RESET"\n");
+	free_cub(cub);
 	exit(EXIT_FAILURE);
 }
 

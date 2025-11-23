@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/23 16:32:52 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/23 16:57:46 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,26 @@
 
 void	safe_destroy_image(t_main *cub, void *ptr)
 {
-	#ifdef __APPLE__
-	(void)cub;
-	(void)ptr;
-	#else
 	if (ptr)
 		mlx_destroy_image(&cub->mlx, ptr);
-	#endif
 }
 
 static void	destroy_images(t_main *cub)
 {
-	#ifdef __APPLE__
-	(void)cub;
-	#else
 	int	i;
 
 	i = -1;
 	while (++i < N_TEXTURE)
-			mlx_destroy_image(&cub->mlx, &cub->gfx.txtr[i].img);
-	mlx_destroy_image(&cub->mlx, &cub->gfx.scene.img);
-	#endif
+		mlx_destroy_image(cub->mlx, cub->gfx.txtr[i].img);
+	mlx_destroy_image(cub->mlx, cub->gfx.scene.img);
 }
 
 static void	destroy_display(t_main *cub)
 {
-	#ifdef __APPLE__
-	if (cub->win)
-		mlx_destroy_window(cub->mlx, cub->win);
-	#else
 	if (cub->win)
 		mlx_destroy_window(cub->mlx, cub->win);
 	if (cub->mlx)
 		mlx_destroy_display(cub->mlx);
-	#endif
 }
 
 static void	free_prog_map_gfx(t_prog *pr, t_map *map, t_graphic *gfx)

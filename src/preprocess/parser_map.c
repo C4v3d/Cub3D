@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 11:10:46 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 13:41:31 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ void	parse_map(t_map *map)
 	map->grid = ft_split(inline_map, '\n');
 	if (!map->grid)
 		ft_perror(map->cub, errno, CRITICAL);
-	log_map(map->cub);
+	// log_map(map->cub);
 }

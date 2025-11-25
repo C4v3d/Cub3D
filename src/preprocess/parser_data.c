@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/23 16:38:52 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:24:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,19 @@
 //v2
 static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
+	char *trimmed;
+
 	line += ID_LEN; /** < Skip ID */
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
 		ft_perror(gfx->cub, NO_DATA, WARNING);
-	line = ft_strtrim(line, "\n\t");
-	printf("cub3d: loading '%s', please wait...\n", line);
-	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
+	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
+	if (!trimmed)
+		ft_perror(gfx->cub, 0, CRITICAL);
+	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
+			&t->width, &t->height);
+	w_free((void **)&trimmed);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	if (gfx->txtr_res == -1)			// init texture resolution for the game -> FAUX ou USELESS?

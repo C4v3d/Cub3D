@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/25 14:15:27 by timmi            ###   ########.fr       */
+/*   Created: 2025/11/25 15:33:34 by timmi             #+#    #+#             */
+/*   Updated: 2025/11/25 15:33:38 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef ERROR_H
 # define ERROR_H
@@ -27,8 +26,7 @@
  */
 typedef enum e_errortype
 {
-	WARNING, /**< Error that are caused by the user or won't stop
-				the correct execution of the program.*/
+	WARNING,
 	ERROR, /**< Logical error in the code.*/
 	CRITICAL, /**< Critical error that cause the abortion of
 				the program (e.g: no more sys mem). */

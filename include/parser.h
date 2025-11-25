@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 11:03:20 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 15:38:55 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /* Allowed charset to build the map*/
 # define CHARSET " 10NSEW"
+
 void	parse_file(t_main *cub);
 void	parse_data(t_graphic *gfx);
 int		get_color(char *line, int len);

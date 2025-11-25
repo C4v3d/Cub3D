@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 15:13:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 15:33:58 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);
 void	put_p(t_image *img, int x, int y, int color);
 void	init_dda(t_rays *r, t_player *p, int x);
 void	dda(t_rays *r, char **grid);
-void 	rotate(double dir[2], double plane[2], double rot_speed);
+void	rotate(double dir[2], double plane[2], double rot_speed);
 
 #endif

@@ -3,33 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   keys.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/10 14:55:21 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:37:09 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
-#ifdef __APPLE__
-# define ESC	53
-# define Q		12
-# define W		13
-# define A		0
-# define S		1
-# define D		2
-# define LA		123 // LEFT ARROW
-# define RA		124 // RIGHT ARROW
-# define DA		125 // DOWN ARROW
-# define UA		126 // UP ARROW
-# define I		34
-# define O		31
-# define M		46
-# define N		45
-
-#else
 # define ESC	65307
 # define Q		113
 # define W		119
@@ -44,6 +27,5 @@
 # define O		111
 # define M		109
 # define N		110
-#endif
 
 #endif

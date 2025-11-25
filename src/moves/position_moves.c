@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/21 18:34:20 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:15:45 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 	{
 		p->pos[X] -= r->plane[X] * move_speed;
 		p->pos[Y] += r->plane[Y] * move_speed;
-
 	}
 	else if (kc == D)
 	{

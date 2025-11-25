@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:17:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/21 11:50:09 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:47:46 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	is_input_valid(char *input_file)
 {
 	size_t	len;
-	char*	p;
+	char	*p;
 
 	len = ft_strlen(input_file);
 	p = input_file;

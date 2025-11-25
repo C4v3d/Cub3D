@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/19 13:38:31 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:52:18 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Wrong number of argument(s). "
 			"You need to specify one map to play.");
 	if (errcode == MAP_FILE_NULL)
-		return ("Map file is null");
+		return ("Invalid map file (must be .cub).");
 	if (errcode == WRG_MAP_EXT)
 		return ("Wrong map extension (must be .cub).");
 	if (errcode == NO_MAP_FILE)
@@ -29,6 +29,12 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("MLX failed.");
 	if (errcode == DUP)
 		return ("Duplicated texture/color");
+	if (errcode == WRG_CHAR)
+		return ("Unauthorized character used !\n"
+			"The ap must only contains these characters"
+			"[SPACE, 1, 0, N, S, E, W]");
+	if (errcode == MAP_OPEN)
+		return ("Map is not closed !");
 	return (NULL);
 }
 

@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/23 16:57:46 by timmi            ###   ########.fr       */
+/*   Created: 2025/11/25 14:59:05 by timmi             #+#    #+#             */
+/*   Updated: 2025/11/25 15:00:00 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 
@@ -45,10 +44,10 @@ static void	free_prog_map_gfx(t_prog *pr, t_map *map, t_graphic *gfx)
 		ft_perror(pr->cub, errno, WARNING);
 	i = -1;
 	while (++i < map->dim[Y])
-		w_free((void**)&map->grid[i]);
-	w_free((void**)&map->grid);
-	w_free((void**)&gfx->ceiling);
-	w_free((void**)&gfx->floor);
+		w_free((void **)&map->grid[i]);
+	w_free((void **)&map->grid);
+	w_free((void **)&gfx->ceiling);
+	w_free((void **)&gfx->floor);
 }
 
 int	free_cub(t_main *cub)

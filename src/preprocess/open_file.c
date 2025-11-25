@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:19:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/23 15:06:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:48:10 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,14 @@ static int	get_file_fd(t_main *cub, char *input_file)
 
 	full_path = ft_strjoin(MAP_PATH, input_file);
 	if (!full_path)
-		ft_perror(NULL, errno, ERROR);
+		ft_perror(NULL, 0, ERROR);
 	fd = open(full_path, O_RDONLY);
 	w_free((void **)&full_path);
 	if (fd == -1)
-		ft_perror(cub, errno, CRITICAL);
+		ft_perror(cub, 0, CRITICAL);
 	return (fd);
 }
 
-
-/**
- * Check if directory
- */
 void	open_file(t_main *cub, char *input_file)
 {
 	cub->pr.input_file_fd = get_file_fd(cub, input_file);

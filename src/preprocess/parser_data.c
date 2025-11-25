@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/23 16:38:52 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:49:38 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //v2
 static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
-	line += ID_LEN; /** < Skip ID */
+	line += ID_LEN;
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
@@ -25,9 +25,9 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, line, &t->width, &t->height);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	if (gfx->txtr_res == -1)			// init texture resolution for the game -> FAUX ou USELESS?
+	if (gfx->txtr_res == -1)
 		gfx->txtr_res = t->width;
-	else if (t->width != gfx->txtr_res)	// check if all textures are same res -> FAUX ou USELESS?
+	else if (t->width != gfx->txtr_res)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
@@ -39,15 +39,15 @@ static void	parse_color(char *line, t_color **dest)
 	int	c_len;
 	int	n_color;
 
-	line += ID_LEN - 1; /** < Skip ID */
+	line += ID_LEN - 1;
 	n_color = 0;
 	while (ft_isspace(*line))
 		line++;
 	while (*line && n_color < 3)
 	{
 		c_len = 0;
-		while (ft_isdigit(line[c_len])) /* Rewrite this bs (the whole function) */
-			c_len++;					/* Maybe by bitshifting ?*/
+		while (ft_isdigit(line[c_len]))
+			c_len++;
 		if (n_color == 0)
 			(*dest)->r = get_color(line, c_len);
 		else if (n_color == 1)
@@ -65,7 +65,7 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	int	id_len;
 
 	if (line[0] == '\n')
-		return;
+		return ;
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);

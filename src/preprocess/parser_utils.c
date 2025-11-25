@@ -6,13 +6,13 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 13:45:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:50:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void get_start_dir(double dir[AXIS], double *orientation, char c)
+void	get_start_dir(double dir[AXIS], double *orientation, char c)
 {
 	if (c == 'N')
 	{
@@ -42,7 +42,7 @@ void get_start_dir(double dir[AXIS], double *orientation, char c)
 
 int	get_color(char *line, int len)
 {
-	int color;
+	int	color;
 	int	i;
 
 	color = 0;

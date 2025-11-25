@@ -14,7 +14,7 @@
 
 int	input_loop(int kc, void *param)
 {
-	t_main *cub;
+	t_main	*cub;
 
 	cub = (t_main *)param;
 	if (kc == ESC)
@@ -23,9 +23,9 @@ int	input_loop(int kc, void *param)
 		return (0);
 	}
 	else if (kc == M)
-		switch_bool(&cub->pr.show_minimap);
+		cub->pr.show_minimap = !cub->pr.show_minimap;
 	else if (kc == W || kc == A || kc == S || kc == D
-			|| kc == UA || kc == DA)
+		|| kc == UA || kc == DA)
 		update_plyr_position(&cub->plyr, kc);
 	else if (kc == LA || kc == RA || kc == I || kc == O)
 		update_plyr_vision(&cub->plyr, kc);
@@ -40,7 +40,8 @@ int	loop(t_main *cub)
 		safe_destroy_image(cub->mlx, cub->gfx.scene.img);
 	if (create_image(cub, &cub->gfx.scene) != 0)
 		return (ft_perror(cub, MLX_FAIL, CRITICAL));
-	draw_background(cub->gfx.floor->color, cub->gfx.ceiling->color, &cub->gfx.scene);
+	draw_background(cub->gfx.floor->color, cub->gfx.ceiling->color,
+		&cub->gfx.scene);
 	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.scene);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->gfx.scene.img, 0, 0);

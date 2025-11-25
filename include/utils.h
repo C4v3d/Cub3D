@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:24 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 15:51:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:17:12 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define UTILS_H
 
 double	get_delta(double val);
-void	switch_bool(bool *val);
 void	welcome_cub3d(void);
 
 #endif

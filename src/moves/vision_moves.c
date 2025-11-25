@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:35:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:16:21 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void rotate(double dir[2], double plane[2], double rot_speed)
+void	rotate(double dir[2], double plane[2], double rot_speed)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = dir[X];
 	dir[X] = dir[X] * cos(rot_speed) - dir[Y] * sin(rot_speed);
@@ -35,7 +35,7 @@ static void	update_fov(t_player *p, t_rays *r, int kc)
 	else if (kc == O && p->fov + unit <= 3.0)
 		p->fov += unit;
 	r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
-	r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
+	r->plane[X] = p->dir[Y] * tan(p->fov / 2.0);
 }
 
 static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
@@ -50,7 +50,7 @@ static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 		*(aov) -= rot_speed;
 }
 
-void	update_plyr_vision(t_player *p, int	kc)
+void	update_plyr_vision(t_player *p, int kc)
 {
 	if (kc == LA || kc == RA)
 		update_aov(&p->aov, AOV_MAX, VIS_MOVE_UNIT, kc);

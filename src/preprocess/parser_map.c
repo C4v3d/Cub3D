@@ -6,15 +6,15 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 13:41:31 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 14:47:02 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void update_x_dimension(char *line, size_t *x)
+static void	update_x_dimension(char *line, size_t *x)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(line);
 	if (len > *x)
@@ -23,7 +23,7 @@ static void update_x_dimension(char *line, size_t *x)
 
 static size_t	get_orientation(char *line)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (line[i])
@@ -41,12 +41,12 @@ static size_t	get_orientation(char *line)
 	return (0);
 }
 
+/**
+* fetch player position in the line (if it exist)
+* and calc if the line is the biggest encountered yet
+*/
 static void	process_line(t_map *map, char *line)
 {
-	/**
-	 * fetch player position in the line (if it exist)
-	 * and calc if the line is the biggest encountered yet
-	 */
 	size_t	orientation;
 
 	orientation = get_orientation(line);
@@ -73,13 +73,10 @@ static char	*get_inline_map(t_map *map, int fd)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		if (line[0] != '\n')
 			map->dim[Y]++;
-		if (is_line_valid(line))
-			process_line(map, line);
-		else
-			ft_perror(map->cub, WRG_CHAR, CRITICAL);
+		process_line(map, line);
 		fp = inline_map;
 		inline_map = ft_strjoin(inline_map, line);
 		w_free((void **)&fp);
@@ -93,11 +90,13 @@ static char	*get_inline_map(t_map *map, int fd)
 void	parse_map(t_map *map)
 {
 	char	*inline_map;
+
 	inline_map = get_inline_map(map, map->cub->pr.input_file_fd);
 	if (!inline_map)
-		ft_perror(map->cub, errno, CRITICAL);
+		ft_perror(map->cub, 0, CRITICAL);
+	if (!is_line_valid(inline_map))
+		ft_perror(map->cub, WRG_CHAR, CRITICAL);
 	map->grid = ft_split(inline_map, '\n');
 	if (!map->grid)
-		ft_perror(map->cub, errno, CRITICAL);
-	// log_map(map->cub);
+		ft_perror(map->cub, 0, CRITICAL);
 }

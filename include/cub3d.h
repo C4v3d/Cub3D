@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 15:33:16 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 15:49:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # include <stdbool.h>
 # include <errno.h>
 # include "../lib/libft/libft.h"
+# include "../lib/mlx_linux/mlx.h"
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include "fw.h"
 # include "input_validation.h"
 # include "map_validation.h"
 # include "utils.h"
@@ -39,16 +43,6 @@
 # include "keys.h"
 # include "moves.h"
 
-typedef struct s_img				t_img;
-typedef struct s_main_struct		t_main;
-typedef struct s_program_data		t_prog;
-typedef struct s_player_data		t_player;
-typedef struct s_scene				t_scene;
-typedef struct s_graphic_data		t_graphic;
-typedef struct s_rays_calculation	t_rays;
-typedef struct s_map_data			t_map;
-typedef union u_color				t_color;
-
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 
@@ -63,7 +57,6 @@ typedef union u_color				t_color;
 /**
  * Map Data
  */
-# define AXIS 2
 # define AOV_MAX M_PI * 2 // CANT DO THAT
 
 // Define decr/incrementation value from keyboard inputs
@@ -94,7 +87,7 @@ typedef struct s_rays_calculation
 {
 	double	delta[AXIS];
 	double	dir[AXIS];
-	double	dist[AXIS];
+	double	dist[AXIS];		// distance to next tile
 	double	plane[AXIS];
 	int		steps[AXIS];
 	int		map[AXIS];

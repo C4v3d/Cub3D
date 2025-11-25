@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/11/23 16:57:46 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:27:37 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	free_cub(t_main *cub)
 	destroy_images(cub);
 	destroy_display(cub);
 	free_prog_map_gfx(&cub->pr, &cub->map, &cub->gfx);
+	w_free((void **)&cub->mlx);
 	exit(0);
 	return (0);
 }

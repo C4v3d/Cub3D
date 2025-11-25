@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/23 18:53:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 11:10:46 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ static char	*get_inline_map(t_map *map, int fd)
 			break;
 		if (line[0] != '\n')
 			map->dim[Y]++;
-		process_line(map, line);
+		if (is_line_valid(line))
+			process_line(map, line);
+		else
+			ft_perror(map->cub, WRG_CHAR, CRITICAL);
 		fp = inline_map;
 		inline_map = ft_strjoin(inline_map, line);
 		w_free((void **)&fp);
@@ -96,4 +99,5 @@ void	parse_map(t_map *map)
 	map->grid = ft_split(inline_map, '\n');
 	if (!map->grid)
 		ft_perror(map->cub, errno, CRITICAL);
+	log_map(map->cub);
 }

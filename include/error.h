@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/09/25 15:38:38 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 11:10:45 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef enum e_errorcode
 	NO_DATA,
 	MLX_FAIL,
 	DUP,
+	WRG_CHAR,
 }	t_errorcode;
 
 /**

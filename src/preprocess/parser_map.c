@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 14:47:02 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:48:41 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	process_line(t_map *map, char *line)
 	update_x_dimension(line, &map->dim[X]);
 	if (orientation)
 	{
-		get_start_dir(map->cub->plyr.dir,
+		get_start_dir(map, map->cub->plyr.dir,
 			&map->cub->plyr.aov, line[orientation]);
 		map->plyr_start_pos[X] = orientation;
 		map->plyr_start_pos[Y] = map->dim[Y];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 15:49:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:52:54 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,6 @@
  */
 # define N_TEXTURE 4
 # define N_COLOR 2
-
-/**
- * Map Data
- */
-# define AOV_MAX M_PI * 2 // CANT DO THAT
 
 // Define decr/incrementation value from keyboard inputs
 # define POS_MOVE_UNIT 0.1
@@ -139,6 +134,10 @@ typedef struct s_map_data
 	char	**grid;						// int[w][h] for: MAP MATRIX
 	size_t	dim[AXIS];				// int[2] for: map dimensions
 	size_t	plyr_start_pos[AXIS];	// int[2] for: PLAYER X&Y START POSITION
+	double	no_rad;
+	double	so_rad;
+	double	we_rad;
+	double	ea_rad;
 	t_rays	r_mini;
 	t_main	*cub;						// `ptr` to parent struct
 }	t_map;

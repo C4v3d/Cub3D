@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 16:59:41 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:44:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	draw_texture(t_draw *d, t_image *t, t_image *scene, int x)
 
 static void	init_draw(t_main *cub, t_rays *r, t_draw *d, t_player *p)
 {
-	d->num = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+	d->num = check_wall_side(p, &cub->map, r->wall_side, r->map);
 	if (r->wall_side == 0)
 		d->wall_x = p->pos[Y] - r->wall_dist * r->dir[Y];
 	else

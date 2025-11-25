@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:00:02 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:39:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	gfx->map.img = NULL;
 	gfx->txtr_res = -1;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+	map->no_rad = M_PI / 2;
+	map->so_rad = M_PI + (M_PI / 2);
+	map->we_rad = M_PI;
+	map->ea_rad = M_PI * 2;
 	gfx->cub = cub;
 	gfx->el_counter = 0;
 	gfx->scene.img = NULL;

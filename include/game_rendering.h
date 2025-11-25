@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 15:33:58 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:42:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	draw_scene(t_main *cub, t_graphic *gfx, t_rays *r, t_player *p);
 void	draw_background(int floor_c, int ceiling_c, t_image *img);
-int		check_wall_side(int side, double *p_pos, int *w_pos, double aov);
+int		check_wall_side(t_player *p, t_map *m, int side, int *w_pos);
 int		get_main_ray(t_rays *r, t_player *p, t_map *m);
 int		create_image(t_main *cub, t_image *img);
 void	draw(t_image *img, size_t dim[AXIS], size_t pos[AXIS], int color);

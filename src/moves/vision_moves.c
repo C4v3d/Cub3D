@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 15:16:21 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:46:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@ void	rotate(double dir[2], double plane[2], double rot_speed)
 	plane[Y] = old_plane_x * sin(rot_speed) + plane[Y] * cos(rot_speed);
 }
 
-static void	update_fov(t_player *p, t_rays *r, int kc)
-{
-	double	unit;
-
-	unit = 0.01;
-	if (kc == I && p->fov - unit >= 0.01)
-		p->fov -= unit;
-	else if (kc == O && p->fov + unit <= 3.0)
-		p->fov += unit;
-	r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
-	r->plane[X] = p->dir[Y] * tan(p->fov / 2.0);
-}
-
 static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 {
 	if (kc == LA && *(aov) + rot_speed >= max_angle - rot_speed)
@@ -53,9 +40,7 @@ static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 void	update_plyr_vision(t_player *p, int kc)
 {
 	if (kc == LA || kc == RA)
-		update_aov(&p->aov, AOV_MAX, VIS_MOVE_UNIT, kc);
-	else if (kc == I || kc == O)
-		update_fov(p, &p->cub->r, kc);
+		update_aov(&p->aov, M_PI * 2, VIS_MOVE_UNIT, kc);
 	if (kc == LA)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
 	else if (kc == RA)

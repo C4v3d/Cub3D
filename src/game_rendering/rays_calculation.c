@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_calculation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 17:13:47 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 16:47:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:52:11 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 {
 	init_dda(r, p, WINDOW_WIDTH / 2);
 	dda(r, m->grid);
-	r->wall_side = check_wall_side(r->wall_side, p->pos, r->map, p->aov);
+	r->wall_side = check_wall_side(p, m, r->wall_side, r->map);
 	if (r->wall_side == 0 || r->wall_side == 1)
 		r->wall_dist = (r->dist[X] - r->delta[X]);
 	else
@@ -25,19 +25,19 @@ int	get_main_ray(t_rays *r, t_player *p, t_map *m)
 	return (0);
 }
 
-int	check_wall_side(int side, double *p_pos, int *w_pos, double aov)
+int	check_wall_side(t_player *p, t_map *m, int side, int *w_pos)
 {
-	if ((side == 1 && (int)p_pos[Y] > w_pos[Y])
-		|| (side == -1 && aov == NO_RAD))
+	if ((side == 1 && (int)p->pos[Y] > w_pos[Y])
+		|| (side == -1 && p->aov == m->no_rad))
 		return (NO);
-	else if ((side == 1 && (int)p_pos[Y] < w_pos[Y])
-		|| (side == -1 && aov == SO_RAD))
+	else if ((side == 1 && (int)p->pos[Y] < w_pos[Y])
+		|| (side == -1 && p->aov == m->so_rad))
 		return (SO);
-	if ((side == 0 && (int)p_pos[X] > w_pos[X])
-		|| (side == -1 && aov == WE_RAD))
+	if ((side == 0 && (int)p->pos[X] > w_pos[X])
+		|| (side == -1 && p->aov == m->we_rad))
 		return (WE);
-	else if ((side == 0 && (int)p_pos[X] < w_pos[X])
-		|| (side == -1 && aov == EA_RAD))
+	else if ((side == 0 && (int)p->pos[X] < w_pos[X])
+		|| (side == -1 && p->aov == m->ea_rad))
 		return (EA);
 	return (-1);
 }

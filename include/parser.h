@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 15:38:55 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:48:56 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_map(t_map *map);
  */
 int		get_color(char *line, int len);
 int		get_id_len(char *line);
-void	get_start_dir(double dir[AXIS], double *orientation, char c);
+void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c);
 bool	is_line_valid(const char *l);
 
 #endif

@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 14:50:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 17:49:36 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	get_start_dir(double dir[AXIS], double *orientation, char c)
+void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c)
 {
 	if (c == 'N')
 	{
 		dir[X] = 0;
 		dir[Y] = 1;
-		*orientation = NO_RAD;
+		*orientation = m->no_rad;
 	}
 	else if (c == 'S')
 	{
 		dir[X] = 0;
 		dir[Y] = -1;
-		*orientation = SO_RAD;
+		*orientation = m->so_rad;
 	}
 	else if (c == 'W')
 	{
 		dir[X] = -1;
 		dir[Y] = 0;
-		*orientation = WE_RAD;
+		*orientation = m->we_rad;
 	}
 	else
 	{
 		dir[X] = 1;
 		dir[Y] = 0;
-		*orientation = EA_RAD;
+		*orientation = m->ea_rad;
 	}
 }
 

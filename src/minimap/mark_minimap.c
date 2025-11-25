@@ -31,9 +31,9 @@ static void	init_mark_mini(t_rays *r, int *x_i, int *y_i)
 void	mark_minimap(t_image *img, t_player *p)
 {
 	int	x_i;
-	int x_tmp;
+	int	x_tmp;
 	int	y_i;
-	int i;
+	int	i;
 
 	get_main_ray(&p->cub->map.r_mini, p, &p->cub->map);
 	init_mark_mini(&p->cub->map.r_mini, &x_i, &y_i);
@@ -43,8 +43,8 @@ void	mark_minimap(t_image *img, t_player *p)
 	{
 		if (x_i >= WINDOW_WIDTH)
 			break ;
-		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i++, y_i + MINI_RES, p->cub->gfx.floor->color / 2);
+		put_p(img, x_i, y_i, 0xFFFFFF);
+		put_p(img, x_i++, y_i + MINI_RES, p->cub->gfx.floor->color / 2);
 	}
 	x_i = x_tmp;
 	i = -1;
@@ -52,7 +52,7 @@ void	mark_minimap(t_image *img, t_player *p)
 	{
 		if (y_i >= WINDOW_HEIGHT)
 			break ;
-		my_mlx_pixel_put(img, x_i, y_i, 0xFFFFFF);
-		my_mlx_pixel_put(img, x_i + MINI_RES, y_i++, p->cub->gfx.floor->color / 2);
+		put_p(img, x_i, y_i, 0xFFFFFF);
+		put_p(img, x_i + MINI_RES, y_i++, p->cub->gfx.floor->color / 2);
 	}
 }

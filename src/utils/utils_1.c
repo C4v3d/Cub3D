@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 16:29:38 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/25 15:17:22 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,17 @@
 
 void	welcome_cub3d(void)
 {
-	printf("----------------------------------------------------\n");
-	printf("CUB3D\n");
-	printf("----------------------CONTROLS----------------------\n");
-	printf("- move left and right:   A, D\n");
-	printf("- move up and down:      W, S, up-arrow, down-arrow\n");
-	printf("- move vision:           left-arrow, right-arrow\n");
-	printf("- increase/decrease FOV: O, I\n");
-	printf("- minimap:               M\n");
-	printf("- quit:                  ESC\n");
-	printf("----------------------------------------------------\n");
-
-}
-/* WHAT THE FUCK IS THAT ?!?!??!*/
-void	switch_bool(bool *val)
-{
-	if (*(val) == true)
-		*(val) = false;
-	else
-		*(val) = true;
+	printf("===============================================\n");
+	printf("           WELCOME TO CUB3D\n");
+	printf("===============================================\n");
+	printf("---------------CONTROLS-----------------------\n");
+	printf("- Move Left and Right:   A, D\n");
+	printf("- Move Up and Down:      W, S, Up-Arrow, Down-Arrow\n");
+	printf("- Move Vision:           Left-Arrow, Right-Arrow\n");
+	printf("- Increase/Decrease FOV: O, I\n");
+	printf("- Minimap:               M\n");
+	printf("- Quit:                  ESC\n");
+	printf("===============================================\n");
 }
 
 double	get_delta(double val)

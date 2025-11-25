@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/23 17:52:50 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 16:59:41 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	get_texture_color(t_image *t, int x, int y)
 	return (*(int *)pixel);
 }
 
-static void	draw_texture(t_draw *d, t_image *t, t_image *scene,int x)
+static void	draw_texture(t_draw *d, t_image *t, t_image *scene, int x)
 {
 	int	y;
 	int	color;
@@ -39,7 +39,7 @@ static void	draw_texture(t_draw *d, t_image *t, t_image *scene,int x)
 		d->y = (int)d->pos & (t->height - 1);
 		d->pos += d->step;
 		color = get_texture_color(t, d->x, d->y);
-		my_mlx_pixel_put(scene, x, y, color);
+		put_p(scene, x, y, color);
 	}
 }
 
@@ -50,7 +50,7 @@ static void	init_draw(t_main *cub, t_rays *r, t_draw *d, t_player *p)
 		d->wall_x = p->pos[Y] - r->wall_dist * r->dir[Y];
 	else
 		d->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
-	d->wall_x -=floor(d->wall_x);
+	d->wall_x -= floor(d->wall_x);
 	d->x = (int)(d->wall_x * (double)cub->gfx.txtr[d->num].width);
 	d->step = 1.0 * cub->gfx.txtr[d->num].height / r->wall_height;
 	d->pos = (d->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * d->step;

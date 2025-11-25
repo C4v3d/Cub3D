@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:06:35 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/21 11:25:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:37:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define C_ID "C"
 # define F_ID "F"
 
-# define NO_RAD	M_PI / 2
-# define SO_RAD	M_PI + (M_PI / 2)
+# define NO_RAD	M_PI / 2 // CANT DO THAT
+# define SO_RAD	M_PI + (M_PI / 2) // CANT DO THAT
 # define WE_RAD	M_PI
-# define EA_RAD	M_PI * 2
+# define EA_RAD	M_PI * 2 // CANT DO THAT
 
 #endif

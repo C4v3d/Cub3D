@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:59:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 12:46:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	x_check(t_map *m, int x, int y)
 	else if (m->grid[y][x - 1] == '\0'
 		|| m->grid[y][x - 1] == ' ' || m->grid[y][x - 1] == '\n')
 		return (false);
-	if (x == (int)ft_strlen(m->grid[Y] - 1))
+	if (x == (int)ft_strlen(m->grid[Y]))
 		return (false);
 	else if (m->grid[y][x + 1] == '\0'
 		|| m->grid[y][x + 1] == ' ' || m->grid[y][x + 1] == '\n')
@@ -60,10 +60,7 @@ void	map_validation(t_map *map)
 		{
 			if (map->grid[y_i][x_i] != '1' && map->grid[y_i][x_i] != ' ')
 				if (!is_tile_valid(map, x_i, y_i))
-				{
-					printf("not valid :%c\non x: %ldy: %ld\n", map->grid[y_i][x_i], x_i, y_i);
-					ft_perror(map->cub, MAP_OPEN, CRITICAL);
-				}
+					exit (ft_perror(map->cub, MAP_OPEN, WARNING));
 			x_i++;
 		}
 		y_i++;

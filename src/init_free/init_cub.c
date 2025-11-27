@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 11:14:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 12:43:12 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	map->we_rad = M_PI;
 	map->ea_rad = M_PI * 2;
 	gfx->cub = cub;
-	gfx->el_counter = 0;
 	gfx->scene.img = NULL;
+	gfx->txtr[NO].img = NULL;
+	gfx->txtr[SO].img = NULL;
+	gfx->txtr[WE].img = NULL;
+	gfx->txtr[EA].img = NULL;
 	ft_bzero(&map->r_mini, sizeof(map->r_mini));
 	map->cub = cub;
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
+	map->p_pos = false;
 }
 
 static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)

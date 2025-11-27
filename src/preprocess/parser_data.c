@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:13:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 12:48:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, CRITICAL);
 	printf("cub3d: loading '%s', please wait...\n", trimmed);
+	if (t->img != NULL)
+		exit(ft_perror(gfx->cub, DUP, WARNING));
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
@@ -36,6 +38,7 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
 }
 
+/**CHECK DUPLICATED COLORS */
 static void	parse_color(char *line, t_color **dest)
 {
 	int	c_len;
@@ -100,5 +103,5 @@ void	parse_data(t_graphic *gfx)
 		w_free((void **)&line);
 	}
 	if (gfx->el_counter != total_el)
-		ft_perror(gfx->cub, WRG_N_ARGS, CRITICAL);
+		ft_perror(gfx->cub, MAP_FILE_NULL, CRITICAL);
 }

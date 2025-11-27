@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 09:51:51 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 11:14:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
-	gfx->txtr_res = -1;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
 	map->no_rad = M_PI / 2;
 	map->so_rad = M_PI + (M_PI / 2);
@@ -47,36 +46,11 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	p->fov = 1.4;
 }
 
-// static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
-// {
-// 	/**
-// 	 * FT_BZERO MON GARS
-// 	 */
-// 	p->cub = cub;
-// 	r->cub = cub;
-// 	r->delta[X] = 0.0;
-// 	r->delta[Y] = 0.0;
-// 	r->dir[X] = 0.0;
-// 	r->dir[Y] = 0.0;
-// 	r->dist[X] = 0.0;
-// 	r->dist[Y] = 0.0;
-// 	r->map[X] = 0;
-// 	r->map[Y] = 0;
-// 	r->steps[X] = 0.0;
-// 	r->steps[Y] = 0.0;
-// 	r->cam_x = 0.0;
-// 	r->wall_side = 0;
-// 	r->wall_dist = 0;
-// 	r->wall_height = 0;
-// 	p->aov = 0;
-// 	p->fov = 1.4;
-// }
-
 static void	init_display(t_main *cub)
 {
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
-		ft_perror(cub, errno, CRITICAL);
+		ft_perror(cub, 0, CRITICAL);
 	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	if (!cub->win)
 		ft_perror(cub, MLX_FAIL, CRITICAL);

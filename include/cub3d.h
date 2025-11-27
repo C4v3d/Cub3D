@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 17:52:54 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 11:13:56 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ typedef struct s_graphic_data
 {
 	t_image	txtr[N_TEXTURE];
 	void	*txtr_ptr[N_TEXTURE];
-	int		txtr_res;
 	t_color	*floor;
 	t_color	*ceiling;
 	int		el_counter;

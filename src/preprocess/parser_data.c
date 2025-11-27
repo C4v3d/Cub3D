@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 12:48:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 14:25:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 }
 
 /**CHECK DUPLICATED COLORS */
-static void	parse_color(char *line, t_color **dest)
+static void	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
 	int	n_color;
 
 	line += ID_LEN - 1;
 	n_color = 0;
+	if ((*dest)->color != -1)
+		exit(ft_perror(cub, DUP, WARNING));
 	while (ft_isspace(*line))
 		line++;
 	while (*line && n_color < 3)
@@ -82,9 +84,9 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
-		parse_color(line, &gfx->ceiling);
+		parse_color(gfx->cub, line, &gfx->ceiling);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(line, &gfx->floor);
+		parse_color(gfx->cub, line, &gfx->floor);
 	(*gfx).el_counter += 1;
 }
 

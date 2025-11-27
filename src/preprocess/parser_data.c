@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 14:25:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 14:58:29 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+	(*gfx).el_counter += 1;
 }
 
-/**CHECK DUPLICATED COLORS */
 static void	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
@@ -64,6 +64,7 @@ static void	parse_color(t_main *cub, char *line, t_color **dest)
 		line += c_len + 1;
 		n_color++;
 	}
+	cub->gfx.el_counter += 1;
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
@@ -87,7 +88,6 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		parse_color(gfx->cub, line, &gfx->ceiling);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
 		parse_color(gfx->cub, line, &gfx->floor);
-	(*gfx).el_counter += 1;
 }
 
 void	parse_data(t_graphic *gfx)
@@ -105,5 +105,5 @@ void	parse_data(t_graphic *gfx)
 		w_free((void **)&line);
 	}
 	if (gfx->el_counter != total_el)
-		ft_perror(gfx->cub, MAP_FILE_NULL, CRITICAL);
+		exit(ft_perror(gfx->cub, INC_MAP_FILE, WARNING));
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 12:19:17 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 14:52:05 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static char	*ft_strerror(t_errorcode errcode)
 	if (errcode == WRG_N_ARGS)
 		return ("Wrong number of argument(s). "
 			"You need to specify one map to play.");
-	if (errcode == MAP_FILE_NULL)
-		return ("Invalid map file (must be .cub).");
+	if (errcode == INC_MAP_FILE)
+		return ("Map file is missing data (texture or color)");
 	if (errcode == WRG_MAP_EXT)
 		return ("Wrong map extension (must be .cub).");
-	if (errcode == NO_MAP_FILE)
-		return ("Map file does not exist.");
 	if (errcode == NO_DATA)
 		return ("No data found.");
 	if (errcode == MLX_FAIL)

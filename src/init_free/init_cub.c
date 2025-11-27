@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:39:26 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 09:11:34 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
 	gfx->ceiling = ft_calloc(1, sizeof(t_color));
 	gfx->floor = ft_calloc(1, sizeof(t_color));
-	map->grid = ft_calloc(1, sizeof(map->grid));
-	if (!map->grid
-		|| !gfx->ceiling
-		|| !gfx->floor)
+	map->grid = NULL;
+	if (!gfx->ceiling || !gfx->floor)
 		ft_perror(map->cub, 0, CRITICAL);
 	gfx->cub = cub;
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
@@ -91,7 +89,7 @@ void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub));
 	cub->pr.close_program = false;
-	cub->pr.show_minimap = true;
+	cub->pr.show_minimap = false;
 	cub->pr.input_file_fd = -1;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);

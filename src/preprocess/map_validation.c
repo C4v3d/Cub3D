@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 14:50:45 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 11:07:33 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static bool	is_tile_valid(t_map *m, int x, int y)
 {
+	printf("Checking :%c\n", m->grid[y][x]);
 	if (y == 0)
 		return (false);
 	else if (m->grid[y - 1][x] == '\0'

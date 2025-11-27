@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 14:59:05 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 08:52:21 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 09:38:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	safe_destroy_image(t_main *cub, void *ptr)
 		mlx_destroy_image(&cub->mlx, ptr);
 }
 
+/** Seg fault */
 static void	destroy_images(t_main *cub)
 {
 	int	i;

@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 17:31:07 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 09:51:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-//v2
 static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
-	char *trimmed;
+	char	*trimmed;
 
-	line += ID_LEN; /** < Skip ID */
+	line += ID_LEN;
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
@@ -64,7 +63,6 @@ static void	parse_color(char *line, t_color **dest)
 	}
 }
 
-//v2
 static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;

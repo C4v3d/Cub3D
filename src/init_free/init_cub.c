@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 11:14:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:54:32 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
 	ft_memset(p, '\0', sizeof(t_player));
 	ft_memset(r, '\0', sizeof(t_rays));
 	p->cub = cub;
+	p->old_pos[X] = -1;
+	p->old_pos[Y] = -1;
 	r->cub = cub;
 	p->fov = 1.4;
 }

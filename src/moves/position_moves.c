@@ -6,11 +6,31 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 14:24:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:08:58 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+static void	reset_pos(double pos[AXIS], double old_pos[AXIS])
+{
+	double	reset_x;
+	double	reset_y;
+
+	fprintf(stderr, "reset_pos | RESET np[X]:%lf [Y]:%lf | op[X]: %lf | op[Y]: %lf\n", pos[X], pos[Y], old_pos[X], old_pos[Y]);
+	reset_x = 0.000001;
+	reset_y = 0.000001;
+	if (pos[X] > old_pos[X])
+		old_pos[X] -= reset_x;
+	else if (pos[X] < old_pos[X])
+		old_pos[X] += reset_x;
+	else if (pos[Y] > old_pos[Y])
+		old_pos[Y] -= reset_y;
+	else
+		old_pos[Y] += reset_y;
+	pos[X] = old_pos[X];
+	pos[Y] = old_pos[Y];
+}
 
 static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 {
@@ -44,7 +64,6 @@ static bool	moved_through_walls(t_map *m, int op[AXIS], double aov, int kc)
 		i = 1;
 	else
 		i = -1;
-	fprintf(stderr, "moved_through_walls | no_rad: %lf | we_rad: %lf | so_rad: %lf | ea_rad: %lf\n", m->no_rad, m->we_rad, m->so_rad, m->ea_rad);
 	if ((aov >= 0 && aov < m->no_rad) && (m->grid[op[Y] - i][op[X]] == '1'
 		&& m->grid[op[Y]][op[X] + i] == '1'))
 		return (true);
@@ -70,17 +89,16 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 
 	np[X] = (int)p->pos[X];
 	np[Y] = (int)p->pos[Y];
-	if (!m->grid[np[Y]][np[X]] || m->grid[np[Y]][np[X]] == '1')
-		return (false);
-	if (p->pos[X] <= 1.000001 || p->pos[X] >= (double)m->dim[X] - 1.000001
-		|| p->pos[Y] <= 1.000001 || p->pos[Y] >= (double)m->dim[Y] - 1.000001)
-		return (false);
 	op[X] = (int)old_pos[X];
 	op[Y] = (int)old_pos[Y];
+	if (!m->grid[np[Y]][np[X]])
+		return (false);
+	if(m->grid[np[Y]][np[X]] == '1' || m->cub->r.wall_dist < 0.000001)
+		return (false);
+	fprintf(stderr, "check_new_pos | op[X]:%d [Y]:%d | np[X]:%d [Y]:%d | m->grid[np[Y]][np[X]]: %c\n", op[X], op[Y], np[X], np[Y], m->grid[np[Y]][np[X]]);
 	if ((np[X] == op[X] && np[Y] == op[Y]) || (np[X] != op[X] && np[Y] == op[Y])
 		|| (np[X] == op[X] && np[Y] != op[Y]))
 		return (true);
-	fprintf(stderr, "check_new_pos | HERE\n");
 	if (moved_through_walls(m, op, p->aov, kc))
 		return (false);
 	return (true);
@@ -88,15 +106,14 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 
 bool	update_plyr_position(t_player *p, int kc)
 {
-	double	old_pos[AXIS];
 
-	old_pos[X] = p->pos[X];
-	old_pos[Y] = p->pos[Y];
+	p->old_pos[X] = p->pos[X];
+	p->old_pos[Y] = p->pos[Y];
 	move(p, &p->cub->r, POS_MOVE_UNIT, kc);
-	if (!check_new_pos(p, &p->cub->map, old_pos, kc))
+	if (!check_new_pos(p, &p->cub->map, p->old_pos, kc))
 	{
-		p->pos[X] = old_pos[X];
-		p->pos[Y] = old_pos[Y];
+		reset_pos(p->pos, p->old_pos);
+		fprintf(stderr, "update_p_pos | RESET np[X]:%lf [Y]:%lf | m->grid[np[Y]][np[X]]: %c | dist_to_wall: %lf\n", p->pos[X], p->pos[Y], p->cub->map.grid[(int)p->pos[Y]][(int)p->pos[X]], p->cub->r.wall_dist);
 		return (false);
 	}
 	return (true);

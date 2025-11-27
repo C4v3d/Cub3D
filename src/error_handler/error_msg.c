@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 14:52:05 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:08:29 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_strerror(t_errorcode errcode)
 	if (errcode == MAP_OPEN)
 		return ("Map is not closed !");
 	if (errcode == DUP_PSTART)
-			return ("Duplicated Starting position found !");
+		return ("Duplicated Starting position found !");
 	return (NULL);
 }
 

@@ -6,30 +6,45 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:07:33 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 11:59:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static bool	is_tile_valid(t_map *m, int x, int y)
+static bool	y_check(t_map *m, int x, int y)
 {
-	printf("Checking :%c\n", m->grid[y][x]);
 	if (y == 0)
 		return (false);
 	else if (m->grid[y - 1][x] == '\0'
 		|| m->grid[y - 1][x] == ' ' || m->grid[y - 1][x] == '\n')
-		return (false);
+			return (false);
 	if (y == (int)m->dim[Y] - 1)
 		return (false);
 	else if (m->grid[y + 1][x] == '\0' || m->grid[y + 1][x] == ' '
 		|| m->grid[y + 1][x] == '\n')
 		return (false);
-	if (m->grid[y][x + 1] == '\0' || m->grid[y][x + 1] == '\n')
+	return (true);
+}
+
+static bool	x_check(t_map *m, int x, int y)
+{
+	if (x == 0)
 		return (false);
-	if (m->grid[y][x - 1] == '\0' || m->grid[y][x - 1] == '\n')
+	else if (m->grid[y][x - 1] == '\0'
+		|| m->grid[y][x - 1] == ' ' || m->grid[y][x - 1] == '\n')
+		return (false);
+	if (x == (int)ft_strlen(m->grid[Y] - 1))
+		return (false);
+	else if (m->grid[y][x + 1] == '\0'
+		|| m->grid[y][x + 1] == ' ' || m->grid[y][x + 1] == '\n')
 		return (false);
 	return (true);
+}
+
+static inline bool	is_tile_valid(t_map *m, int x, int y)
+{
+	return (y_check(m, x, y) && x_check(m, x, y));
 }
 
 void	map_validation(t_map *map)
@@ -43,9 +58,12 @@ void	map_validation(t_map *map)
 		x_i = 0;
 		while (map->grid[y_i][x_i])
 		{
-			if (map->grid[y_i][x_i] == '0')
+			if (map->grid[y_i][x_i] != '1' && map->grid[y_i][x_i] != ' ')
 				if (!is_tile_valid(map, x_i, y_i))
+				{
+					printf("not valid :%c\non x: %ldy: %ld\n", map->grid[y_i][x_i], x_i, y_i);
 					ft_perror(map->cub, MAP_OPEN, CRITICAL);
+				}
 			x_i++;
 		}
 		y_i++;

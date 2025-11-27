@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 15:54:32 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:14:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,26 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
 	gfx->ceiling = ft_calloc(1, sizeof(t_color));
 	gfx->floor = ft_calloc(1, sizeof(t_color));
-	map->grid = NULL;
 	if (!gfx->ceiling || !gfx->floor)
 		ft_perror(map->cub, 0, CRITICAL);
-	gfx->cub = cub;
 	ft_bzero(&gfx->txtr_ptr, sizeof(gfx->txtr_ptr));
+	gfx->cub = cub;
+	gfx->floor->color = -1;
+	gfx->ceiling->color = -1;
+	gfx->scene.img = NULL;
+	gfx->txtr[NO].img = NULL;
+	gfx->txtr[SO].img = NULL;
+	gfx->txtr[WE].img = NULL;
+	gfx->txtr[EA].img = NULL;
 	gfx->el_counter = 0;
 	gfx->map.img = NULL;
 	ft_bzero(map->plyr_start_pos, sizeof(map->plyr_start_pos));
+	ft_bzero(&map->r_mini, sizeof(map->r_mini));
+	map->grid = NULL;
 	map->no_rad = M_PI / 2;
 	map->so_rad = M_PI + (M_PI / 2);
 	map->we_rad = M_PI;
 	map->ea_rad = M_PI * 2;
-	gfx->cub = cub;
-	gfx->el_counter = 0;
-	gfx->scene.img = NULL;
-	ft_bzero(&map->r_mini, sizeof(map->r_mini));
 	map->cub = cub;
 	map->dim[X] = 0;
 	map->dim[Y] = 0;
@@ -66,6 +70,7 @@ void	init_cub(t_main *cub)
 	ft_memset(cub, '\0', sizeof(cub));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
+	cub->map.p_pos = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
 	init_display(cub);

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:52:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:14:47 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct s_map_data
 {
 	char	**grid;						// int[w][h] for: MAP MATRIX
 	size_t	dim[AXIS];				// int[2] for: map dimensions
+	bool	p_pos;
 	size_t	plyr_start_pos[AXIS];	// int[2] for: PLAYER X&Y START POSITION
 	double	no_rad;
 	double	so_rad;

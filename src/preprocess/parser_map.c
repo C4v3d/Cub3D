@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 14:54:40 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:33:49 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,6 @@ void	parse_map(t_map *map)
 	w_free((void **)&inline_map);
 	if (!map->grid)
 		ft_perror(map->cub, 0, CRITICAL);
+	if (!map->p_pos)
+		exit(ft_perror(map->cub, NO_PSTART, WARNING));
 }

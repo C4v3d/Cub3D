@@ -35,7 +35,10 @@ int	input_loop(int kc, void *param)
 int	loop(t_main *cub)
 {
 	if (cub->pr.close_program == true)
+	{
 		free_cub(cub);
+		exit(SUCCESS);
+	}
 	if (cub->gfx.scene.img != NULL)
 		safe_destroy_image(cub->mlx, cub->gfx.scene.img);
 	if (create_image(cub, &cub->gfx.scene) != 0)

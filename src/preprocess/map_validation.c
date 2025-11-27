@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:03:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:16:20 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	y_check(t_map *m, int x, int y)
 		return (false);
 	else if (m->grid[y - 1][x] == '\0'
 		|| m->grid[y - 1][x] == ' ' || m->grid[y - 1][x] == '\n')
-			return (false);
+		return (false);
 	if (y == (int)m->dim[Y] - 1)
 		return (false);
 	else if (m->grid[y + 1][x] == '\0' || m->grid[y + 1][x] == ' '
@@ -52,7 +52,6 @@ void	map_validation(t_map *map)
 	size_t	x_i;
 	size_t	y_i;
 
-	log_map(map->cub);
 	y_i = 0;
 	while (y_i < map->dim[Y])
 	{
@@ -61,11 +60,7 @@ void	map_validation(t_map *map)
 		{
 			if (map->grid[y_i][x_i] != '1' && map->grid[y_i][x_i] != ' ')
 				if (!is_tile_valid(map, x_i, y_i))
-				{
-					printf("x :%ld\ny :%ld\n", x_i, y_i);
-					printf("char: %c\n", map->grid[y_i][x_i]);
 					exit (ft_perror(map->cub, MAP_OPEN, WARNING));
-				}
 			x_i++;
 		}
 		y_i++;

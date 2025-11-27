@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:51:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 09:20:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ static bool	moved_through_walls(t_map *m, int op[AXIS], double aov, int kc)
 	if ((aov >= 0 && aov < m->no_rad) && (m->grid[op[Y] - i][op[X]] == '1'
 		&& m->grid[op[Y]][op[X] + i] == '1'))
 		return (true);
-	else if ((aov >= m->no_rad && aov < m->we_rad) && (m->grid[op[Y] - i][op[X]] == '1'
+	else if ((aov >= m->no_rad && aov < m->we_rad)
+		&& (m->grid[op[Y] - i][op[X]] == '1'
 		&& m->grid[op[Y]][op[X] - i] == '1'))
 		return (true);
-	else if ((aov >= m->we_rad && aov < m->so_rad) && (m->grid[op[Y] + i][op[X]] == '1'
+	else if ((aov >= m->we_rad && aov < m->so_rad)
+		&& (m->grid[op[Y] + i][op[X]] == '1'
 		&& m->grid[op[Y]][op[X] - i] == '1'))
 		return (true);
-	else if ((aov >= m->so_rad && aov < m->ea_rad) && (m->grid[op[Y] + i][op[X]] == '1'
+	else if ((aov >= m->so_rad && aov < m->ea_rad)
+		&& (m->grid[op[Y] + i][op[X]] == '1'
 		&& m->grid[op[Y]][op[X] + i] == '1'))
 		return (true);
 	return (false);

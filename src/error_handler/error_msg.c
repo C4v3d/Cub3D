@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:33:32 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:36:06 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static void	ft_fatal(t_main *cub, t_errorcode errcode)
 {
 	char	*err_msg;
 
-	(void)cub;
 	if (!errcode)
 		err_msg = strerror(errno);
 	else

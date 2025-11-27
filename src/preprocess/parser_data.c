@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:13:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 14:58:29 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, CRITICAL);
 	printf("cub3d: loading '%s', please wait...\n", trimmed);
+	if (t->img != NULL)
+		exit(ft_perror(gfx->cub, DUP, WARNING));
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
@@ -34,15 +36,18 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+	(*gfx).el_counter += 1;
 }
 
-static void	parse_color(char *line, t_color **dest)
+static void	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
 	int	n_color;
 
 	line += ID_LEN - 1;
 	n_color = 0;
+	if ((*dest)->color != -1)
+		exit(ft_perror(cub, DUP, WARNING));
 	while (ft_isspace(*line))
 		line++;
 	while (*line && n_color < 3)
@@ -59,6 +64,7 @@ static void	parse_color(char *line, t_color **dest)
 		line += c_len + 1;
 		n_color++;
 	}
+	cub->gfx.el_counter += 1;
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
@@ -79,10 +85,9 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
-		parse_color(line, &gfx->ceiling);
+		parse_color(gfx->cub, line, &gfx->ceiling);
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(line, &gfx->floor);
-	(*gfx).el_counter += 1;
+		parse_color(gfx->cub, line, &gfx->floor);
 }
 
 void	parse_data(t_graphic *gfx)
@@ -100,5 +105,5 @@ void	parse_data(t_graphic *gfx)
 		w_free((void **)&line);
 	}
 	if (gfx->el_counter != total_el)
-		ft_perror(gfx->cub, WRG_N_ARGS, CRITICAL);
+		exit(ft_perror(gfx->cub, INC_MAP_FILE, WARNING));
 }

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:15:31 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 15:36:06 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static char	*ft_strerror(t_errorcode errcode)
 	if (errcode == WRG_N_ARGS)
 		return ("Wrong number of argument(s). "
 			"You need to specify one map to play.");
-	if (errcode == MAP_FILE_NULL)
-		return ("Invalid map file (must be .cub).");
+	if (errcode == INC_MAP_FILE)
+		return ("Map file is missing data (texture or color)");
 	if (errcode == WRG_MAP_EXT)
 		return ("Wrong map extension (must be .cub).");
-	if (errcode == NO_MAP_FILE)
-		return ("Map file does not exist.");
 	if (errcode == NO_DATA)
 		return ("No data found.");
 	if (errcode == MLX_FAIL)
@@ -35,6 +33,10 @@ static char	*ft_strerror(t_errorcode errcode)
 			"[SPACE, 1, 0, N, S, E, W]");
 	if (errcode == MAP_OPEN)
 		return ("Map is not closed !");
+	if (errcode == DUP_PSTART)
+		return ("Duplicated Starting position found !");
+	if (errcode == NO_PSTART)
+		return ("No starting position found.");
 	return (NULL);
 }
 
@@ -60,7 +62,6 @@ static void	ft_fatal(t_main *cub, t_errorcode errcode)
 {
 	char	*err_msg;
 
-	(void)cub;
 	if (!errcode)
 		err_msg = strerror(errno);
 	else

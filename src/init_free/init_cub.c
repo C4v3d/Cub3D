@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 12:43:12 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/27 14:20:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 {
 	gfx->ceiling = ft_calloc(1, sizeof(t_color));
 	gfx->floor = ft_calloc(1, sizeof(t_color));
+	gfx->floor->color = -1;
+	gfx->ceiling->color = -1;
 	map->grid = NULL;
 	if (!gfx->ceiling || !gfx->floor)
 		ft_perror(map->cub, 0, CRITICAL);

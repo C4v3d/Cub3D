@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 16:08:58 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/27 16:13:40 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	reset_pos(double pos[AXIS], double old_pos[AXIS])
 	double	reset_x;
 	double	reset_y;
 
-	fprintf(stderr, "reset_pos | RESET np[X]:%lf [Y]:%lf | op[X]: %lf | op[Y]: %lf\n", pos[X], pos[Y], old_pos[X], old_pos[Y]);
 	reset_x = 0.000001;
 	reset_y = 0.000001;
 	if (pos[X] > old_pos[X])
@@ -95,7 +94,6 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 		return (false);
 	if(m->grid[np[Y]][np[X]] == '1' || m->cub->r.wall_dist < 0.000001)
 		return (false);
-	fprintf(stderr, "check_new_pos | op[X]:%d [Y]:%d | np[X]:%d [Y]:%d | m->grid[np[Y]][np[X]]: %c\n", op[X], op[Y], np[X], np[Y], m->grid[np[Y]][np[X]]);
 	if ((np[X] == op[X] && np[Y] == op[Y]) || (np[X] != op[X] && np[Y] == op[Y])
 		|| (np[X] == op[X] && np[Y] != op[Y]))
 		return (true);
@@ -113,7 +111,6 @@ bool	update_plyr_position(t_player *p, int kc)
 	if (!check_new_pos(p, &p->cub->map, p->old_pos, kc))
 	{
 		reset_pos(p->pos, p->old_pos);
-		fprintf(stderr, "update_p_pos | RESET np[X]:%lf [Y]:%lf | m->grid[np[Y]][np[X]]: %c | dist_to_wall: %lf\n", p->pos[X], p->pos[Y], p->cub->map.grid[(int)p->pos[Y]][(int)p->pos[X]], p->cub->r.wall_dist);
 		return (false);
 	}
 	return (true);

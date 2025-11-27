@@ -2,7 +2,7 @@
 *.d
 
 # Executable
-Cub3d
+cub3d
 
 # Makefile
 Makefile.gen

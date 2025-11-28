@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:14:50 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:16:20 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 11:37:38 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	map_validation(t_map *map)
 		{
 			if (map->grid[y_i][x_i] != '1' && map->grid[y_i][x_i] != ' ')
 				if (!is_tile_valid(map, x_i, y_i))
-					exit (ft_perror(map->cub, MAP_OPEN, WARNING));
+					ft_perror(map->cub, MAP_OPEN, CRITICAL);
 			x_i++;
 		}
 		y_i++;

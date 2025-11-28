@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:28:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:55:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
 	if (!t->img)
-		ft_perror(gfx->cub, MLX_FAIL, ERROR);
+		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
-		ft_perror(gfx->cub, MLX_FAIL, ERROR);
+		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));
 	(*gfx).el_counter += 1;
 	return (0);
 }
@@ -136,5 +136,5 @@ void	parse_data(t_graphic *gfx)
 		}
 	}
 	if (gfx->el_counter != total_el)
-		exit(ft_perror(gfx->cub, INC_MAP_FILE, WARNING));
+		ft_perror(gfx->cub, INC_MAP_FILE, CRITICAL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 14:59:05 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:36:12 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 09:45:04 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	safe_destroy_image(void *mlx, void *img)
 		mlx_destroy_image(mlx, img);
 }
 
-// /** Seg fault */
 static void	destroy_images(t_main *cub)
 {
 	int	i;

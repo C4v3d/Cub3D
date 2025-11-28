@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   game_render_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:49:27 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 15:13:57 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 09:44:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-// V2
 void	draw_background(int floor_c, int ceiling_c, t_image *img)
 {
 	size_t	pos[AXIS];

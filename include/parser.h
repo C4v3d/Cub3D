@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 17:48:56 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:52:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void	parse_file(t_main *cub);
 void	parse_data(t_graphic *gfx);
-int		get_color(char *line, int len);
 int		get_id_len(char *line);
 void	parse_map(t_map *map);
 

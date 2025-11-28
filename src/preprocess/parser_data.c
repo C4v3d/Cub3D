@@ -6,13 +6,13 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 14:58:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:55:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
+static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
 	char	*trimmed;
 
@@ -20,26 +20,28 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
-		ft_perror(gfx->cub, NO_DATA, WARNING);
+		return (ft_perror(gfx->cub, NO_DATA, ERROR));
 	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
 	if (!trimmed)
-		ft_perror(gfx->cub, 0, CRITICAL);
-	printf("cub3d: loading '%s', please wait...\n", trimmed);
+		ft_perror(gfx->cub, 0, ERROR);
 	if (t->img != NULL)
-		exit(ft_perror(gfx->cub, DUP, WARNING));
+	{
+		w_free((void **)&trimmed);
+		return (ft_perror(gfx->cub, DUP, ERROR));
+	}
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
 	if (!t->img)
-		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	printf("cub3d: %dx%d texture loaded!\n", t->width, t->height);
+		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
-		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
+		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));
 	(*gfx).el_counter += 1;
+	return (0);
 }
 
-static void	parse_color(t_main *cub, char *line, t_color **dest)
+static int	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
 	int	n_color;
@@ -47,7 +49,7 @@ static void	parse_color(t_main *cub, char *line, t_color **dest)
 	line += ID_LEN - 1;
 	n_color = 0;
 	if ((*dest)->color != -1)
-		exit(ft_perror(cub, DUP, WARNING));
+		return (ft_perror(cub, DUP, ERROR));
 	while (ft_isspace(*line))
 		line++;
 	while (*line && n_color < 3)
@@ -65,6 +67,24 @@ static void	parse_color(t_main *cub, char *line, t_color **dest)
 		n_color++;
 	}
 	cub->gfx.el_counter += 1;
+	return (0);
+}
+
+static bool	is_color_valid(t_main *cub, char *line)
+{
+	int	i;
+
+	i = 2;
+	while (line[i] && line[i] != '\n')
+	{
+		if (!ft_isdigit(line[i]) && line[i] != ',')
+		{
+			ft_perror(cub, BAD_COLOR, ERROR);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
@@ -85,9 +105,15 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
-		parse_color(gfx->cub, line, &gfx->ceiling);
+	{
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->ceiling);
+	}
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(gfx->cub, line, &gfx->floor);
+	{
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->floor);
+	}
 }
 
 void	parse_data(t_graphic *gfx)
@@ -103,7 +129,12 @@ void	parse_data(t_graphic *gfx)
 			break ;
 		fetch_data(gfx, line);
 		w_free((void **)&line);
+		if (gfx->cub->pr.fail)
+		{
+			free_cub(gfx->cub);
+			exit(EXIT_FAILURE);
+		}
 	}
 	if (gfx->el_counter != total_el)
-		exit(ft_perror(gfx->cub, INC_MAP_FILE, WARNING));
+		ft_perror(gfx->cub, INC_MAP_FILE, CRITICAL);
 }

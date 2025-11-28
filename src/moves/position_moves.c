@@ -6,30 +6,11 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 16:13:40 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:14:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-static void	reset_pos(double pos[AXIS], double old_pos[AXIS])
-{
-	double	reset_x;
-	double	reset_y;
-
-	reset_x = 0.000001;
-	reset_y = 0.000001;
-	if (pos[X] > old_pos[X])
-		old_pos[X] -= reset_x;
-	else if (pos[X] < old_pos[X])
-		old_pos[X] += reset_x;
-	else if (pos[Y] > old_pos[Y])
-		old_pos[Y] -= reset_y;
-	else
-		old_pos[Y] += reset_y;
-	pos[X] = old_pos[X];
-	pos[Y] = old_pos[Y];
-}
 
 static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 {
@@ -92,7 +73,7 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 	op[Y] = (int)old_pos[Y];
 	if (!m->grid[np[Y]][np[X]])
 		return (false);
-	if(m->grid[np[Y]][np[X]] == '1' || m->cub->r.wall_dist < 0.000001)
+	if (m->grid[np[Y]][np[X]] == '1')
 		return (false);
 	if ((np[X] == op[X] && np[Y] == op[Y]) || (np[X] != op[X] && np[Y] == op[Y])
 		|| (np[X] == op[X] && np[Y] != op[Y]))
@@ -104,13 +85,13 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 
 bool	update_plyr_position(t_player *p, int kc)
 {
-
 	p->old_pos[X] = p->pos[X];
 	p->old_pos[Y] = p->pos[Y];
 	move(p, &p->cub->r, POS_MOVE_UNIT, kc);
 	if (!check_new_pos(p, &p->cub->map, p->old_pos, kc))
 	{
-		reset_pos(p->pos, p->old_pos);
+		p->pos[X] = p->old_pos[X];
+		p->pos[Y] = p->old_pos[Y];
 		return (false);
 	}
 	return (true);

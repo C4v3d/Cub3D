@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:16:54 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:27:52 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	ft_error(t_main *cub, t_errorcode errcode)
 	if (!errcode)
 		err_msg = strerror(errno);
 	else
-		err_msg = ft_strerror(errcode);		
+		err_msg = ft_strerror(errcode);
 	printf(YEL"Error:	"RESET"%s\n", err_msg);
 	return (errcode);
 }

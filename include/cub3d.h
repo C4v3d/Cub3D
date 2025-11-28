@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 11:43:22 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 13:53:49 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define N_COLOR 2
 
 // Define decr/incrementation value from keyboard inputs
-# define POS_MOVE_UNIT 0.1
+# define POS_MOVE_UNIT 0.099999
 # define VIS_MOVE_UNIT 0.05
 
 /**

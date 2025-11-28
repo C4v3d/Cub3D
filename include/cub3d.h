@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 16:14:47 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:43:22 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,11 @@ typedef struct s_player_data
 
 typedef struct s_program_data
 {
-	bool			show_minimap;
-	bool			close_program;
-	int				input_file_fd;
-	t_main			*cub;				// `ptr` to parent struct
+	bool	show_minimap;
+	bool	close_program;
+	bool	fail;
+	int		input_file_fd;
+	t_main	*cub;
 }	t_prog;
 
 typedef struct s_main_struct

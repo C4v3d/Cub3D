@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 11:59:07 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 13:51:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c)
 	}
 }
 
-int	get_color(t_main *cub, char *line, int len)
+int	get_color(char *line, int len)
 {
 	int	color;
 	int	i;
@@ -48,20 +48,10 @@ int	get_color(t_main *cub, char *line, int len)
 	color = 0;
 	i = 0;
 	while (i < len)
-		if (ft_isdigit(line[i++]))
-			return (ft_perror(cub, WRG_N_ARGS, ERROR));
-	i = 0;
-	while (i < len)
-	{
-			
 		color = color * 10 + (line[i++] - '0');
-	}
 	return (color);
 }
 
-/**
- * Maybe put this functions in utils ?
- */
 int	get_id_len(char *line)
 {
 	int	len;

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 14:58:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 11:41:33 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ static void	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, CRITICAL);
-	printf("cub3d: loading '%s', please wait...\n", trimmed);
 	if (t->img != NULL)
-		exit(ft_perror(gfx->cub, DUP, WARNING));
+	{
+		w_free((void **)&trimmed);
+		ft_perror(gfx->cub, DUP, CRITICAL);
+	}
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
 	if (!t->img)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);
-	printf("cub3d: %dx%d texture loaded!\n", t->width, t->height);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		ft_perror(gfx->cub, MLX_FAIL, CRITICAL);

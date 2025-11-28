@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:36:06 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 11:36:25 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static char	*ft_strerror(t_errorcode errcode)
 {
 	if (errcode == WRG_N_ARGS)
-		return ("Wrong number of argument(s). "
-			"You need to specify one map to play.");
+		return ("Wrong number of argument(s).");
 	if (errcode == INC_MAP_FILE)
 		return ("Map file is missing data (texture or color)");
 	if (errcode == WRG_MAP_EXT)
@@ -37,6 +36,8 @@ static char	*ft_strerror(t_errorcode errcode)
 		return ("Duplicated Starting position found !");
 	if (errcode == NO_PSTART)
 		return ("No starting position found.");
+	if (errcode == NO_MAP)
+		return ("No map in file.");
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 13:05:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:16:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static char	*ft_strerror(t_errorcode errcode)
 	if (errcode == DUP)
 		return ("Duplicated texture/color");
 	if (errcode == WRG_CHAR)
-		return ("Unauthorized character used !\n");
+		return ("Unauthorized character used or map is invalid !\n");
 	if (errcode == MAP_OPEN)
-		return ("Map is not closed !");
+		return ("Map is not closed or is invalid !");
 	if (errcode == DUP_PSTART)
 		return ("Duplicated Starting position found !");
 	if (errcode == NO_PSTART)

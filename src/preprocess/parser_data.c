@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 11:55:14 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 13:53:04 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,33 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 		while (ft_isdigit(line[c_len]))
 			c_len++;
 		if (n_color == 0)
-			(*dest)->r = get_color(cub, line, c_len);
+			(*dest)->r = get_color(line, c_len);
 		else if (n_color == 1)
-			(*dest)->g = get_color(cub, line, c_len);
+			(*dest)->g = get_color(line, c_len);
 		else if (n_color == 2)
-			(*dest)->b = get_color(cub, line, c_len);
+			(*dest)->b = get_color(line, c_len);
 		line += c_len + 1;
 		n_color++;
 	}
 	cub->gfx.el_counter += 1;
 	return (0);
+}
+
+static bool is_color_valid(t_main *cub, char *line)
+{
+	int	i;
+
+	i = 2;
+	while (line[i] && line[i] != '\n')
+	{
+		if (!ft_isdigit(line[i]) && line[i] != ',')
+		{
+			ft_perror(cub, BAD_COLOR, ERROR);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
@@ -88,9 +105,15 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, EA_ID, id_len) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
-		parse_color(gfx->cub, line, &gfx->ceiling);
+	{
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->ceiling);	
+	}
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
-		parse_color(gfx->cub, line, &gfx->floor);
+	{
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->floor);
+	}
 }
 
 void	parse_data(t_graphic *gfx)

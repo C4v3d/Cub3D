@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:08:16 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 11:54:43 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 13:52:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_map(t_map *map);
 /**
  * Utils
  */
-int		get_color(t_main *cub, char *line, int len);
+int		get_color(char *line, int len);
 int		get_id_len(char *line);
 void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c);
 bool	is_line_valid(const char *l);

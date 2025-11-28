@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 11:50:22 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:31:52 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,17 @@ bool	is_line_valid(const char *l)
 	char	*p;
 
 	p = (char *)l;
-	while (!*p && *p != '\n')
+	while (*p && *p == '\n')
+		p++;
+	while (*p && *p != '\n')
 	{
 		if (!ft_strchr(CHARSET, *p))
+			return (false);
+		p++;
+	}
+	while (*p)
+	{
+		if (*p == '\n' && (*(p + 1) && *(p + 1) == '\n'))
 			return (false);
 		p++;
 	}

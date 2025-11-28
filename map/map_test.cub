@@ -1,7 +1,7 @@
 SO ./textures/emonacho_128.xpm
-EA ./textures/timmi_128.xpm
-WE ./textures/xaniel_128.xpm
-NO ./textures/nielxa_128.xpm
+EA ./textures/xaniel_128.xpm
+WE ./textures/nielxa_128.xpm
+NO ./textures/timmi_128.xpm
 
 
 C 150,0,255

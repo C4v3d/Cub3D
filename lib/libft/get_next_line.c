@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:12:10 by Timmi             #+#    #+#             */
-/*   Updated: 2025/09/12 15:14:16 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 17:10:27 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,11 @@ char	*get_next_line(int fd)
 	static char		*stach;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (stach)
+			free(stach);
 		return (0);
+	}
 	if (!stach)
 	{
 		stach = malloc(1 * sizeof(char));

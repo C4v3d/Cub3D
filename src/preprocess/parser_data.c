@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:55:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 17:10:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,10 +131,12 @@ void	parse_data(t_graphic *gfx)
 		w_free((void **)&line);
 		if (gfx->cub->pr.fail)
 		{
+			get_next_line(-1);
 			free_cub(gfx->cub);
 			exit(EXIT_FAILURE);
 		}
 	}
 	if (gfx->el_counter != total_el)
 		ft_perror(gfx->cub, INC_MAP_FILE, CRITICAL);
+	get_next_line(-1);
 }

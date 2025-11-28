@@ -1,7 +1,7 @@
 SO ./textures/1_32.xpm
-EA ./textures/3_32.xpm
+EA ./textures/2_32.xpm
 WE ./textures/3_32.xpm
-NO ./textures/1_32.xpm
+NO ./textures/4_32.xpm
 
 
 C 150,0,255
@@ -27,5 +27,5 @@ F 130,255,0
 10000001
 11100111
   1001
-  10S1
+  10W1
   1111

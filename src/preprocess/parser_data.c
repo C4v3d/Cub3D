@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 13:53:04 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:28:14 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 	return (0);
 }
 
-static bool is_color_valid(t_main *cub, char *line)
+static bool	is_color_valid(t_main *cub, char *line)
 {
 	int	i;
 
@@ -107,7 +107,7 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else if (ft_strncmp(line, C_ID, id_len) == 0)
 	{
 		if (is_color_valid(gfx->cub, line))
-			parse_color(gfx->cub, line, &gfx->ceiling);	
+			parse_color(gfx->cub, line, &gfx->ceiling);
 	}
 	else if (ft_strncmp(line, F_ID, id_len) == 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/27 16:14:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:43:46 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	init_cub(t_main *cub)
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
 	cub->map.p_pos = false;
+	cub->pr.fail = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
 	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
 	init_display(cub);

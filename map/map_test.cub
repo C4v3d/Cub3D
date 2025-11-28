@@ -1,10 +1,10 @@
 SO ./textures/1_32.xpm
 EA ./textures/3_32.xpm
-NO ./textures/3_32.xpm
+WE ./textures/3_32.xpm
 NO ./textures/1_32.xpm
 
 
-C 150,0,255
+C 30G,0,255
 F 130,255,0
 
 

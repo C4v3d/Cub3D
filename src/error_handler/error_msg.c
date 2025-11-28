@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 11:36:25 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 11:51:19 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,16 @@ static int	ft_warning(t_errorcode errcode)
 	return (errcode);
 }
 
-static int	ft_error(t_errorcode errcode)
+static int	ft_error(t_main *cub, t_errorcode errcode)
 {
-	printf(YEL"Error:	"RESET"%s\n", ft_strerror(errcode));
+	char	*err_msg;
+
+	cub->pr.fail = true;
+	if (!errcode)
+		err_msg = strerror(errno);
+	else
+		err_msg = ft_strerror(errcode);		
+	printf(YEL"Error:	"RESET"%s\n", err_msg);
 	return (errcode);
 }
 
@@ -80,7 +87,7 @@ int	ft_perror(t_main *cub, t_errorcode errcode, t_errortype opcode)
 	if (opcode == WARNING)
 		return (ft_warning(errcode));
 	else if (opcode == ERROR)
-		return (ft_error(errcode));
+		return (ft_error(cub, errcode));
 	else if (opcode == CRITICAL)
 		ft_fatal(cub, errcode);
 	return (0);

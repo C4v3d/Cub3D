@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:36:11 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:44:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:33:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ static void	init_draw(t_main *cub, t_rays *r, t_draw *d, t_player *p)
 		d->wall_x = p->pos[X] + r->wall_dist * r->dir[X];
 	d->wall_x -= floor(d->wall_x);
 	d->x = (int)(d->wall_x * (double)cub->gfx.txtr[d->num].width);
+	if (r->wall_side == 0 && r->dir[X] < 0)
+		d->x = cub->gfx.txtr[d->num].width - d->x - 1;
+	if (r->wall_side == 1 && r->dir[Y] < 0)
+		d->x = cub->gfx.txtr[d->num].width - d->x - 1;
 	d->step = 1.0 * cub->gfx.txtr[d->num].height / r->wall_height;
 	d->pos = (d->start - WINDOW_HEIGHT / 2 + r->wall_height / 2) * d->step;
 }

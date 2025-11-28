@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:33:34 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 15:33:41 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 13:05:28 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef enum e_errorcode
 	MAP_OPEN,
 	DUP_PSTART,
 	NO_PSTART,
+	NO_MAP,
+	BAD_COLOR,
 }	t_errorcode;
 
 /**

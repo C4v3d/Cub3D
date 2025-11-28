@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 14:59:05 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 09:45:04 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:54:03 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	free_prog_map_gfx(t_prog *pr, t_map *map, t_graphic *gfx)
 
 	(void)gfx;
 	if (w_close(pr->input_file_fd) == -1)
-		ft_perror(pr->cub, errno, WARNING);
+		ft_perror(pr->cub, 0, CRITICAL);
 	i = -1;
 	while (++i < map->dim[Y])
 		w_free((void **)&map->grid[i]);

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:31:52 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:01:57 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ int	get_color(char *line, int len)
 	return (color);
 }
 
-/**
- * Maybe put this functions in utils ?
- */
 int	get_id_len(char *line)
 {
 	int	len;
@@ -72,9 +69,20 @@ bool	is_line_valid(const char *l)
 	p = (char *)l;
 	while (*p && *p == '\n')
 		p++;
-	while (*p && *p != '\n')
+	while (*p)
 	{
-		if (!ft_strchr(CHARSET, *p))
+		if (!ft_strchr(CHARSET, *p) && *p != '\n')
+			return (false);
+		if (*p == '\n' && *(p + 1) == '\n')
+		{
+			p++;
+			break ;
+		}
+		p++;
+	}
+	while (*p)
+	{
+		if (*p != '\n')
 			return (false);
 		p++;
 	}

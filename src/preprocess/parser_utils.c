@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 17:01:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:18:21 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,6 @@ bool	is_line_valid(const char *l)
 	while (*p)
 	{
 		if (*p != '\n')
-			return (false);
-		p++;
-	}
-	while (*p)
-	{
-		if (*p == '\n' && (*(p + 1) && *(p + 1) == '\n'))
 			return (false);
 		p++;
 	}

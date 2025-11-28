@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/27 16:14:47 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:08:41 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define N_COLOR 2
 
 // Define decr/incrementation value from keyboard inputs
-# define POS_MOVE_UNIT 0.1
+# define POS_MOVE_UNIT 0.099999
 # define VIS_MOVE_UNIT 0.05
 
 /**

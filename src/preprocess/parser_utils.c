@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 13:51:59 by timmi            ###   ########.fr       */
+/*   Updated: 2025/11/28 15:16:21 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,22 @@ bool	is_line_valid(const char *l)
 	char	*p;
 
 	p = (char *)l;
-	while (!*p && *p != '\n')
+	while (*p && *p == '\n')
+		p++;
+	while (*p)
 	{
-		if (!ft_strchr(CHARSET, *p))
+		if (!ft_strchr(CHARSET, *p) && *p != '\n')
+			return (false);
+		if (*p == '\n' && *(p + 1) == '\n')
+		{
+			p++;
+			break ;
+		}
+		p++;
+	}
+	while (*p)
+	{
+		if (*p != '\n')
 			return (false);
 		p++;
 	}

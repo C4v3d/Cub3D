@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:57:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/01 11:48:55 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:57:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-int	close_window(t_main *cub)
+int	close_cub3d(t_main *cub)
 {
 	cub->pr.close_program = true;
 	return (0);

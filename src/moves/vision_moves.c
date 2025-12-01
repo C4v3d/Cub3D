@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/20 17:35:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:16:53 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,39 +25,24 @@ void rotate(double dir[2], double plane[2], double rot_speed)
 	plane[Y] = old_plane_x * sin(rot_speed) + plane[Y] * cos(rot_speed);
 }
 
-static void	update_fov(t_player *p, t_rays *r, int kc)
-{
-	double	unit;
-
-	unit = 0.01;
-	if (kc == I && p->fov - unit >= 0.01)
-		p->fov -= unit;
-	else if (kc == O && p->fov + unit <= 3.0)
-		p->fov += unit;
-	r->plane[Y] = -p->dir[X] * tan(p->fov / 2.0);
-	r->plane[X] =  p->dir[Y] * tan(p->fov / 2.0);
-}
-
 static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 {
-	if (kc == LA && *(aov) + rot_speed >= max_angle - rot_speed)
+	if (kc == LA_KC && *(aov) + rot_speed >= max_angle - rot_speed)
 		*(aov) = 0;
-	else if (kc == LA)
+	else if (kc == LA_KC)
 		*(aov) += rot_speed;
-	else if (kc == RA && *(aov) - rot_speed <= 0)
+	else if (kc == RA_KC && *(aov) - rot_speed <= 0)
 		*(aov) = max_angle - rot_speed;
-	else if (kc == RA)
+	else if (kc == RA_KC)
 		*(aov) -= rot_speed;
 }
 
 void	update_plyr_vision(t_player *p, int	kc)
 {
-	if (kc == LA || kc == RA)
+	if (kc == LA_KC || kc == RA_KC)
 		update_aov(&p->aov, AOV_MAX, VIS_MOVE_UNIT, kc);
-	else if (kc == I || kc == O)
-		update_fov(p, &p->cub->r, kc);
-	if (kc == LA)
+	if (kc == LA_KC)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
-	else if (kc == RA)
+	else if (kc == RA_KC)
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
 }

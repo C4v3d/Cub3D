@@ -12,22 +12,30 @@
 
 #include "../../include/cub3d.h"
 
-int	input_loop(int kc, void *param)
+int	key_release(int kc, void *param)
+{
+	(void)param;
+	printf("key_release | kc: %d\n", kc);
+	return (0);
+}
+
+int	key_press(int kc, void *param)
 {
 	t_main *cub;
 
 	cub = (t_main *)param;
-	if (kc == ESC)
+	printf("key_press | kc: %d\n", kc);
+	if (kc == ESC_KC)
 	{
 		cub->pr.close_program = true;
 		return (0);
 	}
 	else if (kc == M)
 		switch_bool(&cub->pr.show_minimap);
-	else if (kc == W || kc == A || kc == S || kc == D
-			|| kc == UA || kc == DA)
+	else if (kc == W_KC || kc == A_KC || kc == S_KC || kc == D_KC
+			|| kc == UA_KC || kc == DA_KC)
 		update_plyr_position(&cub->plyr, kc);
-	else if (kc == LA || kc == RA || kc == I || kc == O)
+	else if (kc == LA_KC || kc == RA_KC || kc == I_KC || kc == O_KC)
 		update_plyr_vision(&cub->plyr, kc);
 	return (0);
 }

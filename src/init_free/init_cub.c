@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/21 19:07:58 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:04:46 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	init_display(t_main *cub)
 	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	if (!cub->win)
 		ft_perror(cub, MLX_FAIL, CRITICAL);
-	mlx_hook(cub->win, 02, 1L<<0, input_loop, cub);
+	mlx_hook(cub->win, 02, 1L<<0, key_press, cub);
+	mlx_hook(cub->win, 03, 1L<<1, key_release, cub);
 	mlx_hook(cub->win, 17, 0L, free_cub, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 }
@@ -64,6 +65,7 @@ static void	init_display(t_main *cub)
 void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub));
+	ft_bzero(cub->pr.key_on, sizeof(cub->pr.key_on));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
@@ -77,9 +79,9 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y] - 0.5;
 	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
 	cub->r.plane[X] =  cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
-	update_plyr_vision(&cub->plyr, LA); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
-	update_plyr_vision(&cub->plyr, RA); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
-	update_plyr_position(&cub->plyr, W); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
-	update_plyr_position(&cub->plyr, D); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
+	update_plyr_vision(&cub->plyr, LA_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
+	update_plyr_vision(&cub->plyr, RA_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
+	update_plyr_position(&cub->plyr, W_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
+	update_plyr_position(&cub->plyr, D_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
 	return (0);
 }

@@ -18,10 +18,7 @@ int	input_loop(int kc, void *param)
 
 	cub = (t_main *)param;
 	if (kc == ESC)
-	{
-		cub->pr.close_program = true;
-		return (0);
-	}
+		return (close_cub3d(cub));
 	else if (kc == M)
 		cub->pr.show_minimap = !cub->pr.show_minimap;
 	else if (kc == W || kc == A || kc == S || kc == D

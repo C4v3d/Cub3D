@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:24 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/01 11:47:23 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/01 11:57:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 double	get_delta(double val);
 void	welcome_cub3d(void);
-int		close_window(t_main *cub);
+int		close_cub3d(t_main *cub);
 
 #endif

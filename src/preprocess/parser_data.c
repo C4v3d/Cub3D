@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 17:10:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/11/28 17:35:58 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,20 +96,20 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);
-	if (ft_strncmp(line, NO_ID, id_len) == 0)
+	if (ft_strncmp(line, NO_ID, id_len) == 0 && ft_isspace(line[id_len]))
 		parse_texture(gfx, &gfx->txtr[NO], line);
-	else if (ft_strncmp(line, SO_ID, id_len) == 0)
+	else if (ft_strncmp(line, SO_ID, id_len) == 0 && ft_isspace(line[id_len]))
 		parse_texture(gfx, &gfx->txtr[SO], line);
-	else if (ft_strncmp(line, WE_ID, id_len) == 0)
+	else if (ft_strncmp(line, WE_ID, id_len) == 0 && ft_isspace(line[id_len]))
 		parse_texture(gfx, &gfx->txtr[WE], line);
-	else if (ft_strncmp(line, EA_ID, id_len) == 0)
+	else if (ft_strncmp(line, EA_ID, id_len) == 0 && ft_isspace(line[id_len]))
 		parse_texture(gfx, &gfx->txtr[EA], line);
-	else if (ft_strncmp(line, C_ID, id_len) == 0)
+	else if (ft_strncmp(line, C_ID, id_len) == 0 && ft_isspace(line[id_len]))
 	{
 		if (is_color_valid(gfx->cub, line))
 			parse_color(gfx->cub, line, &gfx->ceiling);
 	}
-	else if (ft_strncmp(line, F_ID, id_len) == 0)
+	else if (ft_strncmp(line, F_ID, id_len) == 0 && ft_isspace(line[id_len]))
 	{
 		if (is_color_valid(gfx->cub, line))
 			parse_color(gfx->cub, line, &gfx->floor);
@@ -138,5 +138,4 @@ void	parse_data(t_graphic *gfx)
 	}
 	if (gfx->el_counter != total_el)
 		ft_perror(gfx->cub, INC_MAP_FILE, CRITICAL);
-	get_next_line(-1);
 }

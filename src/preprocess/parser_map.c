@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:42:38 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:21:39 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:08:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	process_line(t_map *map, char *line)
 	if (orientation)
 	{
 		if (map->p_pos == true)
-			ft_perror(map->cub, DUP_PSTART, CRITICAL);
+			ft_perror(map->cub, MAP_DUP_START, CRITICAL);
 		map->p_pos = true;
 		get_start_dir(map, map->cub->plyr.dir,
 			&map->cub->plyr.aov, line[orientation]);
@@ -98,7 +98,7 @@ void	parse_map(t_map *map)
 	if (!inline_map)
 		ft_perror(map->cub, 0, CRITICAL);
 	if (!is_line_valid(inline_map))
-		ft_perror(map->cub, WRG_CHAR, ERROR);
+		ft_perror(map->cub, MAP_UNAUTH_CHAR, ERROR);
 	map->grid = ft_split(inline_map, '\n');
 	w_free((void **)&inline_map);
 	if (map->cub->pr.fail)
@@ -109,7 +109,7 @@ void	parse_map(t_map *map)
 	if (!map->grid)
 		ft_perror(map->cub, 0, CRITICAL);
 	if (!map->grid[0])
-		ft_perror(map->cub, NO_MAP, CRITICAL);
+		ft_perror(map->cub, MAP_NOT_FOUND, CRITICAL);
 	if (!map->p_pos)
-		ft_perror(map->cub, NO_PSTART, CRITICAL);
+		ft_perror(map->cub, MAP_NO_START, CRITICAL);
 }

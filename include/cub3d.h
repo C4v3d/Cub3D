@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:29:18 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:12:29 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # include "utils.h"
 # include "parser.h"
 # include "preprocess.h"
-# include "error.h"
+# include "error_msg.h"
+# include "error_handler.h"
 # include "checker.h"
 # include "map.h"
 # include "gamedata.h"

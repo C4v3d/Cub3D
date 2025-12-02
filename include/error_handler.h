@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   error_handler.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:33:34 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 13:05:28 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:13:35 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef ERROR_HANDLER_H
+# define ERROR_HANDLER_H
 
-/**
- * Default error header (asked by the subject).
- */
-# define ERROR_HEADER "Error\n"
 /**
  * @brief Opcode for error type
  *
@@ -33,25 +29,7 @@ typedef enum e_errortype
 	DEBUG, /** For debug purpose. */
 }	t_errortype;
 
-typedef enum e_errorcode
-{
-	SUCCESS,
-	WRG_N_ARGS,
-	INC_MAP_FILE,
-	MAP_FILE_NULL,
-	NO_PERM,
-	WRG_MAP_EXT,
-	NO_MAP_FILE,
-	NO_DATA,
-	MLX_FAIL,
-	DUP,
-	WRG_CHAR,
-	MAP_OPEN,
-	DUP_PSTART,
-	NO_PSTART,
-	NO_MAP,
-	BAD_COLOR,
-}	t_errorcode;
+
 
 /**
  * This is a wrapper function that aim to ease error handling. It's going to

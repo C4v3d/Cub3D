@@ -34,7 +34,7 @@ int	loop(t_main *cub)
 	if (cub->pr.close_program == true)
 	{
 		free_cub(cub);
-		exit(SUCCESS);
+		exit(EXIT_SUCCESS);
 	}
 	if (cub->gfx.scene.img != NULL)
 		safe_destroy_image(cub->mlx, cub->gfx.scene.img);

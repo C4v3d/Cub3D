@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:15:22 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 15:15:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:05:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 		mlx_loop(cub.mlx);
 	}
 	else
-		return (ft_perror(&cub, WRG_N_ARGS, ERROR));
+		return (ft_perror(&cub, INPUT_WRG_NUM, ERROR));
 	free_cub(&cub);
 	return (0);
 }

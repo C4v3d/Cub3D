@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 17:35:58 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:06:29 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
-		return (ft_perror(gfx->cub, NO_DATA, ERROR));
+		return (ft_perror(gfx->cub, DATA_NOT_FOUND, ERROR));
 	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, ERROR);
 	if (t->img != NULL)
 	{
 		w_free((void **)&trimmed);
-		return (ft_perror(gfx->cub, DUP, ERROR));
+		return (ft_perror(gfx->cub, DATA_DUP, ERROR));
 	}
 	t->img = mlx_xpm_file_to_image(gfx->cub->mlx, trimmed,
 			&t->width, &t->height);
@@ -49,7 +49,7 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 	line += ID_LEN - 1;
 	n_color = 0;
 	if ((*dest)->color != -1)
-		return (ft_perror(cub, DUP, ERROR));
+		return (ft_perror(cub, DATA_DUP, ERROR));
 	while (ft_isspace(*line))
 		line++;
 	while (*line && n_color < 3)
@@ -79,7 +79,7 @@ static bool	is_color_valid(t_main *cub, char *line)
 	{
 		if (!ft_isdigit(line[i]) && line[i] != ',')
 		{
-			ft_perror(cub, BAD_COLOR, ERROR);
+			ft_perror(cub, DATA_WRG_COLOR, ERROR);
 			return (false);
 		}
 		i++;
@@ -137,5 +137,5 @@ void	parse_data(t_graphic *gfx)
 		}
 	}
 	if (gfx->el_counter != total_el)
-		ft_perror(gfx->cub, INC_MAP_FILE, CRITICAL);
+		ft_perror(gfx->cub, DATA_MISSING, CRITICAL);
 }

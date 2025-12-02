@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:17:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/25 14:47:46 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:05:23 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	is_input_valid(char *input_file)
 	p += (len - EXTENSION_LEN);
 	if (ft_strncmp(p, EXTENSION, EXTENSION_LEN) != 0)
 	{
-		ft_perror(NULL, WRG_MAP_EXT, WARNING);
+		ft_perror(NULL, INPUT_WRG_EXT, WARNING);
 		return (false);
 	}
 	return (true);

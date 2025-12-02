@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:06:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:24:59 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 			&t->width, &t->height);
 	w_free((void **)&trimmed);
 	if (!t->img)
-		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));
+		return (ft_perror(gfx->cub, DATA_WRG_TEXT_PATH, ERROR));
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->s_line, &t->endian);
 	if (!t->addr)
 		return (ft_perror(gfx->cub, MLX_FAIL, ERROR));

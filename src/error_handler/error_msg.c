@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:52:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:20:03 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 14:28:26 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*data_error_msg(t_errorcode err)
 		return ("The color you specified isn't valid !\n"
 				"Must be \"C 130,10,0\"");
 	if (err == DATA_WRG_TEXT_PATH)
-		return ("Texture path couln'd be open !");
+		return ("Texture path couldn't be open !"
+				" (Should be \"texture_example.xpm\")");
 	return (NULL);
 }
 

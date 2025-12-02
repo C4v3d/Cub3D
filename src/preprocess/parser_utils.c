@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 17:18:21 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:02:27 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
+
+bool	is_color_valid(t_main *cub, char *line)
+{
+	int	i;
+
+	i = 2;
+	while (line[i] && line[i] != '\n')
+	{
+		if (!ft_isdigit(line[i]) && line[i] != ',')
+		{
+			ft_perror(cub, DATA_WRG_COLOR, ERROR);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
 
 void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c)
 {

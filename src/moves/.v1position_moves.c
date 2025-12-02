@@ -6,13 +6,13 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/02 07:13:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:16:51 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	move(t_player *p, t_rays *r, double move_speed, int k)
+static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 {
 	if (kc == W_KC || kc == UA_KC)
 	{
@@ -82,14 +82,14 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 	return (true);
 }
 
-bool	update_plyr_position(t_player *p, bool k[N_KEYS])
+bool	update_plyr_position(t_player *p, int kc)
 {
 	double	old_pos[AXIS];
 
 	old_pos[X] = p->pos[X];
 	old_pos[Y] = p->pos[Y];
-	move(p, &p->cub->r, POS_MOVE_UNIT, k);
-	if (!check_new_pos(p, &p->cub->map, old_pos, k))
+	move(p, &p->cub->r, POS_MOVE_UNIT, kc);
+	if (!check_new_pos(p, &p->cub->map, old_pos, kc))
 	{
 		p->pos[X] = old_pos[X];
 		p->pos[Y] = old_pos[Y];

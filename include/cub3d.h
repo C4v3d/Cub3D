@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/01 16:03:18 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/02 06:55:35 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef union	u_color				t_color;
  */
 # define N_TEXTURE 4
 # define N_COLOR 2
-# define N_KEYS 10
+# define N_KEYS 8
 
 /**
  * Map Data

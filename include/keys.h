@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/01 16:28:06 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/02 06:55:39 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 typedef enum	e_keys_list
 {
-	ESC,
 	W,
 	A,
 	S,
@@ -24,7 +23,6 @@ typedef enum	e_keys_list
 	LA,
 	DA,
 	UA,
-	M,
 }				t_kl;
 
 #ifdef __APPLE__

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:24:59 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/02 15:15:52 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,30 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 	return (0);
 }
 
-static bool	is_color_valid(t_main *cub, char *line)
+static void	id_texture(t_graphic *gfx, char *line)
 {
-	int	i;
+	if (ft_strncmp(line, NO_ID, ID_LEN) == 0)
+		parse_texture(gfx, &gfx->txtr[NO], line);
+	else if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
+		parse_texture(gfx, &gfx->txtr[SO], line);
+	else if (ft_strncmp(line, WE_ID, ID_LEN) == 0)
+		parse_texture(gfx, &gfx->txtr[WE], line);
+	else if (ft_strncmp(line, EA_ID, ID_LEN) == 0)
+		parse_texture(gfx, &gfx->txtr[EA], line);
+}
 
-	i = 2;
-	while (line[i] && line[i] != '\n')
+static void	id_color(t_graphic *gfx, char *line)
+{
+	if (ft_strncmp(line, C_ID, ID_LEN - 1) == 0)
 	{
-		if (!ft_isdigit(line[i]) && line[i] != ',')
-		{
-			ft_perror(cub, DATA_WRG_COLOR, ERROR);
-			return (false);
-		}
-		i++;
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->ceiling);
 	}
-	return (true);
+	else if (ft_strncmp(line, F_ID, ID_LEN - 1) == 0)
+	{
+		if (is_color_valid(gfx->cub, line))
+			parse_color(gfx->cub, line, &gfx->floor);
+	}
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
@@ -96,25 +105,60 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);
-	if (ft_strncmp(line, NO_ID, id_len) == 0 && ft_isspace(line[id_len]))
-		parse_texture(gfx, &gfx->txtr[NO], line);
-	else if (ft_strncmp(line, SO_ID, id_len) == 0 && ft_isspace(line[id_len]))
-		parse_texture(gfx, &gfx->txtr[SO], line);
-	else if (ft_strncmp(line, WE_ID, id_len) == 0 && ft_isspace(line[id_len]))
-		parse_texture(gfx, &gfx->txtr[WE], line);
-	else if (ft_strncmp(line, EA_ID, id_len) == 0 && ft_isspace(line[id_len]))
-		parse_texture(gfx, &gfx->txtr[EA], line);
-	else if (ft_strncmp(line, C_ID, id_len) == 0 && ft_isspace(line[id_len]))
+	printf("id_len :%d\n", id_len);
+	if (id_len == ID_LEN - 1)
 	{
-		if (is_color_valid(gfx->cub, line))
-			parse_color(gfx->cub, line, &gfx->ceiling);
+		if (ft_isspace(line[ID_LEN - 1]))
+			id_color(gfx, line);
+		else
+		{
+			printf("color id isnt correct\n");
+			exit (1);
+		}
 	}
-	else if (ft_strncmp(line, F_ID, id_len) == 0 && ft_isspace(line[id_len]))
+	else if (id_len > ID_LEN || id_len == 0)
+		exit (1);
+	else
 	{
-		if (is_color_valid(gfx->cub, line))
-			parse_color(gfx->cub, line, &gfx->floor);
+		if (ft_isspace(line[ID_LEN]))
+			id_texture(gfx, line);
+		else
+		{
+			printf("txt id isn't correct\n");	
+			exit(1);
+		}
 	}
+	printf("What\n");
 }
+
+// static void	fetch_data(t_graphic *gfx, char *line)
+// {
+// 	int	id_len;
+
+// 	if (line[0] == '\n')
+// 		return ;
+// 	while (ft_isspace(*line))
+// 		line++;
+// 	id_len = get_id_len(line);
+// 	if (ft_strncmp(line, NO_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
+// 		parse_texture(gfx, &gfx->txtr[NO], line);
+// 	else if (ft_strncmp(line, SO_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
+// 		parse_texture(gfx, &gfx->txtr[SO], line);
+// 	else if (ft_strncmp(line, WE_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
+// 		parse_texture(gfx, &gfx->txtr[WE], line);
+// 	else if (ft_strncmp(line, EA_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
+// 		parse_texture(gfx, &gfx->txtr[EA], line);
+// 	else if (ft_strncmp(line, C_ID, ID_LEN - 1) == 0 && ft_isspace(line[id_len]))
+// 	{
+// 		if (is_color_valid(gfx->cub, line))
+// 			parse_color(gfx->cub, line, &gfx->ceiling);
+// 	}
+// 	else if (ft_strncmp(line, F_ID, ID_LEN - 1) == 0 && ft_isspace(line[id_len]))
+// 	{
+// 		if (is_color_valid(gfx->cub, line))
+// 			parse_color(gfx->cub, line, &gfx->floor);
+// 	}
+// }
 
 void	parse_data(t_graphic *gfx)
 {

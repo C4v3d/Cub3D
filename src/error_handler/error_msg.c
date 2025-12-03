@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:52:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:38:50 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:49:51 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*data_error_msg(t_errorcode err)
 				"(Correct IDs are: \"NO, SO, WE, EA, F, C).\"");
 	if (err == DATA_DUP)
 		return ("Duplicated texture/color");
+	if (err == DATA_COLOR_MAX)
+		return ("Color value to high (max 255).");
 	if (err == DATA_WRG_COLOR)
 		return ("The color you specified isn't valid !\n"
 				"Must be \"C 130,10,0\"");

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 09:47:13 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:51:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	get_start_dir(t_map *m, double dir[AXIS], double *orientation, char c)
 	}
 }
 
-int	get_color(char *line, int len)
+int	get_color(t_main *cub, char *line, int len)
 {
 	int	color;
 	int	i;
@@ -66,6 +66,8 @@ int	get_color(char *line, int len)
 	i = 0;
 	while (i < len)
 		color = color * 10 + (line[i++] - '0');
+	if (color > 255)
+		ft_perror(cub, DATA_COLOR_MAX, ERROR);
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:52:36 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:57:37 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	return (0);
 }
 
+
+/* COLOR ID*/
 static int	parse_color(t_main *cub, char *line, t_color **dest)
 {
 	int	c_len;
 	int	n_color;
 
-	line += ID_LEN - 1;
 	n_color = 0;
+	line += ID_LEN - 1;
 	if ((*dest)->color != -1)
 		return (ft_perror(cub, DATA_DUP, ERROR));
 	while (ft_isspace(*line))

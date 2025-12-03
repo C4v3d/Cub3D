@@ -7,6 +7,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/game_rendering/game_render_utils.c \
 			$(CFILES_PATH)/game_rendering/rays_calculation.c \
 			$(CFILES_PATH)/game_rendering/rays_cal_utils.c \
+			$(CFILES_PATH)/game_rendering/fps.c \
 			$(CFILES_PATH)/init_free/init_cub.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/utils/utils_1.c \

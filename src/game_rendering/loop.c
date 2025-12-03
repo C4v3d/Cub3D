@@ -32,7 +32,7 @@ int	key_release(int kc, void *param)
 		cub->pr.key_on[UA] = false;
 	else if (kc == DA_KC)
 		cub->pr.key_on[DA] = false;
-	if (kc == LA_KC)
+	else if (kc == LA_KC)
 		cub->pr.key_on[LA] = false;
 	else if (kc == RA_KC)
 		cub->pr.key_on[RA] = false;
@@ -65,7 +65,7 @@ int	key_press(int kc, void *param)
 	else if (kc == DA_KC && !cub->pr.key_on[UA]
 		&& !cub->pr.key_on[W] && !cub->pr.key_on[S])
 		cub->pr.key_on[DA] = true;
-	if (kc == LA_KC && !cub->pr.key_on[RA])
+	else if (kc == LA_KC && !cub->pr.key_on[RA])
 		cub->pr.key_on[LA] = true;
 	else if (kc == RA_KC && !cub->pr.key_on[LA])
 		cub->pr.key_on[RA] = true;
@@ -107,6 +107,7 @@ int	loop(t_main *cub)
 		&cub->gfx.scene);
 	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
 	draw_minimap(cub, &cub->gfx.scene);
+	fps(&cub->pr);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->gfx.scene.img, 0, 0);
 	//printf("loop | keys pressed\nL ARROW=%d\nR ARROW=%d\n", cub->pr.key_on[LA], cub->pr.key_on[LA]);
 	return (0);

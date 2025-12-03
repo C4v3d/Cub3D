@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 12:12:31 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:21:42 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,9 @@ typedef struct s_program_data
 {
 	bool	show_minimap;
 	bool	close_program;
+	double	last_time;
+	double	move_speed;
+	double	rot_speed;
 	bool	fail;
 	int		input_file_fd;
 	bool	key_on[N_KEYS];

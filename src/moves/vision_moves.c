@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:46:42 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:14:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ void	rotate(double dir[2], double plane[2], double rot_speed)
 
 static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
 {
-	if (kc == LA && *(aov) + rot_speed >= max_angle - rot_speed)
+	if (kc == LA_KC && *(aov) + rot_speed >= max_angle - rot_speed)
 		*(aov) = 0;
-	else if (kc == LA)
+	else if (kc == LA_KC)
 		*(aov) += rot_speed;
-	else if (kc == RA && *(aov) - rot_speed <= 0)
+	else if (kc == RA_KC && *(aov) - rot_speed <= 0)
 		*(aov) = max_angle - rot_speed;
-	else if (kc == RA)
+	else if (kc == RA_KC)
 		*(aov) -= rot_speed;
 }
 
 void	update_plyr_vision(t_player *p, int kc)
 {
-	if (kc == LA || kc == RA)
+	if (kc == LA_KC || kc == RA_KC)
 		update_aov(&p->aov, M_PI * 2, VIS_MOVE_UNIT, kc);
-	if (kc == LA)
+	if (kc == LA_KC)
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
-	else if (kc == RA)
+	else if (kc == RA_KC)
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
 }

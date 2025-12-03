@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/28 11:14:57 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:14:03 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	move(t_player *p, t_rays *r, double move_speed, int kc)
 {
-	if (kc == W || kc == UA)
+	if (kc == W_KC || kc == UA_KC)
 	{
 		p->pos[X] += p->dir[X] * move_speed;
 		p->pos[Y] -= p->dir[Y] * move_speed;
 	}
-	else if (kc == S || kc == DA)
+	else if (kc == S_KC || kc == DA_KC)
 	{
 		p->pos[X] -= p->dir[X] * move_speed;
 		p->pos[Y] += p->dir[Y] * move_speed;
 	}
-	else if (kc == A)
+	else if (kc == A_KC)
 	{
 		p->pos[X] -= r->plane[X] * move_speed;
 		p->pos[Y] += r->plane[Y] * move_speed;
 	}
-	else if (kc == D)
+	else if (kc == D_KC)
 	{
 		p->pos[X] += r->plane[X] * move_speed;
 		p->pos[Y] -= r->plane[Y] * move_speed;
@@ -40,7 +40,7 @@ static bool	moved_through_walls(t_map *m, int op[AXIS], double aov, int kc)
 {
 	int	i;
 
-	if (kc == W || kc == UA)
+	if (kc == W_KC || kc == UA_KC)
 		i = 1;
 	else
 		i = -1;

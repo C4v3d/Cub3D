@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/11/28 15:29:18 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:08:39 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
  */
 # define N_TEXTURE 4
 # define N_COLOR 2
+# define N_KEYS 8
 
 // Define decr/incrementation value from keyboard inputs
 # define POS_MOVE_UNIT 0.099999
@@ -150,6 +151,7 @@ typedef struct s_program_data
 	bool	close_program;
 	bool	fail;
 	int		input_file_fd;
+	bool	key_on[N_KEYS];
 	t_main	*cub;
 }	t_prog;
 

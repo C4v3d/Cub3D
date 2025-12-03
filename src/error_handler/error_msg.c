@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:52:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 10:33:55 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:38:50 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*data_error_msg(t_errorcode err)
 	if (err == DATA_NOT_FOUND)
 		return ("No data found.");
 	if (err == DATA_INC_ID)
-		return ("Incorrect texture/color id.\n"
+		return ("Incorrect or missing texture/color id.\n"
 				"(Correct IDs are: \"NO, SO, WE, EA, F, C).\"");
 	if (err == DATA_DUP)
 		return ("Duplicated texture/color");

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 10:44:28 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:40:22 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 		line++;
 	if (*line == '\0')
 		return (ft_perror(gfx->cub, DATA_NOT_FOUND, ERROR));
-	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
+	trimmed = ft_substr(line, 0, ft_strlen(line) - 1); /* BETTER TRIMMING*/
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, ERROR);
 	if (t->img != NULL)
@@ -72,7 +72,6 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 
 static void	id_texture(t_graphic *gfx, char *line)
 {
-	printf("line :%s\n", line);
 	if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
 		parse_texture(gfx, &gfx->txtr[SO], line);
 	else if (ft_strncmp(line, NO_ID, ID_LEN) == 0)
@@ -92,6 +91,8 @@ static void	fetch_data(t_graphic *gfx, char *line)
 		return ;
 	while (ft_isspace(*line))
 		line++;
+	if (!line || *line == '\n' || *line == '\0')
+		return ;
 	id_len = get_id_len(line);
 	if (id_len == ID_LEN)
 		id_texture(gfx, line);
@@ -107,35 +108,6 @@ static void	fetch_data(t_graphic *gfx, char *line)
 			ft_perror(gfx->cub, DATA_INC_ID, ERROR);
 	}
 }
-
-// static void	fetch_data(t_graphic *gfx, char *line)
-// {
-// 	int	id_len;
-
-// 	if (line[0] == '\n')
-// 		return ;
-// 	while (ft_isspace(*line))
-// 		line++;
-// 	id_len = get_id_len(line);
-// 	if (ft_strncmp(line, NO_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
-// 		parse_texture(gfx, &gfx->txtr[NO], line);
-// 	else if (ft_strncmp(line, SO_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
-// 		parse_texture(gfx, &gfx->txtr[SO], line);
-// 	else if (ft_strncmp(line, WE_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
-// 		parse_texture(gfx, &gfx->txtr[WE], line);
-// 	else if (ft_strncmp(line, EA_ID, ID_LEN) == 0 && ft_isspace(line[id_len]))
-// 		parse_texture(gfx, &gfx->txtr[EA], line);
-// 	else if (ft_strncmp(line, C_ID, ID_LEN - 1) == 0 && ft_isspace(line[id_len]))
-// 	{
-// 		if (is_color_valid(gfx->cub, line))
-// 			parse_color(gfx->cub, line, &gfx->ceiling);
-// 	}
-// 	else if (ft_strncmp(line, F_ID, ID_LEN - 1) == 0 && ft_isspace(line[id_len]))
-// 	{
-// 		if (is_color_valid(gfx->cub, line))
-// 			parse_color(gfx->cub, line, &gfx->floor);
-// 	}
-// }
 
 void	parse_data(t_graphic *gfx)
 {

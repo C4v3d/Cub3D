@@ -1,7 +1,7 @@
 NO ./textures/2_128.xpm
 WE ./textures/3_128.xpm
 EA ./textures/4_128.xpm
-S ./textures/1_128.xpm
+SO ./textures/1_128.xpm
 
 F 20,230,0
 C 22,30,0

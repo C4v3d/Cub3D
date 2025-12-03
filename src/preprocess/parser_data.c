@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 14:51:54 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 15:05:36 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 	c_count = 0;
 	while (ft_isspace(*line))
 		line++;
-	while (line && c_count < 3)
+	while (line && (*line == ',' || *line == '\n' || *line == '\0') && c_count < 3)
 	{
 		c = get_color(line);
 		if (c > 255)
@@ -87,7 +87,7 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 		c_count++;
 	}
 	if (c_count != 3)
-		printf("AIE\n");
+		return (ft_perror(cub, DATA_INC_ID, ERROR));
 	cub->gfx.el_counter++;
 	return (0);
 }

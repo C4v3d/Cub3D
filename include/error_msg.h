@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 14:11:33 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:28:48 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 10:29:45 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef enum e_errorcode
 	DATA_NOT_FOUND,
 	DATA_DUP,
 	DATA_WRG_COLOR,
+	DATA_INC_ID,
 	DATA_WRG_TEXT_PATH,
 	/* Map errors*/
 	MAP_FILE_NULL,

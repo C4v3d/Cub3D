@@ -6,42 +6,42 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/02 07:13:11 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:41:30 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	move(t_player *p, t_rays *r, double move_speed, int k)
+static void	move(t_player *p, t_rays *r, double move_speed, bool k[N_KEYS])
 {
-	if (kc == W_KC || kc == UA_KC)
+	if (k[W] || k[UA])
 	{
 		p->pos[X] += p->dir[X] * move_speed;
 		p->pos[Y] -= p->dir[Y] * move_speed;
 	}
-	else if (kc == S_KC || kc == DA_KC)
+	else if (k[S] || k[DA])
 	{
 		p->pos[X] -= p->dir[X] * move_speed;
 		p->pos[Y] += p->dir[Y] * move_speed;
 	}
-	else if (kc == A_KC)
+	else if (k[A])
 	{
 		p->pos[X] -= r->plane[X] * move_speed;
 		p->pos[Y] += r->plane[Y] * move_speed;
 
 	}
-	else if (kc == D_KC)
+	else if (k[D])
 	{
 		p->pos[X] += r->plane[X] * move_speed;
 		p->pos[Y] -= r->plane[Y] * move_speed;
 	}
 }
 
-static bool	moved_through_walls(int op[AXIS], char **grid, double aov, int kc)
+static bool	moved_through_walls(int op[AXIS], char **grid, double aov, bool k[N_KEYS])
 {
 	int	i;
 
-	if (kc == W_KC || kc == UA_KC)
+	if (k[W] || k[UA])
 		i = 1;
 	else
 		i = -1;
@@ -60,7 +60,7 @@ static bool	moved_through_walls(int op[AXIS], char **grid, double aov, int kc)
 	return (false);
 }
 
-static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
+static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], bool k[N_KEYS])
 {
 	int	op[AXIS];
 	int	np[AXIS];
@@ -77,7 +77,7 @@ static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], int kc)
 	if ((np[X] == op[X] && np[Y] == op[Y]) || (np[X] != op[X] && np[Y] == op[Y])
 		|| (np[X] == op[X] && np[Y] != op[Y]))
 		return (true);
-	if (moved_through_walls(op, m->grid, p->aov, kc))
+	if (moved_through_walls(op, m->grid, p->aov, k))
 		return (false);
 	return (true);
 }
@@ -95,5 +95,6 @@ bool	update_plyr_position(t_player *p, bool k[N_KEYS])
 		p->pos[Y] = old_pos[Y];
 		return (false);
 	}
+	printf("update_plyr_position\n");
 	return (true);
 }

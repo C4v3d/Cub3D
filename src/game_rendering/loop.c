@@ -34,6 +34,7 @@ int	key_release(int kc, void *param)
 		pr->key_on[LA] = false;
 	else if (kc == RA_KC)
 		pr->key_on[RA] = false;
+	printf("key_release | kc: %d\n", kc);
 	return (0);
 }
 
@@ -48,7 +49,7 @@ int	key_press(int kc, void *param)
 		pr->close_program = true;
 		return (0);
 	}
-	else if (kc == M)
+	else if (kc == M_KC)
 		switch_bool(&pr->show_minimap);
 
 	if (kc == W_KC && pr->key_on[S] == false
@@ -71,7 +72,7 @@ int	key_press(int kc, void *param)
 		pr->key_on[LA] = true;
 	else if (kc == RA_KC && pr->key_on[LA] == false)
 		pr->key_on[RA] = true;
-
+	printf("key_press | kc: %d\n", kc);
 	//else if (kc == W_KC || kc == A_KC || kc == S_KC || kc == D_KC
 	//		|| kc == UA_KC || kc == DA_KC)
 	//	update_plyr_position(&cub->plyr, kc);
@@ -110,9 +111,13 @@ int	loop(t_main *cub)
 		safe_destroy_image(cub->mlx, cub->gfx.scene.img);
 	if (create_image(cub, &cub->gfx.scene) != 0)
 		return (ft_perror(cub, MLX_FAIL, CRITICAL));
-	draw_background(&cub->gfx.scene, &cub->gfx);
+	//update_plyr_position(&cub->plyr, cub->pr.key_on);
+	update_plyr_vision(&cub->plyr, cub->pr.key_on);
+	//draw_background(&cub->gfx.scene, &cub->gfx);
 	draw_scene(cub, &cub->gfx, &cub->r, &cub->plyr);
-	draw_minimap(cub, &cub->gfx.scene);
+	printf("loop\n");
+	//draw_minimap(cub, &cub->gfx.scene);
 	mlx_put_image_to_window(cub->mlx, cub->win, cub->gfx.scene.img, 0, 0);
+	printf("loop\n");
 	return (0);
 }

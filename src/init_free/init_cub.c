@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/01 16:04:46 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:41:22 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,17 @@ int		init_parsed_data(t_main *cub)
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y] - 0.5;
 	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
 	cub->r.plane[X] =  cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
-	update_plyr_vision(&cub->plyr, LA_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
-	update_plyr_vision(&cub->plyr, RA_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
-	update_plyr_position(&cub->plyr, W_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
-	update_plyr_position(&cub->plyr, D_KC); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
+	cub->pr.key_on[LA] = true;
+	update_plyr_vision(&cub->plyr, cub->pr.key_on); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
+	cub->pr.key_on[LA] = false;
+	cub->pr.key_on[RA] = true;
+	update_plyr_vision(&cub->plyr, cub->pr.key_on); // TRICKS POUR LANCER LA MACHINE	-> sans ça manque calcul du plane
+	cub->pr.key_on[RA] = false;
+	cub->pr.key_on[W] = true;
+	update_plyr_position(&cub->plyr, cub->pr.key_on); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
+	cub->pr.key_on[W] = false;
+	cub->pr.key_on[D] = true;
+	update_plyr_position(&cub->plyr, cub->pr.key_on); // TRICKS POUR LANCER LA MACHINE	-> sans ça CRASH
+	cub->pr.key_on[D] = false;
 	return (0);
 }

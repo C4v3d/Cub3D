@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 11:14:49 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:12:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef enum	e_keys_list
 	LA,
 	DA,
 	UA,
+	M,
 }				t_kl;
 
 # define ESC_KC	65307

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:16:33 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:12:31 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  */
 # define N_TEXTURE 4
 # define N_COLOR 2
-# define N_KEYS 8
+# define N_KEYS 9
 
 # include <stdio.h>
 # include <fcntl.h>

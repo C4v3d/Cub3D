@@ -18,7 +18,9 @@ int	key_release(int kc, void *param)
 
 	cub = (t_main *)param;
 	printf("key_release | kc: %d\n", kc);
-	if (kc == W_KC)
+	if (kc == M_KC)
+		cub->pr.show_minimap = !cub->pr.show_minimap;
+	else if (kc == W_KC)
 		cub->pr.key_on[W] = false;
 	else if (kc == S_KC)
 		cub->pr.key_on[S] = false;
@@ -47,21 +49,21 @@ int	key_press(int kc, void *param)
 	printf("key_press | kc: %d\n", kc);
 	if (kc == ESC_KC)
 		return (close_cub3d(cub));
-	if (kc == W_KC && cub->pr.key_on[S] == false
-		&& cub->pr.key_on[UA] == false && cub->pr.key_on[DA] == false)
+	else if (kc == W_KC && !cub->pr.key_on[S] && !cub->pr.key_on[UA]
+		&& !cub->pr.key_on[DA])
 		cub->pr.key_on[W] = true;
-	else if (kc == S_KC && cub->pr.key_on[W] == false
-		&& cub->pr.key_on[UA] == false && cub->pr.key_on[DA] == false)
+	else if (kc == S_KC && !cub->pr.key_on[W]
+		&& !cub->pr.key_on[UA] && !cub->pr.key_on[DA])
 		cub->pr.key_on[S] = true;
-	else if (kc == A_KC && cub->pr.key_on[D] == false)
+	else if (kc == A_KC && !cub->pr.key_on[D])
 		cub->pr.key_on[A] = true;
-	else if (kc == D_KC && cub->pr.key_on[A] == false)
+	else if (kc == D_KC && !cub->pr.key_on[A])
 		cub->pr.key_on[D] = true;
-	else if (kc == UA_KC && cub->pr.key_on[DA] == false
-		&& cub->pr.key_on[W] == false && cub->pr.key_on[S] == false)
+	else if (kc == UA_KC && !cub->pr.key_on[DA]
+		&& !cub->pr.key_on[W] && !cub->pr.key_on[S])
 		cub->pr.key_on[UA] = true;
-	else if (kc == DA_KC && cub->pr.key_on[UA] == false
-		&& cub->pr.key_on[W] == false && cub->pr.key_on[S] == false)
+	else if (kc == DA_KC && !cub->pr.key_on[UA]
+		&& !cub->pr.key_on[W] && !cub->pr.key_on[S])
 		cub->pr.key_on[DA] = true;
 	if (kc == LA_KC && !cub->pr.key_on[RA])
 		cub->pr.key_on[LA] = true;

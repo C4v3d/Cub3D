@@ -77,6 +77,6 @@ run: all
 	./$(NAME) map3.cub
 
 leaks: all
-	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) ../map/map1.cub
+	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) map/map1.cub
 
 .PHONY: all clean fclean re

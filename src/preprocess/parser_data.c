@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 15:15:52 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 10:44:28 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,63 +72,40 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 
 static void	id_texture(t_graphic *gfx, char *line)
 {
-	if (ft_strncmp(line, NO_ID, ID_LEN) == 0)
-		parse_texture(gfx, &gfx->txtr[NO], line);
-	else if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
+	printf("line :%s\n", line);
+	if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
 		parse_texture(gfx, &gfx->txtr[SO], line);
+	else if (ft_strncmp(line, NO_ID, ID_LEN) == 0)
+		parse_texture(gfx, &gfx->txtr[NO], line);
 	else if (ft_strncmp(line, WE_ID, ID_LEN) == 0)
 		parse_texture(gfx, &gfx->txtr[WE], line);
 	else if (ft_strncmp(line, EA_ID, ID_LEN) == 0)
 		parse_texture(gfx, &gfx->txtr[EA], line);
 }
 
-static void	id_color(t_graphic *gfx, char *line)
-{
-	if (ft_strncmp(line, C_ID, ID_LEN - 1) == 0)
-	{
-		if (is_color_valid(gfx->cub, line))
-			parse_color(gfx->cub, line, &gfx->ceiling);
-	}
-	else if (ft_strncmp(line, F_ID, ID_LEN - 1) == 0)
-	{
-		if (is_color_valid(gfx->cub, line))
-			parse_color(gfx->cub, line, &gfx->floor);
-	}
-}
-
 static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;
 
+	(void)gfx;
 	if (line[0] == '\n')
 		return ;
 	while (ft_isspace(*line))
 		line++;
 	id_len = get_id_len(line);
-	printf("id_len :%d\n", id_len);
-	if (id_len == ID_LEN - 1)
-	{
-		if (ft_isspace(line[ID_LEN - 1]))
-			id_color(gfx, line);
-		else
-		{
-			printf("color id isnt correct\n");
-			exit (1);
-		}
-	}
-	else if (id_len > ID_LEN || id_len == 0)
-		exit (1);
+	if (id_len == ID_LEN)
+		id_texture(gfx, line);
+	else if (id_len > ID_LEN)
+		ft_perror(gfx->cub, DATA_INC_ID, ERROR);
 	else
 	{
-		if (ft_isspace(line[ID_LEN]))
-			id_texture(gfx, line);
+		if (line[0] == 'C')
+			parse_color(gfx->cub, line, &gfx->ceiling);
+		else if (line[0] == 'F')
+			parse_color(gfx->cub, line, &gfx->floor);
 		else
-		{
-			printf("txt id isn't correct\n");	
-			exit(1);
-		}
+			ft_perror(gfx->cub, DATA_INC_ID, ERROR);
 	}
-	printf("What\n");
 }
 
 // static void	fetch_data(t_graphic *gfx, char *line)

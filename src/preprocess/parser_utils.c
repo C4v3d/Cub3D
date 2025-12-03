@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 15:02:27 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 09:47:13 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	get_id_len(char *line)
 	int	len;
 
 	len = 0;
-	while (ft_isalnum(line[len]))
+	while (!ft_isspace(line[len]))
 		len++;
 	return (len);
 }

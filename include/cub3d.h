@@ -6,12 +6,21 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:08:39 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:16:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+/**
+ * Define the number of
+ * textures and colors
+ * used by cub3d.
+ */
+# define N_TEXTURE 4
+# define N_COLOR 2
+# define N_KEYS 8
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -45,15 +54,6 @@
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
-
-/**
- * Define the number of
- * textures and colors
- * used by cub3d.
- */
-# define N_TEXTURE 4
-# define N_COLOR 2
-# define N_KEYS 8
 
 // Define decr/incrementation value from keyboard inputs
 # define POS_MOVE_UNIT 0.099999

@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 11:14:22 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:31:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ void	rotate(double dir[2], double plane[2], double rot_speed)
 	plane[Y] = old_plane_x * sin(rot_speed) + plane[Y] * cos(rot_speed);
 }
 
-static void	update_aov(double *aov, float max_angle, double rot_speed, int kc)
+static void	update_aov(double *aov, float max_angle, double rot_speed, bool k[N_KEYS])
 {
-	if (kc == LA_KC && *(aov) + rot_speed >= max_angle - rot_speed)
+	if (k[LA] && *(aov) + rot_speed >= max_angle - rot_speed)
 		*(aov) = 0;
-	else if (kc == LA_KC)
+	else if (k[LA])
 		*(aov) += rot_speed;
-	else if (kc == RA_KC && *(aov) - rot_speed <= 0)
+	else if (k[RA] && *(aov) - rot_speed <= 0)
 		*(aov) = max_angle - rot_speed;
-	else if (kc == RA_KC)
+	else if (k[RA])
 		*(aov) -= rot_speed;
 }
 
-void	update_plyr_vision(t_player *p, int kc)
+void	update_plyr_vision(t_player *p, bool k[N_KEYS])
 {
-	if (kc == LA_KC || kc == RA_KC)
-		update_aov(&p->aov, M_PI * 2, VIS_MOVE_UNIT, kc);
-	if (kc == LA_KC)
+	if (k[LA] || k[RA])
+		update_aov(&p->aov, M_PI * 2, VIS_MOVE_UNIT, k);
+	if (k[LA])
 		rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
-	else if (kc == RA_KC)
+	else if (k[RA])
 		rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
 }

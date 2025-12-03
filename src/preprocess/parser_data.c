@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:57:37 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 14:51:54 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 {
 	char	*trimmed;
 
-	line += ID_LEN;
 	while (ft_isspace(*line))
 		line++;
 	if (*line == '\0')
@@ -41,54 +40,74 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	return (0);
 }
 
+static int	get_color(char *line)
+{
+	int	c;
+	
+	c = 0;
+	while (ft_isdigit(*line))
+		c = c * 10 + (*(line++) - '0');
+	return (c);
+}
 
-/* COLOR ID*/
+static int	ft_intlen(int n)
+{
+	int	len;
+
+	len = 0;
+	while (n > 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
 static int	parse_color(t_main *cub, char *line, t_color **dest)
 {
-	int	c_len;
-	int	n_color;
+	int	c;
+	int	c_count;
 
-	n_color = 0;
-	line += ID_LEN - 1;
-	if ((*dest)->color != -1)
-		return (ft_perror(cub, DATA_DUP, ERROR));
+	c = 0;
+	c_count = 0;
 	while (ft_isspace(*line))
 		line++;
-	while (*line && n_color < 3 && !cub->pr.fail)
+	while (line && c_count < 3)
 	{
-		c_len = 0;
-		while (ft_isdigit(line[c_len]))
-			c_len++;
-		if (n_color == 0)
-			(*dest)->r = get_color(cub, line, c_len);
-		else if (n_color == 1)
-			(*dest)->g = get_color(cub, line, c_len);
-		else if (n_color == 2)
-			(*dest)->b = get_color(cub, line, c_len);
-		line += c_len + 1;
-		n_color++;
+		c = get_color(line);
+		if (c > 255)
+			return (ft_perror(cub, DATA_COLOR_MAX, ERROR));
+		if (c_count == 0)
+			(*dest)->r = c;
+		else if (c_count == 1)
+			(*dest)->g = c;
+		else
+			(*dest)->b = c;
+		line += ft_intlen(c) + 1;
+		c_count++;
 	}
-	cub->gfx.el_counter += 1;
+	if (c_count != 3)
+		printf("AIE\n");
+	cub->gfx.el_counter++;
 	return (0);
 }
 
 static void	id_texture(t_graphic *gfx, char *line)
 {
 	if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
-		parse_texture(gfx, &gfx->txtr[SO], line);
+		parse_texture(gfx, &gfx->txtr[SO], line + ID_LEN);
 	else if (ft_strncmp(line, NO_ID, ID_LEN) == 0)
-		parse_texture(gfx, &gfx->txtr[NO], line);
+		parse_texture(gfx, &gfx->txtr[NO], line + ID_LEN);
 	else if (ft_strncmp(line, WE_ID, ID_LEN) == 0)
-		parse_texture(gfx, &gfx->txtr[WE], line);
+		parse_texture(gfx, &gfx->txtr[WE], line + ID_LEN);
 	else if (ft_strncmp(line, EA_ID, ID_LEN) == 0)
-		parse_texture(gfx, &gfx->txtr[EA], line);
+		parse_texture(gfx, &gfx->txtr[EA], line + ID_LEN);
 }
 
 static void	fetch_data(t_graphic *gfx, char *line)
 {
 	int	id_len;
 
-	(void)gfx;
 	if (line[0] == '\n')
 		return ;
 	while (ft_isspace(*line))
@@ -103,9 +122,9 @@ static void	fetch_data(t_graphic *gfx, char *line)
 	else
 	{
 		if (line[0] == 'C')
-			parse_color(gfx->cub, line, &gfx->ceiling);
+			parse_color(gfx->cub, line + ID_LEN - 1, &gfx->ceiling);
 		else if (line[0] == 'F')
-			parse_color(gfx->cub, line, &gfx->floor);
+			parse_color(gfx->cub, line + ID_LEN - 1, &gfx->floor);
 		else
 			ft_perror(gfx->cub, DATA_INC_ID, ERROR);
 	}

@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 14:11:33 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:48:28 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 13:25:10 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum e_errorcode
 	DATA_MISSING,
 	DATA_NOT_FOUND,
 	DATA_DUP,
+	DATA_INV_COLOR_FORMAT,
 	DATA_WRG_COLOR,
 	DATA_INC_ID,
 	DATA_COLOR_MAX,

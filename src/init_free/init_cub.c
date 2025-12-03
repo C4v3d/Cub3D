@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 11:13:38 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:00:04 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ static void	init_display(t_main *cub)
 	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	if (!cub->win)
 		ft_perror(cub, MLX_FAIL, CRITICAL);
-	mlx_hook(cub->win, 02, 1L << 0, input_loop, cub);
+	//mlx_hook(cub->win, 02, 1L << 0, input_loop, cub); //v1
+	mlx_hook(cub->win, 02, 1L<<0, key_press, cub);		//v2
+	mlx_hook(cub->win, 03, 1L<<1, key_release, cub);	//v2
 	mlx_hook(cub->win, 17, 0L, close_cub3d, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 }
@@ -68,6 +70,7 @@ static void	init_display(t_main *cub)
 void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub));
+	ft_bzero(cub->pr.key_on, sizeof(cub->pr.key_on[N_KEYS]));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
 	cub->map.p_pos = false;

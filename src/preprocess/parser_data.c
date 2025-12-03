@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 11:40:22 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:52:36 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 		return (ft_perror(cub, DATA_DUP, ERROR));
 	while (ft_isspace(*line))
 		line++;
-	while (*line && n_color < 3)
+	while (*line && n_color < 3 && !cub->pr.fail)
 	{
 		c_len = 0;
 		while (ft_isdigit(line[c_len]))
 			c_len++;
 		if (n_color == 0)
-			(*dest)->r = get_color(line, c_len);
+			(*dest)->r = get_color(cub, line, c_len);
 		else if (n_color == 1)
-			(*dest)->g = get_color(line, c_len);
+			(*dest)->g = get_color(cub, line, c_len);
 		else if (n_color == 2)
-			(*dest)->b = get_color(line, c_len);
+			(*dest)->b = get_color(cub, line, c_len);
 		line += c_len + 1;
 		n_color++;
 	}

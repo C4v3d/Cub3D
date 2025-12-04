@@ -6,14 +6,14 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 16:09:56 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 12:12:25 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:51:47 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
-typedef enum	e_keys_list
+typedef enum e_keys_list
 {
 	W,
 	A,

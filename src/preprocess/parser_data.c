@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/04 14:10:06 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:51:25 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,26 @@ int	parse_color(t_main *cub, char *line, t_color **dest)
 	int	c;
 	int	c_count;
 
-	c_count = -1;
+	c_count = 0;
 	ft_skip_spaces(&line);
 	if (!color_validation(line))
 		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
-	while (*line && !(*line == '\0' || *line == '\n') && c_count++ < 3)
+	while (*line && !(*line == '\0' || *line == '\n') && c_count < 3)
 	{
 		if (*line == ',')
 			line++;
+		if (*line == '\n' || *line == '\0')
+			break;
 		c = get_color(line);
 		if (c > 255)
 			return (ft_perror(cub, DATA_COLOR_MAX, ERROR));
 		color_atr(dest, c, c_count);
 		line += ft_intlen(c);
+		c_count++;
 	}
-	if (c_count != 2)
+	if (c_count != 3){
 		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
+	}
 	cub->gfx.el_counter++;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:27:59 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 16:34:41 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:51:59 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	ft_error(t_main *cub, t_errorcode errcode)
 	char	*err_msg;
 
 	cub->pr.fail = true;
-	printf("%d\n", errcode);
 	if (!errcode)
 		err_msg = strerror(errno);
 	else

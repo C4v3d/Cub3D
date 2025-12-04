@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:52:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 14:37:46 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 11:59:57 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,20 @@ char	*data_error_msg(t_errorcode err)
 		return ("No data found.");
 	if (err == DATA_INC_ID)
 		return ("Incorrect or missing texture/color id.\n"
-				"(Correct IDs are: \"NO, SO, WE, EA, F, C).\"");
+			"(Correct IDs are: \"NO, SO, WE, EA, F, C).\"");
 	if (err == DATA_DUP)
 		return ("Duplicated texture/color");
 	if (err == DATA_COLOR_MAX)
-		return ("Color value to high (value between 0 - 255).");
+		return ("Color value to high (value must be between 0 - 255).");
 	if (err == DATA_INV_COLOR_FORMAT)
-		return ("Invalid color format (must be \"10,120,67\")");
+		return ("Invalid color format ! (value must be between 0 - 255"
+			" ex: \"10,120,67\")");
 	if (err == DATA_WRG_COLOR)
 		return ("The color you specified isn't valid !\n"
-				"Must be \"C 130,10,0\"");
+			"Must be \"C 130,10,0\"");
 	if (err == DATA_WRG_TEXT_PATH)
 		return ("Texture path couldn't be open !"
-				" (Should be \"texture_example.xpm\")");
+			" (Should be \"texture_example.xpm\")");
 	return (NULL);
 }
 

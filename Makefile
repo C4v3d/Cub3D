@@ -31,7 +31,7 @@ MLX_LIB			= $(MLX_PATH)/libmlx.a
 OBJ				= $(CFILES:$(CFILES_PATH)/%.c=$(BUILD_PATH)/%.o)
 
 NAME			= cub3d
-CC				= cc -g
+CC				= cc
 MAKEFLAGS		+= --no-print-directory
 CFLAGS			= -Wall -Werror -Wextra
 MLXFLAGS		= -L $(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11

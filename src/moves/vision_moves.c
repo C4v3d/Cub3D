@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vision_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:35 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 16:27:00 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:53:14 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	rotate(double dir[2], double plane[2], double rot_speed)
 	plane[Y] = old_plane_x * sin(rot_speed) + plane[Y] * cos(rot_speed);
 }
 
-static void	update_aov(double *aov, float max_angle, double rot_speed, bool k[N_KEYS])
+static void	update_aov(double *aov, float max_angle, double rot_speed,
+	bool k[N_KEYS])
 {
 	if (k[LA] && *(aov) + rot_speed >= max_angle - rot_speed)
 		*(aov) = 0;
@@ -45,10 +46,4 @@ void	update_plyr_vision(t_player *p, bool k[N_KEYS])
 		rotate(p->dir, p->cub->r.plane, p->cub->pr.rot_speed);
 	else if (k[RA])
 		rotate(p->dir, p->cub->r.plane, -p->cub->pr.rot_speed);
-	//if (k[LA] || k[RA])
-	//	update_aov(&p->aov, M_PI * 2, VIS_MOVE_UNIT, k);
-	//if (k[LA])
-	//	rotate(p->dir, p->cub->r.plane, VIS_MOVE_UNIT);
-	//else if (k[RA])
-	//	rotate(p->dir, p->cub->r.plane, -VIS_MOVE_UNIT);
 }

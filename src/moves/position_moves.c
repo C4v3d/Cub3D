@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 23:04:33 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/03 16:58:27 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/04 11:53:03 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	move(t_player *p, t_rays *r, double move_speed, bool k[N_KEYS])
 		p->pos[X] -= p->dir[X] * move_speed;
 		p->pos[Y] += p->dir[Y] * move_speed;
 	}
-	else if (k[A])
+	if (k[A])
 	{
 		p->pos[X] -= r->plane[X] * move_speed;
 		p->pos[Y] += r->plane[Y] * move_speed;
@@ -36,7 +36,8 @@ static void	move(t_player *p, t_rays *r, double move_speed, bool k[N_KEYS])
 	}
 }
 
-static bool	moved_through_walls(t_map *m, int op[AXIS], double aov, bool k[N_KEYS])
+static bool	moved_through_walls(t_map *m, int op[AXIS],
+	double aov, bool k[N_KEYS])
 {
 	int	i;
 
@@ -62,7 +63,8 @@ static bool	moved_through_walls(t_map *m, int op[AXIS], double aov, bool k[N_KEY
 	return (false);
 }
 
-static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS], bool k[N_KEYS])
+static bool	check_new_pos(t_player *p, t_map *m, double old_pos[AXIS],
+	bool k[N_KEYS])
 {
 	int	op[AXIS];
 	int	np[AXIS];
@@ -87,7 +89,6 @@ bool	update_plyr_position(t_player *p, bool k[N_KEYS])
 {
 	p->old_pos[X] = p->pos[X];
 	p->old_pos[Y] = p->pos[Y];
-	//move(p, &p->cub->r, POS_MOVE_UNIT, k);
 	move(p, &p->cub->r, p->cub->pr.move_speed, k);
 	if (!check_new_pos(p, &p->cub->map, p->old_pos, k))
 	{

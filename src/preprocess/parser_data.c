@@ -6,16 +6,20 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/04 12:08:30 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:10:06 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-static void	ft_skip_spaces(char **s)
+static int	get_color(char *line)
 {
-	while (ft_isspace(**s))
-		(*s)++;
+	int	c;
+
+	c = 0;
+	while (ft_isdigit(*line))
+		c = c * 10 + (*(line++) - '0');
+	return (c);
 }
 
 static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
@@ -45,82 +49,7 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	return (0);
 }
 
-static int	get_color(char *line)
-{
-	int	c;
-
-	c = 0;
-	while (ft_isdigit(*line))
-		c = c * 10 + (*(line++) - '0');
-	return (c);
-}
-
-static int	ft_intlen(int n)
-{
-	int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-static bool	color_validation(char *s)
-{
-	int	c;
-
-	c = 0;
-	while (*s && *s != '\n')
-	{
-		if (*s == ',' || ft_isdigit(*s))
-		{
-			s++;
-			if (*s == ',')
-				c++;
-		}
-		else
-			return (false);
-	}
-	if (c != 2)
-		return (false);
-	return (true);
-}
-
-static int	parse_color(t_main *cub, char *line, t_color **dest)
-{
-	int	c;
-	int	c_count;
-
-	c = 0;
-	c_count = -1;
-	ft_skip_spaces(&line);
-	if (!color_validation(line))
-		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
-	while (!(*line == '\n' || *line == '\0') && c_count++ < 3)
-	{
-		c = get_color(line);
-		if (c > 255)
-			return (ft_perror(cub, DATA_COLOR_MAX, ERROR));
-		if (c_count == 0)
-			(*dest)->r = c;
-		else if (c_count == 1)
-			(*dest)->g = c;
-		else
-			(*dest)->b = c;
-		line += ft_intlen(c) + 1;
-	}
-	if (c_count != 2)
-		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
-	cub->gfx.el_counter++;
-	return (0);
-}
-
-static void	id_texture(t_graphic *gfx, char *line)
+void	id_texture(t_graphic *gfx, char *line)
 {
 	if (ft_strncmp(line, SO_ID, ID_LEN) == 0)
 		parse_texture(gfx, &gfx->txtr[SO], line + ID_LEN);
@@ -132,51 +61,37 @@ static void	id_texture(t_graphic *gfx, char *line)
 		parse_texture(gfx, &gfx->txtr[EA], line + ID_LEN);
 }
 
-static void	fetch_data(t_graphic *gfx, char *line)
+static void	color_atr(t_color **dest, int color, int n)
 {
-	int	id_len;
-
-	if (line[0] == '\n')
-		return ;
-	ft_skip_spaces(&line);
-	if (!line || *line == '\n' || *line == '\0')
-		return ;
-	id_len = get_id_len(line);
-	if (id_len == ID_LEN)
-		id_texture(gfx, line);
-	else if (id_len > ID_LEN)
-		ft_perror(gfx->cub, DATA_INC_ID, ERROR);
+	if (n == 0)
+		(*dest)->r = color;
+	else if (n == 1)
+		(*dest)->g = color;
 	else
-	{
-		if (line[0] == 'C')
-			parse_color(gfx->cub, line + ID_LEN - 1, &gfx->ceiling);
-		else if (line[0] == 'F')
-			parse_color(gfx->cub, line + ID_LEN - 1, &gfx->floor);
-		else
-			ft_perror(gfx->cub, DATA_INC_ID, ERROR);
-	}
+		(*dest)->b = color;
 }
 
-void	parse_data(t_graphic *gfx)
+int	parse_color(t_main *cub, char *line, t_color **dest)
 {
-	char		*line;
-	const int	total_el = N_COLOR + N_TEXTURE;
+	int	c;
+	int	c_count;
 
-	line = NULL;
-	while (gfx->el_counter < total_el)
+	c_count = -1;
+	ft_skip_spaces(&line);
+	if (!color_validation(line))
+		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
+	while (*line && !(*line == '\0' || *line == '\n') && c_count++ < 3)
 	{
-		line = get_next_line(gfx->cub->pr.input_file_fd);
-		if (!line)
-			break ;
-		fetch_data(gfx, line);
-		w_free((void **)&line);
-		if (gfx->cub->pr.fail)
-		{
-			get_next_line(-1);
-			free_cub(gfx->cub);
-			exit(EXIT_FAILURE);
-		}
+		if (*line == ',')
+			line++;
+		c = get_color(line);
+		if (c > 255)
+			return (ft_perror(cub, DATA_COLOR_MAX, ERROR));
+		color_atr(dest, c, c_count);
+		line += ft_intlen(c);
 	}
-	if (gfx->el_counter != total_el)
-		ft_perror(gfx->cub, DATA_MISSING, CRITICAL);
+	if (c_count != 2)
+		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
+	cub->gfx.el_counter++;
+	return (0);
 }

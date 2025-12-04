@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 15:33:34 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:13:35 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 12:09:08 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef enum e_errortype
 				the program (e.g: no more sys mem). */
 	DEBUG, /** For debug purpose. */
 }	t_errortype;
-
-
 
 /**
  * This is a wrapper function that aim to ease error handling. It's going to

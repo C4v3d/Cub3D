@@ -6,7 +6,7 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 11:40:52 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/04 11:56:55 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 12:08:30 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 	ft_skip_spaces(&line);
 	if (*line == '\0')
 		return (ft_perror(gfx->cub, DATA_NOT_FOUND, ERROR));
-	trimmed = ft_substr(line, 0, ft_strlen(line) - 1); /* BETTER TRIMMING*/
+	trimmed = ft_substr(line, 0, ft_strlen(line) - 1);
 	if (!trimmed)
 		ft_perror(gfx->cub, 0, ERROR);
 	if (t->img != NULL)
@@ -48,7 +48,7 @@ static int	parse_texture(t_graphic *gfx, t_image *t, char *line)
 static int	get_color(char *line)
 {
 	int	c;
-	
+
 	c = 0;
 	while (ft_isdigit(*line))
 		c = c * 10 + (*(line++) - '0');
@@ -75,9 +75,8 @@ static bool	color_validation(char *s)
 	int	c;
 
 	c = 0;
-	while (*s && *s !='\n')
+	while (*s && *s != '\n')
 	{
-		
 		if (*s == ',' || ft_isdigit(*s))
 		{
 			s++;
@@ -102,7 +101,7 @@ static int	parse_color(t_main *cub, char *line, t_color **dest)
 	ft_skip_spaces(&line);
 	if (!color_validation(line))
 		return (ft_perror(cub, DATA_INV_COLOR_FORMAT, ERROR));
-	while (!(*line == '\n' || *line == '\0' || ft_isspace(*line)) && c_count++ < 3)
+	while (!(*line == '\n' || *line == '\0') && c_count++ < 3)
 	{
 		c = get_color(line);
 		if (c > 255)

@@ -6,12 +6,21 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:13:57 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:12:29 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:11:43 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+/**
+ * Define the number of
+ * textures and colors
+ * used by cub3d.
+ */
+# define N_TEXTURE 4
+# define N_COLOR 2
+# define N_KEYS 9
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -46,14 +55,6 @@
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
-
-/**
- * Define the number of
- * textures and colors
- * used by cub3d.
- */
-# define N_TEXTURE 4
-# define N_COLOR 2
 
 // Define decr/incrementation value from keyboard inputs
 # define POS_MOVE_UNIT 0.099999
@@ -149,8 +150,12 @@ typedef struct s_program_data
 {
 	bool	show_minimap;
 	bool	close_program;
+	double	last_time;
+	double	move_speed;
+	double	rot_speed;
 	bool	fail;
 	int		input_file_fd;
+	bool	key_on[N_KEYS];
 	t_main	*cub;
 }	t_prog;
 

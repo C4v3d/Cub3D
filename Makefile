@@ -8,6 +8,7 @@ CFILES =	$(CFILES_PATH)/main.c \
 			$(CFILES_PATH)/game_rendering/game_render_utils.c \
 			$(CFILES_PATH)/game_rendering/rays_calculation.c \
 			$(CFILES_PATH)/game_rendering/rays_cal_utils.c \
+			$(CFILES_PATH)/game_rendering/fps.c \
 			$(CFILES_PATH)/init_free/init_cub.c \
 			$(CFILES_PATH)/init_free/free_cub.c \
 			$(CFILES_PATH)/utils/utils_1.c \
@@ -31,7 +32,7 @@ MLX_LIB			= $(MLX_PATH)/libmlx.a
 OBJ				= $(CFILES:$(CFILES_PATH)/%.c=$(BUILD_PATH)/%.o)
 
 NAME			= cub3d
-CC				= cc -g
+CC				= cc
 MAKEFLAGS		+= --no-print-directory
 CFLAGS			= -Wall -Werror -Wextra
 MLXFLAGS		= -L $(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11

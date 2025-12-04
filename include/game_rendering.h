@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_rendering.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:25:40 by emonacho          #+#    #+#             */
-/*   Updated: 2025/11/25 17:42:35 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/03 16:56:33 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	put_p(t_image *img, int x, int y, int color);
 void	init_dda(t_rays *r, t_player *p, int x);
 void	dda(t_rays *r, char **grid);
 void	rotate(double dir[2], double plane[2], double rot_speed);
+int		fps(t_prog *pr);
 
 #endif

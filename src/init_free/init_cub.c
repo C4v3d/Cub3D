@@ -6,7 +6,7 @@
 /*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:33:44 by emonacho          #+#    #+#             */
-/*   Updated: 2025/12/01 11:57:53 by emonacho         ###   ########.fr       */
+/*   Updated: 2025/12/04 12:10:18 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,19 @@ static void	init_gfx_map_data(t_graphic *gfx, t_map *map, t_main *cub)
 	map->dim[Y] = 0;
 }
 
-static void	init_plyr_rays_data(t_player *p, t_rays *r, t_main *cub)
+static void	init_plyr_rays_prog_data(t_player *pl, t_rays *r, t_main *cub,
+	t_prog *pr)
 {
-	ft_memset(p, '\0', sizeof(t_player));
 	ft_memset(r, '\0', sizeof(t_rays));
-	p->cub = cub;
-	p->old_pos[X] = -1;
-	p->old_pos[Y] = -1;
+	ft_bzero(pr, sizeof(pr));
+	pr->move_speed = 0.01;
+	pr->rot_speed = 0.01;
+	ft_memset(pl, '\0', sizeof(t_player));
+	pl->cub = cub;
+	pl->old_pos[X] = -1;
+	pl->old_pos[Y] = -1;
 	r->cub = cub;
-	p->fov = 1.4;
+	pl->fov = 1.4;
 }
 
 static void	init_display(t_main *cub)
@@ -60,7 +64,8 @@ static void	init_display(t_main *cub)
 	cub->win = mlx_new_window(cub->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3d");
 	if (!cub->win)
 		ft_perror(cub, MLX_FAIL, CRITICAL);
-	mlx_hook(cub->win, 02, 1L << 0, input_loop, cub);
+	mlx_hook(cub->win, 02, 1L << 0, key_press, cub);
+	mlx_hook(cub->win, 03, 1L << 1, key_release, cub);
 	mlx_hook(cub->win, 17, 0L, close_cub3d, cub);
 	mlx_loop_hook(cub->mlx, loop, cub);
 }
@@ -68,12 +73,13 @@ static void	init_display(t_main *cub)
 void	init_cub(t_main *cub)
 {
 	ft_memset(cub, '\0', sizeof(cub));
+	ft_bzero(cub->pr.key_on, sizeof(cub->pr.key_on));
 	cub->pr.close_program = false;
 	cub->pr.show_minimap = false;
 	cub->map.p_pos = false;
 	cub->pr.fail = false;
 	init_gfx_map_data(&cub->gfx, &cub->map, cub);
-	init_plyr_rays_data(&cub->plyr, &cub->r, cub);
+	init_plyr_rays_prog_data(&cub->plyr, &cub->r, cub, &cub->pr);
 	init_display(cub);
 }
 
@@ -83,9 +89,5 @@ int	init_parsed_data(t_main *cub)
 	cub->plyr.pos[Y] = (double)cub->map.plyr_start_pos[Y] - 0.5;
 	cub->r.plane[Y] = -cub->plyr.dir[X] * tan(cub->plyr.fov / 2.0);
 	cub->r.plane[X] = cub->plyr.dir[Y] * tan(cub->plyr.fov / 2.0);
-	update_plyr_vision(&cub->plyr, LA);
-	update_plyr_vision(&cub->plyr, RA);
-	update_plyr_position(&cub->plyr, W);
-	update_plyr_position(&cub->plyr, D);
 	return (0);
 }

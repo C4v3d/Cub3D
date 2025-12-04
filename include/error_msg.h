@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 14:11:33 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 13:25:10 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 15:01:26 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_errorcode
 {
 	/* Input errors*/
 	INPUT_WRG_NUM,
+	INPUT_WRG_FILE,
 	INPUT_WRG_EXT,
 	/* Data errors*/
 	DATA_MISSING,

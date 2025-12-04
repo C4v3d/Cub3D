@@ -1,10 +1,16 @@
 SO ./textures/1_32.xpm
-NO ./textures/2_32.xpm
-WE ./textures/3_32.xpm
-EA ./textures/4_32.xpm
-
 C 11,2,2
-F 100,234,2
+
+
+NO 				./textures/2_32.xpm
+	WE      ./textures/3_32.xpm
+F  			100,234,2
+
+
+
+
+  	EA ./textures/4_32.xpm
+
 
 1111
 1N01

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:17:37 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/02 14:05:23 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 15:05:38 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_input_valid(char *input_file)
 	p = input_file;
 	if (len == 0 || len <= EXTENSION_LEN)
 	{
-		ft_perror(NULL, MAP_FILE_NULL, WARNING);
+		ft_perror(NULL, INPUT_WRG_FILE, WARNING);
 		return (false);
 	}
 	p += (len - EXTENSION_LEN);

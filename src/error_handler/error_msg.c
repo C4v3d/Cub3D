@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: emonacho <emonacho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 13:52:13 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/04 14:08:58 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 15:05:46 by emonacho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*data_error_msg(t_errorcode err)
 	if (err == DATA_MISSING)
 		return ("Map file is missing data (texture or color)");
 	if (err == DATA_NOT_FOUND)
-		return ("No data found.");
+		return ("No texture found.");
 	if (err == DATA_INC_ID)
 		return ("Incorrect or missing texture/color id.\n"
 			"(Correct IDs are: \"NO, SO, WE, EA, F, C).\"");
@@ -66,5 +66,7 @@ char	*input_error_msg(t_errorcode err)
 			"Should be \"./cub3d map/map_example.cub\"");
 	if (err == INPUT_WRG_EXT)
 		return ("Wrong map extension (must be .cub).");
+	if (err == INPUT_WRG_FILE)
+		return ("Map must be \".cub\" file.");
 	return (NULL);
 }

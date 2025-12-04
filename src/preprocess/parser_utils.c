@@ -6,26 +6,30 @@
 /*   By: timmi <timmi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 10:43:23 by timmi             #+#    #+#             */
-/*   Updated: 2025/12/03 14:11:40 by timmi            ###   ########.fr       */
+/*   Updated: 2025/12/04 14:09:44 by timmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-bool	is_color_valid(t_main *cub, char *line)
+bool	color_validation(char *s)
 {
-	int	i;
+	int	c;
 
-	i = 2;
-	while (line[i] && line[i] != '\n')
+	c = 0;
+	while (*s && *s != '\n')
 	{
-		if (!ft_isdigit(line[i]) && line[i] != ',')
+		if (*s == ',' || ft_isdigit(*s))
 		{
-			ft_perror(cub, DATA_WRG_COLOR, ERROR);
-			return (false);
+			s++;
+			if (*s == ',')
+				c++;
 		}
-		i++;
+		else
+			return (false);
 	}
+	if (c != 2)
+		return (false);
 	return (true);
 }
 

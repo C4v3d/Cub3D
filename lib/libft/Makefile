@@ -6,7 +6,7 @@
 #    By: timmi <timmi@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/06 14:43:16 by timmi             #+#    #+#              #
-#    Updated: 2025/09/19 16:22:24 by timmi            ###   ########.fr        #
+#    Updated: 2025/12/04 13:42:35 by timmi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ CFILES = ft_atoi.c\
 		 w_free.c\
 		 w_close.c\
 		 get_next_line.c\
+		 ft_skip_spaces.c\
+		 ft_intlen.c\
 
 OFILES = $(CFILES:.c=.o)
 

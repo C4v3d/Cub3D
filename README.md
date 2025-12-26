@@ -1,5 +1,6 @@
 # Cub3D
 Cub3D is a small **raycasting** engine written in C for the 42 school curriculum, inspired by early 3D games such as Wolfenstein 3D. It renders a 3D view from a 2D map using MiniLibX and allows the player to explore simple maze-like environments.
+The project was developed by **Théo Immi** and **Eliot Monachon** as part of our 42 common-core
 ## Features
 - Real-time 3D projection using raycasting on a 2D tile map.​
 - Textured walls (up to a resolution of 512x512) with configurable north, south, east and west textures from a `.cub` configuration file.​ 

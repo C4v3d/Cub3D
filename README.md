@@ -26,7 +26,7 @@ The engine handle basics control such as :
 - `Esc`: Close the window and exit the program.​
 - `Right-Arrow` / `Left-Arrow`: Rotate the camera angle.
 ## Project Goals
-Since this project occur during the 42 common-core, it was made with a lot of constrains. Here are the main goal :
+Since this project was developed during the 42 common core, it was created under many constraints. Here are its main goals:
 - Practice low-level graphics programming using MiniLibX and event hooks.​
 - Learn how raycasting converts a 2D map into a 3D first-person view.​
 - Improve skills in parsing custom configuration formats and handling robust error checking.
